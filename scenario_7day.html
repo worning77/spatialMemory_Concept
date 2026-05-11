@@ -1,0 +1,2247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Spatial Memory — 7-Day Wearable Haptic Scenario</title>
+<style>
+  :root {
+    --accent: #0f6b7a;
+    --accent-light: #d4edf0;
+    --text: #1a1a1a;
+    --muted: #5a6670;
+    --border: #d8dde0;
+    --bg: #fafbfc;
+    --card-bg: #ffffff;
+
+    --alice: #2c5f8d;
+    --bob: #4a6c40;
+    --carol: #c66547;
+    --dave: #6e4a8c;
+
+    --alice-light: #e3edf6;
+    --bob-light: #e6ede2;
+    --carol-light: #f7e8e1;
+    --dave-light: #ece1f3;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 48px 40px 96px;
+    color: var(--text);
+    line-height: 1.55;
+    background: var(--bg);
+  }
+  h1 {
+    font-size: 32px;
+    margin: 0 0 4px;
+    color: var(--accent);
+  }
+  h2 {
+    font-size: 22px;
+    margin: 56px 0 14px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--accent-light);
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 16px;
+    margin: 22px 0 8px;
+    color: var(--text);
+  }
+  .subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 8px;
+    font-weight: 400;
+  }
+  .meta {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin: 12px 0 16px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta-item { display: flex; gap: 6px; }
+  .meta-label { font-weight: 600; }
+
+  /* Cast cards */
+  .cast {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .cast-card {
+    padding: 16px 18px;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .cast-card.alice { background: var(--alice); }
+  .cast-card.bob { background: var(--bob); }
+  .cast-card.carol { background: var(--carol); }
+  .cast-card.dave { background: var(--dave); }
+  .cast-card .name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .cast-card .role { opacity: 0.9; }
+
+  /* Day grid */
+  .day-grid {
+    display: grid;
+    grid-template-columns: 90px repeat(4, 1fr);
+    gap: 6px;
+    margin: 18px 0 4px;
+    position: relative;
+    z-index: 1;
+  }
+  .thread-svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 4;
+  }
+  .thread-svg path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.6;
+  }
+  .thread-svg circle {
+    opacity: 0.95;
+    stroke: white;
+    stroke-width: 1.5;
+  }
+  .thread-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 24px;
+    margin: 18px 0 6px;
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .thread-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .thread-legend-swatch {
+    width: 24px; height: 3px;
+    border-radius: 2px;
+  }
+  .grid-header-cell {
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    border-radius: 6px;
+    color: white;
+  }
+  .grid-header-cell.label { background: var(--muted); }
+  .grid-header-cell.alice { background: var(--alice); }
+  .grid-header-cell.bob { background: var(--bob); }
+  .grid-header-cell.carol { background: var(--carol); }
+  .grid-header-cell.dave { background: var(--dave); }
+
+  .day-label {
+    padding: 16px 10px;
+    font-size: 13px;
+    color: var(--muted);
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .day-label .day-num { font-weight: 700; color: var(--text); font-size: 14px; }
+  .day-label .day-day { font-size: 11px; }
+
+  .day-cell {
+    padding: 12px;
+    border-radius: 6px;
+    min-height: 64px;
+    cursor: default;
+    border: 1px solid transparent;
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-content: flex-start;
+    align-items: flex-start;
+  }
+  .day-cell.empty {
+    background: #f0f2f4;
+    border: 1px dashed #dde0e3;
+  }
+  .day-cell.alice { background: var(--alice-light); border-color: var(--alice); }
+  .day-cell.bob { background: var(--bob-light); border-color: var(--bob); }
+  .day-cell.carol { background: var(--carol-light); border-color: var(--carol); }
+  .day-cell.dave { background: var(--dave-light); border-color: var(--dave); }
+
+  .day-cell:not(.empty):hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 26px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 11px;
+    background: white;
+    color: var(--text);
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid var(--border);
+  }
+  .chip.star {
+    background: #fff8e1;
+    border-color: #f5c93a;
+    color: #6a4f00;
+  }
+
+  /* Storyline tooltip */
+  .day-cell { position: relative; z-index: 3; }
+  .day-cell:hover { z-index: 9999; }
+  .storyline {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    width: 320px;
+    max-width: 90vw;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text);
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px);
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 9999;
+    text-align: left;
+  }
+  .storyline strong { color: var(--accent); display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+  .day-cell:hover .storyline {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* Make tooltips on right-edge cells flip to the left */
+  .day-grid > .day-cell:nth-child(5n + 5) .storyline { left: auto; right: 0; }
+
+  .grid-note {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 6px 0 0;
+    text-align: center;
+  }
+
+  /* Why AR callout */
+  .callout {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 18px 22px;
+    border-radius: 4px;
+    margin-top: 18px;
+  }
+  .callout p:last-child { margin-bottom: 0; }
+
+  /* Defense cards */
+  .defense-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 16px 0 18px;
+  }
+  .defense-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 18px 20px 18px 56px;
+    position: relative;
+  }
+  .defense-card h3 {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .defense-card p { margin: 6px 0; font-size: 14px; }
+  .defense-card ul { margin: 6px 0 6px 18px; font-size: 14px; }
+  .defense-card li { margin: 2px 0; }
+  .defense-num {
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .tagline {
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0 0 10px;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+  }
+  .compare-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 14px 0 4px;
+    font-size: 13px;
+  }
+  .compare-side {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+  }
+  .compare-side h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    color: var(--accent);
+  }
+  .compare-side ul { margin: 0; padding-left: 18px; }
+  .compare-side li { margin: 4px 0; }
+
+  /* 3-level memory cards */
+  .mem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .mem-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid;
+    border-radius: 6px;
+    padding: 16px 18px;
+  }
+  .mem-card.obj { border-top-color: #c0593d; }
+  .mem-card.prj { border-top-color: #2a8d80; }
+  .mem-card.per { border-top-color: #6c5b9c; }
+  .mem-card h3 { margin: 0 0 4px; font-size: 15px; }
+  .mem-card.obj h3 { color: #c0593d; }
+  .mem-card.prj h3 { color: #2a8d80; }
+  .mem-card.per h3 { color: #6c5b9c; }
+  .mem-card .q-line {
+    font-style: italic;
+    color: var(--muted);
+    font-size: 12px;
+    margin: 4px 0 10px;
+  }
+  .mem-card .examples {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    line-height: 1.5;
+  }
+  .mem-card .examples strong { color: var(--text); }
+
+  /* Positioning section */
+  .position-hero {
+    background: linear-gradient(135deg, var(--accent) 0%, #1a8090 100%);
+    color: white;
+    border-radius: 8px;
+    padding: 28px 32px;
+    margin: 14px 0 18px;
+  }
+  .position-lead {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 10px;
+  }
+  .position-lead strong { background: rgba(255,255,255,0.18); padding: 0 6px; border-radius: 4px; }
+  .position-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
+    line-height: 1.5;
+  }
+  .position-layers {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .position-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 6px;
+    padding: 18px 22px 18px 56px;
+    position: relative;
+  }
+  .position-card h3 {
+    margin: 0 0 6px;
+    color: var(--accent);
+    font-size: 16px;
+  }
+  .position-card p { margin: 6px 0; font-size: 14px; }
+  .position-card ul { margin: 6px 0 4px 0; padding-left: 18px; font-size: 14px; }
+  .position-card li { margin: 4px 0; }
+  .position-num {
+    position: absolute;
+    left: 14px;
+    top: 18px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  .tbd-tag {
+    display: inline-block;
+    padding: 1px 8px;
+    background: #fdf6e3;
+    color: #946100;
+    border: 1px solid #f5c93a;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    vertical-align: middle;
+    margin: 0 3px;
+  }
+  .position-closing {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    border-radius: 4px;
+    margin-top: 14px;
+    font-size: 14px;
+    font-style: italic;
+  }
+
+  /* 4 SM properties */
+  .props-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 14px 0;
+  }
+  .prop-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .prop-card h4 {
+    margin: 0 0 4px;
+    font-size: 13px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .prop-card p { font-size: 12px; margin: 4px 0 0; color: var(--text); line-height: 1.45; }
+
+  /* Bridge table */
+  .bridge-box {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 14px 0;
+  }
+  .bridge-row {
+    display: grid;
+    grid-template-columns: 160px 36px 200px 1fr;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13px;
+  }
+  .bridge-row:last-child { border-bottom: none; }
+  .bridge-mode {
+    padding: 5px 10px;
+    background: #f4f4f7;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+  }
+  .bridge-arrow { text-align: center; color: var(--accent); font-weight: 700; font-size: 16px; }
+  .bridge-mem {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    font-size: 12px;
+  }
+  .bridge-mem.obj { background: #c0593d; }
+  .bridge-mem.prj { background: #2a8d80; }
+  .bridge-mem.per { background: #6c5b9c; }
+  .bridge-q { font-style: italic; color: var(--muted); font-size: 12px; padding-left: 8px; }
+
+  /* Memory tags inline */
+  .mem-tag {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 8px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: white;
+    vertical-align: middle;
+    margin: 0 1px;
+    text-transform: uppercase;
+  }
+  .mem-tag.obj { background: #c0593d; }
+  .mem-tag.prj { background: #2a8d80; }
+  .mem-tag.per { background: #6c5b9c; }
+  .voice-quote {
+    display: block;
+    margin: 6px 0;
+    padding: 6px 10px;
+    background: #fdf6e3;
+    border-left: 3px solid #f5c93a;
+    font-size: 12px;
+    color: #4a3a00;
+    font-style: italic;
+    border-radius: 3px;
+  }
+
+  /* Obsidian comparison */
+  .obs-compare {
+    display: grid;
+    grid-template-columns: 180px 1fr 1fr;
+    gap: 0;
+    margin: 14px 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 13px;
+  }
+  .obs-cell { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  .obs-cell.dim { background: #f4f4f7; font-weight: 600; color: var(--muted); }
+  .obs-cell.obsidian { background: #f7f3fc; }
+  .obs-cell.sm { background: var(--accent-light); }
+  .obs-cell.last { border-bottom: none; }
+  .obs-header { padding: 10px 14px; font-weight: 700; color: white; text-align: center; border-bottom: 1px solid var(--border); }
+  .obs-header.dim { background: var(--muted); }
+  .obs-header.obs-h { background: #7e57c2; }
+  .obs-header.sm-h { background: var(--accent); }
+
+  /* Memory traces */
+  .trace-block {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid;
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 14px 0;
+  }
+  .trace-block.obj { border-left-color: #c0593d; }
+  .trace-block.prj { border-left-color: #2a8d80; }
+  .trace-block.per { border-left-color: #6c5b9c; }
+  .trace-block h3 { margin: 0 0 4px; }
+  .trace-block.obj h3 { color: #c0593d; }
+  .trace-block.prj h3 { color: #2a8d80; }
+  .trace-block.per h3 { color: #6c5b9c; }
+  .trace-block > .trace-subtitle { font-size: 12px; color: var(--muted); margin: 0 0 8px; }
+  .trace-timeline {
+    border-left: 2px dashed #d8dde0;
+    margin-left: 8px;
+    padding-left: 18px;
+    margin-top: 10px;
+  }
+  .trace-event {
+    position: relative;
+    margin: 10px 0;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .trace-event:before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--muted);
+    border: 2px solid white;
+  }
+  .trace-block.obj .trace-event:before { background: #c0593d; }
+  .trace-block.prj .trace-event:before { background: #2a8d80; }
+  .trace-block.per .trace-event:before { background: #6c5b9c; }
+  .trace-event .day {
+    display: inline-block;
+    min-width: 56px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-right: 4px;
+  }
+  .trace-event .who {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 11px;
+    color: white;
+    margin-right: 6px;
+    font-weight: 600;
+  }
+  .trace-event .who.alice { background: var(--alice); }
+  .trace-event .who.bob { background: var(--bob); }
+  .trace-event .who.carol { background: var(--carol); }
+  .trace-event .who.dave { background: var(--dave); }
+
+  /* Event-node grid */
+  .event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+    margin: 10px 0;
+  }
+  .event-day-header {
+    grid-column: 1 / -1;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin: 14px 0 2px;
+    font-size: 13px;
+    border-left: 4px solid var(--accent);
+  }
+  .event-node {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid;
+    border-radius: 5px;
+    padding: 9px 11px;
+    font-size: 12px;
+    line-height: 1.45;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .event-node.alice { border-left-color: var(--alice); }
+  .event-node.bob { border-left-color: var(--bob); }
+  .event-node.carol { border-left-color: var(--carol); }
+  .event-node.dave { border-left-color: var(--dave); }
+  .event-node .ev-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .event-node .ev-num {
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.4px;
+  }
+  .event-node .ev-num.star { color: #b07a00; }
+  .event-node .ev-num.star::after { content: ' ★'; }
+  .event-node .ev-who {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    color: white;
+    font-weight: 600;
+  }
+  .event-node .ev-who.alice { background: var(--alice); }
+  .event-node .ev-who.bob { background: var(--bob); }
+  .event-node .ev-who.carol { background: var(--carol); }
+  .event-node .ev-who.dave { background: var(--dave); }
+  .event-node .ev-meta {
+    font-size: 10px;
+    color: var(--muted);
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .event-node .ev-anchor {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .event-node .ev-action {
+    font-size: 12px;
+    color: var(--text);
+  }
+  .event-node .ev-quote {
+    padding: 4px 6px;
+    background: #fdf6e3;
+    border-left: 2px solid #f5c93a;
+    font-style: italic;
+    color: #4a3a00;
+    font-size: 11px;
+    border-radius: 2px;
+    margin-top: 2px;
+  }
+  .event-node .ev-links {
+    font-size: 10px;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .event-node .ev-links .link {
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .event-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin: 10px 0;
+    padding: 10px 14px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 12px;
+  }
+  .event-legend .lg-item { display: flex; align-items: center; gap: 6px; }
+  .event-legend .lg-swatch {
+    width: 14px; height: 14px;
+    border-radius: 3px;
+  }
+
+  /* Event canvas — map/grid layout */
+  .canvas-legend {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 10px 0 14px;
+    padding: 14px 18px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 11px;
+  }
+  .lg-section { display: flex; flex-direction: column; gap: 5px; }
+  .lg-title { font-weight: 700; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.4px; text-transform: uppercase; font-size: 10px; }
+  .lg-item { display: flex; align-items: center; gap: 7px; font-size: 11px; }
+  .lg-avatar {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .lg-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .lg-band {
+    width: 18px; height: 4px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  .event-canvas {
+    position: relative;
+    margin: 14px 0 6px;
+    overflow-x: auto;
+  }
+  .canvas-headers {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+    min-width: 1380px;
+  }
+  .canvas-header {
+    padding: 8px 10px;
+    background: var(--muted);
+    color: white;
+    text-align: center;
+    font-weight: 700;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  .canvas-cols {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    min-width: 1380px;
+    position: relative;
+    z-index: 2;
+  }
+  .day-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 100px;
+  }
+  /* Day summary block at the top of each day column */
+  .day-summary {
+    background: #f4f6f8;
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 2px;
+    border-left: 3px solid var(--accent);
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .day-summary .ds-line {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin: 3px 0;
+  }
+  .day-summary .ds-avatar {
+    width: 20px; height: 20px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid white;
+  }
+  .day-summary .ds-text {
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1.4;
+  }
+  /* Event card — neutral background, thread color on left border + tinted background */
+  .ev-card {
+    --thread-bg: #aab0b8;
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--thread-bg);
+    border-radius: 5px;
+    padding: 7px 10px 24px 10px;
+    position: relative;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, outline 0.15s ease;
+    cursor: default;
+    outline: 2px solid transparent;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+  .ev-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    z-index: 3;
+  }
+  .ev-card.highlight {
+    outline: 2px solid #f5c93a;
+    z-index: 4;
+  }
+  .ev-card.dimmed { opacity: 0.25; }
+  .ev-card .ev-avatar {
+    position: absolute;
+    top: 7px;
+    left: 8px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid white;
+    flex-shrink: 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+  }
+  .ev-card .ev-id {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: var(--muted);
+  }
+  .ev-card .ev-text {
+    margin-top: 28px;
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: var(--text);
+  }
+  .ev-card .ev-memchips {
+    position: absolute;
+    bottom: 6px;
+    left: 8px;
+    display: flex;
+    gap: 4px;
+  }
+  .memchip {
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    border: 1.5px solid white;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+  }
+  .memchip.obj { background: #c0593d; }
+  .memchip.prj { background: #2a8d80; }
+  .memchip.per { background: #6c5b9c; }
+
+  .canvas-edges {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+  }
+  .canvas-edges path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.55;
+  }
+  .canvas-edges path.edge-reads { stroke-width: 2; }
+  .canvas-edges path.edge-reply { stroke-width: 2.5; stroke-dasharray: 6 4; }
+  .canvas-edges path.edge-update { stroke-width: 2.8; }
+  .canvas-edges path.edge-pair { stroke-width: 2; stroke-dasharray: 2 4; }
+  .canvas-edges path.edge-highlight {
+    opacity: 1;
+    stroke-width: 3.5;
+  }
+  .canvas-edges path.edge-dimmed { opacity: 0.1; }
+
+  /* Clickable legend items */
+  .canvas-legend .clickable {
+    cursor: pointer;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: background 0.12s ease;
+    user-select: none;
+  }
+  .canvas-legend .clickable:hover { background: #f4f6f8; }
+  .canvas-legend .clickable.active {
+    background: #fdf6e3;
+    outline: 1px solid #f5c93a;
+  }
+  .filter-active {
+    margin: 8px 0 10px;
+    padding: 8px 14px;
+    background: #fdf6e3;
+    border: 1px solid #f5c93a;
+    border-radius: 5px;
+    font-size: 12px;
+    color: #4a3a00;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .filter-active .clear-filter {
+    cursor: pointer;
+    padding: 3px 10px;
+    background: #946100;
+    color: white;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .canvas-punchline {
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  /* Thread mapping table (4 threads → 3×3) */
+  .thread-mapping {
+    margin: 12px 0;
+    padding: 12px 16px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .thread-mapping h4 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    color: var(--accent);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .map-tbl {
+    font-size: 12px;
+    width: 100%;
+  }
+  .map-tbl th, .map-tbl td { padding: 6px 8px; }
+  .map-tbl th { font-size: 11px; color: var(--accent); }
+  .lg-band-mini {
+    display: inline-block;
+    width: 14px; height: 4px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+
+  /* 3-verb grid (§3) */
+  .verb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0 18px;
+  }
+  .verb-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid;
+    border-radius: 6px;
+    padding: 16px 18px 14px 56px;
+    position: relative;
+  }
+  .verb-card.anchor   { border-top-color: #3a7aa0; }
+  .verb-card.scope    { border-top-color: #c87038; }
+  .verb-card.navigate { border-top-color: #6c8a3a; }
+  .verb-card h4 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .verb-card.anchor   h4 { color: #3a7aa0; }
+  .verb-card.scope    h4 { color: #c87038; }
+  .verb-card.navigate h4 { color: #6c8a3a; }
+  .verb-card p { margin: 6px 0; font-size: 13px; line-height: 1.55; }
+  .verb-card .verb-num {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .verb-card.anchor   .verb-num { background: #3a7aa0; }
+  .verb-card.scope    .verb-num { background: #c87038; }
+  .verb-card.navigate .verb-num { background: #6c8a3a; }
+  .verb-card .verb-meta {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--border);
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* Audience badges (event cards in §4) */
+  .ev-topright {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    line-height: 1;
+  }
+  .ev-card .ev-topright .ev-id {
+    position: static;
+  }
+  .aud-directed {
+    display: inline-block;
+    padding: 1px 5px;
+    border-radius: 8px;
+    background: rgba(46, 86, 116, 0.14);
+    color: #2a5670;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.2px;
+  }
+  .aud-permanent {
+    font-size: 12px;
+    line-height: 1;
+    filter: saturate(0.85);
+  }
+  .lg-section-wide {
+    grid-column: span 3;
+  }
+  .lg-thread-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px 12px;
+    margin-top: 4px;
+  }
+  .lg-subhead {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  /* Tables */
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8px 0 6px;
+    font-size: 13px;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: var(--accent-light);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  tr:hover td { background: #fafafa; }
+  .num-cell {
+    font-weight: 700;
+    width: 36px;
+    text-align: center;
+    color: var(--accent);
+  }
+  .star-row td.num-cell { color: #b07a00; }
+
+  /* Agent grid */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .agent-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .agent-card h4 {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 15px;
+  }
+  .agent-card p { margin: 6px 0; font-size: 13px; }
+  .agent-card .agent-line { margin-top: 8px; font-size: 12px; color: var(--muted); }
+  .agent-card .agent-line span { font-weight: 600; color: var(--text); }
+
+  /* Misc */
+  .star { color: #b07a00; font-weight: 700; }
+  .small { font-size: 13px; color: var(--muted); }
+  ol, ul { padding-left: 22px; }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Spatial Memory — 7-Day Wearable Haptic Scenario</h1>
+  <p class="subtitle">A multi-person, async, multi-day instantiation of the SM concept in a CS-maker-lab</p>
+  <div class="meta">
+    <div class="meta-item"><span class="meta-label">Project</span><span>Wearable haptic device (PCB + 3D-printed enclosure + acrylic strap)</span></div>
+    <div class="meta-item"><span class="meta-label">People</span><span>3 (Alice, Bob, Carol); a neighbouring install team crosses paths off-canvas</span></div>
+    <div class="meta-item"><span class="meta-label">Days</span><span>7 (Mon–Sun)</span></div>
+    <div class="meta-item"><span class="meta-label">Primitives</span><span>37 distinct, blended</span></div>
+  </div>
+</header>
+
+<!-- §1 Positioning -->
+<section>
+  <h2>1 — Positioning</h2>
+
+  <div class="position-hero">
+    <p class="position-lead">Spatial Memory is a <strong>room-scale AI memory manager</strong> for shared physical workspaces.</p>
+    <p class="position-sub">The room captures annotations in context, organises them via a Memory Graph, and surfaces the right note to each person at the right moment. The agent lives in the space, not on the body.</p>
+  </div>
+
+  <div class="position-layers">
+
+    <div class="position-card">
+      <div class="position-num">1</div>
+      <h3>What it is — a room-scale AI memory manager</h3>
+      <p>SM is not a tool you open. It is a persistent agent that lives in the workspace itself. Four properties define it:</p>
+      <ul>
+        <li><strong>Room-scale, not body-worn.</strong> The agent is embedded in the place, not on the person. People come and go; the room stays.</li>
+        <li><strong>Multi-tenant.</strong> Many collaborators pass through the same space. The room remembers each separately and serves each differently.</li>
+        <li><strong>Persistent.</strong> Memory accumulates across sessions, shifts, days, weeks.</li>
+        <li><strong>Active, not passive.</strong> It is a <em>manager</em>: makes decisions about what to capture, how to organise, what to surface to whom — not a passive store.</li>
+      </ul>
+    </div>
+
+    <div class="position-card">
+      <div class="position-num">2</div>
+      <h3>What it inherits</h3>
+      <p>Three intellectual lineages converge in SM:</p>
+      <ul>
+        <li><strong>Place over space</strong> (Harrison &amp; Dourish 1996) — treats the workspace as <em>socially meaningful place</em>, not just coordinates. SM gives a structured way to encode that meaning via three orthogonal memory indexes.</li>
+        <li><strong>Wearable AI agents</strong> (AiGet, SensibleAgent, ProMemAssist, VisionClaw, 2024–2025) — the proactive-AR-agent paradigm. SM <strong>relocates the agent from the person to the room</strong>. That displacement is itself a contribution.</li>
+        <li><strong>Graph-organised knowledge</strong> (Obsidian, Roam, wiki lineage) — typed-link graphs of notes have a 30-year tradition. SM extends that to multi-user spatially-anchored async communication with proactive surfacing.</li>
+      </ul>
+    </div>
+
+    <div class="position-card">
+      <div class="position-num">3</div>
+      <h3>What it adds</h3>
+      <p>Three technical contributions sit on top of the inherited lineages:</p>
+      <ul>
+        <li><strong>Memory Graph</strong> — a typed multigraph encoding three orthogonal indexes (Object / Project / Person). One annotation, three queries. Formal traversal operations with complexity bounds.</li>
+        <li><strong>Selective-surfacing agent</strong> — decides what to play given who-you-are, where-you-are, what-you've-heard, and what-the-graph-knows. Multi-objective, ablatable, evaluatable.</li>
+        <li><strong>Annotation modality <span class="tbd-tag">TBD</span></strong> — could be voice memo, AR text sticky note, anchored gesture pin, or hybrid. Design decision still open. The Memory Graph and surfacing agent are modality-agnostic; whatever modality wins, the architecture absorbs it.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="position-closing">
+    The system contribution sits at the intersection of all three: <strong>an AI manager that lives in the room, encoding social place via structured indexes, with annotations whose modality is an open design space.</strong>
+  </div>
+</section>
+
+<!-- §2 Framing & cast -->
+<section>
+  <h2>2 — The project &amp; cast</h2>
+  <p>A small research-demo build: a wearable haptic device with custom PCB (IMU + motor driver + battery), 3D-printed enclosure, laser-cut acrylic strap. Realistic CS-maker-lab register — no welding or manual machining. Three people work on it; a neighbouring install team shares the same room and the same tool-return rack, but their members never appear on this canvas. They almost never overlap. Everything routes through the spatial memory system.</p>
+
+  <div class="cast">
+    <div class="cast-card alice">
+      <div class="name">Alice</div>
+      <div class="role">Senior researcher / PI. Designed the project. Brief mentor visits across the week.</div>
+    </div>
+    <div class="cast-card bob">
+      <div class="name">Bob</div>
+      <div class="role">Mid-level. Knows the equipment. Implements bulk of fabrication.</div>
+    </div>
+    <div class="cast-card carol">
+      <div class="name">Carol</div>
+      <div class="role">Junior. First time in this lab. Most assembly + the learning arc.</div>
+    </div>
+    <div class="cast-card" style="background:#8a8f96;">
+      <div class="name">Install team</div>
+      <div class="role">Off-canvas neighbours sharing the room and the tool-return rack. Referenced via cross-Process links — never appear directly.</div>
+    </div>
+  </div>
+</section>
+
+<!-- §3 The 3-Level Memory Model -->
+<section>
+  <h2>3 — The concept: 3 interaction verbs × 3 memory types</h2>
+  <p>SM's concept-level contribution is a <strong>3×3 model</strong>. Three <strong>interaction verbs</strong> define how people <em>act on</em> the memory; three <strong>memory types</strong> define the indexes through which the memory is <em>structured</em>. Together they cover every interaction in the system. (Throughout this document, <em>annotation</em> is modality-agnostic — see §1, card 3 <span class="tbd-tag">TBD</span>.)</p>
+  <h3>The three interaction verbs</h3>
+  <p>Earlier framings (paper §3) called these "properties" — Anchored, Accumulated, Layered, Navigable. Re-read as actions, <em>three verbs</em> cover the same ground: <em>Accumulated</em> dissolves into Anchor performed by multiple people over time; <em>Layered</em> becomes Scope.</p>
+  <div class="verb-grid">
+    <div class="verb-card anchor">
+      <div class="verb-num">1</div>
+      <h4>Anchor</h4>
+      <p>Attach a memo to a place, object, person, or process. Multiple people anchoring over time = community memory accumulates at each place. This is the capture action.</p>
+      <div class="verb-meta">absorbs: <em>Anchored</em> + <em>Accumulated</em></div>
+    </div>
+    <div class="verb-card scope">
+      <div class="verb-num">2</div>
+      <h4>Scope</h4>
+      <p>Control visibility: audience (broadcast / directed / project), persistence (default / permanent / archivable), urgency (info / warning / blocking). Some info is always there for everyone; some is layered for specific eyes.</p>
+      <div class="verb-meta">renamed from: <em>Layered</em></div>
+    </div>
+    <div class="verb-card navigate">
+      <div class="verb-num">3</div>
+      <h4>Navigate</h4>
+      <p>Retrieve memory by querying one of three orthogonal indexes — Object / Project / Person. The same Memory Graph; three lenses.</p>
+      <div class="verb-meta">renamed from: <em>Navigable</em></div>
+    </div>
+  </div>
+  <h3>The three memory types (Navigate's three indexes)</h3>
+  <p>The three memory types are <em>what Navigate queries</em>. The same Note can be indexed in all three.</p>
+  <div class="mem-grid">
+    <div class="mem-card obj">
+      <h3>🟧 Object memory</h3>
+      <div class="q-line">"What is this thing's history?"</div>
+      <p>Memory anchored to a workpiece, tool, machine, fixture, or material. Surfaces when you approach the object physically.</p>
+      <div class="examples"><strong>Examples</strong>: bed-leveling note on the 3D printer · drill-bit-dull tag · helping-grip ghost on the part · scrap-pile touch history</div>
+    </div>
+    <div class="mem-card prj">
+      <h3>🟩 Project memory</h3>
+      <div class="q-line">"What is this work?"</div>
+      <p>Memory scoped to a Process — a multi-day, multi-person job. Surfaces when the user engages with the project, regardless of physical location.</p>
+      <div class="examples"><strong>Examples</strong>: WIP status · walking-tour recipe · departure retrospective · "parts arriving Wed"</div>
+    </div>
+    <div class="mem-card per">
+      <h3>🟪 Person memory</h3>
+      <div class="q-line">"What did <em>they</em> do?"</div>
+      <p>Memory indexed to a Person — their trail of notes, paths walked, techniques recorded. Surfaces on "follow" or when notes are tagged with you as recipient.</p>
+      <div class="examples"><strong>Examples</strong>: Alice's walking-tour route · Bob's station-default · Carol's Q-thread · "DIRECTED_TO Bob" handoff</div>
+    </div>
+  </div>
+  <p>A single annotation can be indexed by all three. <em>"Carol, I left a fresh stencil at the consumables station — already loaded for tonight's run"</em> is Anchored to <span class="mem-tag obj">obj</span> (the stencil), tagged with <span class="mem-tag prj">prj</span> (the wearable build), and Directed-To <span class="mem-tag per">per</span> (Carol).</p>
+  <h3>Extending place-and-space (Harrison &amp; Dourish 1996)</h3>
+  <p>Harrison &amp; Dourish distinguished <em>place</em> (socially meaningful) from <em>space</em> (physical coordinates). SM extends that distinction into a 3-axis indexing model: a Note has a <em>place</em>-coordinate (Object), a <em>practice</em>-coordinate (Project), and a <em>person</em>-coordinate (Person). The Memory Graph makes those three indexes queryable simultaneously.</p>
+  <h3>How this compares to Obsidian / Roam</h3>
+  <p>SM is structurally close to a wiki-graph knowledge tool like Obsidian or Roam, but extends to multi-user voice-based + spatially-anchored async communication with proactive surfacing.</p>
+  <div class="obs-compare">
+    <div class="obs-header dim">Dimension</div>
+    <div class="obs-header obs-h">Obsidian / Roam</div>
+    <div class="obs-header sm-h">Spatial Memory</div>
+    <div class="obs-cell dim">Atomic unit</div>
+    <div class="obs-cell obsidian">Markdown file</div>
+    <div class="obs-cell sm">Annotation <span class="tbd-tag">modality TBD</span></div>
+    <div class="obs-cell dim">Anchor / Index</div>
+    <div class="obs-cell obsidian">Folder + tags + <code>[[backlinks]]</code></div>
+    <div class="obs-cell sm">Object + Project + Person — three orthogonal indexes</div>
+    <div class="obs-cell dim">Retrieval</div>
+    <div class="obs-cell obsidian">Open app → search / browse / graph view</div>
+    <div class="obs-cell sm">Walk into the place → notes surface proactively</div>
+    <div class="obs-cell dim">Authorship</div>
+    <div class="obs-cell obsidian">Single user</div>
+    <div class="obs-cell sm">Multi-user with audience semantics (Scope)</div>
+    <div class="obs-cell dim">Modality</div>
+    <div class="obs-cell obsidian">Text on screen</div>
+    <div class="obs-cell sm">Annotation modality TBD — voice / AR sticky / gesture pin / hybrid</div>
+    <div class="obs-cell dim last">LLM integration</div>
+    <div class="obs-cell obsidian last">Claude reads .md as context</div>
+    <div class="obs-cell sm last">Threader / Surfacer / Curator agents operate over the graph</div>
+  </div>
+</section>
+
+<!-- §4 7-day flow as event canvas -->
+<section class="canvas-section">
+  <h2>4 — The 7-day flow (event map)</h2>
+  <p><strong>Horizontal</strong> = day. <strong>Vertical</strong> = order within day. <strong>Avatar</strong> = person. <strong>Coloured left-border</strong> = a named thread. <strong>Grey left-border</strong> = standalone (filter via memory-type). <strong>Audience badges</strong> at top-right = Scope (→ directed, 📌 permanent).</p>
+  <p style="font-size:13px; color:var(--muted);"><strong>Hover</strong> an event → its thread + direct edges light up. <strong>Click</strong> any legend item below → filter. Click again to clear.</p>
+  <p style="font-size:12px; color:var(--muted); background:#fdf6e3; border-left:3px solid #f5c93a; padding:8px 12px; border-radius:4px;"><strong>Cleaning pass.</strong> 34 events retained. Every event is justified by at least one of: (a) it adds a memo that a later canvas event consumes; (b) it consumes a memo from a prior canvas event; (c) it anchors a permanent or directed memo (institutional persistence / explicit recipient). 20 events were dropped — Slack-able Q&A, work-only actions, off-canvas role references, and pure read-only consumption of off-canvas memory.</p>
+  <div class="thread-mapping">
+    <h4>The 4 named threads — distinctly AR-spatial chains</h4>
+    <table class="map-tbl">
+      <thead><tr><th>Thread</th><th>Count</th><th>Pattern</th><th>Why it's AR-distinctive</th></tr></thead>
+      <tbody>
+        <tr><td><span class="lg-band-mini" style="background:#d4a13a;"></span> <strong>Walking-tour</strong></td><td>5</td><td>Procedure + PROCEDURAL_NEXT + UPDATES</td><td>Junior physically walks the senior's station sequence at her own pace; v2 has versioned updates.</td></tr>
+        <tr><td><span class="lg-band-mini" style="background:#6c8a3a;"></span> <strong>WIP status</strong></td><td>4</td><td>Sequential chain at the WIP shelf</td><td>Project state anchored to the WIP itself; surfaces when anyone approaches.</td></tr>
+        <tr><td><span class="lg-band-mini" style="background:#d4659a;"></span> <strong>Proposal cloud</strong></td><td>2</td><td>Anchored gesture-pin + anchored reply</td><td>Carol pins a design suggestion at a specific spot on the WIP; Bob walks up, sees the ghost, replies at the same anchor.</td></tr>
+        <tr><td><span class="lg-band-mini" style="background:#2a8a8a;"></span> <strong>Scope-leads cross-team flow</strong></td><td>5</td><td>Object surfacing + cross-Process reference</td><td>Tool-return surfaces at bench → touch-history at rack → cross-Process request anchored at the install team's bay → Bob's anchored reply at the bench → Carol acts.</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:12px; color:var(--muted); margin-top:8px;"><strong>Not in a thread</strong>: 18 standalone events. Each one adds a memo, consumes a prior memo, or anchors a permanent/directed memo. Filter them by memory-type.</p>
+  </div>
+  <div class="canvas-legend">
+    <div class="lg-section"><div class="lg-title">Anchor (implicit)</div>
+      <div class="lg-item" style="color:var(--muted);">Card position on canvas = day × person × order. Every event is anchored.</div>
+    </div>
+    <div class="lg-section"><div class="lg-title">Scope · audience badges</div>
+      <div class="lg-item"><span class="aud-directed">→C</span>directed to a recipient</div>
+      <div class="lg-item"><span class="aud-permanent">📌</span>permanent / institutional</div>
+      <div class="lg-item" style="color:var(--muted);"><span style="display:inline-block; width:14px;"></span>no badge = broadcast (default)</div>
+    </div>
+    <div class="lg-section"><div class="lg-title">Person · click to filter</div>
+      <div class="lg-item clickable" data-filter="person" data-value="alice"><span class="lg-avatar" style="background:#2c5f8d;">A</span>Alice</div>
+      <div class="lg-item clickable" data-filter="person" data-value="bob"><span class="lg-avatar" style="background:#4a6c40;">B</span>Bob</div>
+      <div class="lg-item clickable" data-filter="person" data-value="carol"><span class="lg-avatar" style="background:#c66547;">C</span>Carol</div>
+    </div>
+    <div class="lg-section lg-section-wide"><div class="lg-title">Navigate · click to filter</div>
+      <div class="lg-subhead">Coarse — by memory type</div>
+      <div class="lg-thread-row" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="lg-item clickable" data-filter="memory" data-value="obj"><span class="lg-dot" style="background:#c0593d;"></span>Object memory</div>
+        <div class="lg-item clickable" data-filter="memory" data-value="prj"><span class="lg-dot" style="background:#2a8d80;"></span>Project memory</div>
+        <div class="lg-item clickable" data-filter="memory" data-value="per"><span class="lg-dot" style="background:#6c5b9c;"></span>Person memory</div>
+      </div>
+      <div class="lg-subhead" style="margin-top:10px;">Fine — by named thread (chains only)</div>
+      <div class="lg-thread-row" style="grid-template-columns: repeat(2, 1fr);">
+        <div class="lg-item clickable" data-filter="thread" data-value="walking-tour"><span class="lg-band" style="background:#d4a13a;"></span>Walking-tour</div>
+        <div class="lg-item clickable" data-filter="thread" data-value="wip"><span class="lg-band" style="background:#6c8a3a;"></span>WIP status</div>
+        <div class="lg-item clickable" data-filter="thread" data-value="proposal"><span class="lg-band" style="background:#d4659a;"></span>Proposal cloud</div>
+        <div class="lg-item clickable" data-filter="thread" data-value="scope"><span class="lg-band" style="background:#2a8a8a;"></span>Scope-leads cross-team</div>
+      </div>
+    </div>
+  </div>
+  <div class="filter-active" id="filter-active" style="display:none;"></div>
+  <div class="event-canvas">
+    <div class="canvas-headers">
+      <div class="canvas-header">Day 1 · Mon</div>
+      <div class="canvas-header">Day 2 · Tue</div>
+      <div class="canvas-header">Day 3 · Wed</div>
+      <div class="canvas-header">Day 4 · Thu</div>
+      <div class="canvas-header">Day 5 · Fri</div>
+      <div class="canvas-header">Day 6 · Sat</div>
+      <div class="canvas-header">Day 7 · Sun</div>
+    </div>
+    <div class="canvas-cols">
+      <div class="day-col" data-day="1">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#2c5f8d;">A</span>
+            <span class="ds-text">Project setup: switches printer to orange PLA, resets slicer, records walking-tour, tags WIP for Bob.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E1" data-thread="none" data-person="alice" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="ev-id">E1</span>
+          </div>
+          <div class="ev-text">Switch printer PETG → orange PLA</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E3" data-thread="none" data-person="alice" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="ev-id">E3</span>
+          </div>
+          <div class="ev-text">Reset slicer PC bridging settings</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E4" data-thread="walking-tour" data-person="alice" data-mems="prj per" style="border-left-color:#d4a13a;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="ev-id">E4</span>
+          </div>
+          <div class="ev-text">★ Record walking-tour v1</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E5" data-thread="wip" data-person="alice" data-mems="prj per" style="border-left-color:#6c8a3a;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO B">→B</span>
+            <span class="ev-id">E5</span>
+          </div>
+          <div class="ev-text">WIP memo: 'Parts arrive Wed; Bob start enclosure Tue'</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="2">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#4a6c40;">B</span>
+            <span class="ds-text">Fabrication phase 1: replays the tour, runs the enclosure print, logs laser drift, leaves a handover memo for Carol.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E6" data-thread="walking-tour" data-person="bob" data-mems="per" style="border-left-color:#d4a13a;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E6</span>
+          </div>
+          <div class="ev-text">Replays Alice's tour</div>
+          <div class="ev-memchips">
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E8" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E8</span>
+          </div>
+          <div class="ev-text">Starts orange-PLA enclosure print</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E12" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E12</span>
+          </div>
+          <div class="ev-text">Logs Y-axis drift on laser</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E16" data-thread="wip" data-person="bob" data-mems="prj per" style="border-left-color:#6c8a3a;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO C">→C</span>
+            <span class="ev-id">E16</span>
+          </div>
+          <div class="ev-text">Handover memo on WIP for Carol</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="3">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#c66547;">C</span>
+            <span class="ds-text">First day: replays Alice's tour at her pace, sanding pressure-ghost surfaces, burns herself, leaves a gesture-pin proposal on the WIP, critique gaze on sanded panel.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E18" data-thread="walking-tour" data-person="carol" data-mems="per" style="border-left-color:#d4a13a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E18</span>
+          </div>
+          <div class="ev-text">Replays Alice's tour at her pace</div>
+          <div class="ev-memchips">
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E22" data-thread="none" data-person="carol" data-mems="obj per" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E22</span>
+          </div>
+          <div class="ev-text">Sanding pressure-ghost surfaces</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E24" data-thread="none" data-person="carol" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E24</span>
+          </div>
+          <div class="ev-text">Burns herself → safety incident echo</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E25" data-thread="proposal" data-person="carol" data-mems="obj prj" style="border-left-color:#d4659a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E25</span>
+          </div>
+          <div class="ev-text">★ Gesture-pin proposal: 'cable exit here?'</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+            <span class="memchip prj" title="Project memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E26" data-thread="none" data-person="carol" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E26</span>
+          </div>
+          <div class="ev-text">Critique gaze hotspot on sanded panel</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="4">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#4a6c40;">B</span>
+            <span class="ds-text">Async support: adds permanent station-default after the burn; pre-reflow catch on U3; bed cleanliness flag; recalibrates Y-axis; supersedes slicer preset; replies to gesture proposal.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E29" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E29</span>
+          </div>
+          <div class="ev-text">Adds station-default: 'iron @ 350°C' (permanent)</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E31" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E31</span>
+          </div>
+          <div class="ev-text">★ Pre-reflow audit catches U3 missed pad</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E32" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E32</span>
+          </div>
+          <div class="ev-text">3D-printer bed cleanliness flag</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E33" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E33</span>
+          </div>
+          <div class="ev-text">Recalibrates laser Y-axis (closes E12)</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E34" data-thread="none" data-person="bob" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="ev-id">E34</span>
+          </div>
+          <div class="ev-text">Update slicer preset (⟳ E3)</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E35" data-thread="proposal" data-person="bob" data-mems="obj prj" style="border-left-color:#d4659a;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO C">→C</span>
+            <span class="ev-id">E35</span>
+          </div>
+          <div class="ev-text">Reply to gesture: 'strain-relief loop here ←'</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+            <span class="memchip prj" title="Project memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="5">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#2c5f8d;">A</span>
+            <span class="ds-text">Mid-week review: pins hidden-fastener + orientation pointers, critique on sanded panel, walking-tour v2, departure retrospective.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E37" data-thread="none" data-person="alice" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO C">→C</span>
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E37</span>
+          </div>
+          <div class="ev-text">Pins hidden-fastener pointer</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E38" data-thread="none" data-person="alice" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E38</span>
+          </div>
+          <div class="ev-text">Mark IMU connector orientation</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E39" data-thread="none" data-person="alice" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO C">→C</span>
+            <span class="ev-id">E39</span>
+          </div>
+          <div class="ev-text">Critique: 'cable-exit corner needs another pass'</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E40" data-thread="walking-tour" data-person="alice" data-mems="prj per" style="border-left-color:#d4a13a;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E40</span>
+          </div>
+          <div class="ev-text">★ Walking-tour v2 (⟳ E4)</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E41" data-thread="wip" data-person="alice" data-mems="prj per" style="border-left-color:#6c8a3a;">
+          <div class="ev-avatar" style="background:#2c5f8d;">A</div>
+          <div class="ev-topright">
+            <span class="ev-id">E41</span>
+          </div>
+          <div class="ev-text">Departure retrospective</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="6">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#c66547;">C</span>
+            <span class="ds-text">Solo problem-solving: tool-return surfaces at bench → touch-history at rack → cross-Process request anchored at the install team's bay; bandsaw approach-warning anchored as permanent.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E42" data-thread="walking-tour" data-person="carol" data-mems="per" style="border-left-color:#d4a13a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E42</span>
+          </div>
+          <div class="ev-text">Replays walking-tour v2</div>
+          <div class="ev-memchips">
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E43" data-thread="scope" data-person="carol" data-mems="obj" style="border-left-color:#2a8a8a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E43</span>
+          </div>
+          <div class="ev-text">Tool-return note surfaces: 'scope leads missing'</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E45" data-thread="scope" data-person="carol" data-mems="obj" style="border-left-color:#2a8a8a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E45</span>
+          </div>
+          <div class="ev-text">Touch-history at rack: install team had leads</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E46" data-thread="scope" data-person="carol" data-mems="per" style="border-left-color:#2a8a8a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO I">→I</span>
+            <span class="ev-id">E46</span>
+          </div>
+          <div class="ev-text">Cross-Process request anchored at install bay</div>
+          <div class="ev-memchips">
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E47" data-thread="none" data-person="carol" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="aud-permanent" title="permanent / institutional">📌</span>
+            <span class="ev-id">E47</span>
+          </div>
+          <div class="ev-text">Bandsaw approach-warning fires</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+      </div>
+      <div class="day-col" data-day="7">
+        <div class="day-summary">
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#4a6c40;">B</span>
+            <span class="ds-text">Brief visit: reads Carol's cross-Process request, leaves anchored Bus-Pirate memo at the bench.</span>
+          </div>
+          <div class="ds-line">
+            <span class="ds-avatar" style="background:#c66547;">C</span>
+            <span class="ds-text">Resolution: reads anchored memo, IMU works, final assembly with hidden-fastener pointer, shrinkage compensation drills out the strap, week retrospective.</span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E50" data-thread="scope" data-person="bob" data-mems="obj" style="border-left-color:#2a8a8a;">
+          <div class="ev-avatar" style="background:#4a6c40;">B</div>
+          <div class="ev-topright">
+            <span class="aud-directed" title="DIRECTED_TO C">→C</span>
+            <span class="ev-id">E50</span>
+          </div>
+          <div class="ev-text">Anchored memo at bench: 'Bus Pirate at station 4'</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E51" data-thread="scope" data-person="carol" data-mems="obj" style="border-left-color:#2a8a8a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E51</span>
+          </div>
+          <div class="ev-text">Reads Bob's memo, tests IMU with Bus Pirate</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E52" data-thread="none" data-person="carol" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E52</span>
+          </div>
+          <div class="ev-text">Final assembly w/ hidden-fastener pointer</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E53" data-thread="none" data-person="carol" data-mems="obj" style="border-left-color:#cdd2d7;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E53</span>
+          </div>
+          <div class="ev-text">Shrinkage compensation → drill out strap</div>
+          <div class="ev-memchips">
+            <span class="memchip obj" title="Object memory"></span>
+          </div>
+        </div>
+        <div class="ev-card" data-event="E54" data-thread="wip" data-person="carol" data-mems="prj per" style="border-left-color:#6c8a3a;">
+          <div class="ev-avatar" style="background:#c66547;">C</div>
+          <div class="ev-topright">
+            <span class="ev-id">E54</span>
+          </div>
+          <div class="ev-text">Week retrospective at WIP</div>
+          <div class="ev-memchips">
+            <span class="memchip prj" title="Project memory"></span>
+            <span class="memchip per" title="Person memory"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg class="canvas-edges" preserveAspectRatio="none"></svg>
+  </div>
+  <script>window.SM_EDGES = [["E4","E6","reads"], ["E4","E18","reads"], ["E4","E40","update"], ["E40","E42","reads"], ["E5","E16","reads"], ["E16","E18","reads"], ["E16","E22","reads"], ["E16","E41","reads"], ["E41","E54","reads"], ["E1","E8","reads"], ["E5","E8","reads"], ["E25","E35","reply"], ["E26","E39","reads"], ["E12","E33","update"], ["E3","E34","update"], ["E8","E32","reads"], ["E32","E53","reads"], ["E24","E29","reads"], ["E43","E45","reads"], ["E45","E46","reads"], ["E46","E50","reads"], ["E50","E51","reads"], ["E37","E52","reads"]];</script>
+  <p class="grid-note">34 events · 7 days · 3 people · 4 named threads (5 walking-tour · 4 WIP · 2 proposal · 5 scope-leads) · 18 standalone (filter via memory type).</p>
+  <div class="canvas-punchline">
+    <p><strong>The rule applied</strong>: every event either (a) adds a memo consumed later on canvas, (b) consumes a memo from a prior canvas event, or (c) anchors a permanent/directed memo with explicit institutional or recipient persistence. Pure read-only consumption of off-canvas memory was dropped — it shows the primitive once, not repeatedly. The remaining 34 events are all justified memory transactions.</p>
+    <p style="margin-top:8px;"><strong>The 3 verbs encoded in the legend</strong>: <em>Anchor</em> = card placement on canvas (implicit), <em>Scope</em> = audience badges, <em>Navigate</em> = coarse (memory type) + fine (named thread). The Memory Graph holds the data once; each filter is a different query.</p>
+  </div>
+</section>
+
+<!-- §5 Why AR — three defense moves -->
+<section>
+  <h2>5 — Why AR (three defense moves)</h2>
+  <p>The 7-day flow above isn't defended by listing AR features Slack lacks. It's defended by three structural moves modeled on Fender &amp; Holz's AsyncReality (CHI 2022) — but pushed further.</p>
+
+  <div class="defense-grid">
+
+    <div class="defense-card">
+      <div class="defense-num">1</div>
+      <h3>Re-frame async as the older form of shared-workspace communication</h3>
+      <p>Place-anchored handoff predates Slack — workshop chalkboards, sticky notes on machines, whiteboard schedules, shop logs. These weren't <em>worse</em> than synchronous; they were <em>more contextual</em> because they lived where the work was. The rise of placeless digital channels (email, Slack) didn't improve async — it <strong>displaced async from the workspace</strong>. SM doesn't compete with synchronous tools; it restores an older mode with modern affordances.</p>
+    </div>
+
+    <div class="defense-card">
+      <div class="defense-num">2</div>
+      <h3>Sidestep "just send a Slack message" — both sides</h3>
+      <p>Slack and similar channels require <strong>explicit composition AND explicit retrieval</strong>. Both sides cost effort:</p>
+      <ul>
+        <li><strong>Sender</strong>: must verbosely describe the context the place would otherwise carry — "the part on the third shelf, back-left bolt, watch the hot end on the left side." Error-prone, time-consuming.</li>
+        <li><strong>Recipient</strong>: must remember to open Slack, find the right channel, scroll to the relevant message, and translate text-about-place back to where-in-place.</li>
+      </ul>
+      <p>SM removes <em>both</em> burdens. The voice memo is recorded in-place during work (no description needed — the place is the description). It surfaces proactively when the next collaborator arrives at that place (no remembering, no searching). AsyncReality avoided sender-side effort via auto-capture; <strong>SM extends to retrieval-side effort too</strong>. A two-sided sidestep, sharper than theirs.</p>
+    </div>
+
+    <div class="defense-card">
+      <div class="defense-num">3</div>
+      <h3>Irreducible technical claim — Memory Graph + selective-surfacing agent</h3>
+      <p>"Slack with location-aware push" would surface every message at every machine ever sent, overwhelming any user who walks in. SM's irreducible technical contribution is <strong>two things together</strong>:</p>
+      <ul>
+        <li><strong>The Memory Graph</strong> encodes semantic relationships a flat channel can't represent: dependency (warning <em>before</em> action), version (v2 supersedes v1), procedure (PROCEDURAL_NEXT for the walking-tour), thread, OPEN_QUESTION, CROSS_PROCESS_REF.</li>
+        <li><strong>The selective-surfacing agent</strong> decides what to play given who you are (junior surfaces orientation; senior surfaces deltas), where you are, what you've already heard, and what the graph knows. AsyncReality's analog: causality-preserving playback.</li>
+      </ul>
+      <p>A flat Slack channel can thread, but it cannot encode dependency / procedure / version semantically, cannot accept voice / gesture / gaze as semantic content with anchors, and cannot selectively surface. The graph + agent together are the technical contribution that makes accumulated spatial history navigable rather than overwhelming.</p>
+    </div>
+
+  </div>
+
+  <div class="callout">
+    <p class="tagline">You don't browse, you don't remember, you don't recall — the place tells you.</p>
+    <p>That tagline is the SM move 2 in one line. The 7-day flow above demonstrates it across 37 primitives, with the Memory Graph + agent layer (move 3) keeping accumulated history tractable instead of noisy.</p>
+  </div>
+
+  <div class="compare-box">
+    <div class="compare-side">
+      <h4>AsyncReality (CHI 2022) — single-user VR recovery</h4>
+      <ul>
+        <li>Sender effort: removed via auto-capture (RGB-D camera network)</li>
+        <li>Recipient effort: implicit — events replay when user returns</li>
+        <li>Irreducible: Causality Graph (event ordering)</li>
+        <li>Setting: single-user immersion-vs-real-world conflict</li>
+      </ul>
+    </div>
+    <div class="compare-side">
+      <h4>Spatial Memory — multi-user multi-day shared workspace</h4>
+      <ul>
+        <li>Sender effort: removed via in-place voice memo (hands-free during work)</li>
+        <li>Recipient effort: removed via proactive place-surfacing (no browse, no recall)</li>
+        <li>Irreducible: Memory Graph + selective-surfacing agent</li>
+        <li>Setting: multi-person, multi-day, async coordination</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- §6 Primitives table -->
+<section>
+  <h2>6 — The 37 primitives</h2>
+  <p>Each numbered chip in the day-grid above maps to a row in this table. Source column links to the original brainstorm (Open-ended or Closed-ended sheet).</p>
+  <table>
+    <thead>
+      <tr>
+        <th class="num-cell">#</th>
+        <th>Primitive name</th>
+        <th>Source</th>
+        <th>Days used</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="star-row"><td class="num-cell">1</td><td><span class="star">★</span> Walking-tour recipe (expert multi-station route)</td><td>Closed #63</td><td>1, 2, 3, 5, 6, 7</td></tr>
+      <tr><td class="num-cell">2</td><td>WIP status note (project shelf)</td><td>Closed #36</td><td>1–7 (running)</td></tr>
+      <tr><td class="num-cell">3</td><td>Machine state handover (clock-out at machine)</td><td>Closed #41</td><td>1, 2</td></tr>
+      <tr><td class="num-cell">4</td><td>Material swap flag (laser / 3D printer override)</td><td>Closed #28</td><td>1, 2 (×2)</td></tr>
+      <tr><td class="num-cell">5</td><td>Last-user condition log (consumables)</td><td>Closed #38</td><td>1, 3</td></tr>
+      <tr><td class="num-cell">6</td><td>Tool return note (shared tools, scope leads)</td><td>Closed #30</td><td>2, 6, 7</td></tr>
+      <tr><td class="num-cell">7</td><td>Setup offset sticky note (slicer / CAM PC)</td><td>Closed #44</td><td>1, 4</td></tr>
+      <tr><td class="num-cell">8</td><td>Ventilation gap alert (fume extraction)</td><td>Closed #40</td><td>(implicit at solder station)</td></tr>
+      <tr><td class="num-cell">9</td><td>Flammable zone activation (chemicals / batteries)</td><td>Closed #26</td><td>(implicit — isopropyl)</td></tr>
+      <tr><td class="num-cell">10</td><td>Multi-year zone geography (where good ideas happened)</td><td>Open #44 (reframe)</td><td>1</td></tr>
+      <tr><td class="num-cell">11</td><td>Critique gaze hotspot (aggregated viewer attention)</td><td>Open #22</td><td>1, 3, 5</td></tr>
+      <tr class="star-row"><td class="num-cell">12</td><td><span class="star">★</span> Air gesture proposal cloud (gesture-pin on WIP)</td><td>Open #29</td><td>3, 4</td></tr>
+      <tr><td class="num-cell">13</td><td>Two-body proximity / collaboration hint</td><td>Open #16 (reframe)</td><td>2</td></tr>
+      <tr><td class="num-cell">14</td><td>Long-chip / hot-zone posture alert</td><td>Closed #54 (reframe)</td><td>2</td></tr>
+      <tr><td class="num-cell">15</td><td>Puddle watch → first-layer monitoring</td><td>Closed #46 (reframe)</td><td>2</td></tr>
+      <tr><td class="num-cell">16</td><td>Cut line attention record (laser fire-watch)</td><td>Closed #30 (reframe)</td><td>2</td></tr>
+      <tr><td class="num-cell">17</td><td>Fixture drift log (laser Y-axis, printer bed)</td><td>Closed #54 (reframe)</td><td>2, 4</td></tr>
+      <tr><td class="num-cell">18</td><td>Depth stop note (drill press)</td><td>Closed #33</td><td>2</td></tr>
+      <tr><td class="num-cell">19</td><td>Last-touch handover gesture chain (voice memo at WIP)</td><td>Open #30 (reframe)</td><td>2, 3</td></tr>
+      <tr><td class="num-cell">20</td><td>Daily arrival per-person portrait → onboarding voice notes</td><td>Open #11 (reframe)</td><td>3</td></tr>
+      <tr><td class="num-cell">21</td><td>Torch angle echo → soldering iron pickup angle</td><td>Closed #2 (reframe)</td><td>3</td></tr>
+      <tr><td class="num-cell">22</td><td>Bend sequence ghost → PCB SMD placement order</td><td>Closed #26 (reframe)</td><td>3</td></tr>
+      <tr><td class="num-cell">23</td><td>Sanding pressure / planishing sequence</td><td>Closed #28, #59 (reframe)</td><td>3</td></tr>
+      <tr><td class="num-cell">24</td><td>Critical feature pointer ("check this orientation")</td><td>Closed #19</td><td>3, 5</td></tr>
+      <tr><td class="num-cell">25</td><td>Safety incident echo (burn / cut / smoke at the spot)</td><td>Closed #25</td><td>3, 4</td></tr>
+      <tr><td class="num-cell">26</td><td>Q-thread (OPEN_QUESTION at station, awaits any answerer)</td><td>Closed extension</td><td>3, 4, 6, 7</td></tr>
+      <tr><td class="num-cell">27</td><td>Filler rod hand-off → SMD tweezer-iron coordination</td><td>Closed #22 (reframe)</td><td>4</td></tr>
+      <tr class="star-row"><td class="num-cell">28</td><td><span class="star">★</span> Pre-reflow coverage audit (solder paste pre-reflow)</td><td>Closed #52 (reframe, R3=3)</td><td>4</td></tr>
+      <tr><td class="num-cell">29</td><td>Coolant contamination → 3D printer bed cleanliness</td><td>Closed #24 (reframe)</td><td>4</td></tr>
+      <tr><td class="num-cell">30</td><td>Sign-off gaze sequence (senior reviews PCB / print)</td><td>Closed #62</td><td>5</td></tr>
+      <tr><td class="num-cell">31</td><td>Hidden fastener pointer (internal screws / connectors)</td><td>Closed #37</td><td>5, 7</td></tr>
+      <tr><td class="num-cell">32</td><td>Walking-tour v2 (UPDATES edge to v1)</td><td>Closed #63 versioning</td><td>5, 6, 7</td></tr>
+      <tr><td class="num-cell">33</td><td>Final session retrospective (departure / handover ghost)</td><td>Open #46</td><td>5, 7</td></tr>
+      <tr><td class="num-cell">34</td><td>Per-scrap touches → tool history (cross-Process query)</td><td>Open #28 (reframe)</td><td>6</td></tr>
+      <tr><td class="num-cell">35</td><td>Bandsaw blade approach warning (near-miss replay)</td><td>Closed #1</td><td>6</td></tr>
+      <tr><td class="num-cell">36</td><td>Queue ghost / workflow bottleneck (laser, printer)</td><td>Closed #39, #41</td><td>6</td></tr>
+      <tr><td class="num-cell">37</td><td>Springback compensation → 3D-print shrinkage at point-of-use</td><td>Closed #32 (reframe)</td><td>7</td></tr>
+    </tbody>
+  </table>
+  <p class="small">★ load-bearing primitives — high-value or unique-to-AR. Source numbers refer to the brainstorm spreadsheet rows.</p>
+</section>
+
+<!-- §7 Continuity Graph -->
+<section>
+  <h2>7 — Continuity Graph extensions forced by this scenario</h2>
+  <p>The original SM v3 graph spec had four node types (Note / Location / Person / Object) and five edges (ANCHORED_TO / LEFT_BY / DIRECTED_TO / ABOUT / REPLIES_TO). The 7-day scenario forces the following extensions.</p>
+
+  <h3>New node types</h3>
+  <table>
+    <thead><tr><th style="width:18%">Node</th><th style="width:38%">What it represents</th><th style="width:44%">Why this scenario needs it</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Procedure</strong></td><td>Ordered sequence of Location + Note pairs (the walking-tour)</td><td>Primitive #1 needs to be a graph object — replayable, versionable</td></tr>
+      <tr><td><strong>Session</strong></td><td>A maker's contiguous lab visit (start, end, notes left)</td><td>"What did Carol contribute Wed?" needs Session as a query target</td></tr>
+      <tr><td><strong>Process</strong></td><td>A multi-day, multi-person job tying notes / objects / procedures</td><td>The wearable build is one Process; the neighbouring install team's job is another</td></tr>
+      <tr><td><strong>Equipment</strong> (refines Location)</td><td>Machine with state — current setup, last user, condition</td><td>Machine state handover, fixture drift, queue all need machine-as-stateful-node</td></tr>
+      <tr><td><strong>Material</strong> (refines Object)</td><td>Consumable with condition + remaining count</td><td>Last-user condition log, material swap flag</td></tr>
+      <tr><td><strong>Tool</strong> (refines Object)</td><td>Movable item with last-borrower + return state</td><td>Tool return note, scope-leads thread</td></tr>
+      <tr><td><strong>Incident</strong></td><td>Safety event with location, cause, resolution thread</td><td>Safety incident echo (Carol's burn)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>New edge types</h3>
+  <table>
+    <thead><tr><th style="width:22%">Edge</th><th style="width:38%">What it represents</th><th style="width:40%">Where it shows up</th></tr></thead>
+    <tbody>
+      <tr><td><strong>PROCEDURAL_NEXT</strong></td><td>Ordering within a Procedure</td><td>#1 walking-tour</td></tr>
+      <tr><td><strong>UPDATES</strong></td><td>A note / Procedure supersedes a prior version</td><td>Alice's tour v2 (Day 5)</td></tr>
+      <tr><td><strong>OPEN_QUESTION</strong></td><td>A note seeking any answerer (no specific DIRECTED_TO)</td><td>Reserved for broadcast queries with no recipient (not exercised by any retained canvas event)</td></tr>
+      <tr><td><strong>PART_OF</strong></td><td>Note → Process; Session → Process</td><td>Multi-day project linking</td></tr>
+      <tr><td><strong>OCCURRED_DURING</strong></td><td>Note → Session</td><td>Per-session attribution</td></tr>
+      <tr><td><strong>BORROWED_BY / RETURNED_TO</strong></td><td>Tool state events</td><td>Scope-leads tracking (Days 6–7)</td></tr>
+      <tr><td><strong>CROSS_PROCESS_REF</strong></td><td>Note in Process A references object/note in Process B</td><td>Carol asking the install team for scope leads</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Three formal contributions (vs. v3's one)</h3>
+  <ol>
+    <li><strong>Procedure as a first-class graph structure</strong> — sequence-with-anchors-and-versions, not just a flat note list. The "novice follows expert path" affordance is unrepresentable in a flat note graph.</li>
+    <li><strong>Process / Session scoping</strong> — temporal hierarchy (multi-day Process &gt; Session &gt; moment). Enables queries like "what happened during the wearable build" without knowing every individual note ID.</li>
+    <li><strong>Cross-Process linking</strong> — enables real shared-lab scenarios where projects occasionally borrow / coordinate (Day 6 scope-lead borrow).</li>
+  </ol>
+  <p class="small">This trebles the formal-contribution weight of §4 — was 22% of the paper, now justifies 25–28% with these additions.</p>
+</section>
+
+<!-- §8 LLM Agent Architecture -->
+<section>
+  <h2>8 — LLM-agent architecture forced by this scenario</h2>
+  <p>The 7-day scenario can't be served by a single LLM doing everything. Agents decompose into four roles, each with its own slice of the graph.</p>
+
+  <div class="agent-grid">
+    <div class="agent-card">
+      <h4>Surfacer</h4>
+      <p>When a maker arrives at a Location, decide what to render.</p>
+      <div class="agent-line"><span>In:</span> current Location, current Process, role of user (Carol = junior surfaces more orientation; Bob = mid surfaces less), recency, OPEN_QUESTION queue, DIRECTED_TO matches</div>
+      <div class="agent-line"><span>Out:</span> ranked list of voice memos to play</div>
+    </div>
+    <div class="agent-card">
+      <h4>Threader</h4>
+      <p>When a maker creates a voice memo, anchor it correctly.</p>
+      <div class="agent-line"><span>In:</span> spoken content (intent classification), current Location/Object, current Process, recently-played notes (likely reply target)</div>
+      <div class="agent-line"><span>Out:</span> graph edges — ANCHORED_TO, ABOUT, REPLIES_TO or new note, optional DIRECTED_TO</div>
+    </div>
+    <div class="agent-card">
+      <h4>Tour Guide</h4>
+      <p>Replay a Procedure with self-paced narration.</p>
+      <div class="agent-line"><span>In:</span> Procedure node, current user position, latest UPDATES versions</div>
+      <div class="agent-line"><span>Out:</span> spatial cues to guide user, voice memos at each anchor, override notifications ("Bob added a setup note since this was recorded")</div>
+    </div>
+    <div class="agent-card">
+      <h4>Curator</h4>
+      <p>Periodic summarization, conflict detection, stale-note flagging.</p>
+      <div class="agent-line"><span>In:</span> all notes within a Process or Session, time</div>
+      <div class="agent-line"><span>Out:</span> WIP status updates, "tour v1 superseded by v2" markers, deprecation flags</div>
+    </div>
+  </div>
+
+  <p>Plus a <strong>Routing</strong> sub-agent for OPEN_QUESTION threads — identifies likely answerers based on past notes at the same Location and notifies them passively (note surfaces when they next walk by).</p>
+</section>
+
+<script>
+(function() {
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  function initCanvas() {
+    const canvas = document.querySelector('.event-canvas');
+    if (!canvas) return;
+    const svg = canvas.querySelector('.canvas-edges');
+    if (!svg) return;
+    const edges = (window.SM_EDGES || []);
+
+    // Map event-id -> card element + thread color
+    function cardOf(id) {
+      return canvas.querySelector('[data-event="' + id + '"]');
+    }
+
+    function rectOf(card) {
+      if (!card) return null;
+      const r = card.getBoundingClientRect();
+      const cr = canvas.getBoundingClientRect();
+      return {
+        x:  r.left - cr.left,
+        y:  r.top  - cr.top,
+        w:  r.width,
+        h:  r.height,
+        cx: r.left - cr.left + r.width / 2,
+        cy: r.top  - cr.top  + r.height / 2,
+      };
+    }
+
+    function makeEl(name, attrs) {
+      const el = document.createElementNS(SVGNS, name);
+      for (const k in attrs) el.setAttribute(k, attrs[k]);
+      return el;
+    }
+
+    function curveBetween(a, b) {
+      // Curve from right edge of a to left edge of b (since b is later in time, often right or below)
+      const x1 = a.cx, y1 = a.cy;
+      const x2 = b.cx, y2 = b.cy;
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      // Control points pulled along x direction (since dominant axis is day = horizontal)
+      const cpdx = Math.abs(dx) * 0.4 + 30;
+      const c1x = x1 + cpdx, c1y = y1;
+      const c2x = x2 - cpdx, c2y = y2;
+      return 'M' + x1 + ',' + y1 + ' C' + c1x + ',' + c1y + ' ' + c2x + ',' + c2y + ' ' + x2 + ',' + y2;
+    }
+
+    function colorFromCard(card) {
+      if (!card) return '#888';
+      return getComputedStyle(card).backgroundColor;
+    }
+
+    function render() {
+      svg.innerHTML = '';
+      const cr = canvas.getBoundingClientRect();
+      svg.setAttribute('viewBox', '0 0 ' + cr.width + ' ' + cr.height);
+      svg.setAttribute('width',  cr.width);
+      svg.setAttribute('height', cr.height);
+
+      edges.forEach(function(e) {
+        const fromId = e[0], toId = e[1], kind = e[2];
+        const fromCard = cardOf(fromId), toCard = cardOf(toId);
+        if (!fromCard || !toCard) return;
+        const a = rectOf(fromCard), b = rectOf(toCard);
+        if (!a || !b) return;
+        const color = colorFromCard(fromCard);
+        const path = makeEl('path', {
+          d: curveBetween(a, b),
+          stroke: color,
+          'data-from': fromId,
+          'data-to':   toId,
+          'data-kind': kind,
+        });
+        path.classList.add('edge-' + kind);
+        svg.appendChild(path);
+      });
+    }
+
+    let activeFilter = null; // {type: 'thread'|'memory'|'person', value: string}
+
+    function applyHighlight(matchSet) {
+      canvas.querySelectorAll('.ev-card').forEach(c => {
+        const eid = c.getAttribute('data-event');
+        if (matchSet.has(eid)) {
+          c.classList.add('highlight');
+          c.classList.remove('dimmed');
+        } else {
+          c.classList.add('dimmed');
+          c.classList.remove('highlight');
+        }
+      });
+      svg.querySelectorAll('path').forEach(p => {
+        const f = p.getAttribute('data-from'), t = p.getAttribute('data-to');
+        if (matchSet.has(f) && matchSet.has(t)) {
+          p.classList.add('edge-highlight');
+          p.classList.remove('edge-dimmed');
+        } else {
+          p.classList.add('edge-dimmed');
+          p.classList.remove('edge-highlight');
+        }
+      });
+    }
+
+    function clearAllHighlights() {
+      canvas.querySelectorAll('.ev-card').forEach(c => { c.classList.remove('highlight','dimmed'); });
+      svg.querySelectorAll('path').forEach(p => { p.classList.remove('edge-highlight','edge-dimmed'); });
+    }
+
+    // Hover: highlight events in the same thread as the hovered event, plus direct edge neighbours.
+    function hoverHighlight(id) {
+      if (activeFilter) return; // don't override an active filter
+      if (!id) { clearAllHighlights(); return; }
+      const sourceCard = cardOf(id);
+      if (!sourceCard) return;
+      const threadName = sourceCard.getAttribute('data-thread');
+      const matching = new Set([id]);
+      // Add thread members (unless thread is "none" — then just direct neighbours)
+      if (threadName && threadName !== 'none') {
+        canvas.querySelectorAll('[data-thread="' + threadName + '"]').forEach(c => {
+          matching.add(c.getAttribute('data-event'));
+        });
+      }
+      // Add direct edge neighbours (always)
+      edges.forEach(e => {
+        if (e[0] === id) matching.add(e[1]);
+        if (e[1] === id) matching.add(e[0]);
+      });
+      applyHighlight(matching);
+    }
+
+    canvas.addEventListener('mouseover', function(ev) {
+      const card = ev.target.closest('.ev-card');
+      if (card) hoverHighlight(card.getAttribute('data-event'));
+    });
+    canvas.addEventListener('mouseleave', function() {
+      if (!activeFilter) clearAllHighlights();
+    });
+
+    // Click-filter on legend items
+    function applyFilter(type, value) {
+      const matching = new Set();
+      canvas.querySelectorAll('.ev-card').forEach(c => {
+        let match = false;
+        if (type === 'thread') {
+          match = c.getAttribute('data-thread') === value;
+        } else if (type === 'person') {
+          match = c.getAttribute('data-person') === value;
+        } else if (type === 'memory') {
+          const mems = (c.getAttribute('data-mems') || '').split(' ');
+          match = mems.indexOf(value) !== -1;
+        }
+        if (match) matching.add(c.getAttribute('data-event'));
+      });
+      applyHighlight(matching);
+    }
+
+    function setFilter(type, value, labelText) {
+      // Toggle off if same filter
+      if (activeFilter && activeFilter.type === type && activeFilter.value === value) {
+        activeFilter = null;
+        document.querySelectorAll('.canvas-legend .clickable.active').forEach(el => el.classList.remove('active'));
+        const fa = document.getElementById('filter-active');
+        if (fa) fa.style.display = 'none';
+        clearAllHighlights();
+        return;
+      }
+      activeFilter = { type: type, value: value };
+      // Visual state on legend
+      document.querySelectorAll('.canvas-legend .clickable.active').forEach(el => el.classList.remove('active'));
+      const trigger = document.querySelector('.canvas-legend .clickable[data-filter="' + type + '"][data-value="' + value + '"]');
+      if (trigger) trigger.classList.add('active');
+      const fa = document.getElementById('filter-active');
+      if (fa) {
+        fa.style.display = 'flex';
+        fa.innerHTML = '<span>Filter active: <strong>' + labelText + '</strong></span><span class="clear-filter" data-clear="1">Clear filter</span>';
+      }
+      applyFilter(type, value);
+    }
+
+    document.querySelectorAll('.canvas-legend .clickable').forEach(el => {
+      el.addEventListener('click', function() {
+        const type = el.getAttribute('data-filter');
+        const value = el.getAttribute('data-value');
+        const labelText = el.textContent.trim();
+        setFilter(type, value, labelText);
+      });
+    });
+    document.addEventListener('click', function(ev) {
+      if (ev.target && ev.target.matches('[data-clear="1"]')) {
+        // Re-toggle off
+        if (activeFilter) {
+          setFilter(activeFilter.type, activeFilter.value, '');
+        }
+      }
+    });
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', render);
+    } else {
+      render();
+    }
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(render, 120);
+    });
+    setTimeout(render, 80);
+    setTimeout(render, 320);
+  }
+
+  initCanvas();
+})();
+</script>
+
+</body>
+</html>
