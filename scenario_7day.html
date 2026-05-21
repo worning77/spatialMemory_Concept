@@ -364,6 +364,100 @@
   }
   .mem-card .examples strong { color: var(--text); }
 
+  /* 2x2 framework grid */
+  .tbt-grid {
+    display: grid;
+    grid-template-columns: 160px 1fr 1fr;
+    gap: 10px;
+    margin: 18px 0 8px;
+  }
+  .tbt-corner { background: transparent; }
+  .tbt-col-head {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+  .tbt-col-head.obj { border-top-color: #c0593d; color: #c0593d; }
+  .tbt-col-head.prj { border-top-color: #2a8d80; color: #2a8d80; }
+  .tbt-col-head .tbt-sub {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 3px;
+  }
+  .tbt-row-head {
+    background: white;
+    border: 1px solid var(--border);
+    border-left: 4px solid;
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    align-self: stretch;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .tbt-row-head.write { border-left-color: #3a7aa0; color: #3a7aa0; }
+  .tbt-row-head.read  { border-left-color: #6c8a3a; color: #6c8a3a; }
+  .tbt-row-head .tbt-sub {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 4px;
+  }
+  .tbt-cell {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .tbt-cell .tbt-example {
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 6px;
+    font-size: 12px;
+  }
+
+  /* Person roles cards */
+  .person-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 14px 0;
+  }
+  .person-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: 4px solid;
+    border-radius: 6px;
+    padding: 14px 16px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .person-card.author   { border-top-color: #8a6f4a; }
+  .person-card.audience { border-top-color: #8a6f4a; }
+  .person-card.subject  { border-top-color: #6c5b9c; }
+  .person-card h4 { margin: 0 0 4px; font-size: 14px; }
+  .person-card.author   h4 { color: #8a6f4a; }
+  .person-card.audience h4 { color: #8a6f4a; }
+  .person-card.subject  h4 { color: #6c5b9c; }
+  .person-card .pc-kind {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+
   /* Positioning section */
   .position-hero {
     background: linear-gradient(135deg, var(--accent) 0%, #1a8090 100%);
@@ -1208,7 +1302,7 @@
       <h3>What it inherits</h3>
       <p>Three intellectual lineages converge in SM:</p>
       <ul>
-        <li><strong>Place over space</strong> (Harrison &amp; Dourish 1996) — treats the workspace as <em>socially meaningful place</em>, not just coordinates. SM gives a structured way to encode that meaning via three orthogonal memory indexes.</li>
+        <li><strong>Place over space</strong> (Harrison &amp; Dourish 1996) — treats the workspace as <em>socially meaningful place</em>, not just coordinates. SM gives a structured way to encode that meaning via a 2×2 model — two user actions × two memory indexes — refined by Scope and Person modifiers.</li>
         <li><strong>Wearable AI agents</strong> (AiGet, SensibleAgent, ProMemAssist, VisionClaw, 2024–2025) — the proactive-AR-agent paradigm. SM <strong>relocates the agent from the person to the room</strong>. That displacement is itself a contribution.</li>
         <li><strong>Graph-organised knowledge</strong> (Obsidian, Roam, wiki lineage) — typed-link graphs of notes have a 30-year tradition. SM extends that to multi-user spatially-anchored async communication with proactive surfacing.</li>
       </ul>
@@ -1219,16 +1313,16 @@
       <h3>What it adds</h3>
       <p>Three technical contributions sit on top of the inherited lineages:</p>
       <ul>
-        <li><strong>Memory Graph</strong> — a typed multigraph encoding three orthogonal indexes (Object / Project / Person). One annotation, three queries. Formal traversal operations with complexity bounds.</li>
-        <li><strong>Selective-surfacing agent</strong> — decides what to play given who-you-are, where-you-are, what-you've-heard, and what-the-graph-knows. Multi-objective, ablatable, evaluatable.</li>
-        <li><strong>Annotation modality <span class="tbd-tag">TBD</span></strong> — could be voice memo, AR text sticky note, anchored gesture pin, or hybrid. Design decision still open. The Memory Graph and surfacing agent are modality-agnostic; whatever modality wins, the architecture absorbs it.</li>
+        <li><strong>Memory Graph</strong> — a typed multigraph encoding two memory indexes (Object / Project) with two orthogonal modifiers (Scope: Individual / Process / Room; Person: Author, Audience, Subject). One annotation, multiple queries. Formal traversal operations with complexity bounds.</li>
+        <li><strong>Selective-surfacing agent</strong> — decides what to play given who-you-are, where-you-are, what-you've-heard, what-the-graph-knows, and what-Scope-permits. Multi-objective, ablatable, evaluatable.</li>
+        <li><strong>Annotation modality <span class="tbd-tag">TBD</span></strong> — could be voice memo, AR text sticky note, anchored gesture pin, or hybrid. Design decision still open. The Memory Graph and surfacing agent are modality-agnostic; whatever modality wins, the architecture absorbs it. <em>The system uses always-on visual anchoring (camera-based); we do not claim camera-less operation — seeing what's in the room is the cost of object-anchored memory.</em></li>
       </ul>
     </div>
 
   </div>
 
   <div class="position-closing">
-    The system contribution sits at the intersection of all three: <strong>an AI manager that lives in the room, encoding social place via structured indexes, with annotations whose modality is an open design space.</strong>
+    The system contribution sits at the intersection of all three: <strong>an AI manager that lives in the room, encoding social place via a 2×2 model with two orthogonal modifiers, with annotations whose modality is an open design space.</strong>
   </div>
 </section>
 
@@ -1257,59 +1351,107 @@
   </div>
 </section>
 
-<!-- §3 The 3-Level Memory Model -->
+<!-- §3 The 2x2 Concept Model -->
 <section>
-  <h2>3 — The concept: 3 interaction verbs × 3 memory types</h2>
-  <p>SM's concept-level contribution is a <strong>3×3 model</strong>. Three <strong>interaction verbs</strong> define how people <em>act on</em> the memory; three <strong>memory types</strong> define the indexes through which the memory is <em>structured</em>. Together they cover every interaction in the system. (Throughout this document, <em>annotation</em> is modality-agnostic — see §1, card 3 <span class="tbd-tag">TBD</span>.)</p>
-  <h3>The three interaction verbs</h3>
-  <p>Earlier framings (paper §3) called these "properties" — Anchored, Accumulated, Layered, Navigable. Re-read as actions, <em>three verbs</em> cover the same ground: <em>Accumulated</em> dissolves into Anchor performed by multiple people over time; <em>Layered</em> becomes Scope.</p>
+  <h2>3 — The concept: a 2×2 with two orthogonal modifiers</h2>
+
+  <p>SM's concept-level contribution is a <strong>2×2 model with two orthogonal modifiers</strong>. Two user actions (<strong>Write</strong>, <strong>Read</strong>) operate on two memory types (<strong>Object</strong>, <strong>Project</strong>). Each cell of the 2×2 is refined by two modifiers — <strong>Scope</strong> (audience-nesting) and <strong>Person</strong> (provenance + content-overlay). The 2×2 is the broad concept; the modifiers fill the sub-structure. (Throughout this document, <em>annotation</em> is modality-agnostic — see §1, card 3 <span class="tbd-tag">TBD</span>.)</p>
+
+  <h3>The 2×2 — two actions × two memory types</h3>
+  <p>A user does only two things to the room. The system stores only two kinds of thing.</p>
+
+  <div class="tbt-grid">
+    <div class="tbt-corner"></div>
+    <div class="tbt-col-head obj">🟧 Object memory<span class="tbt-sub">Memory at a single physical referent. Many memos accumulate at one anchor over time. Graph: one-to-many at a single node.</span></div>
+    <div class="tbt-col-head prj">🟩 Project memory<span class="tbt-sub">Memory tied to a Process — a multi-day multi-person job. The Process node fans out to a set of anchors (the partially-built artifact, the test station, the relevant tool).</span></div>
+
+    <div class="tbt-row-head write">Write (Anchor)<span class="tbt-sub">Attach a memo to a referent. Requires deliberate spatial intent.</span></div>
+    <div class="tbt-cell">Tag the printer "PLA loaded"; flag a worn drill bit; mark a cable-exit pointer on the enclosure.<div class="tbt-example">→ Object accumulates: next user at the printer sees the tag.</div></div>
+    <div class="tbt-cell">WIP memo on the in-progress enclosure; gesture-pin proposal on the PCB; record a walking-tour recipe across stations.<div class="tbt-example">→ Process node fans out: surfaces at any of its anchors.</div></div>
+
+    <div class="tbt-row-head read">Read (Navigate)<span class="tbt-sub">Retrieve memos. Mostly <em>not</em> a user action — the room volunteers as the user approaches.</span></div>
+    <div class="tbt-cell">Walk up to the printer → "PLA loaded" surfaces. Reach for the bit → dull-bit ghost surfaces.<div class="tbt-example">→ Proximity to the anchor triggers retrieval.</div></div>
+    <div class="tbt-cell">Approach the enclosure → project status surfaces; replay the walking-tour at one's own pace.<div class="tbt-example">→ Process traversal: any anchor of the Process surfaces its state.</div></div>
+  </div>
+
+  <h3>Two non-trivial claims inside the 2×2</h3>
+  <p><strong>Claim 1 — the Write/Read asymmetry is what makes this AR-distinctive.</strong> Writing demands deliberate spatial intent: the user must decide what the memo attaches to. Reading is mostly <em>not</em> a user action at all — the system volunteers memos as the user moves through the room. In Slack the user queries; in SM the room delivers. Without this asymmetry the concept collapses to a wiki with coordinates.</p>
+
+  <p><strong>Claim 2 — Object vs Project is a graph-structure claim, not a tag.</strong> Object memory is one-to-many at a single anchor — multiple memos accumulate at the same physical referent over time. Project memory is one-to-one with a Process node that itself fans out to a set of anchors. The traversal differs: an Object query walks a 1-hop neighbourhood; a Project query walks a Process node and then surfaces at <em>any</em> of its anchors. The two indexes are not interchangeable labels.</p>
+
+  <h3>Modifier 1 — Scope: nested audience, persistence implied</h3>
+  <p>Every Write specifies a Scope. Every Read filters by it. The three levels nest, and persistence falls out of audience-level — they are not two separate axes.</p>
+
   <div class="verb-grid">
     <div class="verb-card anchor">
       <div class="verb-num">1</div>
-      <h4>Anchor</h4>
-      <p>Attach a memo to a place, object, person, or process. Multiple people anchoring over time = community memory accumulates at each place. This is the capture action.</p>
-      <div class="verb-meta">absorbs: <em>Anchored</em> + <em>Accumulated</em></div>
+      <h4>Individual</h4>
+      <p>Directed to one person P. Only P sees it on approach to the anchor.</p>
+      <div class="verb-meta">persistence: until read · edge: DIRECTED_TO</div>
     </div>
     <div class="verb-card scope">
       <div class="verb-num">2</div>
-      <h4>Scope</h4>
-      <p>Control visibility: audience (broadcast / directed / project), persistence (default / permanent / archivable), urgency (info / warning / blocking). Some info is always there for everyone; some is layered for specific eyes.</p>
-      <div class="verb-meta">renamed from: <em>Layered</em></div>
+      <h4>Process</h4>
+      <p>Visible to the project team. Default scope for most operational memos — WIP status, handover notes, gesture proposals.</p>
+      <div class="verb-meta">persistence: lives with the Process · edge: SCOPED_TO Process</div>
     </div>
     <div class="verb-card navigate">
       <div class="verb-num">3</div>
-      <h4>Navigate</h4>
-      <p>Retrieve memory by querying one of three orthogonal indexes — Object / Project / Person. The same Memory Graph; three lenses.</p>
-      <div class="verb-meta">renamed from: <em>Navigable</em></div>
+      <h4>Room</h4>
+      <p>Pinned to the room itself — institutional. Visible to anyone using the workspace, across all Processes.</p>
+      <div class="verb-meta">persistence: until retired · edge: SCOPED_TO Room</div>
     </div>
   </div>
-  <h3>The three memory types (Navigate's three indexes)</h3>
-  <p>The three memory types are <em>what Navigate queries</em>. The same Note can be indexed in all three.</p>
-  <div class="mem-grid">
-    <div class="mem-card obj">
-      <h3>🟧 Object memory</h3>
-      <div class="q-line">"What is this thing's history?"</div>
-      <p>Memory anchored to a workpiece, tool, machine, fixture, or material. Surfaces when you approach the object physically.</p>
-      <div class="examples"><strong>Examples</strong>: bed-leveling note on the 3D printer · drill-bit-dull tag · helping-grip ghost on the part · scrap-pile touch history</div>
+
+  <p>Earlier framings split persistence (permanent / ephemeral) from audience (broadcast / directed) as two separate axes. Collapsing them into a single nested scope is cleaner: a Room-scoped memo persists because everyone in the room is its audience; a Process-scoped memo lives with the Process; an Individual-scoped memo decays after consumption.</p>
+
+  <h3>Modifier 2 — Person: three roles, two kinds</h3>
+  <p>A person can play three roles in any memo, but the three are not of the same kind. Two are <em>metadata</em> (memo properties); one is <em>content</em> (what the memo is about).</p>
+
+  <div class="person-grid">
+    <div class="person-card author">
+      <div class="pc-kind">Memo metadata</div>
+      <h4>Author</h4>
+      <p>Who wrote the memo. A provenance property of the memo, not its content. Always present.</p>
+      <div class="verb-meta">edge: LEFT_BY</div>
     </div>
-    <div class="mem-card prj">
-      <h3>🟩 Project memory</h3>
-      <div class="q-line">"What is this work?"</div>
-      <p>Memory scoped to a Process — a multi-day, multi-person job. Surfaces when the user engages with the project, regardless of physical location.</p>
-      <div class="examples"><strong>Examples</strong>: WIP status · walking-tour recipe · departure retrospective · "parts arriving Wed"</div>
+    <div class="person-card audience">
+      <div class="pc-kind">Memo metadata</div>
+      <h4>Audience</h4>
+      <p>Who the memo is for, when scope is Individual. A provenance property of the memo, not its content.</p>
+      <div class="verb-meta">edge: DIRECTED_TO (only at Individual scope)</div>
     </div>
-    <div class="mem-card per">
-      <h3>🟪 Person memory</h3>
-      <div class="q-line">"What did <em>they</em> do?"</div>
-      <p>Memory indexed to a Person — their trail of notes, paths walked, techniques recorded. Surfaces on "follow" or when notes are tagged with you as recipient.</p>
-      <div class="examples"><strong>Examples</strong>: Alice's walking-tour route · Bob's station-default · Carol's Q-thread · "DIRECTED_TO Bob" handoff</div>
+    <div class="person-card subject">
+      <div class="pc-kind">Content overlay</div>
+      <h4>Subject</h4>
+      <p>Who the memo is <em>about</em>. This is content, not metadata — the memo describes a person's technique, state, or preference.</p>
+      <div class="verb-meta">edge: ABOUT (overlay on Object or Project)</div>
     </div>
   </div>
-  <p>A single annotation can be indexed by all three. <em>"Carol, I left a fresh stencil at the consumables station — already loaded for tonight's run"</em> is Anchored to <span class="mem-tag obj">obj</span> (the stencil), tagged with <span class="mem-tag prj">prj</span> (the wearable build), and Directed-To <span class="mem-tag per">per</span> (Carol).</p>
+
+  <p>Person isn't a third memory type peer with Object and Project. The three roles split: Author and Audience are memo metadata (provenance edges in the graph); Subject is a content overlay. "This is how Alice runs the printer" is an <span class="mem-tag obj">Object</span> memo with Person-subject overlay. "This is Bob's role on the wearable build" is a <span class="mem-tag prj">Project</span> memo with Person-subject overlay. Person never needs its own column in the 2×2.</p>
+
+  <h3>Why 2×2 instead of 3×3</h3>
+  <p>Earlier framings had three verbs (Anchor / Scope / Navigate) and three types (Object / Project / Person). The simplification rests on two observations:</p>
+  <ul>
+    <li><strong>Scope is not a verb.</strong> It is a property of every Write and a filter on every Read. Folding it into the modifier layer reduces 3 verbs to 2.</li>
+    <li><strong>Person is not a type.</strong> Author and Audience are metadata; Subject is a content overlay on Object or Project. Folding it into the modifier layer reduces 3 types to 2.</li>
+    <li><strong>The 2×2 with modifiers is sparser, not larger.</strong> Some sub-cells fire often (e.g., "Write a Process-scope memo on an Object" = a handover note tagging the enclosure). Others are degenerate ("Read at Individual scope" basically reduces to "memos directed to me surface when I approach an anchor"). The framework names the live sub-cells and skips the rest. A 3×3 with three modifiers had the same expressive power and twice the surface area.</li>
+  </ul>
+
+  <h3>What the system must do — the engineering targets</h3>
+  <p>The 2×2 implies a minimum set of system responsibilities. These are the concrete engineering contributions that follow from the concept — and the things the PoC has to demonstrate:</p>
+  <ul>
+    <li><strong>Anchor matching at Write time.</strong> Given a new memo and a candidate referent (object, location, or Process), decide what it attaches to. Vision-based for Object; Process-graph-based for Project.</li>
+    <li><strong>Proactive surfacing at Read time.</strong> Given user location, Scope, Person modifier (am I the audience?), and graph state, decide what to volunteer. A multi-objective ranker — ablatable, evaluatable.</li>
+    <li><strong>Process traversal.</strong> Walk a Process node and its anchor-set to answer cross-anchor queries — "what's the wearable build's state?" across enclosure + PCB + strap, regardless of which one the user is standing next to.</li>
+  </ul>
+
   <h3>Extending place-and-space (Harrison &amp; Dourish 1996)</h3>
-  <p>Harrison &amp; Dourish distinguished <em>place</em> (socially meaningful) from <em>space</em> (physical coordinates). SM extends that distinction into a 3-axis indexing model: a Note has a <em>place</em>-coordinate (Object), a <em>practice</em>-coordinate (Project), and a <em>person</em>-coordinate (Person). The Memory Graph makes those three indexes queryable simultaneously.</p>
+  <p>Harrison &amp; Dourish distinguished <em>place</em> (socially meaningful) from <em>space</em> (physical coordinates). SM extends <em>place</em> with two queryable indexes — <em>this thing's history</em> (Object) and <em>this work's state</em> (Project) — refined by two modifiers (Scope, Person). The Memory Graph holds the data once; each Read is a different query over the same graph.</p>
+
   <h3>How this compares to Obsidian / Roam</h3>
-  <p>SM is structurally close to a wiki-graph knowledge tool like Obsidian or Roam, but extends to multi-user voice-based + spatially-anchored async communication with proactive surfacing.</p>
+  <p>SM is structurally close to a wiki-graph knowledge tool like Obsidian or Roam, but extends it to multi-user spatially-anchored async communication with proactive surfacing.</p>
   <div class="obs-compare">
     <div class="obs-header dim">Dimension</div>
     <div class="obs-header obs-h">Obsidian / Roam</div>
@@ -1319,13 +1461,16 @@
     <div class="obs-cell sm">Annotation <span class="tbd-tag">modality TBD</span></div>
     <div class="obs-cell dim">Anchor / Index</div>
     <div class="obs-cell obsidian">Folder + tags + <code>[[backlinks]]</code></div>
-    <div class="obs-cell sm">Object + Project + Person — three orthogonal indexes</div>
+    <div class="obs-cell sm">Object + Project — two indexes with Scope and Person modifiers</div>
+    <div class="obs-cell dim">User actions</div>
+    <div class="obs-cell obsidian">Read, Write, Link, Tag — many actions</div>
+    <div class="obs-cell sm">Write + Read — minimum factoring; modifiers fill the sub-structure</div>
     <div class="obs-cell dim">Retrieval</div>
     <div class="obs-cell obsidian">Open app → search / browse / graph view</div>
     <div class="obs-cell sm">Walk into the place → notes surface proactively</div>
     <div class="obs-cell dim">Authorship</div>
     <div class="obs-cell obsidian">Single user</div>
-    <div class="obs-cell sm">Multi-user with audience semantics (Scope)</div>
+    <div class="obs-cell sm">Multi-user; Scope = nested audience (Individual / Process / Room)</div>
     <div class="obs-cell dim">Modality</div>
     <div class="obs-cell obsidian">Text on screen</div>
     <div class="obs-cell sm">Annotation modality TBD — voice / AR sticky / gesture pin / hybrid</div>
@@ -1358,10 +1503,10 @@
     <div class="lg-section"><div class="lg-title">Anchor (implicit)</div>
       <div class="lg-item" style="color:var(--muted);">Card position on canvas = day × person × order. Every event is anchored.</div>
     </div>
-    <div class="lg-section"><div class="lg-title">Scope · audience badges</div>
-      <div class="lg-item"><span class="aud-directed">→C</span>directed to a recipient</div>
-      <div class="lg-item"><span class="aud-permanent">📌</span>permanent / institutional</div>
-      <div class="lg-item" style="color:var(--muted);"><span style="display:inline-block; width:14px;"></span>no badge = broadcast (default)</div>
+    <div class="lg-section"><div class="lg-title">Scope · nested audience</div>
+      <div class="lg-item"><span class="aud-directed">→C</span>Individual (directed to one person)</div>
+      <div class="lg-item"><span class="aud-permanent">📌</span>Room (pinned, institutional)</div>
+      <div class="lg-item" style="color:var(--muted);"><span style="display:inline-block; width:14px;"></span>no badge = Process (default — visible to project team)</div>
     </div>
     <div class="lg-section"><div class="lg-title">Person · click to filter</div>
       <div class="lg-item clickable" data-filter="person" data-value="alice"><span class="lg-avatar" style="background:#2c5f8d;">A</span>Alice</div>
