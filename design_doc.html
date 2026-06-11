@@ -24,6 +24,7 @@
   .sub{color:var(--muted); font-size:15px; margin:0 0 10px}
   h2{font-size:20px; letter-spacing:-.01em; margin:54px 0 6px; padding-top:18px; border-top:2px solid var(--ink)}
   h2 .no{color:var(--muted); font-weight:400; margin-right:8px}
+  h2 .job{display:block; font-size:13px; font-weight:400; color:var(--muted); margin-top:4px}
   h3{font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted);
      margin:30px 0 12px; border-bottom:1px solid var(--line); padding-bottom:6px}
   p{margin:0 0 12px}
@@ -56,7 +57,6 @@
   tr:last-child td{border-bottom:none}
   td.k{font-weight:650; white-space:nowrap}
 
-  /* script */
   .script{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:26px 30px; margin:8px 0 14px}
   .script p{font-size:15.5px; margin:0 0 14px}
   .script .scene{font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ours);
@@ -68,7 +68,6 @@
   .cold-band p{font-size:15px; margin:0 0 12px}
   .cold-band .scene{color:#9fb6dd; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; font-weight:800; margin:0 0 8px}
 
-  /* timeline */
   .day{display:grid; grid-template-columns:110px 1fr}
   .rail{position:relative; padding:18px 18px 18px 0; text-align:right}
   .rail .d{font-weight:750; font-size:15px}
@@ -112,11 +111,12 @@
   .panel.blue{border-top:3px solid var(--fA)}
   .panel.purple{border-top:3px solid var(--fB)}
 
-  .foot{color:var(--muted); font-size:12.5px; margin-top:40px; border-top:1px solid var(--line); padding-top:12px}
   figure{margin:16px 0 18px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 16px 10px}
   figure svg{width:100%; height:auto; display:block}
   figure svg text{font-family:inherit}
   figcaption{font-size:12.5px; color:var(--muted); text-align:center; margin-top:6px}
+
+  .foot{color:var(--muted); font-size:12.5px; margin-top:40px; border-top:1px solid var(--line); padding-top:12px}
   @media (max-width:760px){ .day{grid-template-columns:64px 1fr} .gates,.twocol{grid-template-columns:1fr} }
 </style>
 </head>
@@ -124,29 +124,45 @@
 <div class="wrap">
 
 <h1>Spatial Memory — Design Document</h1>
-<p class="sub">Concept · vocabulary · scenario script · scenario flow · system commitments · study plan — v1 · 2026-06-10 · CHI 2027</p>
+<p class="sub">Structured as the paper skeleton — each section states what the paper section must accomplish, then the design content that feeds it · v2 · 2026-06-11 · CHI 2027</p>
 
 <div class="hook"><b>One sentence:</b> Spatial Memory lets a shared physical workspace carry what its people chose to say to whoever needs it next, where it happened — deliberate voice notes captured at zero ceremony cost, anchored in place, structured in a Memory Graph, and surfaced at the moment of encounter.</div>
 
 <div class="toc">
-  <a href="#s1">1 · Concept</a>
-  <a href="#s2">2 · Vocabulary</a>
-  <a href="#s3">3 · Why not Slack</a>
-  <a href="#s4">4 · Scenario script</a>
-  <a href="#s5">5 · Scenario flow</a>
-  <a href="#s6">6 · System commitments</a>
-  <a href="#s7">7 · Study plan</a>
-  <a href="#s8">8 · Open decisions</a>
+  <a href="#sa">Abstract</a>
+  <a href="#s1">1 · Introduction</a>
+  <a href="#s2">2 · Related Work</a>
+  <a href="#s3">3 · Concept</a>
+  <a href="#s4">4 · Memory Graph</a>
+  <a href="#s5">5 · Interaction</a>
+  <a href="#s6">6 · Scenario</a>
+  <a href="#s7">7 · System</a>
+  <a href="#s8">8 · Evaluation</a>
+  <a href="#s9">9 · Discussion</a>
+  <a href="#s10">10 · Open decisions</a>
 </div>
 
 <!-- ============================================================ -->
-<h2 id="s1"><span class="no">1</span>Concept</h2>
+<h2 id="sa">Abstract <span class="job">draft — three beats: problem, system, evidence</span></h2>
+<p><i>Shared physical workspaces are asynchronous by default: collaborators share machines and benches but rarely share the clock, and the judgments that matter — a swapped nozzle, a stale calibration, a fragile joint — die unspoken, because every messaging channel charges the person in flow a composition ceremony their observation cannot justify. We present <b>Spatial Memory</b>, a paradigm in which deliberate voice notes are captured at zero ceremony cost, anchored where they were spoken, and organized in a <b>Memory Graph</b> that keeps each place showing its current state rather than a pile of history. In two chained studies — leavers (N≈10) working hands-busy tasks, whose real utterances then seed the rooms that arrivers (N=12–16) walk into — zero-ceremony capture increased in-flow externalization over phone-and-channel practice, and graph structure outperformed raw anchoring on trap avoidance and triage under a week's accumulation.</i></p>
+
+<!-- ============================================================ -->
+<h2 id="s1"><span class="no">1</span>Introduction <span class="job">paper's job: make the tension visceral, kill the obvious alternatives (camera, channel), name the reframe — Moves 1–5</span></h2>
 
 <p><b>Premise.</b> Physical space can now be made addressable: persistent shared anchoring, always-on head-worn capture, and on-device language models that transcribe and segment speech have converged. The instrumentation is first-person — worn by the collaborator, not fixed to the room.</p>
 
 <p><b>Constraint.</b> Shared physical work persists, and the people who share a room rarely share the clock. Labs, studios, shops, clinics: collaborators share equipment and benches but almost never overlap in time. The room is the only collaborator present across every shift — and it remembers nothing.</p>
 
 <p><b>Problem.</b> The room is the only witness, yet it is mute — and a camera cannot fix that, because the information that matters is not an observable event but a human's <i>invisible judgment</i> (a swapped nozzle, a stale calibration, a fragile joint). No camera, room-fixed or worn, can derive a recommendation from pixels. The judgment must be <b>authored</b> by the person who holds it — and that person is mid-task, hands on the work, rationally unwilling to pay the messaging ceremony.</p>
+
+<p>The headline problem decomposes into four sub-problems — tagged <b>A–D</b> throughout this document. A, B, C are failures of the mute room; <b>D is the failure Spatial Memory itself creates and must then solve</b> — that two-level shape is what justifies the Memory Graph rather than plain anchoring.</p>
+<table>
+  <tr><th>Tag</th><th>Sub-problem</th><th>Victim</th><th>System answer</th></tr>
+  <tr><td class="k"><span class="badge bA">A · Capture</span></td><td>The person holding a judgment is mid-task; the messaging ceremony costs more than the message is worth to them, so it is never sent ("leaver-in-flow")</td><td>the next person who hits the hidden state</td><td>zero-ceremony anchored voice + auto-segmentation</td></tr>
+  <tr><td class="k"><span class="badge bB">B · Cross-project collision</span></td><td>One project's invisible change to a shared fixture harms a different project's user — the two share nothing but the object</td><td>a stranger at the same fixture</td><td>object memory that outlives projects; warnings crossing project lines</td></tr>
+  <tr><td class="k"><span class="badge bC">C · Context gap</span></td><td>A newcomer or returner has no access to the accumulated history of the room and the project</td><td>the person joining mid-stream</td><td>relevance triage, person trail</td></tr>
+  <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes — <b>Spatial Memory's own failure mode</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence, ordering</td></tr>
+</table>
 
 <p><b>Reframe.</b> Keep the irreducible part (the human authors the content) and delete the removable part (the channel ceremony: naming a recipient, describing the referent, switching out of task). The person witnesses; the worn device silently captures what they chose to say; the room is the medium that carries it forward — anchored, structured, and navigable.</p>
 
@@ -160,7 +176,6 @@
   <text x="500" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#8a4baf">THE ROOM REMEMBERS — STRUCTURED</text>
   <text x="845" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#2f7d4f">WEDNESDAY — THE ARRIVER</text>
 
-  <!-- Panel A: leaver -->
   <rect x="45" y="155" width="95" height="85" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
   <text x="92" y="231" text-anchor="middle" font-size="10" fill="#5b6472">3D printer</text>
   <circle cx="92" cy="124" r="8" fill="#1f5fbf"/><path d="M85 128 L92 146 L99 128 z" fill="#1f5fbf"/>
@@ -176,7 +191,6 @@
   <line x1="310" y1="170" x2="348" y2="170" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
   <text x="329" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">zero ceremony</text>
 
-  <!-- Panel B: the room, structured -->
   <rect x="368" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
   <text x="407" y="212" text-anchor="middle" font-size="10" fill="#5b6472">printer</text>
   <rect x="462" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
@@ -205,7 +219,6 @@
   <line x1="660" y1="170" x2="698" y2="170" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
   <text x="679" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">at encounter</text>
 
-  <!-- Panel C: arriver -->
   <rect x="872" y="155" width="95" height="85" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
   <text x="919" y="231" text-anchor="middle" font-size="10" fill="#5b6472">3D printer</text>
   <circle cx="919" cy="124" r="8" fill="#1f5fbf"/><path d="M912 128 L919 146 L926 128 z" fill="#1f5fbf"/>
@@ -222,8 +235,34 @@
   <text x="500" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1d24">same place &#8212; different time</text>
   <text x="900" y="322" text-anchor="middle" font-size="10.5" fill="#5b6472">Wednesday</text>
 </svg>
-<figcaption>Figure draft 1 (paper concept figure) — speak in flow at zero ceremony → the room remembers, structured → surfaced at the moment of encounter.</figcaption>
+<figcaption>Figure draft 1 (teaser / concept figure) — speak in flow at zero ceremony → the room remembers, structured → surfaced at the moment of encounter.</figcaption>
 </figure>
+
+<h3>Why existing channels fail — the three gates</h3>
+<p>Every scenario beat and every study trap is built on information that fails Slack on at least two of three gates:</p>
+<div class="gates">
+  <div class="gate-card"><div class="g">G1 · Recipient</div><div class="q">Is the next reader genuinely unknown at compose time?</div><p>Channels demand a named addressee → broadcast spams, DM guesses, or nothing gets sent.</p></div>
+  <div class="gate-card"><div class="g">G2 · Referent</div><div class="q">Does it point at a physical thing with an invisible property?</div><p>Lossy to describe in words, lossy to re-ground when read. "The 0.4 nozzle... on which printer?"</p></div>
+  <div class="gate-card"><div class="g">G3 · Moment</div><div class="q">Is it useful only when standing at the object?</div><p>Phone delivery lands placeless and mistimed — before it matters, away from where it matters.</p></div>
+</div>
+
+<p><b>The camera gate (CAM).</b> Even granting full room instrumentation: the valuable content is not an observable event but an authored judgment. A swapped nozzle, a stale-but-valid-looking calibration, a fragile joint — the scene looks identical either way. The judgment exists only in a person's head and must be spoken. This is the inversion of AsyncReality: their asymmetry is <i>receiver-cannot-perceive</i> (so room cameras suffice); ours is <i>author-will-not-pay-the-ceremony</i> (so the person must be the witness, and the worn device only removes the ceremony).</p>
+
+<p><b>The strongest opponent is not the DM — it is the per-fixture channel.</b> Real labs have #3dprinter and #mocap channels, and a channel does approximate G1: the channel is the machine's mailbox. What it cannot fix:</p>
+<table>
+  <tr><th>Failure</th><th>Why the channel loses</th></tr>
+  <tr><td class="k">Delivery (G3)</td><td>By the time the next person stands at the machine, the message is days deep in scrollback. Nobody re-reads a channel standing at the rig before pressing record.</td></tr>
+  <tr><td class="k">Log vs. state</td><td>A channel is a time-ordered log; the room needs <b>current state at a place</b>. "Is the recalibration still pending, or did someone already do it?" is scrollback archaeology on Slack — and one <i>supersedes</i> edge in the Memory Graph. The next person sees the current answer, not the history.</td></tr>
+  <tr><td class="k">Composition</td><td>Still requires phone-out, mid-pack-up, hands full of tripods.</td></tr>
+</table>
+<p>We do not compete with Slack on its home turf: known-recipient, bounded, <i>episode-class</i> messages stay on Slack (§3) — the scenario shows this carve explicitly.</p>
+
+<!-- ============================================================ -->
+<h2 id="s2"><span class="no">2</span>Related Work <span class="job">skipped in this design doc — numbering preserved to match the paper</span></h2>
+<p class="sub">Paper plan: co-located async CSCW (the problem) · AR spatial annotation (anchoring exists, structure doesn't) · capture-in-flow &amp; voice memos · LLM structuring (the zero-ceremony means) — each subsection closing on "we build on," never "they fail to."</p>
+
+<!-- ============================================================ -->
+<h2 id="s3"><span class="no">3</span>Concept <span class="job">paper's job: define Spatial Memory as the user experiences it — properties, the information class it serves, the two memory types</span></h2>
 
 <h3>The four properties</h3>
 <table>
@@ -231,27 +270,28 @@
   <tr><td class="k">Anchored</td><td>Notes attach to the place where they were spoken — a machine, a bench spot, a shelf</td></tr>
   <tr><td class="k">Accumulated</td><td>The space builds up knowledge over time, from multiple people and projects</td></tr>
   <tr><td class="k">Layered</td><td>Notes carry persistence levels (ephemeral / project-lived / permanent) and audiences</td></tr>
-  <tr><td class="k">Navigable</td><td>The record is structured — versioned, threaded, filterable — not a pile of pins</td></tr>
+  <tr><td class="k">Navigable</td><td>The record is structured — versioned, filterable, traversable — not a pile of pins</td></tr>
 </table>
+
+<h3>Encounter-class vs. episode-class</h3>
+<p><b>Encounter-class</b> information has low individual value, high cumulative value, a spatial referent, and an unknown next reader — channel tools price it out, so it dies. <b>Episode-class</b> messages have a known recipient and bounded content — Slack is the right tool, and Spatial Memory never sees them. This carve is the paper's claim boundary: we displace nothing that works; we catch what today has no carrier at all.</p>
 
 <h3>Two memory types — and why only two</h3>
 <p>A memory type is defined by two questions: <b>what is the note anchored to</b>, and <b>what does it outlive</b>.</p>
 <table>
   <tr><th>Type</th><th>Anchored to</th><th>Outlives</th><th>Example</th></tr>
-  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a zone or fixture (or a movable's home spot)</td><td>any project — institutional</td><td>"0.6 nozzle is in" on the printer; "calibration is stale" on the rig</td></tr>
-  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many anchors</td><td>nothing — lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
+  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a place — a fixture or a movable's home spot</td><td>any project — institutional</td><td>"0.6 nozzle is in" on the printer; "calibration is stale" on the rig</td></tr>
+  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many places</td><td>nothing — lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
 </table>
-<p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person — like time — is a <b>traversal dimension over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i> are queries. Person appears in three roles, all as edges: <b>author</b> (left_by), <b>audience</b> (directed_to), <b>subject</b> (about). This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
+<p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person — like time — is a <b>query over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i>. This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
 
 <figure>
 <svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img">
-  <!-- project band -->
   <rect x="165" y="56" width="270" height="26" rx="13" fill="#8a4baf" fill-opacity="0.10" stroke="#8a4baf" stroke-dasharray="5 4"/>
   <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: Drone build &#8212; one warning, every station</text>
   <line x1="230" y1="82" x2="230" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
   <line x1="370" y1="82" x2="370" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
 
-  <!-- object chips -->
   <rect x="35" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
   <text x="90" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">nozzle 0.6 &#8594; 0.4</text>
   <line x1="90" y1="132" x2="90" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
@@ -262,7 +302,6 @@
   <text x="650" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">calibration stale</text>
   <line x1="650" y1="132" x2="650" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
 
-  <!-- zones -->
   <rect x="30" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
   <text x="90" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">3D printer</text>
   <rect x="170" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
@@ -273,83 +312,134 @@
   <text x="510" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Device shelf</text>
   <rect x="590" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
   <text x="650" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Mocap rig</text>
-  <text x="370" y="228" text-anchor="middle" font-size="10" fill="#5b6472">Object memory (blue) anchors to a zone and outlives projects &#183; project memory (purple) spans zones and dies with the project</text>
+  <text x="370" y="228" text-anchor="middle" font-size="10" fill="#5b6472">Object memory (blue) anchors to a place and outlives projects &#183; project memory (purple) spans places and dies with the project</text>
 
-  <!-- traversal panel -->
   <rect x="750" y="56" width="230" height="150" rx="10" fill="#ffffff" stroke="#e2e6ec"/>
-  <text x="865" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Person &amp; time = traversals, not types</text>
+  <text x="865" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Person &amp; time = queries, not types</text>
   <rect x="766" y="94" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
   <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) &#8212; &#8220;what did Jesse do?&#8221;</text>
   <rect x="766" y="126" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
   <text x="865" y="142" text-anchor="middle" font-size="10" fill="#2f7d4f">for_me(P) &#8212; &#8220;anything for me?&#8221;</text>
   <rect x="766" y="158" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="865" y="174" text-anchor="middle" font-size="10" fill="#2f7d4f">recent(T) &#8212; &#8220;since yesterday?&#8221;</text>
+  <text x="865" y="174" text-anchor="middle" font-size="10" fill="#2f7d4f">project_state(Pr) &#8212; &#8220;where is the build?&#8221;</text>
 </svg>
 <figcaption>Figure draft 2 — two memory types over one room; person and time are queries over the graph, not storage types.</figcaption>
 </figure>
 
-<h3>The Memory Graph</h3>
+<h3>Zero ceremony, not zero cost</h3>
+<p>The human still authors every memory — judgment is irreducible, and <b>every memory is a deliberate utterance</b>: no ambient inference, no gaze or dwell logging, no telemetry (validated by a 60-scenario scoring exercise in which every inferred-event design was rejected). What the system removes is only the removable tax: recipient selection, referent description, app switching. This is also the privacy stance — not surveillance, but capture of chosen speech.</p>
+
+<!-- ============================================================ -->
+<h2 id="s4"><span class="no">4</span>Memory Graph <span class="job">paper's job: the mechanism — small enough to state in a sentence, strong enough to carry the structure claim</span></h2>
+
+<p>The whole graph in one sentence: <b>a note is pinned at a place, signed by a person, optionally belongs to a project, and can supersede an older note.</b> Everything the system does is five operations over that structure.</p>
+
 <table>
   <tr><th></th><th>Definition</th></tr>
-  <tr><td class="k">Nodes</td><td>Note · Zone (SLAM location) · Object (fixture, or a movable's home zone) · Person · Project</td></tr>
-  <tr><td class="k">Edges</td><td>anchored_to · left_by · directed_to · for_project · supersedes · replies_to · depends_on</td></tr>
-  <tr><td class="k">Traversals</td><td>notes_at(zone) · trail(person) · thread(note) · for_me(person) · recent(time) · project_state(project)</td></tr>
+  <tr><td class="k">Nodes (4)</td><td><b>Note</b> · <b>Place</b> (a SLAM zone — a fixture, or a movable's home spot; "objects" are just named places) · <b>Person</b> · <b>Project</b></td></tr>
+  <tr><td class="k">Edges (5)</td><td><b>anchored_to</b> (note→place) · <b>left_by</b> (note→person) · <b>directed_to</b> (note→person/role) · <b>for_project</b> (note→project) · <b>supersedes</b> (note→note)</td></tr>
+  <tr><td class="k">Note properties (2)</td><td><b>audience</b> (who should hear it) · <b>persistence</b> (ephemeral / project-lived / permanent)</td></tr>
+  <tr><td class="k">Queries (4)</td><td><b>notes_at</b>(place) · <b>for_me</b>(person) · <b>trail</b>(person) · <b>project_state</b>(project)</td></tr>
 </table>
-<p><b>Supersession is the load-bearing edge:</b> a newer note can replace an older one, so what a place shows is its <i>current state</i>, not a chronological log. This single property is what separates the Memory Graph from both sticky notes and Slack channels (§3).</p>
 
-<h3>Design disciplines</h3>
+<h3>The five operations</h3>
 <table>
-  <tr><th></th><th>Rule</th><th>Why</th></tr>
-  <tr><td class="k">1</td><td><b>Every memory is a deliberate human utterance.</b> No ambient inference, no gaze/dwell logging, no telemetry.</td><td>The valuable content is authored judgment; inferred events are noise (validated by a 60-scenario scoring exercise — every inferred-event design was rejected). Also the privacy story: not surveillance, capture of chosen speech.</td></tr>
-  <tr><td class="k">2</td><td><b>SLAM-only anchoring — the system recognizes no small objects.</b> Notes anchor to zones and fixtures; movables get a home-spot anchor, are named in the utterance ("the plugged-in Pixel"), and ride project memory across stations.</td><td>Keeps the camera content-free (privacy), and makes the Object + Project pairing structurally necessary rather than a taste choice.</td></tr>
-  <tr><td class="k">3</td><td><b>Zero ceremony, not zero cost.</b> The human still authors the content (irreducible); the system removes only the channel ceremony — recipient selection, referent description, app switching.</td><td>Precision that survives the "speaking is still effort" objection.</td></tr>
+  <tr><th>Operation</th><th>What happens</th><th>Beat</th></tr>
+  <tr><td class="k">File</td><td>one utterance → object card and/or project card, audience and persistence inferred — the speaker classifies nothing</td><td>A1 A2 B2 B3</td></tr>
+  <tr><td class="k">Surface</td><td>approaching a place replays its current notes, at the anchor</td><td>B1 C1 C2 D2</td></tr>
+  <tr><td class="k">Supersede</td><td>a newer note replaces an older one — the place shows <b>state, not log</b></td><td>B1 → E1</td></tr>
+  <tr><td class="k">Filter</td><td>audience + relevance decide what an arriver actually hears, in order</td><td>D1 E1</td></tr>
+  <tr><td class="k">Expire</td><td>ephemera die on schedule; project notes die with the project</td><td>E1</td></tr>
 </table>
+
+<p><b>SLAM-only constraint.</b> The camera is a locator, never a recorder: no visual content, no small-object recognition. Movables get a home-spot Place, are <i>named in the utterance</i> ("the plugged-in Pixel"), and ride project memory across stations. This constraint is precisely why both memory types are necessary — the zone anchor covers the encounter, project memory covers everywhere else the warning must travel; only the pair covers both.</p>
+
+<figure>
+<svg viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a4baf"/></marker>
+  </defs>
+  <!-- people -->
+  <circle cx="150" cy="40" r="12" fill="#1f5fbf"/><text x="150" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#1f5fbf">Jesse</text>
+  <circle cx="470" cy="40" r="12" fill="#2f7d4f"/><text x="470" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#2f7d4f">Vasco</text>
+  <circle cx="720" cy="40" r="12" fill="#8a4baf"/><text x="720" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Mia</text>
+  <!-- project node -->
+  <rect x="240" y="26" width="170" height="28" rx="14" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="325" y="45" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a4baf">Project: Drone build</text>
+
+  <!-- notes -->
+  <!-- A1 superseded at printer -->
+  <rect x="40" y="170" width="140" height="34" rx="7" fill="#fafbfc" stroke="#c9dcf6" stroke-dasharray="4 3"/>
+  <text x="110" y="186" text-anchor="middle" font-size="9.5" fill="#9aa3af" text-decoration="line-through">A1 &#8220;0.6 nozzle in&#8221;</text>
+  <text x="110" y="199" text-anchor="middle" font-size="8.5" fill="#9aa3af">superseded &#8212; hidden Friday</text>
+  <!-- B1 -->
+  <rect x="40" y="110" width="140" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="110" y="126" text-anchor="middle" font-size="9.5" fill="#1a1d24">B1 &#8220;0.4 back &#10003;&#8221;</text>
+  <text x="110" y="139" text-anchor="middle" font-size="8.5" fill="#5b6472">current state of the printer</text>
+  <line x1="110" y1="144" x2="110" y2="168" stroke="#8a4baf" stroke-width="2" marker-end="url(#ah4)"/>
+  <text x="158" y="160" font-size="9" font-weight="700" fill="#8a4baf">supersedes</text>
+  <!-- A2 -->
+  <rect x="255" y="140" width="140" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="325" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A2 &#8220;joint fragile &#8212; brace&#8221;</text>
+  <text x="325" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">one utterance, two edges</text>
+  <line x1="325" y1="140" x2="325" y2="56" stroke="#8a4baf" stroke-dasharray="4 3" stroke-width="1.5"/>
+  <text x="334" y="100" font-size="8.5" fill="#8a4baf">for_project</text>
+  <!-- B2 pixel -->
+  <rect x="470" y="140" width="150" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="545" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">B2 &#8220;plugged-in Pixel mid-log&#8221;</text>
+  <text x="545" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">device named in the utterance</text>
+  <!-- B3 -->
+  <rect x="680" y="140" width="150" height="34" rx="7" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="755" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">B3 &#8220;calibration stale&#8221;</text>
+  <text x="755" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">waits for a stranger (sub-problem B)</text>
+
+  <!-- left_by edges -->
+  <line x1="143" y1="51" x2="113" y2="108" stroke="#c9cfd8" stroke-width="1.2"/>
+  <line x1="162" y1="48" x2="300" y2="138" stroke="#c9cfd8" stroke-width="1.2"/>
+  <line x1="463" y1="52" x2="180" y2="115" stroke="#c9cfd8" stroke-width="1.2"/>
+  <line x1="478" y1="52" x2="535" y2="138" stroke="#c9cfd8" stroke-width="1.2"/>
+  <line x1="726" y1="52" x2="752" y2="138" stroke="#c9cfd8" stroke-width="1.2"/>
+  <text x="585" y="95" font-size="8.5" fill="#9aa3af">left_by</text>
+
+  <!-- anchored_to edges -->
+  <line x1="110" y1="204" x2="110" y2="238" stroke="#5b6472" stroke-width="1.5"/>
+  <line x1="325" y1="174" x2="325" y2="238" stroke="#5b6472" stroke-width="1.5"/>
+  <line x1="545" y1="174" x2="545" y2="238" stroke="#5b6472" stroke-width="1.5"/>
+  <line x1="755" y1="174" x2="755" y2="238" stroke="#5b6472" stroke-width="1.5"/>
+  <text x="245" y="225" font-size="8.5" fill="#5b6472">anchored_to</text>
+
+  <!-- places -->
+  <rect x="45" y="240" width="130" height="46" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="110" y="267" text-anchor="middle" font-size="10.5" fill="#5b6472">Place: 3D printer</text>
+  <rect x="260" y="240" width="130" height="46" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="325" y="267" text-anchor="middle" font-size="10.5" fill="#5b6472">Place: workbench spot</text>
+  <rect x="480" y="240" width="130" height="46" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="545" y="267" text-anchor="middle" font-size="10.5" fill="#5b6472">Place: device shelf</text>
+  <rect x="690" y="240" width="130" height="46" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="755" y="267" text-anchor="middle" font-size="10.5" fill="#5b6472">Place: mocap rig</text>
+
+  <text x="500" y="312" text-anchor="middle" font-size="10" fill="#5b6472">4 node types &#183; 5 edge types &#183; what an arriver sees on Friday = current notes only (A1 already collapsed under B1)</text>
+</svg>
+<figcaption>Figure draft 5 — the scenario week as a Memory Graph instance. The graph is small by design; the claim is what the five operations do to a week of accumulation.</figcaption>
+</figure>
 
 <!-- ============================================================ -->
-<h2 id="s2"><span class="no">2</span>Vocabulary — the labels used in this document</h2>
+<h2 id="s5"><span class="no">5</span>Interaction <span class="job">paper's job: the six moments of use, each earned by a scenario beat and measured by the study</span></h2>
 
-<h3>The four sub-problems ("facets")</h3>
-<p>The headline problem — <i>the room is the only witness across every shift, and it is mute</i> — decomposes into four concrete sub-problems. Each one names a victim and motivates one part of the system. A, B, C are failures of the mute room; <b>D is the failure Spatial Memory itself creates and must then solve</b> — that two-level shape is what justifies the Memory Graph rather than plain anchoring.</p>
 <table>
-  <tr><th>Label</th><th>Sub-problem</th><th>Victim</th><th>System answer</th></tr>
-  <tr><td class="k"><span class="badge bA">A · Capture</span></td><td>The person holding a judgment is mid-task; the messaging ceremony costs more than the message is worth to them, so it is never sent ("leaver-in-flow")</td><td>the next person who hits the hidden state</td><td>zero-ceremony anchored voice + auto-segmentation</td></tr>
-  <tr><td class="k"><span class="badge bB">B · Cross-project collision</span></td><td>One project's invisible change to a shared fixture harms a different project's user — the two share nothing but the object</td><td>a stranger at the same fixture</td><td>object memory that outlives projects; warnings crossing project lines</td></tr>
-  <tr><td class="k"><span class="badge bC">C · Context gap</span></td><td>A newcomer or returner has no access to the accumulated history of the room and the project</td><td>the person joining mid-stream</td><td>relevance triage, person trail, threads</td></tr>
-  <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes — <b>Spatial Memory's own failure mode</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence levels, dependency order</td></tr>
+  <tr><th>Moment</th><th>What the user does / sees</th><th>Beat</th><th>Feature</th><th>Study evidence</th></tr>
+  <tr><td class="k">1 · Speak in place</td><td>utter one sentence mid-task; hands never leave the work; no classification</td><td>A1 A2 B2 B3</td><td>① capture + ② segmentation</td><td>RQ1a externalization rate</td></tr>
+  <tr><td class="k">2 · Surface on approach</td><td>walking up to a place replays its current notes, at the anchor</td><td>B1 C1 C2 D2</td><td>③ surfacing</td><td>RQ2a traps avoided</td></tr>
+  <tr><td class="k">3 · Triage on arrival</td><td>"anything for me?" → few items, ordered, audience-filtered</td><td>D1 E1</td><td>⑥ triage</td><td>RQ2b triage time; T0</td></tr>
+  <tr><td class="k">4 · Follow a trail</td><td>replay one person's stations in order to catch up</td><td>D1</td><td>⑤ trail</td><td>qualitative (exit interview)</td></tr>
+  <tr><td class="k">5 · Supersede</td><td>say the update; the old note collapses; the place shows state</td><td>B1</td><td>④ versioning</td><td>RQ2c retrieval errors (stale-info)</td></tr>
+  <tr><td class="k">6 · Let go</td><td>ephemera expire unprompted; project notes die with the project</td><td>E1</td><td>⑦ persistence</td><td>RQ2c overload rating</td></tr>
 </table>
-
-<h3>Other labels</h3>
-<table>
-  <tr><th>Label</th><th>Meaning</th></tr>
-  <tr><td class="k"><span class="chip gate">G1 recipient</span> <span class="chip gate">G2 referent</span> <span class="chip gate">G3 moment</span></td><td>The three <b>Slack gates</b> (§3). Every scenario beat must show information that fails Slack on at least two of the three. They are the per-beat version of "why our system and not Slack."</td></tr>
-  <tr><td class="k"><span class="chip cam">CAM</span></td><td>The <b>camera gate</b>: the content is an authored human judgment, not an observable event — no camera could produce it. The load-bearing difference from AsyncReality, whose information (a coworker delivering an object) is visible to a room camera.</td></tr>
-  <tr><td class="k"><span class="badge bS">Slack concession</span></td><td>One scenario beat deliberately uses Slack <i>correctly</i> (known recipient, bounded message, no spatial referent). It shows the carve: <b>Slack owns episode-class messages; the room owns encounter-class observations.</b></td></tr>
-  <tr><td class="k">encounter-class / episode-class</td><td><b>Encounter-class</b>: low individual value, high cumulative value, useful only at a spatial referent, next reader unknown — priced out by channel tools. <b>Episode-class</b>: known recipient, bounded, composable — Slack is the right tool and we do not compete.</td></tr>
-  <tr><td class="k"><span class="chip obj">Object</span> <span class="chip proj">Project</span></td><td>The two memory types (§1).</td></tr>
-</table>
+<p class="sub">This table is also the alignment contract: a feature with no beat doesn't get built; an interaction with no study evidence gets qualitative treatment only. (`Sections/5-interaction.tex` currently has six phases — align it to these six moments during the rewrite.)</p>
 
 <!-- ============================================================ -->
-<h2 id="s3"><span class="no">3</span>Why not Slack — the three gates, the camera, and the channel</h2>
-
-<div class="gates">
-  <div class="gate-card"><div class="g">G1 · Recipient</div><div class="q">Is the next reader genuinely unknown at compose time?</div><p>Channels demand a named addressee → broadcast spams, DM guesses, or nothing gets sent.</p></div>
-  <div class="gate-card"><div class="g">G2 · Referent</div><div class="q">Does it point at a physical thing with an invisible property?</div><p>Lossy to describe in words, lossy to re-ground when read. "The 0.4 nozzle... on which printer?"</p></div>
-  <div class="gate-card"><div class="g">G3 · Moment</div><div class="q">Is it useful only when standing at the object?</div><p>Phone delivery lands placeless and mistimed — before it matters, away from where it matters.</p></div>
-</div>
-
-<p><b>The camera gate.</b> Even granting full room instrumentation: the valuable content is not an observable event but an authored judgment. A swapped nozzle, a stale-but-valid-looking calibration, a fragile joint — the scene looks identical either way. The judgment exists only in a person's head and must be spoken. This is the inversion of AsyncReality: their asymmetry is <i>receiver-cannot-perceive</i> (so room cameras suffice); ours is <i>author-will-not-pay-the-ceremony</i> (so the person must be the witness, and the worn device only removes the ceremony).</p>
-
-<p><b>The strongest opponent is not the DM — it is the per-fixture channel.</b> Real labs have #3dprinter and #mocap channels, and a channel does approximate G1: the channel is the machine's mailbox. What it cannot fix:</p>
-<table>
-  <tr><th>Failure</th><th>Why the channel loses</th></tr>
-  <tr><td class="k">Delivery (G3)</td><td>By the time the next person stands at the machine, the message is days deep in scrollback. Nobody re-reads a channel standing at the rig before pressing record.</td></tr>
-  <tr><td class="k">Log vs. state</td><td>A channel is a time-ordered log; the room needs <b>current state at a place</b>. "Is the recalibration still pending, or did someone already do it?" is scrollback archaeology on Slack — and one <i>supersedes</i> edge in the Memory Graph. The next person sees the current answer, not the history.</td></tr>
-  <tr><td class="k">Composition</td><td>Still requires phone-out, mid-pack-up, hands full of tripods.</td></tr>
-</table>
-
-<!-- ============================================================ -->
-<h2 id="s4"><span class="no">4</span>Scenario script</h2>
-<p class="sub">Narrative version — readable aloud. Cast: <b>Jesse</b> (senior; drone build; also records mocap ground-truth data for a separate wearable-sensing project), <b>Vasco</b> (study prototype; printer-heavy), <b>Mia</b> (a different team entirely; mocap user study), <b>Taeyoung</b> (joins the drone build mid-week).</p>
+<h2 id="s6"><span class="no">6</span>Scenario <span class="job">paper's job: one week, four sub-problems dramatized as near-misses with victims — never a feature tour</span></h2>
+<p class="sub">Cast: <b>Jesse</b> (senior; drone build; also records mocap ground-truth data for a separate wearable-sensing project), <b>Vasco</b> (study prototype; printer-heavy), <b>Mia</b> (a different team entirely; mocap user study), <b>Taeyoung</b> (joins the drone build mid-week).</p>
 
 <div class="script">
 <p class="scene">The lab</p>
@@ -391,9 +481,8 @@
 <p>Three sentences. First: these messages have no nameable recipient at the moment of writing. Second: they point at physical things whose critical property is invisible — describing it in words loses it, and the reader can't re-ground it. Third: they are useful only at the object, at the moment of encounter — on a phone they arrive in the wrong place at the wrong time. And the camera can't save you either, because what matters is not what happened but what a person <i>judged</i> — a swapped nozzle looks identical on video. The judgment must be spoken by the person who holds it. Our system's entire job is to make speaking it cost nothing, and to let the room carry it to whoever needs it next, where it happened.</p>
 </div>
 
-<!-- ============================================================ -->
-<h2 id="s5"><span class="no">5</span>Scenario flow — beat structure</h2>
-<p class="sub">Every beat is a <b>problem-and-near-miss with a victim</b>, never a feature demo. Chips show which Slack gates the information fails (= why it belongs to us) and the memory type. Dashed lines trace seed → payoff threads across days.</p>
+<h3>Beat structure — the construction view</h3>
+<p class="sub">Every beat is a <b>problem-and-near-miss with a victim</b>. Badges A–D = the four sub-problems (§1); <span class="chip gate">G1/G2/G3</span> = the Slack gates the information fails (§1); <span class="chip cam">CAM</span> = camera gate; <span class="chip obj">Object</span>/<span class="chip proj">Project</span> = memory type (§3). Dashed lines trace seed → payoff threads across days.</p>
 
 <!-- DAY 1 -->
 <div class="day">
@@ -458,7 +547,7 @@
       <div class="top"><span class="id">C2</span><span class="badge bA">A · shared devices</span><span class="chip obj">Object</span><span class="chip">device shelf</span></div>
       <div class="act"><span class="who">Jesse</span> reaches for a test phone; the shelf-zone anchor replays <span class="who">Vasco</span>'s Pixel note. He takes the other phone. The human names the device; the zone anchors the note.</div>
       <div class="meta"><span class="chip">victim averted: Vasco (2 days of data)</span><span class="chip cam">camera could stare forever and see nothing</span></div>
-      <div class="thread">← seeded by <b>B2</b> · discipline 1 made visible: the system never infers device state</div>
+      <div class="thread">← seeded by <b>B2</b> · discipline made visible: the system never infers device state</div>
     </div>
   </div>
 </div>
@@ -525,7 +614,7 @@
 <p class="sub">Reading the last column top-down is sub-problem D in miniature: supersession, resolution, expiry, persistence — structure deciding what a Friday arrival actually sees.</p>
 
 <!-- ============================================================ -->
-<h2 id="s6"><span class="no">6</span>System commitments</h2>
+<h2 id="s7"><span class="no">7</span>System <span class="job">paper's job: a simple, honest implementation — the vehicle for the demo video and the studies, no more</span></h2>
 <div class="twocol">
   <div class="panel ok">
     <h4>Committed by the beats — nothing speculative (build in this order)</h4>
@@ -534,7 +623,7 @@
       <li>③ Surfacing on approach to anchor — B1 C1 C2 D2 &nbsp;<b>(① + ③ = MVP; alone they demo the A1→B1 thread)</b></li>
       <li>② LLM auto-segmentation: one utterance → object + project cards — A2</li>
       <li>④ Supersede / versioning — B1 E1, and the log-vs-state argument</li>
-      <li>⑥ Relevance triage + audience filter + dependency order — D1 E1</li>
+      <li>⑥ Relevance triage + audience filter + ordering — D1 E1</li>
       <li>⑤ Project spine + trail replay — A2 D1</li>
       <li>⑦ Persistence levels (ephemera expire) — E1</li>
     </ul>
@@ -576,7 +665,7 @@
 
   <rect x="646" y="42" width="160" height="130" rx="10" fill="#f5edfa" stroke="#8a4baf"/>
   <text x="726" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8a4baf">Memory Graph</text>
-  <text x="726" y="90" text-anchor="middle" font-size="9" fill="#1a1d24">Note &#183; Zone &#183; Object</text>
+  <text x="726" y="90" text-anchor="middle" font-size="9" fill="#1a1d24">Note &#183; Place</text>
   <text x="726" y="104" text-anchor="middle" font-size="9" fill="#1a1d24">Person &#183; Project</text>
   <text x="726" y="126" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8a4baf">supersession = state</text>
   <text x="726" y="144" text-anchor="middle" font-size="9" fill="#5b6472">persistence levels &#183; audience</text>
@@ -584,7 +673,7 @@
   <rect x="848" y="72" width="134" height="64" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
   <text x="915" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Retrieval</text>
   <text x="915" y="111" text-anchor="middle" font-size="9" fill="#5b6472">notes_at &#183; for_me</text>
-  <text x="915" y="125" text-anchor="middle" font-size="9" fill="#5b6472">trail &#183; recent</text>
+  <text x="915" y="125" text-anchor="middle" font-size="9" fill="#5b6472">trail &#183; project_state</text>
 
   <line x1="225" y1="104" x2="266" y2="104" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah2)"/>
   <text x="246" y="94" text-anchor="middle" font-size="8.5" fill="#5b6472">utterance + pose</text>
@@ -599,11 +688,11 @@
 </figure>
 
 <!-- ============================================================ -->
-<h2 id="s7"><span class="no">7</span>Study plan</h2>
+<h2 id="s8"><span class="no">8</span>Evaluation <span class="job">paper's job: one chained pipeline answering three RQs, every number traceable to real in-flow speech</span></h2>
 
-<p><b>Goal.</b> One <b>chained empirical pipeline</b> that tests both halves of the Spatial Memory claim with real behavior and real data. Study 1 tests whether people <i>speak</i> when the ceremony is gone (the capture half, sub-problem A). Study 2 tests whether <i>structure</i> — not mere anchoring — makes the accumulated record usable (the structure half, sub-problem D). The chain: voice notes that real participants produce in Study 1 are structured by the real pipeline and become the room that Study 2 participants walk into; the same corpus serves as the technical-eval benchmark. <b>Every number in the paper traces back to words real participants spoke while working.</b></p>
+<p><b>Goal.</b> Study 1 tests whether people <i>speak</i> when the ceremony is gone (sub-problem A). Study 2 tests whether <i>structure</i> — not mere anchoring — makes the accumulated record usable (sub-problem D). The chain: voice notes that real participants produce in Study 1 are structured by the real pipeline and become the room that Study 2 participants walk into; the same corpus serves as the technical-eval benchmark.</p>
 
-<p><b>Cut by design: deployment.</b> No one wears today's headsets through real workdays. The premise that lightweight all-day glasses arrive is the paper's opening bet (industry trajectory), not the study's burden. The studies evaluate the <b>marginal-ceremony claim</b> — given you are already wearing the device, is speaking in place better than the channel? — which is the claim the paper actually makes.</p>
+<p><b>Cut by design: deployment.</b> No one wears today's headsets through real workdays. The premise that lightweight all-day glasses arrive is the paper's opening bet (industry trajectory), not the study's burden. The studies evaluate the <b>marginal-ceremony claim</b> — given you are already wearing the device, is speaking in place better than the channel?</p>
 
 <h3>Research questions</h3>
 <table>
@@ -689,9 +778,6 @@
   <tr><td class="k">Anchoring</td><td>repeated approach trials across sessions / relocalizations on Quest 3</td><td>surfacing reliability (%) · surfacing latency (ms)</td></tr>
 </table>
 
-<h3>What we deliberately do not claim</h3>
-<p>Long-term adoption, behavior change, privacy acceptability in the wild, cross-site generality. A lab study cannot show them; they are named in limitations as future work. Claiming them invites the kill.</p>
-
 <h3>Timeline (CHI 2027 deadline ≈ early Sep 2026)</h3>
 <table>
   <tr><th>When</th><th>What</th></tr>
@@ -701,7 +787,19 @@
 </table>
 
 <!-- ============================================================ -->
-<h2 id="s8"><span class="no">8</span>Open decisions</h2>
+<h2 id="s9"><span class="no">9</span>Discussion <span class="job">paper's job: name the portable concepts, be honest about limits — the ammunition list</span></h2>
+<table>
+  <tr><th>Thread</th><th>The argument to make</th></tr>
+  <tr><td class="k">Log vs. state</td><td>Generalize the channel critique: communication tools store time-ordered logs, but physical work needs current state at a place; supersession is the primitive that converts one into the other. Portable beyond AR.</td></tr>
+  <tr><td class="k">Camera as locator</td><td>The privacy stance as a design position: today's 6DoF needs cameras, but the system uses them only for pose — no content, no recognition, no inference. When camera-less positioning matures, the paradigm transfers unchanged.</td></tr>
+  <tr><td class="k">Encounter-class information</td><td>The portable distinction: a class of workplace information priced out by every channel tool. Future systems (proactive agents, ambient capture) can be positioned by which class they serve.</td></tr>
+  <tr><td class="k">Generality</td><td>One paragraph claiming the class of place: shift-based clinics, commercial kitchens, theater shops, makerspaces, field stations — anywhere work is physical, shared, and time-sliced.</td></tr>
+  <tr><td class="k">Limitations (honest)</td><td>Quest as form-factor proxy; no longitudinal deployment (and why: marginal-ceremony claim); single room; novelty effects in Study 1 (and the exit-question guard); wizarded capture in Study 1 (and why it's valid: RQ1 is about human behavior, RQ3 covers the pipeline).</td></tr>
+  <tr><td class="k">Future work</td><td>Camera-less 6DoF; multi-room and campus scale; cross-site federation; capture mechanics beyond voice.</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s10"><span class="no">10</span>Open decisions</h2>
 <table>
   <tr><th></th><th>Decision</th><th>Leaning</th></tr>
   <tr><td class="k">1</td><td>Graph name: <b>Memory Graph</b> vs Continuity Graph</td><td>Memory Graph — concept is Spatial Memory, mechanism is the Memory Graph, one vocabulary family; "Continuity" doesn't self-describe and rhymes derivatively with AsyncReality's Causality Graph</td></tr>
@@ -712,7 +810,7 @@
   <tr><td class="k">6</td><td>Study parameters</td><td>Final N per study · recruitment pool (lab/makerspace-experienced outsiders; labmates pilot only) · IRB timing · task variant B contents</td></tr>
 </table>
 
-<p class="foot">Spatial Memory design document v1.1 (chained two-study plan; deployment cut) · 2026-06-10 · supersedes <code>scenario_flow.html</code> as the single reference; beat-level sources in <code>scenario_architecture_v1.md</code>, study detail in <code>concept_lock_and_eval_proposal_v1.md</code>. Discipline: every beat is a near-miss with a victim · every memory is a deliberate utterance · every beat passes the Slack gates + camera gate.</p>
+<p class="foot">Spatial Memory design document v2 (paper-skeleton layout; simplified Memory Graph: 4 nodes · 5 edges · 4 queries · 5 operations; new §5 alignment table, §9 ammunition list) · 2026-06-11 · beat-level sources in <code>scenario_architecture_v1.md</code>, study detail in <code>concept_lock_and_eval_proposal_v1.md</code>. Discipline: every beat is a near-miss with a victim · every memory is a deliberate utterance · every beat passes the Slack gates + camera gate.</p>
 
 </div>
 </body>
