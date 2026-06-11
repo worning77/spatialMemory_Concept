@@ -431,46 +431,52 @@
 <!-- ============================================================ -->
 <h2 id="s7"><span class="no">7</span>Study plan</h2>
 
-<p>The evaluation must test the paper's <b>claims</b>, not likability. The design mirrors the two halves of the tension: the capture half (sub-problem A) and the structure half (sub-problem D).</p>
+<p><b>Goal.</b> One <b>chained empirical pipeline</b> that tests both halves of the Spatial Memory claim with real behavior and real data. Study 1 tests whether people <i>speak</i> when the ceremony is gone (the capture half, sub-problem A). Study 2 tests whether <i>structure</i> — not mere anchoring — makes the accumulated record usable (the structure half, sub-problem D). The chain: voice notes that real participants produce in Study 1 are structured by the real pipeline and become the room that Study 2 participants walk into; the same corpus serves as the technical-eval benchmark. <b>Every number in the paper traces back to words real participants spoke while working.</b></p>
 
-<h3>Claims → evidence</h3>
+<p><b>Cut by design: deployment.</b> No one wears today's headsets through real workdays. The premise that lightweight all-day glasses arrive is the paper's opening bet (industry trajectory), not the study's burden. The studies evaluate the <b>marginal-ceremony claim</b> — given you are already wearing the device, is speaking in place better than the channel? — which is the claim the paper actually makes.</p>
+
+<h3>Research questions</h3>
 <table>
-  <tr><th>#</th><th>Claim</th><th>Evidence</th></tr>
-  <tr><td class="k">1</td><td><b>Capture:</b> zero-ceremony anchored voice externalizes encounter-class information that channel tools suppress, without breaking task flow</td><td>User study, Phase A</td></tr>
-  <tr><td class="k">2</td><td><b>Structure:</b> under realistic accumulation, graph-structured surfacing beats raw anchoring and channel scrollback for the arriving collaborator</td><td>User study, Phase B</td></tr>
-  <tr><td class="k">3</td><td><b>Mechanism:</b> LLM auto-segmentation files one utterance into correct object/project cards, audience, and supersession</td><td>Technical evaluation (no participants)</td></tr>
+  <tr><th>RQ</th><th>Question</th><th>Measures</th></tr>
+  <tr><td class="k">RQ1 · capture</td><td>Does zero-ceremony anchored voice increase in-flow externalization of encounter-class observations, relative to current practice (phone + Slack)?</td><td>RQ1a externalization rate · RQ1b flow cost (time-off-task, NASA-TLX) · RQ1c usefulness of recorded notes (blinded rating)</td></tr>
+  <tr><td class="k">RQ2 · structure</td><td>Under a week's accumulation, does the Memory Graph improve the arriver's performance over raw anchoring?</td><td>RQ2a traps avoided · RQ2b time-to-relevant / triage time · RQ2c overload, retrieval errors</td></tr>
+  <tr><td class="k">RQ3 · mechanism</td><td>Does the pipeline correctly structure real in-flow utterances?</td><td>object/project filing % · audience % · supersession detection % · latency · anchor surfacing reliability</td></tr>
 </table>
 
-<h3>User study — two-phase, within-subject, N = 12–16, one 60–75 min session each</h3>
-<div class="twocol">
-  <div class="panel blue">
-    <h4>Phase A — the Leaver (claim 1)</h4>
-    <ul>
-      <li><b>Task:</b> hands-busy assembly with 6–8 planted "judgment moments" (nozzle-class: invisible state, unknown next user)</li>
-      <li><b>Conditions:</b> SM voice capture vs. phone + Slack channel (counterbalanced, matched task variants)</li>
-      <li><b>Measures:</b> externalization rate (how many judgments actually get recorded — the leaver-in-flow claim, quantified) · time-off-task per note · NASA-TLX · blinded usefulness rating of the notes produced</li>
-    </ul>
-  </div>
-  <div class="panel purple">
-    <h4>Phase B — the Arriver (claim 2)</h4>
-    <ul>
-      <li><b>Setup:</b> room pre-seeded with the scenario week's notes, including 3 planted traps (wrong nozzle, stale calibration, logging phone)</li>
-      <li><b>Conditions:</b> SM-full vs. <b>anchored-only</b> (all notes raw in place, no graph — the ablation) vs. Slack-channel scrollback (the "what users do today" baseline)</li>
-      <li><b>Measures:</b> traps avoided (/3) · time-to-first-relevant-note · triage time · overload rating · retrieval errors</li>
-    </ul>
-  </div>
-</div>
-<p><b>The anchored-only ablation is the most important condition in the paper.</b> It isolates the Memory Graph's value — the empirical version of "the record must be structured, not merely anchored" — and is the kill-shot for the "sticky notes in AR" critique.</p>
+<h3>The chain</h3>
+<p>Study 1 utterances (real, recorded + located) → real LLM segmentation, run offline (<b>RQ3 is measured here, on this corpus</b>) → a curated <b>frozen seed set</b>: one representative real note per trap, plus experimenter-authored fillers to complete the week (other projects, a cross-team rig note) → identical pre-seeded rooms for every Study 2 participant. <b>No live relay</b> — if each arriver consumed a different leaver's notes, no two participants would face the same room and conditions would not compare. Collect first, curate once, freeze. Reported honestly: "seed notes were drawn from Study 1 participants' recordings, supplemented by researcher-authored notes to constitute a full week."</p>
 
-<h3>Technical evaluation (separate)</h3>
+<h3>Study 1 — the Leaver (RQ1) · N ≈ 10 · ~40 min</h3>
+<p><b>Cover story:</b> "You're the morning shift; someone you don't know takes over this station this afternoon. Do the job; handle anything you notice however you normally would." Recording is <b>never mentioned</b> — it stays optional and costly, exactly like life. <b>Both conditions wear the headset</b> (passthrough), so device burden is constant and the only variable is the capture channel: <b>SM</b> (speak in place; wizarded — audio + location genuinely recorded, no live pipeline) vs. <b>Slack</b> (phone in pocket, lab channels available). Within-subject, two matched task variants, counterbalanced.</p>
+<p><b>Task (variant A — "sensor-mount kit," ~30 min, mild time pressure):</b> collect a draft print → assemble the bracket → solder a connector → stage a logging phone for a 48-hour test. Variant B mirrors it (enclosure kit). Six planted encounters per variant — three <i>caused</i> by the participant, three <i>discovered</i>:</p>
+<table>
+  <tr><th>#</th><th>Encounter</th><th>Type</th><th>Feeds Study 2</th></tr>
+  <tr><td class="k">E1</td><td>Job card says draft quality; the faster 0.6 nozzle is available — participant swaps it in</td><td>caused</td><td><b>Trap T1</b></td></tr>
+  <tr><td class="k">E2</td><td>One bracket in the parts batch has a hairline crack</td><td>discovered</td><td><b>Trap T2</b></td></tr>
+  <tr><td class="k">E3</td><td>Participant starts a 48-h logging run on a shelf phone, screen off</td><td>caused</td><td><b>Trap T3</b></td></tr>
+  <tr><td class="k">E4</td><td>Filament roll feels tacky (moisture)</td><td>discovered</td><td>filler note</td></tr>
+  <tr><td class="k">E5</td><td>Flux bottle nearly empty</td><td>discovered</td><td>filler</td></tr>
+  <tr><td class="k">E6</td><td>Hex bit in the tool tray is stripped</td><td>discovered</td><td>filler</td></tr>
+</table>
+<p><b>Post-task</b> manipulation-check interview ("walk me through what you noticed") separates <i>didn't notice</i> from <i>noticed but didn't record</i> — only the latter is the phenomenon. Exit question guards novelty inflation: "in your own lab, would you still have said these?"</p>
+
+<h3>Study 2 — the Arriver (RQ2) · N = 12–16 · ~50 min · Quest 3</h3>
+<p><b>Cover story:</b> "You're the afternoon shift, new to this project. Get up to speed, then complete three jobs." Conditions, within-subject on two matched rooms ("Week A" / "Week B," counterbalanced): <b>SM-full</b> (graph on — triage, supersession, audience filter, trail) vs. <b>anchored-only</b> (same notes, raw in place: stale nozzle note hangs beside the new one, no filter, no expiry, no triage — <b>the ablation</b>). ~35–40 notes per room, including superseded pairs and notes addressed to others, so structure has real work to do. <b>Slack is not a Study 2 condition:</b> it was the baseline on the capture side; Study 2 isolates the structure claim, and two conditions keep matched-room preparation feasible.</p>
+<table>
+  <tr><th>#</th><th>Task</th><th>Trap</th></tr>
+  <tr><td class="k">T0</td><td>"Anything you need to know before starting?"</td><td>— (measures triage time, relevant items found)</td></tr>
+  <tr><td class="k">T1</td><td>Print a fine calibration plate</td><td>nozzle is still 0.6 — does the participant check/swap before printing?</td></tr>
+  <tr><td class="k">T2</td><td>Finish the second mount from the staged parts</td><td>the cracked bracket</td></tr>
+  <tr><td class="k">T3</td><td>Run the sensor test app on a shelf phone</td><td>the logging Pixel</td></tr>
+</table>
+<p><b>The anchored-only ablation is the most important condition in the paper.</b> The two conditions differ in exactly one thing — structure — so any difference is attributable to the Memory Graph. It is the empirical form of "the record must be structured and navigable, not merely anchored," and the data that kills "sticky notes in AR."</p>
+
+<h3>Technical evaluation (RQ3, no participants)</h3>
 <table>
   <tr><th>Benchmark</th><th>Method</th><th>Numbers reported</th></tr>
-  <tr><td class="k">Segmentation</td><td>80–120 utterances (team-authored + pilot-harvested), gold labels</td><td>% correct object/project filing · audience assignment · supersession detection · capture-to-card latency</td></tr>
-  <tr><td class="k">Anchoring</td><td>Repeated approach trials across sessions / relocalizations on Quest 3</td><td>surfacing reliability (%) · surfacing latency (ms)</td></tr>
+  <tr><td class="k">Segmentation</td><td>the full Study 1 corpus (+ pilot recordings), gold labels</td><td>% correct object/project filing · audience assignment · supersession detection · capture-to-card latency</td></tr>
+  <tr><td class="k">Anchoring</td><td>repeated approach trials across sessions / relocalizations on Quest 3</td><td>surfacing reliability (%) · surfacing latency (ms)</td></tr>
 </table>
-
-<h3>Optional stretch — self-deployment</h3>
-<p>1–2 weeks of real use in our own lab by the authors; report notes/day, type distribution, harvested examples. Bonus: produces the honest Friday note-count for the scenario and the seeding script for Phase B. Only if the prototype is stable by August.</p>
 
 <h3>What we deliberately do not claim</h3>
 <p>Long-term adoption, behavior change, privacy acceptability in the wild, cross-site generality. A lab study cannot show them; they are named in limitations as future work. Claiming them invites the kill.</p>
@@ -478,8 +484,8 @@
 <h3>Timeline (CHI 2027 deadline ≈ early Sep 2026)</h3>
 <table>
   <tr><th>When</th><th>What</th></tr>
-  <tr><td class="k">July</td><td>MVP (capture ① + surfacing ③) → Phase-A pilot (3–4 people) · IRB if required</td></tr>
-  <tr><td class="k">August</td><td>Segmentation ② + supersede ④ + triage ⑥ → full study runs + technical eval</td></tr>
+  <tr><td class="k">July</td><td>Prototype MVP (capture ① + surfacing ③) · Study 1 incl. pilot · IRB if required</td></tr>
+  <tr><td class="k">August</td><td>Corpus → segmentation ② (RQ3) → seed rooms · supersede ④ + triage ⑥ · Study 2 runs</td></tr>
   <tr><td class="k">Early Sep</td><td>Findings into the already-drafted sections · figures · polish</td></tr>
 </table>
 
@@ -488,14 +494,14 @@
 <table>
   <tr><th></th><th>Decision</th><th>Leaning</th></tr>
   <tr><td class="k">1</td><td>Graph name: <b>Memory Graph</b> vs Continuity Graph</td><td>Memory Graph — concept is Spatial Memory, mechanism is the Memory Graph, one vocabulary family; "Continuity" doesn't self-describe and rhymes derivatively with AsyncReality's Causality Graph</td></tr>
-  <tr><td class="k">2</td><td>Honest Friday note-count</td><td>Count what the week's beats imply (or take it from the self-deployment); pick a defensible number</td></tr>
+  <tr><td class="k">2</td><td>Honest Friday note-count</td><td>Set by the Study-2 seed-set build (~35–40); scenario prose uses the same number</td></tr>
   <tr><td class="k">3</td><td>Cold open framing</td><td>Same people, explicitly the <i>previous</i> week</td></tr>
   <tr><td class="k">4</td><td>"Why both memory types" placement</td><td>Closing scenario subsection vs. folded into the Friday beat</td></tr>
-  <tr><td class="k">5</td><td>Capture mechanics</td><td>Always-listening vs. wake-word vs. single gesture — the one design choice the scenario doesn't pin down; decides the privacy story</td></tr>
-  <tr><td class="k">6</td><td>Study parameters</td><td>Final N · recruitment pool (lab-experienced) · self-deployment yes/no</td></tr>
+  <tr><td class="k">5</td><td>Capture mechanics</td><td>Always-listening vs. wake-word vs. single gesture — the one design choice the scenario doesn't pin down; decides the privacy story and the Study-1 wizard protocol</td></tr>
+  <tr><td class="k">6</td><td>Study parameters</td><td>Final N per study · recruitment pool (lab/makerspace-experienced outsiders; labmates pilot only) · IRB timing · task variant B contents</td></tr>
 </table>
 
-<p class="foot">Spatial Memory design document v1 · 2026-06-10 · supersedes <code>scenario_flow.html</code> as the single reference; beat-level sources in <code>scenario_architecture_v1.md</code>, study detail in <code>concept_lock_and_eval_proposal_v1.md</code>. Discipline: every beat is a near-miss with a victim · every memory is a deliberate utterance · every beat passes the Slack gates + camera gate.</p>
+<p class="foot">Spatial Memory design document v1.1 (chained two-study plan; deployment cut) · 2026-06-10 · supersedes <code>scenario_flow.html</code> as the single reference; beat-level sources in <code>scenario_architecture_v1.md</code>, study detail in <code>concept_lock_and_eval_proposal_v1.md</code>. Discipline: every beat is a near-miss with a victim · every memory is a deliberate utterance · every beat passes the Slack gates + camera gate.</p>
 
 </div>
 </body>
