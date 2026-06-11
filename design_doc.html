@@ -113,6 +113,10 @@
   .panel.purple{border-top:3px solid var(--fB)}
 
   .foot{color:var(--muted); font-size:12.5px; margin-top:40px; border-top:1px solid var(--line); padding-top:12px}
+  figure{margin:16px 0 18px; background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 16px 10px}
+  figure svg{width:100%; height:auto; display:block}
+  figure svg text{font-family:inherit}
+  figcaption{font-size:12.5px; color:var(--muted); text-align:center; margin-top:6px}
   @media (max-width:760px){ .day{grid-template-columns:64px 1fr} .gates,.twocol{grid-template-columns:1fr} }
 </style>
 </head>
@@ -146,6 +150,81 @@
 
 <p><b>Reframe.</b> Keep the irreducible part (the human authors the content) and delete the removable part (the channel ceremony: naming a recipient, describing the referent, switching out of task). The person witnesses; the worn device silently captures what they chose to say; the room is the medium that carries it forward — anchored, structured, and navigable.</p>
 
+<figure>
+<svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker>
+    <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f5fbf"/></marker>
+  </defs>
+  <text x="160" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5fbf">MONDAY — THE LEAVER, IN FLOW</text>
+  <text x="500" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#8a4baf">THE ROOM REMEMBERS — STRUCTURED</text>
+  <text x="845" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#2f7d4f">WEDNESDAY — THE ARRIVER</text>
+
+  <!-- Panel A: leaver -->
+  <rect x="45" y="155" width="95" height="85" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="92" y="231" text-anchor="middle" font-size="10" fill="#5b6472">3D printer</text>
+  <circle cx="92" cy="124" r="8" fill="#1f5fbf"/><path d="M85 128 L92 146 L99 128 z" fill="#1f5fbf"/>
+  <circle cx="196" cy="120" r="13" fill="#1f5fbf"/>
+  <path d="M196 133 V178 M196 148 L162 168 M196 148 L224 164 M196 178 L180 208 M196 178 L212 208" stroke="#1a1d24" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <rect x="120" y="42" width="225" height="48" rx="10" fill="#eef4fd" stroke="#1f5fbf"/>
+  <path d="M205 90 l-6 14 l16 -14 z" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="232" y="62" text-anchor="middle" font-size="11" font-style="italic" fill="#1a1d24">&#8220;0.6 nozzle in &#8212; swap back</text>
+  <text x="232" y="78" text-anchor="middle" font-size="11" font-style="italic" fill="#1a1d24">before anything fine.&#8221;</text>
+  <path d="M150 92 C 120 105, 102 110, 96 116" stroke="#1f5fbf" stroke-dasharray="4 3" fill="none" marker-end="url(#ahb)"/>
+  <text x="160" y="262" text-anchor="middle" font-size="10.5" fill="#5b6472">speaks once &#183; no app &#183; no recipient &#183; hands never leave the work</text>
+
+  <line x1="310" y1="170" x2="348" y2="170" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="329" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">zero ceremony</text>
+
+  <!-- Panel B: the room, structured -->
+  <rect x="368" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="407" y="212" text-anchor="middle" font-size="10" fill="#5b6472">printer</text>
+  <rect x="462" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="501" y="212" text-anchor="middle" font-size="10" fill="#5b6472">workbench</text>
+  <rect x="556" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="595" y="212" text-anchor="middle" font-size="10" fill="#5b6472">test bench</text>
+
+  <rect x="372" y="128" width="70" height="18" rx="5" fill="#fafbfc" stroke="#c9dcf6"/>
+  <text x="407" y="141" text-anchor="middle" font-size="9.5" fill="#9aa3af" text-decoration="line-through">0.6 in</text>
+  <rect x="372" y="96" width="70" height="18" rx="5" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="407" y="109" text-anchor="middle" font-size="9.5" fill="#1f5fbf">0.4 back &#10003;</text>
+  <line x1="407" y1="114" x2="407" y2="126" stroke="#8a4baf" stroke-width="1.5" marker-end="url(#ah)"/>
+  <text x="452" y="122" font-size="8.5" fill="#8a4baf">supersedes</text>
+
+  <text x="548" y="86" text-anchor="middle" font-size="9" fill="#8a4baf" font-weight="700">Drone build &#8212; project memory</text>
+  <rect x="466" y="96" width="70" height="18" rx="5" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="501" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">joint fragile</text>
+  <rect x="560" y="96" width="70" height="18" rx="5" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="595" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">joint fragile</text>
+  <line x1="536" y1="105" x2="560" y2="105" stroke="#8a4baf" stroke-dasharray="3 3"/>
+  <line x1="407" y1="146" x2="407" y2="164" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+  <line x1="501" y1="114" x2="501" y2="164" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+  <line x1="595" y1="114" x2="595" y2="164" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+  <text x="500" y="262" text-anchor="middle" font-size="10.5" fill="#5b6472">Memory Graph: anchored_to &#183; left_by &#183; directed_to &#183; for_project &#183; supersedes</text>
+
+  <line x1="660" y1="170" x2="698" y2="170" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="679" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">at encounter</text>
+
+  <!-- Panel C: arriver -->
+  <rect x="872" y="155" width="95" height="85" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
+  <text x="919" y="231" text-anchor="middle" font-size="10" fill="#5b6472">3D printer</text>
+  <circle cx="919" cy="124" r="8" fill="#1f5fbf"/><path d="M912 128 L919 146 L926 128 z" fill="#1f5fbf"/>
+  <circle cx="765" cy="120" r="13" fill="#2f7d4f"/>
+  <path d="M765 133 V178 M765 148 L797 162 M765 148 L740 168 M765 178 L745 208 M765 178 L792 204" stroke="#1a1d24" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <rect x="718" y="42" width="244" height="50" rx="8" fill="#ffffff" stroke="#1f5fbf" stroke-width="1.5"/>
+  <text x="840" y="62" text-anchor="middle" font-size="10.5" fill="#1a1d24">&#9888; &#8220;0.6 nozzle in &#8212; swap back before anything</text>
+  <text x="840" y="78" text-anchor="middle" font-size="10.5" fill="#1a1d24">fine.&#8221; &#8212; Jesse &#183; Mon &#183; current state</text>
+  <path d="M919 146 C 919 120, 900 105, 882 96" stroke="#1f5fbf" stroke-dasharray="4 3" fill="none" marker-end="url(#ahb)"/>
+  <text x="845" y="262" text-anchor="middle" font-size="10.5" fill="#5b6472">right place &#183; right moment &#183; superseded notes collapsed</text>
+
+  <line x1="60" y1="300" x2="940" y2="300" stroke="#c9cfd8" stroke-width="2" marker-end="url(#ah)"/>
+  <text x="92" y="322" text-anchor="middle" font-size="10.5" fill="#5b6472">Monday</text>
+  <text x="500" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1d24">same place &#8212; different time</text>
+  <text x="900" y="322" text-anchor="middle" font-size="10.5" fill="#5b6472">Wednesday</text>
+</svg>
+<figcaption>Figure draft 1 (paper concept figure) — speak in flow at zero ceremony → the room remembers, structured → surfaced at the moment of encounter.</figcaption>
+</figure>
+
 <h3>The four properties</h3>
 <table>
   <tr><th>Property</th><th>Meaning</th></tr>
@@ -163,6 +242,51 @@
   <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many anchors</td><td>nothing — lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
 </table>
 <p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person — like time — is a <b>traversal dimension over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i> are queries. Person appears in three roles, all as edges: <b>author</b> (left_by), <b>audience</b> (directed_to), <b>subject</b> (about). This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
+
+<figure>
+<svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img">
+  <!-- project band -->
+  <rect x="165" y="56" width="270" height="26" rx="13" fill="#8a4baf" fill-opacity="0.10" stroke="#8a4baf" stroke-dasharray="5 4"/>
+  <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: Drone build &#8212; one warning, every station</text>
+  <line x1="230" y1="82" x2="230" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
+  <line x1="370" y1="82" x2="370" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
+
+  <!-- object chips -->
+  <rect x="35" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="90" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">nozzle 0.6 &#8594; 0.4</text>
+  <line x1="90" y1="132" x2="90" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+  <rect x="455" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="510" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">Pixel mid-log</text>
+  <line x1="510" y1="132" x2="510" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+  <rect x="595" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="650" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">calibration stale</text>
+  <line x1="650" y1="132" x2="650" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
+
+  <!-- zones -->
+  <rect x="30" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="90" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">3D printer</text>
+  <rect x="170" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="230" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Workbench</text>
+  <rect x="310" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="370" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Soldering / test</text>
+  <rect x="450" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="510" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Device shelf</text>
+  <rect x="590" y="150" width="120" height="56" rx="8" fill="#fafbfc" stroke="#e2e6ec"/>
+  <text x="650" y="182" text-anchor="middle" font-size="10.5" fill="#5b6472">Mocap rig</text>
+  <text x="370" y="228" text-anchor="middle" font-size="10" fill="#5b6472">Object memory (blue) anchors to a zone and outlives projects &#183; project memory (purple) spans zones and dies with the project</text>
+
+  <!-- traversal panel -->
+  <rect x="750" y="56" width="230" height="150" rx="10" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="865" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Person &amp; time = traversals, not types</text>
+  <rect x="766" y="94" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) &#8212; &#8220;what did Jesse do?&#8221;</text>
+  <rect x="766" y="126" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="865" y="142" text-anchor="middle" font-size="10" fill="#2f7d4f">for_me(P) &#8212; &#8220;anything for me?&#8221;</text>
+  <rect x="766" y="158" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="865" y="174" text-anchor="middle" font-size="10" fill="#2f7d4f">recent(T) &#8212; &#8220;since yesterday?&#8221;</text>
+</svg>
+<figcaption>Figure draft 2 — two memory types over one room; person and time are queries over the graph, not storage types.</figcaption>
+</figure>
 
 <h3>The Memory Graph</h3>
 <table>
@@ -428,6 +552,52 @@
 </div>
 <p>Platform: <b>Meta Quest 3 / 3S</b> as a functional proxy for future lightweight AR glasses (shared spatial anchors, mic, passthrough). Voice → on-device/edge STT → LLM segmentation → Memory Graph → surfacing client.</p>
 
+<figure>
+<svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker>
+    <marker id="ahb2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f5fbf"/></marker>
+  </defs>
+  <rect x="18" y="42" width="205" height="130" rx="10" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="120" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1f5fbf">Headset client &#8212; Quest 3</text>
+  <text x="34" y="90" font-size="10" fill="#1a1d24">&#8226; mic &#8212; voice capture</text>
+  <text x="34" y="110" font-size="10" fill="#1a1d24">&#8226; SLAM &#8212; zone anchors (pose only)</text>
+  <text x="34" y="130" font-size="10" fill="#1a1d24">&#8226; passthrough UI &#8212; cards</text>
+  <text x="120" y="158" text-anchor="middle" font-size="9" font-style="italic" fill="#5b6472">no camera content &#183; no object recognition</text>
+
+  <rect x="268" y="72" width="118" height="64" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="327" y="100" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">STT</text>
+  <text x="327" y="118" text-anchor="middle" font-size="9.5" fill="#5b6472">Whisper</text>
+
+  <rect x="430" y="72" width="172" height="64" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="516" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">LLM segmentation</text>
+  <text x="516" y="111" text-anchor="middle" font-size="9" fill="#5b6472">object + project cards</text>
+  <text x="516" y="125" text-anchor="middle" font-size="9" fill="#5b6472">audience &#183; supersedes?</text>
+
+  <rect x="646" y="42" width="160" height="130" rx="10" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="726" y="66" text-anchor="middle" font-size="11.5" font-weight="700" fill="#8a4baf">Memory Graph</text>
+  <text x="726" y="90" text-anchor="middle" font-size="9" fill="#1a1d24">Note &#183; Zone &#183; Object</text>
+  <text x="726" y="104" text-anchor="middle" font-size="9" fill="#1a1d24">Person &#183; Project</text>
+  <text x="726" y="126" text-anchor="middle" font-size="9.5" font-weight="600" fill="#8a4baf">supersession = state</text>
+  <text x="726" y="144" text-anchor="middle" font-size="9" fill="#5b6472">persistence levels &#183; audience</text>
+
+  <rect x="848" y="72" width="134" height="64" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="915" y="94" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Retrieval</text>
+  <text x="915" y="111" text-anchor="middle" font-size="9" fill="#5b6472">notes_at &#183; for_me</text>
+  <text x="915" y="125" text-anchor="middle" font-size="9" fill="#5b6472">trail &#183; recent</text>
+
+  <line x1="225" y1="104" x2="266" y2="104" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah2)"/>
+  <text x="246" y="94" text-anchor="middle" font-size="8.5" fill="#5b6472">utterance + pose</text>
+  <line x1="388" y1="104" x2="428" y2="104" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah2)"/>
+  <line x1="604" y1="104" x2="644" y2="104" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah2)"/>
+  <text x="624" y="94" text-anchor="middle" font-size="8.5" fill="#5b6472">cards</text>
+  <line x1="808" y1="104" x2="846" y2="104" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah2)"/>
+  <path d="M915 138 C 915 212, 130 212, 121 176" stroke="#1f5fbf" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#ahb2)"/>
+  <text x="515" y="200" text-anchor="middle" font-size="10" fill="#1f5fbf">surfacing on approach &#8212; cards back to the headset, at the anchor, current state only</text>
+</svg>
+<figcaption>Figure draft 3 — system architecture: capture &#8594; structure &#8594; surface. The camera is a locator, never a recorder.</figcaption>
+</figure>
+
 <!-- ============================================================ -->
 <h2 id="s7"><span class="no">7</span>Study plan</h2>
 
@@ -445,6 +615,47 @@
 
 <h3>The chain</h3>
 <p>Study 1 utterances (real, recorded + located) → real LLM segmentation, run offline (<b>RQ3 is measured here, on this corpus</b>) → a curated <b>frozen seed set</b>: one representative real note per trap, plus experimenter-authored fillers to complete the week (other projects, a cross-team rig note) → identical pre-seeded rooms for every Study 2 participant. <b>No live relay</b> — if each arriver consumed a different leaver's notes, no two participants would face the same room and conditions would not compare. Collect first, curate once, freeze. Reported honestly: "seed notes were drawn from Study 1 participants' recordings, supplemented by researcher-authored notes to constitute a full week."</p>
+
+<figure>
+<svg viewBox="0 0 1000 130" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs>
+    <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker>
+  </defs>
+  <rect x="10" y="28" width="142" height="70" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="81" y="50" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">Study 1 &#8212; Leavers</text>
+  <text x="81" y="67" text-anchor="middle" font-size="9" fill="#1a1d24">N&#8776;10 &#183; E1&#8211;E6</text>
+  <text x="81" y="82" text-anchor="middle" font-size="9" fill="#5b6472">speak in flow (wizarded)</text>
+
+  <rect x="172" y="28" width="142" height="70" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="243" y="54" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a1d24">Real utterance corpus</text>
+  <text x="243" y="72" text-anchor="middle" font-size="9" fill="#5b6472">recorded + located</text>
+
+  <rect x="334" y="28" width="142" height="70" rx="9" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="405" y="54" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a4baf">LLM segmentation</text>
+  <text x="405" y="72" text-anchor="middle" font-size="9" fill="#8a4baf">RQ3 measured here</text>
+
+  <rect x="496" y="28" width="142" height="70" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="567" y="54" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a1d24">Frozen seed set</text>
+  <text x="567" y="72" text-anchor="middle" font-size="9" fill="#5b6472">+ scripted fillers &#183; no live relay</text>
+
+  <rect x="658" y="28" width="142" height="70" rx="9" fill="#ffffff" stroke="#e2e6ec"/>
+  <text x="729" y="54" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1a1d24">Rooms: Week A / B</text>
+  <text x="729" y="72" text-anchor="middle" font-size="9" fill="#5b6472">~35&#8211;40 notes &#183; 3 traps</text>
+
+  <rect x="820" y="28" width="168" height="70" rx="9" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="904" y="48" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 2 &#8212; Arrivers</text>
+  <text x="904" y="65" text-anchor="middle" font-size="9" fill="#1a1d24">N=12&#8211;16 &#183; T0&#8211;T3</text>
+  <text x="904" y="82" text-anchor="middle" font-size="9" fill="#5b6472">SM-full vs anchored-only</text>
+
+  <line x1="152" y1="63" x2="170" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
+  <line x1="314" y1="63" x2="332" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
+  <line x1="476" y1="63" x2="494" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
+  <line x1="638" y1="63" x2="656" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
+  <line x1="800" y1="63" x2="818" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
+  <text x="500" y="120" text-anchor="middle" font-size="10" fill="#5b6472">every number in the paper traces back to words real participants spoke while working</text>
+</svg>
+<figcaption>Figure draft 4 — the chained evaluation pipeline.</figcaption>
+</figure>
 
 <h3>Study 1 — the Leaver (RQ1) · N ≈ 10 · ~40 min</h3>
 <p><b>Cover story:</b> "You're the morning shift; someone you don't know takes over this station this afternoon. Do the job; handle anything you notice however you normally would." Recording is <b>never mentioned</b> — it stays optional and costly, exactly like life. <b>Both conditions wear the headset</b> (passthrough), so device burden is constant and the only variable is the capture channel: <b>SM</b> (speak in place; wizarded — audio + location genuinely recorded, no live pipeline) vs. <b>Slack</b> (phone in pocket, lab channels available). Within-subject, two matched task variants, counterbalanced.</p>
