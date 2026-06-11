@@ -1,11 +1,13 @@
 # spatialMemory_Concept
 
-Concept canvas for **Spatial Memory** — a room-scale AI memory manager for shared physical workspaces.
+Concept canvas for **Spatial Memory** — navigable asynchronous communication for shared physical workspaces.
 
-[`scenario_7day.html`](./scenario_7day.html) — 7-day wearable-haptic scenario: concept canvas, event map, primitives table, Continuity Graph extensions.
+[`design_doc.html`](./design_doc.html) — **current design document** (v1, 2026-06-10): concept + vocabulary, why-not-Slack argument (three gates, camera gate, channel-vs-state), full scenario script + beat flow (object-spined week), system commitments, and the study plan.
+
+[`scenario_7day.html`](./scenario_7day.html) — legacy: pre-pivot 7-day wearable-haptic scenario (superseded by the design doc).
 
 ## Live
 
 Once GitHub Pages is enabled: `https://worning77.github.io/spatialMemory_Concept/`
 
-To enable: **Settings → Pages → Source: `main` branch / root**. The root resolves to `scenario_7day.html` via the `index.html` redirect.
+To enable: **Settings → Pages → Source: `main` branch / root**. The root resolves to `design_doc.html` via the `index.html` redirect.
