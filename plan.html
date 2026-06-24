@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plan — Spatial Memory</title>
+<title>Plan · Spatial Memory</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,25 +16,45 @@
 </div></nav>
 <div class="wrap">
 
-<h1>Plan — Timeline &amp; Study</h1>
-<p class="sub">Project timeline and the two-study evaluation, condensed</p>
+<h1>Spatial Memory · Study Plan</h1>
+<p class="sub">How we test the concept. Full protocol is in the Full Doc, §8. Tasks are draft and may change.</p>
 
-<h2 id="p1"><span class="no">1</span>Timeline</h2>
-<p class="stub">STUB — milestone table to here (build order: capture+surfacing MVP -> segmentation -> supersede -> triage -> trail -> persistence; study dates; CHI 2027 deadline).</p>
+<h2 id="p0"><span class="no">0</span>Claims</h2>
+<p>The work makes four claims. C2, C3, and M are tested by the studies below; C1, the phenomenon, is grounded in the literature (Full Doc, §1).</p>
 <table>
-  <tr><th>Milestone</th><th>Target</th><th>Owner</th><th>Status</th></tr>
-  <tr><td class="k">Prototype MVP (capture + surfacing)</td><td>TBD</td><td>—</td><td>—</td></tr>
-  <tr><td class="k">Study 1 — Leaver</td><td>TBD</td><td>—</td><td>—</td></tr>
-  <tr><td class="k">Study 2 — Arriver</td><td>TBD</td><td>—</td><td>—</td></tr>
+  <tr><th>Claim</th><th>What we assert</th></tr>
+  <tr><td class="k">C1 · phenomenon</td><td>Encounter-class information is real and common, and today it dies because sending costs more effort than the small observation is worth.</td></tr>
+  <tr><td class="k">C2 · capture</td><td>Removing the addressing effort, by capturing in place, increases how much people externalize in flow.</td></tr>
+  <tr><td class="k">C3 · structure</td><td>Structure, the Memory Graph, not anchoring alone, makes the accumulated record usable.</td></tr>
+  <tr><td class="k">M · mechanism</td><td>The pipeline correctly structures real in-flow speech.</td></tr>
 </table>
 
-<h2 id="p2"><span class="no">2</span>Study plan</h2>
-<p class="stub">STUB — condense §8 of the full doc: chained two-study design. Study 1 = Leaver (N&approx;10, wizarded capture, externalization rate vs Slack) -> real utterances seed Study 2 = Arriver (N=12-16, Quest 3, SM-full vs anchored-only ablation, traps + triage).</p>
+<h2 id="p1"><span class="no">1</span>How we evaluate</h2>
+<p>This is a concept paper, so we test whether the concept's claims hold, not whether the prototype is usable. The filmed week-long scenario carries the whole loop over time, and each small study isolates one claim. The studies chain: real utterances from Study 1 are structured by the pipeline and seed the rooms that Study 2 participants walk into, and the same corpus is the technical benchmark. Every number traces back to words real participants spoke while working.</p>
+<table>
+  <tr><th>Evidence</th><th>What it shows</th></tr>
+  <tr><td class="k">Scenario, filmed</td><td>the loop end to end over a week (a demonstration, not data)</td></tr>
+  <tr><td class="k">Study 1, capture</td><td>people externalize more, at lower effort (claim C2)</td></tr>
+  <tr><td class="k">Study 2, structure</td><td>the Memory Graph beats raw anchoring under accumulation (claim C3)</td></tr>
+  <tr><td class="k">Technical eval</td><td>the pipeline structures real speech (claim M)</td></tr>
+</table>
 
-<h2 id="p3"><span class="no">3</span>Open decisions</h2>
-<p class="stub">STUB — the four decisions pending with YY &amp; Darren; mirror from full doc §10 so advisors can react in one place.</p>
+<h2 id="p2"><span class="no">2</span>Study 1 · capture (claim C2)</h2>
+<p>In-place voice versus phone and channel, within-subject. Both conditions wear the headset, so the only variable is the capture channel. Participants do a hands-busy task with planted encounter-class observations. We measure the <b>externalization rate</b> (of what they actually noticed) and the <b>effort</b> (time-off-task, NASA-TLX). Capture is wizarded, so behavior is measured cleanly and the pipeline is tested separately.</p>
 
-<p class="foot">Spatial Memory · CHI 2027 · this tab is one of four — see the header. Edit only this file.</p>
+<h2 id="p3"><span class="no">3</span>Study 2 · structure (claim C3)</h2>
+<p>SM-full versus anchored-only on the same pre-seeded rooms, within-subject. The only difference is the graph, so any difference measures what the structuring component is worth. Anchored-only is what world-anchored annotation does today, so it is a real baseline. Two headline traps:</p>
+<table>
+  <tr><th>Trap</th><th>What it tests</th></tr>
+  <tr><td class="k">State resolution</td><td>a place's warning may be still live or already resolved; does the arriver act on the current state? (supersession)</td></tr>
+  <tr><td class="k">Cross-place routing</td><td>a warning left at one station must surface at another; anchored-only cannot route it (project memory)</td></tr>
+</table>
+<p>Triage time and overload are secondary measures.</p>
+
+<h2 id="p4"><span class="no">4</span>Technical evaluation (claim M)</h2>
+<p>On the Study 1 corpus with gold labels: correct object and project filing, audience assignment, and supersession detection, plus anchoring reliability on the headset. This is where building the graph from messy speech is measured.</p>
+
+<p class="foot">Spatial Memory · CHI 2027 · one of four tabs, see the header.</p>
 </div>
 </body>
 </html>

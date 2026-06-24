@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spatial Memory — Design Document</title>
+<title>Spatial Memory: Design Document</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
 </div></nav>
 <div class="wrap">
 
-<h1>Spatial Memory — Design Document</h1>
-<p class="sub">Structured as the paper skeleton — each section states what the paper section must accomplish, then the design content that feeds it · v2 · 2026-06-11 · CHI 2027</p>
+<h1>Spatial Memory: Design Document</h1>
+<p class="sub">Structured as the paper skeleton: each section states what the paper section must accomplish, then the design content that feeds it · v2 · 2026-06-11 · CHI 2027</p>
 
-<div class="hook"><b>One sentence:</b> Spatial Memory lets a shared physical workspace carry what its people chose to say to whoever needs it next, where it happened — deliberate voice notes captured at zero ceremony cost, anchored in place, structured in a Memory Graph, and surfaced at the moment of encounter.</div>
+<div class="hook"><b>One sentence:</b> Spatial Memory lets a shared physical workspace carry what its people chose to say to whoever needs it next, where it happened: deliberate voice notes captured at the effort of a single spoken sentence, anchored in place, structured in a Memory Graph, and surfaced at the moment of encounter.</div>
 
 <div class="toc">
   <a href="#sa">Abstract</a>
@@ -36,28 +36,35 @@
 </div>
 
 <!-- ============================================================ -->
-<h2 id="sa">Abstract <span class="job">draft — three beats: problem, system, evidence</span></h2>
-<p><i>Shared physical workspaces are asynchronous by default: collaborators share machines and benches but rarely share the clock, and the judgments that matter — a swapped nozzle, a stale calibration, a fragile joint — die unspoken, because every messaging channel charges the person in flow a composition ceremony their observation cannot justify. We present <b>Spatial Memory</b>, a paradigm in which deliberate voice notes are captured at zero ceremony cost, anchored where they were spoken, and organized in a <b>Memory Graph</b> that keeps each place showing its current state rather than a pile of history. In two chained studies — leavers (N≈10) working hands-busy tasks, whose real utterances then seed the rooms that arrivers (N=12–16) walk into — zero-ceremony capture increased in-flow externalization over phone-and-channel practice, and graph structure outperformed raw anchoring on trap avoidance and triage under a week's accumulation.</i></p>
+<h2 id="sa">Abstract <span class="job">draft. three beats: problem, system, evidence</span></h2>
+<p><i>Shared physical workspaces are asynchronous by default. Collaborators share machines and benches but rarely share the clock, and the judgments that matter, such as a swapped nozzle, a stale calibration, or a fragile joint, die unspoken. They die because sending a message costs the person in flow more effort than the observation seems to justify. We present <b>Spatial Memory</b>, a paradigm in which deliberate voice notes are captured at the effort of a single spoken sentence, anchored where they were spoken, and organized in a <b>Memory Graph</b> that keeps each place showing its current state rather than a pile of history. We evaluate the concept in two chained studies. Leavers (N≈10) work hands-busy tasks, and their real utterances seed the rooms that arrivers (N=12–16) later walk into. In-place voice capture raised in-flow externalization over phone-and-channel practice at lower effort, and graph structure beat raw anchoring on two things a flat anchored list cannot do: act on a place's current state, and deliver a warning that had to travel from where it was left to where it was needed.</i></p>
 
 <!-- ============================================================ -->
-<h2 id="s1"><span class="no">1</span>Introduction <span class="job">paper's job: make the tension visceral, kill the obvious alternatives (camera, channel), name the reframe — Moves 1–5</span></h2>
+<h2 id="s1"><span class="no">1</span>Introduction <span class="job">motivate with a concrete instance, ground the problem as handoff failure (deferred to §2.1), kill camera and channel, name the reframe, earn the graph (Moves 1-7)</span></h2>
 
-<p><b>Premise.</b> Physical space can now be made addressable: persistent shared anchoring, always-on head-worn capture, and on-device language models that transcribe and segment speech have converged. The instrumentation is first-person — worn by the collaborator, not fixed to the room.</p>
+<p><b>Setting.</b> Shared physical workspaces are asynchronous by default. In labs, machine shops, clinics, and kitchens, collaborators share equipment and benches but rarely share the clock: the morning person leaves before the afternoon person arrives. The room is the only collaborator present across every shift, and it remembers nothing.</p>
 
-<p><b>Constraint.</b> Shared physical work persists, and the people who share a room rarely share the clock. Labs, studios, shops, clinics: collaborators share equipment and benches but almost never overlap in time. The room is the only collaborator present across every shift — and it remembers nothing.</p>
+<p><b>The problem is a handoff with no handoff.</b> In the gap between shifts, the judgments one worker forms and the next worker needs are lost. This is a well documented and costly failure wherever work is passed across time, and we ground it in that literature in §2.1. What makes the physical workspace worse is that it has no handoff ritual at all: no shift-change meeting, no named successor, and the thing to pass on is only a small judgment formed in the middle of a task. A worker swaps a nozzle, notices a fragile joint, or leaves a calibration stale. Each observation is true, each matters to whoever comes next, and each dies unspoken.</p>
 
-<p><b>Problem.</b> The room is the only witness, yet it is mute — and a camera cannot fix that, because the information that matters is not an observable event but a human's <i>invisible judgment</i> (a swapped nozzle, a stale calibration, a fragile joint). No camera, room-fixed or worn, can derive a recommendation from pixels. The judgment must be <b>authored</b> by the person who holds it — and that person is mid-task, hands on the work, rationally unwilling to pay the messaging ceremony.</p>
+<p><b>Why the observation dies: effort, not forgetting.</b> The worker does not forget. They run a rational calculation. To send the observation they would have to choose a recipient they often cannot name, describe a physical thing whose critical property is invisible, and switch out of a task their hands are in the middle of. That effort exceeds what the single observation is worth to them, so it is never sent. Everyone makes the locally correct choice, and the information is lost anyway.</p>
 
-<p>The headline problem decomposes into four sub-problems — tagged <b>A–D</b> throughout this document. A, B, C are failures of the mute room; <b>D is the failure Spatial Memory itself creates and must then solve</b> — that two-level shape is what justifies the Memory Graph rather than plain anchoring.</p>
+<h3>Why existing tools cannot carry it</h3>
+<p>Two responses look obvious, and both fail. <b>A camera</b> cannot help, because the content is not an observable event but an authored judgment: a swapped nozzle, a stale but valid-looking calibration, and a fragile joint look identical on video. The judgment exists only in a person's head and must be spoken. This is the inversion of AsyncReality, whose asymmetry is that the receiver cannot perceive what changed; ours is that the author will not spend the effort to send. <b>A messaging channel</b> cannot help either, because this information fails it on at least two of three gates.</p>
+<div class="gates">
+  <div class="gate-card"><div class="g">G1 · Recipient</div><div class="q">Is the next reader genuinely unknown at compose time?</div><p>Channels demand a named addressee → broadcast spams, DM guesses, or nothing gets sent.</p></div>
+  <div class="gate-card"><div class="g">G2 · Referent</div><div class="q">Does it point at a physical thing with an invisible property?</div><p>Lossy to describe in words, lossy to re-ground when read. "The 0.4 nozzle... on which printer?"</p></div>
+  <div class="gate-card"><div class="g">G3 · Moment</div><div class="q">Is it useful only when standing at the object?</div><p>Phone delivery lands placeless and mistimed: before it matters, and away from where it matters.</p></div>
+</div>
+<p><b>The strongest opponent is the per-fixture channel.</b> Real labs have #3dprinter and #mocap channels, and a channel does approximate the recipient gate: it is the machine's mailbox. What it cannot fix:</p>
 <table>
-  <tr><th>Tag</th><th>Sub-problem</th><th>Victim</th><th>System answer</th></tr>
-  <tr><td class="k"><span class="badge bA">A · Capture</span></td><td>The person holding a judgment is mid-task; the messaging ceremony costs more than the message is worth to them, so it is never sent ("leaver-in-flow")</td><td>the next person who hits the hidden state</td><td>zero-ceremony anchored voice + auto-segmentation</td></tr>
-  <tr><td class="k"><span class="badge bB">B · Cross-project collision</span></td><td>One project's invisible change to a shared fixture harms a different project's user — the two share nothing but the object</td><td>a stranger at the same fixture</td><td>object memory that outlives projects; warnings crossing project lines</td></tr>
-  <tr><td class="k"><span class="badge bC">C · Context gap</span></td><td>A newcomer or returner has no access to the accumulated history of the room and the project</td><td>the person joining mid-stream</td><td>relevance triage, person trail</td></tr>
-  <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes — <b>Spatial Memory's own failure mode</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence, ordering</td></tr>
+  <tr><th>Failure</th><th>Why the channel loses</th></tr>
+  <tr><td class="k">Delivery (G3)</td><td>By the time the next person stands at the machine, the message is days deep in scrollback. Nobody re-reads a channel standing at the rig before pressing record.</td></tr>
+  <tr><td class="k">Log vs. state</td><td>A channel is a time-ordered log, but the room needs the <b>current state at a place</b>. "Is the recalibration still pending, or did someone already do it?" is scrollback archaeology on Slack. In the Memory Graph it is one <i>supersedes</i> edge. The next person sees the current answer, not the history.</td></tr>
+  <tr><td class="k">Composition</td><td>Still requires phone-out, mid-pack-up, hands full of tripods.</td></tr>
 </table>
+<p>We do not compete with Slack on its home turf. Known-recipient, bounded, <i>episode-class</i> messages stay on Slack (§3), and the scenario shows this carve explicitly.</p>
 
-<p><b>Reframe.</b> Keep the irreducible part (the human authors the content) and delete the removable part (the channel ceremony: naming a recipient, describing the referent, switching out of task). The person witnesses; the worn device silently captures what they chose to say; the room is the medium that carries it forward — anchored, structured, and navigable.</p>
+<p><b>Reframe.</b> Keep the irreducible part, which is that the human authors the content. Remove the part that can be removed, which is the addressing effort: naming a recipient, describing the referent, and switching out of the task. This is now buildable, because persistent shared anchoring, head-worn capture, and on-device language models that transcribe and segment speech have converged, and the instrumentation is first-person, worn by the collaborator rather than fixed to the room. The worker speaks one sentence in place. The worn device captures what they chose to say. The room carries it forward, anchored where it was spoken. We call this paradigm <b>Spatial Memory</b>, and the structure that organizes it the <b>Memory Graph</b>.</p>
 
 <figure>
 <svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -65,9 +72,9 @@
     <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker>
     <marker id="ahb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f5fbf"/></marker>
   </defs>
-  <text x="160" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5fbf">MONDAY — THE LEAVER, IN FLOW</text>
-  <text x="500" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#8a4baf">THE ROOM REMEMBERS — STRUCTURED</text>
-  <text x="845" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#2f7d4f">WEDNESDAY — THE ARRIVER</text>
+  <text x="160" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#1f5fbf">MONDAY: THE LEAVER IN FLOW</text>
+  <text x="500" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#8a4baf">THE ROOM REMEMBERS, STRUCTURED</text>
+  <text x="845" y="26" text-anchor="middle" font-size="12" font-weight="700" fill="#2f7d4f">WEDNESDAY: THE ARRIVER</text>
 
   <rect x="45" y="155" width="95" height="85" rx="8" fill="#f0f3f7" stroke="#e2e6ec"/>
   <text x="92" y="231" text-anchor="middle" font-size="10" fill="#5b6472">3D printer</text>
@@ -82,7 +89,7 @@
   <text x="160" y="262" text-anchor="middle" font-size="10.5" fill="#5b6472">speaks once &#183; no app &#183; no recipient &#183; hands never leave the work</text>
 
   <line x1="310" y1="170" x2="348" y2="170" stroke="#5b6472" stroke-width="2" marker-end="url(#ah)"/>
-  <text x="329" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">zero ceremony</text>
+  <text x="329" y="158" text-anchor="middle" font-size="9.5" fill="#5b6472">low effort</text>
 
   <rect x="368" y="165" width="78" height="58" rx="7" fill="#fafbfc" stroke="#e2e6ec"/>
   <text x="407" y="212" text-anchor="middle" font-size="10" fill="#5b6472">printer</text>
@@ -128,60 +135,75 @@
   <text x="500" y="322" text-anchor="middle" font-size="11" font-weight="600" fill="#1a1d24">same place &#8212; different time</text>
   <text x="900" y="322" text-anchor="middle" font-size="10.5" fill="#5b6472">Wednesday</text>
 </svg>
-<figcaption>Figure draft 1 (teaser / concept figure) — speak in flow at zero ceremony → the room remembers, structured → surfaced at the moment of encounter.</figcaption>
+<figcaption>Figure draft 1 (teaser / concept figure): speak in flow at low effort, the room remembers in a structured way, and notes surface at the moment of encounter.</figcaption>
 </figure>
 
-<h3>Why existing channels fail — the three gates</h3>
-<p>Every scenario beat and every study trap is built on information that fails Slack on at least two of three gates:</p>
-<div class="gates">
-  <div class="gate-card"><div class="g">G1 · Recipient</div><div class="q">Is the next reader genuinely unknown at compose time?</div><p>Channels demand a named addressee → broadcast spams, DM guesses, or nothing gets sent.</p></div>
-  <div class="gate-card"><div class="g">G2 · Referent</div><div class="q">Does it point at a physical thing with an invisible property?</div><p>Lossy to describe in words, lossy to re-ground when read. "The 0.4 nozzle... on which printer?"</p></div>
-  <div class="gate-card"><div class="g">G3 · Moment</div><div class="q">Is it useful only when standing at the object?</div><p>Phone delivery lands placeless and mistimed — before it matters, away from where it matters.</p></div>
-</div>
-
-<p><b>The camera gate (CAM).</b> Even granting full room instrumentation: the valuable content is not an observable event but an authored judgment. A swapped nozzle, a stale-but-valid-looking calibration, a fragile joint — the scene looks identical either way. The judgment exists only in a person's head and must be spoken. This is the inversion of AsyncReality: their asymmetry is <i>receiver-cannot-perceive</i> (so room cameras suffice); ours is <i>author-will-not-pay-the-ceremony</i> (so the person must be the witness, and the worn device only removes the ceremony).</p>
-
-<p><b>The strongest opponent is not the DM — it is the per-fixture channel.</b> Real labs have #3dprinter and #mocap channels, and a channel does approximate G1: the channel is the machine's mailbox. What it cannot fix:</p>
+<p><b>Anchoring is not enough.</b> Once the room remembers everything, the next arriver drowns, because anchoring alone reproduces the spam problem, now in space. The record has to be structured, not merely pinned. The problem decomposes into four sub-problems, tagged <b>A–D</b> throughout this document. A, B, and C are failures of the mute room; <b>D is the failure Spatial Memory itself creates and must then solve</b>, and that two-level shape is what justifies the Memory Graph rather than plain anchoring.</p>
 <table>
-  <tr><th>Failure</th><th>Why the channel loses</th></tr>
-  <tr><td class="k">Delivery (G3)</td><td>By the time the next person stands at the machine, the message is days deep in scrollback. Nobody re-reads a channel standing at the rig before pressing record.</td></tr>
-  <tr><td class="k">Log vs. state</td><td>A channel is a time-ordered log; the room needs <b>current state at a place</b>. "Is the recalibration still pending, or did someone already do it?" is scrollback archaeology on Slack — and one <i>supersedes</i> edge in the Memory Graph. The next person sees the current answer, not the history.</td></tr>
-  <tr><td class="k">Composition</td><td>Still requires phone-out, mid-pack-up, hands full of tripods.</td></tr>
+  <tr><th>Tag</th><th>Sub-problem</th><th>Victim</th><th>System answer</th></tr>
+  <tr><td class="k"><span class="badge bA">A · Capture</span></td><td>The person holding a judgment is mid-task. Addressing and sending a message costs more effort than the message is worth to them, so it is never sent ("leaver-in-flow")</td><td>the next person who hits the hidden state</td><td>low-effort anchored voice + auto-segmentation</td></tr>
+  <tr><td class="k"><span class="badge bB">B · Cross-project collision</span></td><td>One project's invisible change to a shared fixture harms a different project's user. The two share nothing but the object</td><td>a stranger at the same fixture</td><td>object memory that outlives projects; warnings crossing project lines</td></tr>
+  <tr><td class="k"><span class="badge bC">C · Context gap</span></td><td>A newcomer or returner has no access to the accumulated history of the room and the project</td><td>the person joining mid-stream</td><td>relevance triage, person trail</td></tr>
+  <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes. <b>This is Spatial Memory's own failure mode.</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence, ordering</td></tr>
 </table>
-<p>We do not compete with Slack on its home turf: known-recipient, bounded, <i>episode-class</i> messages stay on Slack (§3) — the scenario shows this carve explicitly.</p>
+
+<p><b>Contributions.</b> This paper contributes (1) <b>Spatial Memory</b>, a paradigm for place-based asynchronous collaboration; (2) the <b>Memory Graph</b>, the minimal structure that turns anchored notes into current state and routes them along the relationships of place, person, and project; (3) a week-long <b>scenario</b> that dramatizes the four sub-problems; (4) a working <b>system</b> on a head-worn device as a proxy for future lightweight AR glasses; and (5) an <b>evaluation</b> that tests the concept's claims rather than the prototype's usability.</p>
 
 <!-- ============================================================ -->
-<h2 id="s2"><span class="no">2</span>Related Work <span class="job">skipped in this design doc — numbering preserved to match the paper</span></h2>
-<p class="sub">Paper plan: co-located async CSCW (the problem) · AR spatial annotation (anchoring exists, structure doesn't) · capture-in-flow &amp; voice memos · LLM structuring (the zero-ceremony means) — each subsection closing on "we build on," never "they fail to."</p>
+<h2 id="s2"><span class="no">2</span>Related Work <span class="job">outline only. four subsections, each closing on "we build on / extend," never "they fail to"</span></h2>
+<p class="sub">Outline for the paper's §2. Each subsection states the point it must make, its key references, and how Spatial Memory positions against it.</p>
+
+<h3>2.1 Co-located asynchronous collaboration and the cost of handoff</h3>
+<p><b>Point:</b> shift-based and co-located-async work loses the information one worker holds and the next needs, and that loss is documented and costly. This is the home of the problem (C1) and the handoff grounding promised in §1.<br>
+<b>Key refs:</b> handoff/handover failure (Patterson et al. 2004; clinical omission rates), hidden-profile under-sharing (Stasser &amp; Titus 1985), articulation work (Schmidt &amp; Bannon 1992), awareness in shared workspaces (Gutwin &amp; Greenberg 2002; Dourish &amp; Bellotti 1992), co-located-async coordination through artifacts (Bardram 2009).<br>
+<b>We build on:</b> we take the documented handoff failure as our problem and extend it to a setting with no handoff ritual at all.</p>
+
+<h3>2.2 Spatial and world-anchored annotation in AR/MR</h3>
+<p><b>Point:</b> anchoring information to places is established; structure over accumulated anchored information is not. Anchoring is the easy half.<br>
+<b>Key refs:</b> world-stabilized annotations (Gauglitz et al. 2014), place-based messaging and digital graffiti (McGookin et al. 2014; E-graffiti), async MR and the causality graph (Fender &amp; Holz 2022).<br>
+<b>We build on / extend:</b> we build on anchoring as a primitive and add the missing half, a structure that resolves state and routes information across places. Distinguish explicitly from AsyncReality: their asymmetry is receiver-cannot-perceive, so room cameras suffice; ours is author-will-not-spend-the-effort, so the person must be the witness.</p>
+
+<h3>2.3 Low-effort and in-flow capture</h3>
+<p><b>Point:</b> capturing while the hands are busy is hard, and the cost of capture conflicts with the primary task; voice is the lowest-effort channel for an in-flow note.<br>
+<b>Key refs:</b> voice vs ink vs keyboard micronote capture; capture-in-flow and its conflict with manual work (Rigaud et al. 2022); cost of grounding (Clark &amp; Brennan 1991).<br>
+<b>We build on:</b> we build on in-flow voice capture and remove the addressing effort, not the authoring.</p>
+
+<h3>2.4 LLM structuring of natural language</h3>
+<p><b>Point:</b> language models can segment and type free speech into structured records, the means that turns one spoken sentence into anchored, audience-tagged, supersedable cards.<br>
+<b>Key refs:</b> existing §2.4 LLM references already in reference.bib (verify and extend).<br>
+<b>We build on:</b> we build on LLM segmentation as a component, scoped to a small, stateful graph rather than open-ended generation.</p>
 
 <!-- ============================================================ -->
-<h2 id="s3"><span class="no">3</span>Concept <span class="job">paper's job: define Spatial Memory as the user experiences it — properties, the information class it serves, the two memory types</span></h2>
+<h2 id="s3"><span class="no">3</span>Concept <span class="job">paper's job: define Spatial Memory as the loop it runs and the information class it serves: capture, anchor, structure, surface</span></h2>
+
+<h3>The idea: one loop</h3>
+<p>Spatial Memory is a loop with four steps. A worker <b>captures</b> a judgment by speaking one sentence in place, at low addressing effort. The system <b>anchors</b> it to the place where it was spoken. The <b>Memory Graph structures</b> it, assigning type, audience, persistence, and supersession. When the next person approaches, the place <b>surfaces</b> its current, relevant state. No single step is new: notes have been anchored in space before, and messages have been typed and filtered before. The contribution is closing the loop for encounter-class information in shared physical work, so that a judgment spoken in flow reaches whoever needs it next, where it happened.</p>
 
 <h3>The four properties</h3>
 <table>
   <tr><th>Property</th><th>Meaning</th></tr>
-  <tr><td class="k">Anchored</td><td>Notes attach to the place where they were spoken — a machine, a bench spot, a shelf</td></tr>
+  <tr><td class="k">Anchored</td><td>Notes attach to the place where they were spoken, such as a machine, a bench spot, or a shelf</td></tr>
   <tr><td class="k">Accumulated</td><td>The space builds up knowledge over time, from multiple people and projects</td></tr>
   <tr><td class="k">Layered</td><td>Notes carry persistence levels (ephemeral / project-lived / permanent) and audiences</td></tr>
-  <tr><td class="k">Navigable</td><td>The record is structured — versioned, filterable, traversable — not a pile of pins</td></tr>
+  <tr><td class="k">Navigable</td><td>The record is structured: versioned, filterable, and traversable, not a pile of pins</td></tr>
 </table>
 
 <h3>Encounter-class vs. episode-class</h3>
-<p><b>Encounter-class</b> information has low individual value, high cumulative value, a spatial referent, and an unknown next reader — channel tools price it out, so it dies. <b>Episode-class</b> messages have a known recipient and bounded content — Slack is the right tool, and Spatial Memory never sees them. This carve is the paper's claim boundary: we displace nothing that works; we catch what today has no carrier at all.</p>
+<p><b>Encounter-class</b> information has low individual value, high cumulative value, a spatial referent, and an unknown next reader. Channel tools price it out, so it dies. <b>Episode-class</b> messages have a known recipient and bounded content, so Slack is the right tool and Spatial Memory never sees them. This carve is the paper's claim boundary: we displace nothing that works, and we catch what today has no carrier at all.</p>
 
-<h3>Two memory types — and why only two</h3>
+<h3>Two memory types, and why only two</h3>
 <p>A memory type is defined by two questions: <b>what is the note anchored to</b>, and <b>what does it outlive</b>.</p>
 <table>
   <tr><th>Type</th><th>Anchored to</th><th>Outlives</th><th>Example</th></tr>
-  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a place — a fixture or a movable's home spot</td><td>any project — institutional</td><td>"0.6 nozzle is in" on the printer; "calibration is stale" on the rig</td></tr>
-  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many places</td><td>nothing — lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
+  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a place: a fixture or a movable's home spot</td><td>any project (institutional)</td><td>"0.6 nozzle is in" on the printer; "calibration is stale" on the rig</td></tr>
+  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many places</td><td>nothing; lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
 </table>
-<p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person — like time — is a <b>query over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i>. This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
+<p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person, like time, is a <b>query over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i>. This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
 
 <figure>
 <svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img">
   <rect x="165" y="56" width="270" height="26" rx="13" fill="#8a4baf" fill-opacity="0.10" stroke="#8a4baf" stroke-dasharray="5 4"/>
-  <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: Drone build &#8212; one warning, every station</text>
+  <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: Drone build, one warning, every station</text>
   <line x1="230" y1="82" x2="230" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
   <line x1="370" y1="82" x2="370" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
 
@@ -210,26 +232,27 @@
   <rect x="750" y="56" width="230" height="150" rx="10" fill="#ffffff" stroke="#e2e6ec"/>
   <text x="865" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Person &amp; time = queries, not types</text>
   <rect x="766" y="94" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) &#8212; &#8220;what did Jesse do?&#8221;</text>
+  <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) : &#8220;what did Jesse do?&#8221;</text>
   <rect x="766" y="126" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="865" y="142" text-anchor="middle" font-size="10" fill="#2f7d4f">for_me(P) &#8212; &#8220;anything for me?&#8221;</text>
+  <text x="865" y="142" text-anchor="middle" font-size="10" fill="#2f7d4f">for_me(P) : &#8220;anything for me?&#8221;</text>
   <rect x="766" y="158" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="865" y="174" text-anchor="middle" font-size="10" fill="#2f7d4f">project_state(Pr) &#8212; &#8220;where is the build?&#8221;</text>
+  <text x="865" y="174" text-anchor="middle" font-size="10" fill="#2f7d4f">project_state(Pr) : &#8220;where is the build?&#8221;</text>
 </svg>
-<figcaption>Figure draft 2 — two memory types over one room; person and time are queries over the graph, not storage types.</figcaption>
+<figcaption>Figure draft 2: two memory types over one room. Person and time are queries over the graph, not storage types.</figcaption>
 </figure>
 
-<h3>Zero ceremony, not zero cost</h3>
-<p>The human still authors every memory — judgment is irreducible, and <b>every memory is a deliberate utterance</b>: no ambient inference, no gaze or dwell logging, no telemetry (validated by a 60-scenario scoring exercise in which every inferred-event design was rejected). What the system removes is only the removable tax: recipient selection, referent description, app switching. This is also the privacy stance — not surveillance, but capture of chosen speech.</p>
+<h3>Low effort, not no effort</h3>
+<p>The human still authors every memory. Judgment is irreducible, and <b>every memory is a deliberate utterance</b>: no ambient inference, no gaze or dwell logging, no telemetry (validated by a 60-scenario scoring exercise in which every inferred-event design was rejected). What the system removes is only the addressing effort: recipient selection, referent description, and app switching. The cost of forming and speaking the sentence remains. This is also the privacy stance: not surveillance, but capture of chosen speech.</p>
 
 <!-- ============================================================ -->
-<h2 id="s4"><span class="no">4</span>Memory Graph <span class="job">paper's job: the mechanism — small enough to state in a sentence, strong enough to carry the structure claim</span></h2>
+<h2 id="s4"><span class="no">4</span>Memory Graph <span class="job">paper's job: the structuring component between capture and surfacing; the build spec for the room's memory</span></h2>
 
-<p>The whole graph in one sentence: <b>a note is pinned at a place, signed by a person, optionally belongs to a project, and can supersede an older note.</b> Everything the system does is five operations over that structure.</p>
+<p>The Memory Graph is the room's memory: the structuring component that sits between capture and surfacing. Structurally it is a small, typed, supersedable store, an advanced filter over the notes a room accumulates. Its value is not the data structure, which a plain table could implement, but its position in the loop: it turns a stream of in-place utterances into the current, routed, audience-scoped state that surfaces at the moment of encounter.</p>
+<p>The whole graph in one sentence: <b>a note is pinned at a place, signed by a person, optionally belongs to a project, and can supersede an older note.</b> Everything below is the build spec for that store.</p>
 
 <table>
   <tr><th></th><th>Definition</th></tr>
-  <tr><td class="k">Nodes (4)</td><td><b>Note</b> · <b>Place</b> (a SLAM zone — a fixture, or a movable's home spot; "objects" are just named places) · <b>Person</b> · <b>Project</b></td></tr>
+  <tr><td class="k">Nodes (4)</td><td><b>Note</b> · <b>Place</b> (a SLAM zone: a fixture, or a movable's home spot; "objects" are just named places) · <b>Person</b> · <b>Project</b></td></tr>
   <tr><td class="k">Edges (5)</td><td><b>anchored_to</b> (note→place) · <b>left_by</b> (note→person) · <b>directed_to</b> (note→person/role) · <b>for_project</b> (note→project) · <b>supersedes</b> (note→note)</td></tr>
   <tr><td class="k">Note properties (2)</td><td><b>audience</b> (who should hear it) · <b>persistence</b> (ephemeral / project-lived / permanent)</td></tr>
   <tr><td class="k">Queries (4)</td><td><b>notes_at</b>(place) · <b>for_me</b>(person) · <b>trail</b>(person) · <b>project_state</b>(project)</td></tr>
@@ -237,15 +260,17 @@
 
 <h3>The five operations</h3>
 <table>
-  <tr><th>Operation</th><th>What happens</th><th>Beat</th></tr>
-  <tr><td class="k">File</td><td>one utterance → object card and/or project card, audience and persistence inferred — the speaker classifies nothing</td><td>A1 A2 B2 B3</td></tr>
-  <tr><td class="k">Surface</td><td>approaching a place replays its current notes, at the anchor</td><td>B1 C1 C2 D2</td></tr>
-  <tr><td class="k">Supersede</td><td>a newer note replaces an older one — the place shows <b>state, not log</b></td><td>B1 → E1</td></tr>
-  <tr><td class="k">Filter</td><td>audience + relevance decide what an arriver actually hears, in order</td><td>D1 E1</td></tr>
-  <tr><td class="k">Expire</td><td>ephemera die on schedule; project notes die with the project</td><td>E1</td></tr>
+  <tr><th>Operation</th><th>What happens</th></tr>
+  <tr><td class="k">File</td><td>one utterance → object card and/or project card, audience and persistence inferred, and the speaker classifies nothing</td></tr>
+  <tr><td class="k">Surface</td><td>approaching a place replays the current state of its notes (after supersession), filtered to the viewer's audience, and including notes routed here by an active project even if they were left elsewhere</td></tr>
+  <tr><td class="k">Supersede</td><td>a newer note replaces an older one, so the place shows <b>state, not log</b></td></tr>
+  <tr><td class="k">Filter</td><td>audience + relevance decide what an arriver actually hears, in order</td></tr>
+  <tr><td class="k">Expire</td><td>ephemera die on schedule; project notes die with the project</td></tr>
 </table>
 
-<p><b>SLAM-only constraint.</b> The camera is a locator, never a recorder: no visual content, no small-object recognition. Movables get a home-spot Place, are <i>named in the utterance</i> ("the plugged-in Pixel"), and ride project memory across stations. This constraint is precisely why both memory types are necessary — the zone anchor covers the encounter, project memory covers everywhere else the warning must travel; only the pair covers both.</p>
+<p><b>SLAM-only constraint.</b> The camera is a locator, never a recorder: no visual content, no small-object recognition. Movables get a home-spot Place, are <i>named in the utterance</i> ("the plugged-in Pixel"), and ride project memory across stations. This constraint is precisely why both memory types are necessary: the zone anchor covers the encounter, and project memory covers everywhere else the warning must travel. Only the pair covers both.</p>
+
+<p><b>The hard part is building it from speech.</b> The data model is trivial; turning a messy in-flow utterance into it is not. The system structures each utterance against the current graph: it infers the note's type, its audience from project membership, and whether it supersedes an existing note. That stateful structuring, not the data model, is the engineering, and we isolate this component's contribution in the evaluation (§8).</p>
 
 <figure>
 <svg viewBox="0 0 1000 320" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -264,7 +289,7 @@
   <!-- A1 superseded at printer -->
   <rect x="40" y="170" width="140" height="34" rx="7" fill="#fafbfc" stroke="#c9dcf6" stroke-dasharray="4 3"/>
   <text x="110" y="186" text-anchor="middle" font-size="9.5" fill="#9aa3af" text-decoration="line-through">A1 &#8220;0.6 nozzle in&#8221;</text>
-  <text x="110" y="199" text-anchor="middle" font-size="8.5" fill="#9aa3af">superseded &#8212; hidden Friday</text>
+  <text x="110" y="199" text-anchor="middle" font-size="8.5" fill="#9aa3af">superseded, hidden Friday</text>
   <!-- B1 -->
   <rect x="40" y="110" width="140" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
   <text x="110" y="126" text-anchor="middle" font-size="9.5" fill="#1a1d24">B1 &#8220;0.4 back &#10003;&#8221;</text>
@@ -273,7 +298,7 @@
   <text x="158" y="160" font-size="9" font-weight="700" fill="#8a4baf">supersedes</text>
   <!-- A2 -->
   <rect x="255" y="140" width="140" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="325" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A2 &#8220;joint fragile &#8212; brace&#8221;</text>
+  <text x="325" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A2 &#8220;joint fragile, brace&#8221;</text>
   <text x="325" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">one utterance, two edges</text>
   <line x1="325" y1="140" x2="325" y2="56" stroke="#8a4baf" stroke-dasharray="4 3" stroke-width="1.5"/>
   <text x="334" y="100" font-size="8.5" fill="#8a4baf">for_project</text>
@@ -313,22 +338,23 @@
 
   <text x="500" y="312" text-anchor="middle" font-size="10" fill="#5b6472">4 node types &#183; 5 edge types &#183; what an arriver sees on Friday = current notes only (A1 already collapsed under B1)</text>
 </svg>
-<figcaption>Figure draft 5 — the scenario week as a Memory Graph instance. The graph is small by design; the claim is what the five operations do to a week of accumulation.</figcaption>
+<figcaption>Figure draft 5: the scenario week as a Memory Graph instance. The graph is small by design, and the claim is what the operations do to a week of accumulation.</figcaption>
 </figure>
 
 <!-- ============================================================ -->
-<h2 id="s5"><span class="no">5</span>Interaction <span class="job">paper's job: the six moments of use, each earned by a scenario beat and measured by the study</span></h2>
+<h2 id="s5"><span class="no">5</span>Interaction <span class="job">paper's job: the six moments of use, each a turn of the loop and a piece of the interaction spec</span></h2>
 
+<p>These six moments are the loop from the user's side: each is one turn of capture, anchor, structure, and surface.</p>
 <table>
-  <tr><th>Moment</th><th>What the user does / sees</th><th>Beat</th><th>Feature</th><th>Study evidence</th></tr>
-  <tr><td class="k">1 · Speak in place</td><td>utter one sentence mid-task; hands never leave the work; no classification</td><td>A1 A2 B2 B3</td><td>① capture + ② segmentation</td><td>RQ1a externalization rate</td></tr>
-  <tr><td class="k">2 · Surface on approach</td><td>walking up to a place replays its current notes, at the anchor</td><td>B1 C1 C2 D2</td><td>③ surfacing</td><td>RQ2a traps avoided</td></tr>
-  <tr><td class="k">3 · Triage on arrival</td><td>"anything for me?" → few items, ordered, audience-filtered</td><td>D1 E1</td><td>⑥ triage</td><td>RQ2b triage time; T0</td></tr>
-  <tr><td class="k">4 · Follow a trail</td><td>replay one person's stations in order to catch up</td><td>D1</td><td>⑤ trail</td><td>qualitative (exit interview)</td></tr>
-  <tr><td class="k">5 · Supersede</td><td>say the update; the old note collapses; the place shows state</td><td>B1</td><td>④ versioning</td><td>RQ2c retrieval errors (stale-info)</td></tr>
-  <tr><td class="k">6 · Let go</td><td>ephemera expire unprompted; project notes die with the project</td><td>E1</td><td>⑦ persistence</td><td>RQ2c overload rating</td></tr>
+  <tr><th>Moment</th><th>What the user does / sees</th><th>Feature to build</th></tr>
+  <tr><td class="k">1 · Speak in place</td><td>utter one sentence mid-task; hands never leave the work; no classification</td><td>capture + segmentation</td></tr>
+  <tr><td class="k">2 · Surface on approach</td><td>walking up to a place replays its current notes at the anchor, including a note left elsewhere that belongs to the viewer's project</td><td>surfacing</td></tr>
+  <tr><td class="k">3 · Triage on arrival</td><td>"anything for me?" → few items, ordered, audience-filtered</td><td>triage</td></tr>
+  <tr><td class="k">4 · Follow a trail</td><td>replay one person's stations in order to catch up</td><td>trail</td></tr>
+  <tr><td class="k">5 · Supersede</td><td>say the update; the old note collapses; the place shows state</td><td>versioning</td></tr>
+  <tr><td class="k">6 · Let go</td><td>ephemera expire unprompted; project notes die with the project</td><td>persistence</td></tr>
 </table>
-<p class="sub">This table is also the alignment contract: a feature with no beat doesn't get built; an interaction with no study evidence gets qualitative treatment only. (`Sections/5-interaction.tex` currently has six phases — align it to these six moments during the rewrite.)</p>
+<p class="sub">This table is the interaction spec and the alignment contract: every moment maps to a scenario beat and a system feature, and a feature with no beat does not get built. The moment-to-study mapping lives in §8. (`Sections/5-interaction.tex` currently has six phases; align it to these six moments during the rewrite.)</p>
 
 <!-- ============================================================ -->
 <h2 id="s6"><span class="no">6</span>Scenario <span class="job">paper's job: one week, four sub-problems dramatized as near-misses with victims — never a feature tour</span></h2>
@@ -581,22 +607,26 @@
 </figure>
 
 <!-- ============================================================ -->
-<h2 id="s8"><span class="no">8</span>Evaluation <span class="job">paper's job: one chained pipeline answering three RQs, every number traceable to real in-flow speech</span></h2>
+<h2 id="s8"><span class="no">8</span>Evaluation <span class="job">paper's job: test the concept's claims (not the prototype's usability) through converging evidence; every number traces to real in-flow speech. DRAFT: study tasks are placeholders and may change</span></h2>
 
-<p><b>Goal.</b> Study 1 tests whether people <i>speak</i> when the ceremony is gone (sub-problem A). Study 2 tests whether <i>structure</i> — not mere anchoring — makes the accumulated record usable (sub-problem D). The chain: voice notes that real participants produce in Study 1 are structured by the real pipeline and become the room that Study 2 participants walk into; the same corpus serves as the technical-eval benchmark.</p>
+<h3>Evaluation rationale</h3>
+<p>Spatial Memory contributes a concept, not a system optimization, and we evaluate it accordingly. Following arguments that paradigm-level contributions are mis-served by usability benchmarks \cite{olsen2007evaluating, greenberg2008usability, wobbrock2016research}, we do not ask whether our prototype is fast or learnable; we ask whether the claims the concept makes hold. Because the value we claim, that a shared space can carry encounter-class information and surface it as current state at the point of use, has no established yardstick, our evaluation must do three things that a technique evaluation receives for free from its task: it operationalizes that value into measurable outcomes, it attributes any benefit to the mechanism rather than to confounds, and where possible it shows the alternative to be not merely worse but structurally limited.</p>
+<p>We distribute this across complementary evidence. The filmed scenario carries integration and longitudinal scope, a full week of accumulated use that no single controlled study can hold, and each study in turn isolates one claim. A technical evaluation establishes that the pipeline structures real in-flow speech. Study 1 tests whether removing the addressing effort of capture changes behavior. Study 2 holds the notes constant and varies only the Memory Graph, to measure what the structuring component is worth under a week of accumulation. The scenario integrates; the studies isolate.</p>
 
-<p><b>Cut by design: deployment.</b> No one wears today's headsets through real workdays. The premise that lightweight all-day glasses arrive is the paper's opening bet (industry trajectory), not the study's burden. The studies evaluate the <b>marginal-ceremony claim</b> — given you are already wearing the device, is speaking in place better than the channel?</p>
+<p><b>Goal.</b> Study 1 tests whether people externalize a judgment once the addressing effort is removed (claim C2). Study 2 tests whether the structuring component, not anchoring alone, makes the accumulated record usable (claim C3). The two are chained: the voice notes real participants produce in Study 1 are structured by the real pipeline and become the rooms that Study 2 participants walk into, and the same corpus serves as the technical-evaluation benchmark.</p>
+
+<p><b>Cut by design: deployment.</b> No one wears today's headsets through real workdays. The premise that lightweight all-day glasses arrive is the paper's opening bet on the industry trajectory, not the study's burden. The studies evaluate the marginal-effort claim: given that you are already wearing the device, is speaking in place better than the channel?</p>
 
 <h3>Research questions</h3>
 <table>
   <tr><th>RQ</th><th>Question</th><th>Measures</th></tr>
-  <tr><td class="k">RQ1 · capture</td><td>Does zero-ceremony anchored voice increase in-flow externalization of encounter-class observations, relative to current practice (phone + Slack)?</td><td>RQ1a externalization rate · RQ1b flow cost (time-off-task, NASA-TLX) · RQ1c usefulness of recorded notes (blinded rating)</td></tr>
-  <tr><td class="k">RQ2 · structure</td><td>Under a week's accumulation, does the Memory Graph improve the arriver's performance over raw anchoring?</td><td>RQ2a traps avoided · RQ2b time-to-relevant / triage time · RQ2c overload, retrieval errors</td></tr>
-  <tr><td class="k">RQ3 · mechanism</td><td>Does the pipeline correctly structure real in-flow utterances?</td><td>object/project filing % · audience % · supersession detection % · latency · anchor surfacing reliability</td></tr>
+  <tr><td class="k">RQ1 · capture (C2)</td><td>Does low-effort in-place voice increase in-flow externalization of encounter-class observations, relative to current practice (phone and channel)?</td><td>externalization rate · capture effort (time-off-task, NASA-TLX) · usefulness of recorded notes (blinded rating)</td></tr>
+  <tr><td class="k">RQ2 · structure (C3)</td><td>Under a week's accumulation, does the Memory Graph improve the arriver's outcomes over raw anchoring?</td><td>state-resolution errors · cross-place trap avoided · triage time · overload</td></tr>
+  <tr><td class="k">RQ3 · mechanism (M)</td><td>Does the pipeline correctly structure real in-flow utterances?</td><td>object/project filing % · audience % · supersession detection % · latency · anchor surfacing reliability</td></tr>
 </table>
 
 <h3>The chain</h3>
-<p>Study 1 utterances (real, recorded + located) → real LLM segmentation, run offline (<b>RQ3 is measured here, on this corpus</b>) → a curated <b>frozen seed set</b>: one representative real note per trap, plus experimenter-authored fillers to complete the week (other projects, a cross-team rig note) → identical pre-seeded rooms for every Study 2 participant. <b>No live relay</b> — if each arriver consumed a different leaver's notes, no two participants would face the same room and conditions would not compare. Collect first, curate once, freeze. Reported honestly: "seed notes were drawn from Study 1 participants' recordings, supplemented by researcher-authored notes to constitute a full week."</p>
+<p>Study 1 utterances (real, recorded and located) feed real LLM segmentation, run offline (<b>RQ3 is measured here, on this corpus</b>), which produces a curated <b>frozen seed set</b>: one representative real note per trap, plus experimenter-authored fillers to complete the week (other projects, a cross-team note). Every Study 2 participant then faces the same pre-seeded rooms. We use no live relay: if each arriver consumed a different leaver's notes, no two participants would face the same room and the conditions would not compare. Collect first, curate once, freeze. Reported honestly: seed notes were drawn from Study 1 participants' recordings and supplemented by researcher-authored notes to constitute a full week.</p>
 
 <figure>
 <svg viewBox="0 0 1000 130" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -604,7 +634,7 @@
     <marker id="ah3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker>
   </defs>
   <rect x="10" y="28" width="142" height="70" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="81" y="50" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">Study 1 &#8212; Leavers</text>
+  <text x="81" y="50" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">Study 1: Leavers</text>
   <text x="81" y="67" text-anchor="middle" font-size="9" fill="#1a1d24">N&#8776;10 &#183; E1&#8211;E6</text>
   <text x="81" y="82" text-anchor="middle" font-size="9" fill="#5b6472">speak in flow (wizarded)</text>
 
@@ -625,7 +655,7 @@
   <text x="729" y="72" text-anchor="middle" font-size="9" fill="#5b6472">~35&#8211;40 notes &#183; 3 traps</text>
 
   <rect x="820" y="28" width="168" height="70" rx="9" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="904" y="48" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 2 &#8212; Arrivers</text>
+  <text x="904" y="48" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 2: Arrivers</text>
   <text x="904" y="65" text-anchor="middle" font-size="9" fill="#1a1d24">N=12&#8211;16 &#183; T0&#8211;T3</text>
   <text x="904" y="82" text-anchor="middle" font-size="9" fill="#5b6472">SM-full vs anchored-only</text>
 
@@ -636,47 +666,57 @@
   <line x1="800" y1="63" x2="818" y2="63" stroke="#5b6472" stroke-width="1.8" marker-end="url(#ah3)"/>
   <text x="500" y="120" text-anchor="middle" font-size="10" fill="#5b6472">every number in the paper traces back to words real participants spoke while working</text>
 </svg>
-<figcaption>Figure draft 4 — the chained evaluation pipeline.</figcaption>
+<figcaption>Figure draft 4: the chained evaluation pipeline.</figcaption>
 </figure>
 
-<h3>Study 1 — the Leaver (RQ1) · N ≈ 10 · ~40 min</h3>
-<p><b>Cover story:</b> "You're the morning shift; someone you don't know takes over this station this afternoon. Do the job; handle anything you notice however you normally would." Recording is <b>never mentioned</b> — it stays optional and costly, exactly like life. <b>Both conditions wear the headset</b> (passthrough), so device burden is constant and the only variable is the capture channel: <b>SM</b> (speak in place; wizarded — audio + location genuinely recorded, no live pipeline) vs. <b>Slack</b> (phone in pocket, lab channels available). Within-subject, two matched task variants, counterbalanced.</p>
-<p><b>Task (variant A — "sensor-mount kit," ~30 min, mild time pressure):</b> collect a draft print → assemble the bracket → solder a connector → stage a logging phone for a 48-hour test. Variant B mirrors it (enclosure kit). Six planted encounters per variant — three <i>caused</i> by the participant, three <i>discovered</i>:</p>
+<h3>Study 1 (Leaver): capture (tests C2) · N ≈ 10</h3>
+<p><b>Cover story:</b> "You are the morning shift; someone you do not know takes over this station this afternoon. Do the job, and handle anything you notice however you normally would." Recording is <b>never mentioned</b>, so it stays optional and costly, exactly like life. <b>Both conditions wear the headset</b> (passthrough), so device burden is constant and the only variable is the capture channel: <b>in-place voice</b> (speak in place; wizarded, with audio and location genuinely recorded and no live pipeline) versus <b>phone and channel</b> (phone in pocket, lab channels available). Within-subject, two matched task variants, counterbalanced.</p>
+<p><b>Task (draft, may change):</b> a hands-busy assembly with mild time pressure, for example collect a draft print, assemble a bracket, solder a connector, and stage a logging phone for a 48-hour test. Several planted encounters per variant, some caused by the participant and some discovered, including at least one that must travel to a different station (a part assembled here that will be tested elsewhere):</p>
 <table>
-  <tr><th>#</th><th>Encounter</th><th>Type</th><th>Feeds Study 2</th></tr>
-  <tr><td class="k">E1</td><td>Job card says draft quality; the faster 0.6 nozzle is available — participant swaps it in</td><td>caused</td><td><b>Trap T1</b></td></tr>
-  <tr><td class="k">E2</td><td>One bracket in the parts batch has a hairline crack</td><td>discovered</td><td><b>Trap T2</b></td></tr>
-  <tr><td class="k">E3</td><td>Participant starts a 48-h logging run on a shelf phone, screen off</td><td>caused</td><td><b>Trap T3</b></td></tr>
-  <tr><td class="k">E4</td><td>Filament roll feels tacky (moisture)</td><td>discovered</td><td>filler note</td></tr>
-  <tr><td class="k">E5</td><td>Flux bottle nearly empty</td><td>discovered</td><td>filler</td></tr>
-  <tr><td class="k">E6</td><td>Hex bit in the tool tray is stripped</td><td>discovered</td><td>filler</td></tr>
+  <tr><th>#</th><th>Encounter (draft)</th><th>Type</th><th>Feeds Study 2</th></tr>
+  <tr><td class="k">E1</td><td>Job card says draft quality; the faster 0.6 nozzle is available, and the participant swaps it in</td><td>caused</td><td><b>T1 state</b></td></tr>
+  <tr><td class="k">E2</td><td>A part assembled at this bench is fragile and will be tested at another station</td><td>caused / discovered</td><td><b>T2 cross-place</b></td></tr>
+  <tr><td class="k">E3</td><td>The participant starts a 48-hour logging run on a shelf phone, screen off</td><td>caused</td><td>T3 control</td></tr>
+  <tr><td class="k">E4–E6</td><td>discovered conditions (tacky filament, near-empty flux, stripped hex bit)</td><td>discovered</td><td>filler notes</td></tr>
 </table>
-<p><b>Post-task</b> manipulation-check interview ("walk me through what you noticed") separates <i>didn't notice</i> from <i>noticed but didn't record</i> — only the latter is the phenomenon. Exit question guards novelty inflation: "in your own lab, would you still have said these?"</p>
+<p><b>Post-task</b> manipulation-check interview ("walk me through what you noticed") separates <i>did not notice</i> from <i>noticed but did not record</i>, since only the latter is the phenomenon. An exit question guards novelty inflation: "in your own lab, would you still have said these?"</p>
 
-<h3>Study 2 — the Arriver (RQ2) · N = 12–16 · ~50 min · Quest 3</h3>
-<p><b>Cover story:</b> "You're the afternoon shift, new to this project. Get up to speed, then complete three jobs." Conditions, within-subject on two matched rooms ("Week A" / "Week B," counterbalanced): <b>SM-full</b> (graph on — triage, supersession, audience filter, trail) vs. <b>anchored-only</b> (same notes, raw in place: stale nozzle note hangs beside the new one, no filter, no expiry, no triage — <b>the ablation</b>). ~35–40 notes per room, including superseded pairs and notes addressed to others, so structure has real work to do. <b>Slack is not a Study 2 condition:</b> it was the baseline on the capture side; Study 2 isolates the structure claim, and two conditions keep matched-room preparation feasible.</p>
+<h3>Study 2 (Arriver): structure (tests C3) · N = 12–16 · Quest 3</h3>
+<p><b>Cover story:</b> "You are the afternoon shift, new to this project. Get up to speed, then complete a few jobs." Conditions are within-subject on two matched rooms (Week A and Week B, counterbalanced): <b>SM-full</b> (the graph on: supersession, audience filter, project routing, triage) versus <b>anchored-only</b> (the same notes pinned in place but the graph off: a superseded note hangs beside the one that replaced it, nothing is filtered, expired, or routed, and there is no ordering). This is the ablation. It holds capture, anchoring, and surfacing constant and varies only the structuring component, so any difference measures that component's marginal share in the loop. Anchored-only is what world-anchored annotation does today (we cite that work), so it is a real baseline, not a strawman. About 35 to 40 notes per room, including superseded pairs, a cross-place project note, and notes addressed to others, so structure has real work to do.</p>
 <table>
-  <tr><th>#</th><th>Task</th><th>Trap</th></tr>
-  <tr><td class="k">T0</td><td>"Anything you need to know before starting?"</td><td>— (measures triage time, relevant items found)</td></tr>
-  <tr><td class="k">T1</td><td>Print a fine calibration plate</td><td>nozzle is still 0.6 — does the participant check/swap before printing?</td></tr>
-  <tr><td class="k">T2</td><td>Finish the second mount from the staged parts</td><td>the cracked bracket</td></tr>
-  <tr><td class="k">T3</td><td>Run the sensor test app on a shelf phone</td><td>the logging Pixel</td></tr>
+  <tr><th>#</th><th>Task (draft, may change)</th><th>What it tests</th></tr>
+  <tr><td class="k">T0</td><td>"Anything you need to know before starting?"</td><td>triage time, relevant items found (filter benefit, secondary)</td></tr>
+  <tr><td class="k">T1 · state</td><td>a job at a place whose earlier warning may be still live or already resolved</td><td><b>state resolution</b>: does the participant act on the current state, both when the issue is still live and when it has been resolved?</td></tr>
+  <tr><td class="k">T2 · cross-place</td><td>a job at the test station for a part assembled elsewhere</td><td><b>cross-place routing</b>: does the warning left at the other station surface here? Anchored-only cannot route it; SM-full can.</td></tr>
+  <tr><td class="k">T3 · control</td><td>a single-place job with a note left at that place (the logging phone)</td><td>surfacing substrate, present in both conditions</td></tr>
 </table>
-<p><b>The anchored-only ablation is the most important condition in the paper.</b> The two conditions differ in exactly one thing — structure — so any difference is attributable to the Memory Graph. It is the empirical form of "the record must be structured and navigable, not merely anchored," and the data that kills "sticky notes in AR."</p>
+<p><b>The two headline traps are T1 and T2</b>, because each isolates something the filtering alone does not cover: resolving a place to its current state, and routing a note to where it is needed. T1 tests both error directions, acting on a stale issue and redoing a resolved one. T2 is the cleanest contrast, since anchored-only structurally cannot bring a note to a place it was never left. The ablation measures how much the structuring component is worth once capture, anchoring, and surfacing are already in place.</p>
 
-<h3>Technical evaluation (RQ3, no participants)</h3>
+<h3>Technical evaluation: mechanism (tests M, no participants)</h3>
 <table>
   <tr><th>Benchmark</th><th>Method</th><th>Numbers reported</th></tr>
-  <tr><td class="k">Segmentation</td><td>the full Study 1 corpus (+ pilot recordings), gold labels</td><td>% correct object/project filing · audience assignment · supersession detection · capture-to-card latency</td></tr>
-  <tr><td class="k">Anchoring</td><td>repeated approach trials across sessions / relocalizations on Quest 3</td><td>surfacing reliability (%) · surfacing latency (ms)</td></tr>
+  <tr><td class="k">Structuring</td><td>the full Study 1 corpus (plus pilot recordings), with gold labels</td><td>correct object/project filing %, audience assignment %, supersession detection %, capture-to-card latency</td></tr>
+  <tr><td class="k">Anchoring</td><td>repeated approach trials across sessions and relocalizations on Quest 3</td><td>surfacing reliability %, surfacing latency (ms)</td></tr>
+</table>
+<p>This is where the stateful structuring from §4 is measured: the hard part is not the data model but turning messy in-flow speech into it.</p>
+
+<h3>Interaction moments and where each is evaluated</h3>
+<table>
+  <tr><th>Moment (§5)</th><th>Where it is evaluated</th></tr>
+  <tr><td class="k">1 · Speak in place</td><td>Study 1: externalization rate and capture effort</td></tr>
+  <tr><td class="k">2 · Surface on approach</td><td>Study 2 · T2 cross-place routing</td></tr>
+  <tr><td class="k">3 · Triage on arrival</td><td>Study 2 · T0 (secondary)</td></tr>
+  <tr><td class="k">4 · Follow a trail</td><td>Study 2 · qualitative</td></tr>
+  <tr><td class="k">5 · Supersede</td><td>Study 2 · T1 state resolution</td></tr>
+  <tr><td class="k">6 · Let go</td><td>Study 2 · overload (secondary)</td></tr>
 </table>
 
-<h3>Timeline (CHI 2027 deadline ≈ early Sep 2026)</h3>
+<h3>Timeline (deprioritized)</h3>
 <table>
   <tr><th>When</th><th>What</th></tr>
-  <tr><td class="k">July</td><td>Prototype MVP (capture ① + surfacing ③) · Study 1 incl. pilot · IRB if required</td></tr>
-  <tr><td class="k">August</td><td>Corpus → segmentation ② (RQ3) → seed rooms · supersede ④ + triage ⑥ · Study 2 runs</td></tr>
-  <tr><td class="k">Early Sep</td><td>Findings into the already-drafted sections · figures · polish</td></tr>
+  <tr><td class="k">July</td><td>Prototype MVP (capture and surfacing), Study 1 including pilot, IRB if required</td></tr>
+  <tr><td class="k">August</td><td>Corpus to segmentation (RQ3) to seed rooms; supersede and triage; Study 2 runs</td></tr>
+  <tr><td class="k">Early Sep</td><td>Findings into the drafted sections, figures, polish</td></tr>
 </table>
 
 <!-- ============================================================ -->

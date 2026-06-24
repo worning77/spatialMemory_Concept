@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Concept — Spatial Memory</title>
+<title>Concept · Spatial Memory</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,24 +16,70 @@
 </div></nav>
 <div class="wrap">
 
-<h1>Concept — Condensed</h1>
-<p class="sub">A one-screen version of the Spatial Memory concept for advisor conversations</p>
+<h1>Spatial Memory</h1>
+<p class="sub">Concept, mechanism, and interaction in condensed form. Full text and figures are in the Full Doc.</p>
 
-<div class="hook"><b>One sentence:</b> Spatial Memory lets a shared physical workspace carry what its people chose to say to whoever needs it next, where it happened.</div>
+<h2 id="c1"><span class="no">1</span>Concept</h2>
+<p>Spatial Memory closes a four-step loop: a worker <b>captures</b> a judgment by speaking in place at low effort, the system <b>anchors</b> it, <b>structures</b> it in a Memory Graph, and <b>surfaces</b> its current state to the next person.</p>
+<figure>
+<svg viewBox="0 0 1000 210" xmlns="http://www.w3.org/2000/svg" role="img">
+  <defs><marker id="la" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker></defs>
+  <rect x="20" y="55" width="205" height="78" rx="10" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="122" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#1f5fbf">1 · Capture</text>
+  <text x="122" y="102" text-anchor="middle" font-size="10.5" fill="#1a1d24">speak one sentence</text>
+  <text x="122" y="117" text-anchor="middle" font-size="10.5" fill="#5b6472">in place, low effort</text>
+  <rect x="265" y="55" width="205" height="78" rx="10" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="367" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#1f5fbf">2 · Anchor</text>
+  <text x="367" y="102" text-anchor="middle" font-size="10.5" fill="#1a1d24">pinned to the place</text>
+  <text x="367" y="117" text-anchor="middle" font-size="10.5" fill="#5b6472">where it was spoken</text>
+  <rect x="510" y="55" width="205" height="78" rx="10" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="612" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#8a4baf">3 · Structure</text>
+  <text x="612" y="102" text-anchor="middle" font-size="10.5" fill="#1a1d24">Memory Graph:</text>
+  <text x="612" y="117" text-anchor="middle" font-size="10.5" fill="#5b6472">state, routing, audience</text>
+  <rect x="755" y="55" width="205" height="78" rx="10" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="857" y="82" text-anchor="middle" font-size="13" font-weight="700" fill="#2f7d4f">4 · Surface</text>
+  <text x="857" y="102" text-anchor="middle" font-size="10.5" fill="#1a1d24">replays at the place,</text>
+  <text x="857" y="117" text-anchor="middle" font-size="10.5" fill="#5b6472">at the moment of encounter</text>
+  <line x1="227" y1="94" x2="263" y2="94" stroke="#5b6472" stroke-width="1.8" marker-end="url(#la)"/>
+  <line x1="472" y1="94" x2="508" y2="94" stroke="#5b6472" stroke-width="1.8" marker-end="url(#la)"/>
+  <line x1="717" y1="94" x2="753" y2="94" stroke="#5b6472" stroke-width="1.8" marker-end="url(#la)"/>
+  <path d="M857 135 C 857 192, 122 192, 122 137" stroke="#c9cfd8" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#la)"/>
+  <text x="489" y="185" text-anchor="middle" font-size="10" fill="#5b6472">the room accumulates over time, and the next person speaks too</text>
+</svg>
+<figcaption>Capture and anchor by the person leaving; structure and surface for the person arriving.</figcaption>
+</figure>
+<p>It carries <b>encounter-class</b> information: low value alone, tied to a physical thing, with no known reader when spoken. Today's channels price this out, so it is lost. Known-recipient, bounded messages, which are <b>episode-class</b>, stay on Slack.</p>
+<p>Every note is one of <b>two memory types</b>:</p>
+<table>
+  <tr><th>Type</th><th>Anchored to</th><th>Outlives</th><th>Example</th></tr>
+  <tr><td class="k">Object memory</td><td>a place</td><td>any project</td><td>"0.6 nozzle is in" on the printer</td></tr>
+  <tr><td class="k">Project memory</td><td>a project, spanning places</td><td>nothing; dies with the project</td><td>"joint fragile" follows the build to the test bench</td></tr>
+</table>
+<p>Person and time are not types but queries over the graph: whose trail, addressed to whom, since when.</p>
 
-<h2 id="c1"><span class="no">1</span>The problem</h2>
-<p class="stub">STUB — condense the tension from §1 of the full doc: shared space, unshared clock, judgments that die unspoken because every channel charges a composition ceremony.</p>
+<h2 id="c2"><span class="no">2</span>Memory Graph</h2>
+<p>The structuring step is a small typed store, in effect an advanced filter over what a room accumulates. It does three jobs:</p>
+<table>
+  <tr><th>Job</th><th>What it does</th></tr>
+  <tr><td class="k">State, not log</td><td>a newer note supersedes an older one, so a place shows its current state</td></tr>
+  <tr><td class="k">Routing</td><td>a note follows its <b>project memory</b>, surfacing at another place where the work continues</td></tr>
+  <tr><td class="k">Audience and decay</td><td>each arriver hears only what is for them, and notes expire when they no longer apply</td></tr>
+</table>
+<p>The value is its position in the loop, not the data model, which a plain table could hold. The hard part is building it from messy in-flow speech.</p>
 
-<h2 id="c2"><span class="no">2</span>The reframe</h2>
-<p class="stub">STUB — zero-ceremony voice notes, anchored in place, structured in a Memory Graph, surfaced at the moment of encounter.</p>
+<h2 id="c3"><span class="no">3</span>Interaction</h2>
+<p>Six moments of use, one per turn of the loop:</p>
+<table>
+  <tr><th>Moment</th><th>What the user does or sees</th></tr>
+  <tr><td class="k">Speak in place</td><td>one sentence mid-task, no app, no recipient</td></tr>
+  <tr><td class="k">Surface on approach</td><td>the place replays its current notes, including any routed here by your project</td></tr>
+  <tr><td class="k">Triage on arrival</td><td>"anything for me?" returns a few ordered items</td></tr>
+  <tr><td class="k">Follow a trail</td><td>replay one person's stations in order to catch up</td></tr>
+  <tr><td class="k">Supersede</td><td>say the update; the old note collapses to current state</td></tr>
+  <tr><td class="k">Let go</td><td>ephemera expire; project notes die with the project</td></tr>
+</table>
 
-<h2 id="c3"><span class="no">3</span>Properties</h2>
-<p class="stub">STUB — Anchored / Accumulated / Layered / Navigable (pull the table from the full doc §3 and trim).</p>
-
-<h2 id="c4"><span class="no">4</span>Memory Graph in one figure</h2>
-<p class="stub">STUB — nodes (Note, Location, Person, Object) + edges + the traversal modes, condensed from §4.</p>
-
-<p class="foot">Spatial Memory · CHI 2027 · this tab is one of four — see the header. Edit only this file.</p>
+<p class="foot">Spatial Memory · CHI 2027 · one of four tabs, see the header.</p>
 </div>
 </body>
 </html>
