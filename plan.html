@@ -10,7 +10,7 @@
 <nav class="tabs"><div class="tabs-inner">
   <span class="brand">Spatial Memory</span>
   <a href="design_doc.html">Full Doc</a>
-  <a href="grounding.html">Grounding</a>
+  <a href="grounding.html">Framing</a>
   <a href="concept.html">Concept</a>
   <a href="plan.html" class="active">Plan</a>
   <a href="storyboard.html">Storyboard</a>
@@ -45,20 +45,23 @@
 </table>
 <p>This is the <b>asynchronous</b> case. From Speech-to-Spatial (Kim et al., ISMAR 2026) does the synchronous one: a live shared view, real-time grounding. In one line, <b>they are a spatial Zoom; we are a spatial Slack.</b></p>
 
-<h2 id="p3"><span class="no">3</span>How we test it</h2>
-<p>The proposition is three things; the study confirms each and honestly reports where it breaks. Two kinds of evidence: <b>numbers</b> on the system pieces, and <b>interviews</b> on how grounding was experienced.</p>
+<h2 id="p3"><span class="no">3</span>How we test it, in grounding terms</h2>
+<p>We read the study through Clark and Brennan's grounding. First we place the medium: on their eight properties of a medium (copresence, cotemporality, reviewability, and the rest), a shared physical space is a new profile, asynchronous but with copresence of place, which the <a href="grounding.html">Framing</a> tab lays out and which predicts our costs. The proposition is then three things; the study confirms each and reports where it breaks, with two kinds of evidence: <b>numbers</b> on the system pieces, read as grounding costs, and <b>interviews</b> on whether grounding was reached.</p>
 
-<h3>Thing 1 · speaking in place is cheaper (the leaver)</h3>
-<p><b>Test:</b> a hands-busy task with planted observations; leave a note by in-place voice (our system) versus phone-and-channel (baseline). Both wear the headset. <b>Measure:</b> externalization rate, of what was noticed, and effort (NASA-TLX, time-off-task). <b>Depth:</b> small, N &#8776; 10&#8211;12, within-subject.</p>
+<h3>Thing 1 · the author's cost drops (leaver)</h3>
+<p>This is the <b>start-up and formulation cost</b> in Clark and Brennan, the cost of finding an addressee and putting a note into words. <b>Test:</b> a hands-busy task; leave a note by in-place voice (our system) versus phone-and-channel (baseline), both wearing the headset. <b>Measure:</b> externalization rate and effort (NASA-TLX, time-off-task). <b>Depth:</b> small, N &#8776; 10&#8211;12, within-subject.</p>
 
-<h3>Thing 2 · the note reaches the right person and place (the arriver)</h3>
-<p><b>Test:</b> pre-seeded week-long rooms; SM-full versus anchored-only (same notes, no structure). Two traps: <b>state resolution</b> (is an old warning still live or already resolved?) and <b>cross-place routing</b> (a warning left elsewhere must surface here). <b>Measure:</b> trap avoidance, time-to-relevant, overload (NASA-TLX). <b>Depth:</b> small to medium, N &#8776; 12&#8211;16, two matched rooms.</p>
+<h3>Thing 2 · the reader's cost is kept low (arriver, the graph)</h3>
+<p>By least collaborative effort, lowering the author's cost is not enough if it dumps cost on the reader; the Memory Graph exists to keep the reader's <b>understanding cost</b> low. <b>Test:</b> pre-seeded week-long rooms, SM-full versus anchored-only. Two traps: <b>state resolution</b> (is an old warning still live or resolved?) and <b>cross-place routing</b> (a warning left elsewhere must surface here). <b>Measure:</b> trap avoidance, time-to-relevant, overload (NASA-TLX). <b>Depth:</b> N &#8776; 12&#8211;16, two matched rooms.</p>
 
-<h3>Thing 3 · the later person understands and acts (deferred acceptance)</h3>
-<p>The new and load-bearing part, and the one only a Slack has. <b>Test:</b> a qualitative layer on the same arrivers; after each note, ask whether they understood the author, whether standing at the place helped, where they were unsure, and whether they did what the author intended. <b>Judge:</b> "accepted" = acted correctly for the note's intended reason; "broke" = misread, right for the wrong reason, unsure, or mismatched criteria. <b>Measure:</b> accepted-versus-broke rate, the types of breakdown, and how re-grounding happened. <b>Depth:</b> deepest here; two coders, focused thematic analysis. This layer is what makes it a grounding paper, not a system test, and it supplies the discussion.</p>
+<h3>Thing 3 · grounding is reached, or not (deferred acceptance)</h3>
+<p>Grounding completes only with positive evidence that the reader understood to a sufficient criterion; async has no live evidence, so the later person's action stands in for it. <b>Test:</b> interviews on the same arrivers; did they reconstruct the author's meaning, did standing at the place help, where were they unsure, did they do what the author intended. <b>Judge:</b> "grounded" = acted correctly for the intended reason; "broke" = misread, right for the wrong reason, unsure, or mismatched criteria. <b>Depth:</b> deepest here, two coders, focused thematic analysis.</p>
+
+<h3>The yardstick, in one line</h3>
+<p>Two grounding measures sit over these three. <b>Total collaborative cost</b> (author plus reader) should drop and redistribute versus the baseline: least collaborative effort made visible. And <b>grounding reached</b>, the grounded-versus-broke rate, is the outcome. The honest <b>boundary</b>: async removes repair and cannot complete mutual belief, so we report where grounding is only one-way. That boundary is what makes this a grounding paper, not a system test, and it supplies the discussion.</p>
 
 <h3>Supporting</h3>
-<p><b>Technical evaluation</b> (no participants): structuring accuracy (object and project filing, audience, supersession) and anchoring reliability on Quest Pro. <b>Scenario</b> (filmed): a demonstration that the loop is coherent end to end, not empirical data.</p>
+<p><b>Technical evaluation</b> (no participants): structuring accuracy and anchoring reliability on Quest Pro. <b>Scenario</b> (filmed): a demonstration that the loop is coherent end to end, not empirical data.</p>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 </div>

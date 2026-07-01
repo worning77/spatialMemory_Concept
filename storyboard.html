@@ -10,7 +10,7 @@
 <nav class="tabs"><div class="tabs-inner">
   <span class="brand">Spatial Memory</span>
   <a href="design_doc.html">Full Doc</a>
-  <a href="grounding.html">Grounding</a>
+  <a href="grounding.html">Framing</a>
   <a href="concept.html">Concept</a>
   <a href="plan.html">Plan</a>
   <a href="storyboard.html" class="active">Storyboard</a>
@@ -35,7 +35,25 @@
 <figcaption>Object thread: one spoken warning becomes two anchors — pinned in place at the workbench, and filed to the project timeline — so it resurfaces both at the spot and with the build.</figcaption>
 </figure>
 
-<p class="foot">Spatial Memory · CHI 2027 · this tab is one of four — see the header. Edit only this file.</p>
+<h2 id="sb3"><span class="no">3</span>The full week, all threads</h2>
+<figure>
+<img src="img/storyboard2.png" alt="A five-thread storyboard of one week in the shared lab. Thread 1 shows the incident itself between Sam and Priya. Threads 2 to 4 show the same accumulated notes as personalized views for each project (Iris, Renata, Dae-ho), with the cause and dependency between tasks, the memory graph, and a note being superseded when the state changes. Thread 5 shows Sam returning and asking anything for me, and receiving a short ordered list triaged into a personal order.">
+<figcaption>The whole week across five threads: the incident, each project's personalized view of the accumulated record (dependencies, the memory graph, supersession), and Sam's return to a triaged personal order. Click any board to enlarge.</figcaption>
+</figure>
+
+<p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var ov=document.createElement('div'); ov.className='lightbox';
+  var im=document.createElement('img'); ov.appendChild(im); document.body.appendChild(ov);
+  document.querySelectorAll('figure img').forEach(function(x){
+    x.style.cursor='zoom-in';
+    x.addEventListener('click', function(){ im.src=x.currentSrc||x.src; ov.classList.add('open'); });
+  });
+  ov.addEventListener('click', function(){ ov.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') ov.classList.remove('open'); });
+});
+</script>
 </div>
 </body>
 </html>

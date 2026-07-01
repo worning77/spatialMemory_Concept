@@ -132,3 +132,10 @@
   .stub{color:var(--muted); font-style:italic; background:#fffdf5; border:1px dashed #e6d9a8;
     border-radius:6px; padding:10px 14px; margin:10px 0}
 
+
+
+  /* ---- click-to-enlarge lightbox (storyboard) ---- */
+  .lightbox{position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(12,14,18,.92);
+    display:none; align-items:center; justify-content:center; z-index:1000; cursor:zoom-out; padding:20px}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:96vw; max-height:94vh; border-radius:8px; box-shadow:0 12px 48px rgba(0,0,0,.55)}
