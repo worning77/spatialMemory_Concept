@@ -10,51 +10,54 @@
 <nav class="tabs"><div class="tabs-inner">
   <span class="brand">Spatial Memory</span>
   <a href="design_doc.html">Full Doc</a>
+  <a href="grounding.html">Grounding</a>
   <a href="concept.html">Concept</a>
   <a href="plan.html" class="active">Plan</a>
   <a href="storyboard.html">Storyboard</a>
 </div></nav>
 <div class="wrap">
 
-<h1>Spatial Memory · Study Plan</h1>
-<p class="sub">How we test the concept. Full protocol is in the Full Doc, §8. Tasks are draft and may change.</p>
+<h1>Spatial Memory · Plan</h1>
+<p class="sub">How the paper argues, and how we test it. Draft; study tasks may change. Full protocol in the Full Doc, §8.</p>
 
-<h2 id="p0"><span class="no">0</span>Claims</h2>
-<p>The work makes four claims. C2, C3, and M are tested by the studies below; C1, the phenomenon, is grounded in the literature (Full Doc, §1).</p>
+<h2 id="p1"><span class="no">1</span>How the paper argues</h2>
+<p>We do not study a system to see what it does. We <b>propose a theory</b> and build a system to show it holds. The spine:</p>
 <table>
-  <tr><th>Claim</th><th>What we assert</th></tr>
-  <tr><td class="k">C1 · phenomenon</td><td>Encounter-class information is real and common, and today it dies because sending costs more effort than the small observation is worth.</td></tr>
-  <tr><td class="k">C2 · capture</td><td>Removing the addressing effort, by capturing in place, increases how much people externalize in flow.</td></tr>
-  <tr><td class="k">C3 · structure</td><td>Structure, the Memory Graph, not anchoring alone, makes the accumulated record usable.</td></tr>
-  <tr><td class="k">M · mechanism</td><td>The pipeline correctly structures real in-flow speech.</td></tr>
+  <tr><th>Step</th><th></th></tr>
+  <tr><td class="k">Prior theory</td><td>Clark and Brennan's grounding: collaboration runs on common ground, built by joint work whose cost shifts with the medium.</td></tr>
+  <tr><td class="k">Our proposition</td><td>grounding can be relocated into shared space, across time (§2)</td></tr>
+  <tr><td class="k">System</td><td>Spatial Memory on Quest Pro instantiates it</td></tr>
+  <tr><td class="k">Evaluation</td><td>two legs: quantify the pieces (technical) + a qualitative layer that confirms and bounds the theory</td></tr>
+  <tr><td class="k">Discussion</td><td>name the portable concept and the boundaries, where it holds and where it is only one-way</td></tr>
 </table>
+<p>This is a <b>concept proposal confirmed by evaluation</b>, not an open "understanding the role of X." The system is simple by design; the theory is the load-bearing contribution.</p>
 
-<h2 id="p1"><span class="no">1</span>How we evaluate</h2>
-<p>This is a concept paper, so we test whether the concept's claims hold, not whether the prototype is usable. The filmed week-long scenario carries the whole loop over time, and each small study isolates one claim. The studies chain: real utterances from Study 1 are structured by the pipeline and seed the rooms that Study 2 participants walk into, and the same corpus is the technical benchmark. Every number traces back to words real participants spoke while working.</p>
+<h2 id="p2"><span class="no">2</span>The proposition</h2>
+<p>Grounding, in Clark and Brennan a synchronous two-party achievement, can be relocated into a space-anchored, accumulated structure through three substitutions:</p>
 <table>
-  <tr><th>Evidence</th><th>What it shows</th></tr>
-  <tr><td class="k">Scenario, filmed</td><td>the loop end to end over a week (a demonstration, not data)</td></tr>
-  <tr><td class="k">Study 1, capture</td><td>people externalize more, at lower effort (claim C2)</td></tr>
-  <tr><td class="k">Study 2, structure</td><td>the Memory Graph beats raw anchoring under accumulation (claim C3)</td></tr>
-  <tr><td class="k">Technical eval</td><td>the pipeline structures real speech (claim M)</td></tr>
+  <tr><th>In conversation</th><th>In Spatial Memory</th></tr>
+  <tr><td class="k">choose a recipient</td><td>anchor to a place</td></tr>
+  <tr><td class="k">describe the referent</td><td>spatial co-location: the reader stands where it was said, so deixis is restored across time</td></tr>
+  <tr><td class="k">accept with a live reply</td><td>a later person acts on it, a deferred, world-mediated acceptance</td></tr>
 </table>
+<p>This is the <b>asynchronous</b> case. From Speech-to-Spatial (Kim et al., ISMAR 2026) does the synchronous one: a live shared view, real-time grounding. In one line, <b>they are a spatial Zoom; we are a spatial Slack.</b></p>
 
-<h2 id="p2"><span class="no">2</span>Study 1 · capture (claim C2)</h2>
-<p>In-place voice versus phone and channel, within-subject. Both conditions wear the headset, so the only variable is the capture channel. Participants do a hands-busy task with planted encounter-class observations. We measure the <b>externalization rate</b> (of what they actually noticed) and the <b>effort</b> (time-off-task, NASA-TLX). Capture is wizarded, so behavior is measured cleanly and the pipeline is tested separately.</p>
+<h2 id="p3"><span class="no">3</span>How we test it</h2>
+<p>The proposition is three things; the study confirms each and honestly reports where it breaks. Two kinds of evidence: <b>numbers</b> on the system pieces, and <b>interviews</b> on how grounding was experienced.</p>
 
-<h2 id="p3"><span class="no">3</span>Study 2 · structure (claim C3)</h2>
-<p>SM-full versus anchored-only on the same pre-seeded rooms, within-subject. The only difference is the graph, so any difference measures what the structuring component is worth. Anchored-only is what world-anchored annotation does today, so it is a real baseline. Two headline traps:</p>
-<table>
-  <tr><th>Trap</th><th>What it tests</th></tr>
-  <tr><td class="k">State resolution</td><td>a place's warning may be still live or already resolved; does the arriver act on the current state? (supersession)</td></tr>
-  <tr><td class="k">Cross-place routing</td><td>a warning left at one station must surface at another; anchored-only cannot route it (project memory)</td></tr>
-</table>
-<p>Triage time and overload are secondary measures.</p>
+<h3>Thing 1 · speaking in place is cheaper (the leaver)</h3>
+<p><b>Test:</b> a hands-busy task with planted observations; leave a note by in-place voice (our system) versus phone-and-channel (baseline). Both wear the headset. <b>Measure:</b> externalization rate, of what was noticed, and effort (NASA-TLX, time-off-task). <b>Depth:</b> small, N &#8776; 10&#8211;12, within-subject.</p>
 
-<h2 id="p4"><span class="no">4</span>Technical evaluation (claim M)</h2>
-<p>On the Study 1 corpus with gold labels: correct object and project filing, audience assignment, and supersession detection, plus anchoring reliability on the headset. This is where building the graph from messy speech is measured.</p>
+<h3>Thing 2 · the note reaches the right person and place (the arriver)</h3>
+<p><b>Test:</b> pre-seeded week-long rooms; SM-full versus anchored-only (same notes, no structure). Two traps: <b>state resolution</b> (is an old warning still live or already resolved?) and <b>cross-place routing</b> (a warning left elsewhere must surface here). <b>Measure:</b> trap avoidance, time-to-relevant, overload (NASA-TLX). <b>Depth:</b> small to medium, N &#8776; 12&#8211;16, two matched rooms.</p>
 
-<p class="foot">Spatial Memory · CHI 2027 · one of four tabs, see the header.</p>
+<h3>Thing 3 · the later person understands and acts (deferred acceptance)</h3>
+<p>The new and load-bearing part, and the one only a Slack has. <b>Test:</b> a qualitative layer on the same arrivers; after each note, ask whether they understood the author, whether standing at the place helped, where they were unsure, and whether they did what the author intended. <b>Judge:</b> "accepted" = acted correctly for the note's intended reason; "broke" = misread, right for the wrong reason, unsure, or mismatched criteria. <b>Measure:</b> accepted-versus-broke rate, the types of breakdown, and how re-grounding happened. <b>Depth:</b> deepest here; two coders, focused thematic analysis. This layer is what makes it a grounding paper, not a system test, and it supplies the discussion.</p>
+
+<h3>Supporting</h3>
+<p><b>Technical evaluation</b> (no participants): structuring accuracy (object and project filing, audience, supersession) and anchoring reliability on Quest Pro. <b>Scenario</b> (filmed): a demonstration that the loop is coherent end to end, not empirical data.</p>
+
+<p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 </div>
 </body>
 </html>
