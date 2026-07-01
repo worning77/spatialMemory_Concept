@@ -10,14 +10,14 @@
 <nav class="tabs"><div class="tabs-inner">
   <span class="brand">Spatial Memory</span>
   <a href="design_doc.html">Full Doc</a>
-  <a href="grounding.html" class="active">Grounding</a>
+  <a href="grounding.html" class="active">Framing</a>
   <a href="concept.html">Concept</a>
   <a href="plan.html">Plan</a>
   <a href="storyboard.html">Storyboard</a>
 </div></nav>
 <div class="wrap">
 
-<h1>Grounding Theory</h1>
+<h1>Project Framing w/ Theory of Grounding </h1>
 <p class="sub">The theoretical frame: grounding relocated into space.</p>
 
 <p>People who share physical workspaces at different times of the day &mdash; fabrication labs, design studios, research labs &mdash; rely on those spaces as rich, structured environments for making and thinking. Yet their communication with one another happens through placeless tools: chat channels, shared docs, message threads. This disconnect means that the spatial context which organizes the process of thinking and making is lost.</p>
@@ -27,6 +27,28 @@
 <p>Existing approaches to bridging this gap, from AR annotation systems to media spaces, either demand heavy instrumentation or treat space as a simple pin-board for isolated comments, offering anchoring without structured context and process. The core design challenge is to support the construction of common ground across people who work at different times, in different sequences, and through different processes.</p>
 
 <p>We introduce Spatial Memory, an interaction paradigm in which physical space becomes the medium for the collaborative construction of common ground: voice notes left by multiple collaborators over time are anchored to the locations and objects they concern, structured according to project-dependent context and causal relationships between tasks and decisions, and delivered to each collaborator where and when they need them. The space becomes a layered grounding record that can be reviewed, revised, and navigated by place, by person, or by project.</p>
+
+<h2>Grounding Cost and the Design of Spatial Memory</h2>
+
+<p>In the principle of least collaborative effort, Clark and Brennan describe the cost of grounding as the combined effort of the participants, who ground with as little effort as possible for the sake of efficiency. What any grounding technique costs depends on the medium. This variation in grounding cost across media is the mechanism that explains why sharing situated knowledge can be costly in a shared workspace &mdash; and why it often goes unsaid &mdash; and it specifies what a Spatial Memory system would have to absorb to change that.</p>
+
+<p>In a co-present, real-time exchange, the effort of grounding is shared between two parties and paid as the conversation unfolds. In a space that is shared but asynchronous, there is no live partner to share the effort and no exchange to spread it across: the whole cost falls on the author of the message, for a payoff that goes to someone else, later. When the cost of contributing a small observation exceeds what it appears to be worth to the person paying it, silence is the rational choice. The knowledge is not lost to forgetting or indifference; it is lost to a cost structure that makes communicating it locally irrational.</p>
+
+<p>The types of cost formulated by Clark and Brennan can serve as both design rationale and metric for evaluation:</p>
+<table>
+  <tr><th>Cost</th><th>Description</th><th>Paid by</th></tr>
+  <tr><td class="k">Formulation</td><td>Time and effort increase as utterances are created and revised and as utterances become more complicated.</td><td>Speaker</td></tr>
+  <tr><td class="k">Production</td><td>Effort invested in producing a message varies depending on the medium of communication.</td><td>Speaker</td></tr>
+  <tr><td class="k">Reception</td><td>Listening is generally easier than reading.</td><td>Addressee</td></tr>
+  <tr><td class="k">Understanding</td><td>Costs are higher the more often the addressee has to formulate the appropriate context of the conversation.</td><td>Addressee</td></tr>
+  <tr><td class="k">Start-up</td><td>The cost of starting up a new discourse. Attention needs to be commanded, the message formulated, and the message needs to be received.</td><td>Both</td></tr>
+  <tr><td class="k">Delay</td><td>The cost of delaying an utterance in order to more carefully plan, revise and execute the communication.</td><td>Both</td></tr>
+  <tr><td class="k">Asynchrony</td><td>The cost associated with the work required to cue one participant to stop and another to start.</td><td>Both</td></tr>
+  <tr><td class="k">Speaker change</td><td>The cost associated with the work required to cue one participant to stop and another to start.</td><td>Both</td></tr>
+  <tr><td class="k">Display</td><td>The cost associated with displaying non-verbal cues.</td><td>Both</td></tr>
+  <tr><td class="k">Fault</td><td>The cost associated with producing a mistaken message.</td><td>Both</td></tr>
+  <tr><td class="k">Repair</td><td>The cost to repair the message and send the correct one.</td><td>Both</td></tr>
+</table>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 </div>
