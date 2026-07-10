@@ -139,3 +139,31 @@
     display:none; align-items:center; justify-content:center; z-index:1000; cursor:zoom-out; padding:20px}
   .lightbox.open{display:flex}
   .lightbox img{max-width:96vw; max-height:94vh; border-radius:8px; box-shadow:0 12px 48px rgba(0,0,0,.55)}
+
+
+  /* ---- week grid + thread filter (storyboard) ---- */
+  .threadfilter{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 12px}
+  .tf-btn{font-size:13px; font-weight:600; padding:6px 13px; border-radius:20px; border:1.5px solid var(--line);
+    background:#fff; color:var(--muted); cursor:pointer}
+  .tf-btn:hover{border-color:var(--muted)}
+  .tf-btn.active{color:#fff; border-color:transparent}
+  .tf-btn.tall.active{background:var(--ink)}
+  .tf-btn.t1{color:#b4302a} .tf-btn.t1.active{background:#b4302a}
+  .tf-btn.t2{color:#1f5fbf} .tf-btn.t2.active{background:#1f5fbf}
+  .tf-btn.t3{color:#8a4baf} .tf-btn.t3.active{background:#8a4baf}
+  .tf-btn.t4{color:#2f7d4f} .tf-btn.t4.active{background:#2f7d4f}
+  .tf-btn.t5{color:#b4632a} .tf-btn.t5.active{background:#b4632a}
+  table.weekgrid td.k{border-left:4px solid transparent; font-weight:650}
+  .weekgrid tr.row-t1 td.k{border-left-color:#b4302a} .weekgrid tr.row-t2 td.k{border-left-color:#1f5fbf}
+  .weekgrid tr.row-t3 td.k{border-left-color:#8a4baf} .weekgrid tr.row-t4 td.k{border-left-color:#2f7d4f}
+  .weekgrid tr.row-t5 td.k{border-left-color:#b4632a}
+  .weekgrid tr.hide{display:none}
+  .weekgrid td .thmark{display:block; font-weight:400; font-size:11px; color:var(--muted)}
+  .storyline .sl{display:none; background:var(--card); border:1px solid var(--line); border-left:4px solid var(--line);
+    border-radius:8px; padding:14px 18px; margin:6px 0}
+  .storyline .sl.show{display:block}
+  .storyline .sl.t1{border-left-color:#b4302a} .storyline .sl.t2{border-left-color:#1f5fbf}
+  .storyline .sl.t3{border-left-color:#8a4baf} .storyline .sl.t4{border-left-color:#2f7d4f}
+  .storyline .sl.t5{border-left-color:#b4632a}
+  .storyline .sl h4{margin:0 0 8px; font-size:14px}
+  #slprompt{color:var(--muted); font-size:13px; font-style:italic; padding:8px 0}

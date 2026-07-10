@@ -41,42 +41,87 @@
 <figcaption>The whole week across five threads: the incident, each project's personalized view of the accumulated record (dependencies, the memory graph, supersession), and Sam's return to a triaged personal order. Click any board to enlarge.</figcaption>
 </figure>
 
-<h2 id="tzoom">Zoom in: the five threads</h2>
-<p class="sub">The board above is the whole week at a glance. Below, one strip per thread, from the incident outward. (Thread 1 rendered as a design-system beat strip; the rest follow once we pick the style.)</p>
+<h2 id="weektable">The full week</h2>
+<p class="sub">Five threads across one week, all branching from a single incident. Click a thread to isolate it and read its storyline below. Cells are keyword summaries for now; we iterate the cells and the story next.</p>
 
-<h3>Thread 1 · the incident itself (Sam + Priya)</h3>
-<p class="sub">One incident at the fume-hood, contained and cleared over the week. This is the trunk the other threads branch from.</p>
-<div class="day">
-  <div class="rail"><div class="d">Mon</div><div class="t">the incident</div></div>
-  <div class="beats">
-    <div class="beat" style="border-left-color:#b4302a">
-      <div class="top"><span class="id">1a</span><span class="chip">fume-hood</span><span class="chip proj">Project A</span></div>
-      <div class="act"><span class="who">Sam</span> runs the solvent-extraction step and leaves a note anchored to the hood, referencing <span class="who">Iris</span>'s 2x concentration note. A seal fails: a minor hand injury, and contamination spreads to the counter and shelf.</div>
-    </div>
-    <div class="beat" style="border-left-color:#b4302a">
-      <div class="top"><span class="id">1b</span><span class="chip cam">zone anchor</span><span class="chip">override</span></div>
-      <div class="act"><span class="who">Priya</span> is paged, closes the corner, and leaves a <b>zone-level anchor</b>: <i>"Contamination, corner sealed, check with me first."</i> It overrides every note already anchored inside that zone.</div>
-    </div>
-  </div>
+<div class="threadfilter">
+  <button class="tf-btn tall active" data-thread="all">All</button>
+  <button class="tf-btn t1" data-thread="t1">1 · Incident</button>
+  <button class="tf-btn t2" data-thread="t2">2 · Iris (A)</button>
+  <button class="tf-btn t3" data-thread="t3">3 · Renata (B)</button>
+  <button class="tf-btn t4" data-thread="t4">4 · Dae-ho (C)</button>
+  <button class="tf-btn t5" data-thread="t5">5 · Sam returns</button>
 </div>
-<div class="day">
-  <div class="rail"><div class="d">Wed</div><div class="t">clear the zone</div></div>
-  <div class="beats">
-    <div class="beat" style="border-left-color:#b4302a">
-      <div class="top"><span class="id">1c</span><span class="chip">supersede</span></div>
-      <div class="act"><span class="who">Priya</span> walks the zone with <span class="who">Dae-ho</span>, relocates items, and posts a <b>superseding note</b> at the old shelf position pointing to the new location.</div>
-    </div>
-  </div>
+
+<table class="weekgrid">
+  <tr><th>Thread</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+  <tr data-thread="t1" class="row-t1">
+    <td class="k">1 · Incident<span class="thmark">Sam + Priya</span></td>
+    <td>seal fails · spill · Priya zone-anchor overrides the zone</td>
+    <td></td>
+    <td>relocate items · supersede note to new spot</td>
+    <td>decon done · expire zone note</td>
+    <td></td>
+  </tr>
+  <tr data-thread="t2" class="row-t2">
+    <td class="k">2 · Project A<span class="thmark">Iris</span></td>
+    <td>zone note + auto causal card · logs re-run to project (pending Sam)</td>
+    <td></td><td></td><td></td>
+    <td>re-run note routes to Sam (1 of 2)</td>
+  </tr>
+  <tr data-thread="t3" class="row-t3">
+    <td class="k">3 · Project B<span class="thmark">Renata</span></td>
+    <td></td>
+    <td>one dependency card only (Sam out, Wed open) · re-sequence · bench note</td>
+    <td></td><td></td>
+    <td>calibration note routes to Sam (2 of 2)</td>
+  </tr>
+  <tr data-thread="t4" class="row-t4">
+    <td class="k">4 · Project C<span class="thmark">Dae-ho</span></td>
+    <td></td>
+    <td>zone note only (spatial) · note: models out before Thu review</td>
+    <td>clear zone · re-anchor equipment (cart by door)</td>
+    <td></td>
+    <td>never routes to Sam</td>
+  </tr>
+  <tr data-thread="t5" class="row-t5">
+    <td class="k">5 · Sam returns<span class="thmark">Sam</span></td>
+    <td></td><td></td><td></td>
+    <td>full ordered replay at hood · 4 notes, 4 people, 1 place</td>
+    <td>"anything for me?" &#8594; 2 cards (Iris, Renata) · C stays hidden</td>
+  </tr>
+</table>
+
+<p id="slprompt">Pick a thread above to read its storyline.</p>
+<div class="storyline">
+  <div class="sl t1" data-thread="t1"><h4>Thread 1 · the incident (Sam + Priya)</h4>
+    <p>Monday, Sam runs the solvent-extraction step for Project A at the fume-hood and leaves a voice note anchored to the hood, referencing Iris's 2x concentration note. A seal fails: a minor hand injury, and contamination spreads to the counter and shelf. Priya is paged, closes the corner, and leaves a zone-level anchor, "Contamination, corner sealed, check with me first," which overrides every note already anchored inside that zone. Wednesday, Priya walks the zone with Dae-ho, relocates items, and posts a superseding note at the old shelf position pointing to the new location. Thursday, Facilities finishes decontamination and Priya closes the zone note, so it expires.</p></div>
+  <div class="sl t2" data-thread="t2"><h4>Thread 2 · Project A (Iris)</h4>
+    <p>Monday afternoon, Iris checks the extraction and receives Priya's zone note plus a system-generated causal card, auto-threaded by the graph: Sam injured, so the procedure is incomplete, so the next step is blocked. Because this is scheduling information, she logs her own note to the project rather than the place: the extraction re-run is pushed to next week, pending Sam. Friday, that re-run note is one of exactly two cards routed to Sam the following week.</p></div>
+  <div class="sl t3" data-thread="t3"><h4>Thread 3 · Project B (Renata)</h4>
+    <p>Renata was not involved in Monday's incident. Tuesday she checks in and gets only the one card relevant to her dependency: Sam is unavailable this week, and the Wednesday slot is open. No full incident report. She re-sequences her own schedule, moving calibration and slotting in an antibody-panel run, and leaves a note at her bench. Friday, her rescheduled-calibration note is the second of the two cards routed to Sam.</p></div>
+  <div class="sl t4" data-thread="t4"><h4>Thread 4 · Project C (Dae-ho)</h4>
+    <p>Tuesday afternoon, Dae-ho gets no causal or incident narrative, only the zone note itself, because his equipment's problem is spatial, the wrong shelf, not procedural. He leaves a note at the same anchor: he needs his models out before Thursday's review. Wednesday, Priya and Dae-ho clear the zone together, and his equipment gets a fresh anchor at its new location, the cart by the door. Project C never resurfaces in Sam's view, because nothing in Sam's path touches Dae-ho's models.</p></div>
+  <div class="sl t5" data-thread="t5"><h4>Thread 5 · Sam's return</h4>
+    <p>Thursday, Sam is back and mobile. He revisits the hood and gets the full replay in sequence: his own Monday note, Priya's containment note, Iris's reschedule, and the clearance note. Four notes, from four people, at one location, ordered as they happened. Friday, checking "anything for me?", Sam receives only the two notes that route to him personally, Iris's and Renata's, with Project C staying entirely outside his view.</p></div>
 </div>
-<div class="day">
-  <div class="rail"><div class="d">Thu</div><div class="t">cleared</div></div>
-  <div class="beats">
-    <div class="beat" style="border-left-color:#2f7d4f">
-      <div class="top"><span class="id">1d</span><span class="chip">expire</span></div>
-      <div class="act">Facilities finishes decontamination; <span class="who">Priya</span> closes the zone note and it <b>expires</b>.</div>
-    </div>
-  </div>
-</div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.threadfilter .tf-btn');
+  function pick(th){
+    btns.forEach(function(b){ b.classList.toggle('active', b.dataset.thread===th); });
+    document.querySelectorAll('.weekgrid tr[data-thread]').forEach(function(r){
+      r.classList.toggle('hide', th!=='all' && r.dataset.thread!==th);
+    });
+    document.querySelectorAll('.storyline .sl').forEach(function(x){
+      x.classList.toggle('show', th!=='all' && x.dataset.thread===th);
+    });
+    document.getElementById('slprompt').style.display=(th==='all')?'block':'none';
+  }
+  btns.forEach(function(b){ b.addEventListener('click', function(){ pick(b.dataset.thread); }); });
+})();
+</script>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 <script>
