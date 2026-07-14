@@ -42,68 +42,61 @@
 </figure>
 
 <h2 id="weektable">The full week</h2>
-<p class="sub">Five threads across one week, all branching from a single incident. Click a thread to isolate it and read its storyline below. Cells are keyword summaries for now; we iterate the cells and the story next.</p>
+<p class="sub">One person's Monday setup fans out to four strangers, a newcomer walks his trail, and one note is misread. Click a person to isolate their row and read their arc; the full narrative is below the table.</p>
 
 <div class="threadfilter">
   <button class="tf-btn tall active" data-thread="all">All</button>
-  <button class="tf-btn t1" data-thread="t1">1 · Incident</button>
-  <button class="tf-btn t2" data-thread="t2">2 · Iris (A)</button>
-  <button class="tf-btn t3" data-thread="t3">3 · Renata (B)</button>
-  <button class="tf-btn t4" data-thread="t4">4 · Dae-ho (C)</button>
-  <button class="tf-btn t5" data-thread="t5">5 · Sam returns</button>
+  <button class="tf-btn t1" data-thread="t1">Sam (A)</button>
+  <button class="tf-btn t2" data-thread="t2">Iris (A, new)</button>
+  <button class="tf-btn t3" data-thread="t3">Renata (B)</button>
+  <button class="tf-btn t4" data-thread="t4">Dae-ho (C)</button>
+  <button class="tf-btn t5" data-thread="t5">Priya (D)</button>
 </div>
 
 <table class="weekgrid">
-  <tr><th>Thread</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+  <tr><th>Person</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
   <tr data-thread="t1" class="row-t1">
-    <td class="k">1 · Incident<span class="thmark">Sam + Priya</span></td>
-    <td>seal fails · spill · Priya zone-anchor overrides the zone</td>
-    <td></td>
-    <td>relocate items · supersede note to new spot</td>
-    <td>decon done · expire zone note</td>
-    <td></td>
+    <td class="k">Sam<span class="thmark">Project A</span></td>
+    <td>seeds 3 invisible notes: 0.6+CF nozzle · rig recal for "A volume" · tracker mid-log; clears the bench</td>
+    <td></td><td></td>
+    <td>returns · full replay · resets printer+rig (supersede) · sharper note to Iris</td>
+    <td>"anything for me?" &#8594; 2 cards (Iris, Renata)</td>
   </tr>
   <tr data-thread="t2" class="row-t2">
-    <td class="k">2 · Project A<span class="thmark">Iris</span></td>
-    <td>zone note + auto causal card · logs re-run to project (pending Sam)</td>
-    <td></td><td></td><td></td>
-    <td>re-run note routes to Sam (1 of 2)</td>
+    <td class="k">Iris<span class="thmark">Project A, new</span></td>
+    <td></td><td></td>
+    <td>new to A · walks Sam's trail · misreads "A volume" as ready-for-her &#8594; records &#8594; data silently off <b>(breakdown)</b></td>
+    <td>Sam clarifies · recalibrates · re-captures clean (2 days late)</td>
+    <td>gets Sam's clarification only</td>
   </tr>
   <tr data-thread="t3" class="row-t3">
-    <td class="k">3 · Project B<span class="thmark">Renata</span></td>
+    <td class="k">Renata<span class="thmark">Project B</span></td>
     <td></td>
-    <td>one dependency card only (Sam out, Wed open) · re-sequence · bench note</td>
+    <td>about to print a fine plate; 0.6+CF still in &#8594; swaps 0.4/PLA back (her note supersedes Sam's)</td>
     <td></td><td></td>
-    <td>calibration note routes to Sam (2 of 2)</td>
+    <td>gets one note: plate ready</td>
   </tr>
   <tr data-thread="t4" class="row-t4">
-    <td class="k">4 · Project C<span class="thmark">Dae-ho</span></td>
+    <td class="k">Dae-ho<span class="thmark">Project C</span></td>
     <td></td>
-    <td>zone note only (spatial) · note: models out before Thu review</td>
-    <td>clear zone · re-anchor equipment (cart by door)</td>
-    <td></td>
-    <td>never routes to Sam</td>
+    <td>parts bin gone from its spot; note at the empty spot points to the shelf</td>
+    <td></td><td></td><td></td>
   </tr>
   <tr data-thread="t5" class="row-t5">
-    <td class="k">5 · Sam returns<span class="thmark">Sam</span></td>
+    <td class="k">Priya<span class="thmark">Project D</span></td>
+    <td></td>
+    <td>reaches for a tracker; note: the end one is mid-log &#8594; takes another (logging vs sleeping look identical)</td>
     <td></td><td></td><td></td>
-    <td>full ordered replay at hood · 4 notes, 4 people, 1 place</td>
-    <td>"anything for me?" &#8594; 2 cards (Iris, Renata) · C stays hidden</td>
   </tr>
 </table>
 
-<p id="slprompt">Pick a thread above to read its storyline.</p>
+<p id="slprompt">Pick a person above to read their arc.</p>
 <div class="storyline">
-  <div class="sl t1" data-thread="t1"><h4>Thread 1 · the incident (Sam + Priya)</h4>
-    <p>Monday, Sam runs the solvent-extraction step for Project A at the fume-hood and leaves a voice note anchored to the hood, referencing Iris's 2x concentration note. A seal fails: a minor hand injury, and contamination spreads to the counter and shelf. Priya is paged, closes the corner, and leaves a zone-level anchor, "Contamination, corner sealed, check with me first," which overrides every note already anchored inside that zone. Wednesday, Priya walks the zone with Dae-ho, relocates items, and posts a superseding note at the old shelf position pointing to the new location. Thursday, Facilities finishes decontamination and Priya closes the zone note, so it expires.</p></div>
-  <div class="sl t2" data-thread="t2"><h4>Thread 2 · Project A (Iris)</h4>
-    <p>Monday afternoon, Iris checks the extraction and receives Priya's zone note plus a system-generated causal card, auto-threaded by the graph: Sam injured, so the procedure is incomplete, so the next step is blocked. Because this is scheduling information, she logs her own note to the project rather than the place: the extraction re-run is pushed to next week, pending Sam. Friday, that re-run note is one of exactly two cards routed to Sam the following week.</p></div>
-  <div class="sl t3" data-thread="t3"><h4>Thread 3 · Project B (Renata)</h4>
-    <p>Renata was not involved in Monday's incident. Tuesday she checks in and gets only the one card relevant to her dependency: Sam is unavailable this week, and the Wednesday slot is open. No full incident report. She re-sequences her own schedule, moving calibration and slotting in an antibody-panel run, and leaves a note at her bench. Friday, her rescheduled-calibration note is the second of the two cards routed to Sam.</p></div>
-  <div class="sl t4" data-thread="t4"><h4>Thread 4 · Project C (Dae-ho)</h4>
-    <p>Tuesday afternoon, Dae-ho gets no causal or incident narrative, only the zone note itself, because his equipment's problem is spatial, the wrong shelf, not procedural. He leaves a note at the same anchor: he needs his models out before Thursday's review. Wednesday, Priya and Dae-ho clear the zone together, and his equipment gets a fresh anchor at its new location, the cart by the door. Project C never resurfaces in Sam's view, because nothing in Sam's path touches Dae-ho's models.</p></div>
-  <div class="sl t5" data-thread="t5"><h4>Thread 5 · Sam's return</h4>
-    <p>Thursday, Sam is back and mobile. He revisits the hood and gets the full replay in sequence: his own Monday note, Priya's containment note, Iris's reschedule, and the clearance note. Four notes, from four people, at one location, ordered as they happened. Friday, checking "anything for me?", Sam receives only the two notes that route to him personally, Iris's and Renata's, with Project C staying entirely outside his view.</p></div>
+  <div class="sl t1" data-thread="t1"><h4>Sam (Project A)</h4><p>Sam sets up a Project A motion-capture. Monday he seeds three invisible-state notes at the printer, the rig, and the shelf, and clears the print bench. He is offsite until Thursday, when he returns, gets the whole week replayed in order, and resets the printer and rig so his Monday notes collapse to current state. Seeing Iris's recording is off, he leaves her a sharper note. Friday, "anything for me?" hands him just two cards.</p></div>
+  <div class="sl t2" data-thread="t2"><h4>Iris (Project A, new this week)</h4><p>New to the project, brought in to run the capture while Sam is away. Wednesday she walks Sam's trail to catch up in ten minutes, then reads his terse "recalibrated for the A volume" as ready-for-her. It was set to Sam's own volume and marker set; her recording comes out silently off. The note reached her; the meaning did not, because she did not share Sam's context. Thursday, after Sam clarifies, she recalibrates and re-captures clean, two days and one wasted session late.</p></div>
+  <div class="sl t3" data-thread="t3"><h4>Renata (Project B)</h4><p>A different project. Tuesday she is about to print a fine calibration plate; Sam's note surfaces at the machine that the nozzle is still a hardened 0.6 with abrasive filament. On the default profile that would have been two hours of ruined print. She swaps 0.4 and PLA back, prints, and her note supersedes Sam's so the printer shows what is true now. Friday she gets a single note: her plate is ready.</p></div>
+  <div class="sl t4" data-thread="t4"><h4>Dae-ho (Project C)</h4><p>A different project. Tuesday he goes for his parts bin and finds it gone from its spot. A note at the empty spot points him to the shelf, where Sam had set it aside to clear the print bench. His stuff moved, and the space told him where it went, at the place he looked for it.</p></div>
+  <div class="sl t5" data-thread="t5"><h4>Priya (Project D)</h4><p>A different project. Tuesday she reaches for a shared tracker and a note surfaces: the one on the end is mid-log. A logging tracker and a sleeping one are identical; a camera could watch the shelf all day and never tell them apart, and the difference lived only in Sam's head. She takes a different one.</p></div>
 </div>
 
 <script>
@@ -122,6 +115,30 @@
   btns.forEach(function(b){ b.addEventListener('click', function(){ pick(b.dataset.thread); }); });
 })();
 </script>
+
+<h2 id="novel">The full week, in prose</h2>
+<p class="sub">The same week as a narrative.</p>
+<p><b>Setting.</b> A shared maker lab: one Bambu printer, a motion-capture rig in the corner, a shelf of shared test devices, a soldering station, a pegboard tool wall, and five workstations. Several projects share the printer, the rig, and the shelf, but the people rarely overlap in time.</p>
+
+<h3>Monday. Sam seeds three invisible notes.</h3>
+<p>Sam is setting up a Project A motion-capture session later in the week. It needs a stiff custom marker-mount, so at the Bambu he pulls the standard 0.4 nozzle, threads in abrasive carbon-fiber filament, and drops in a hardened 0.6. He starts the print and says into the room, without breaking stride: "0.6 hardened nozzle and CF in for the A mount. Swap back to 0.4 and PLA before you print anything fine. This one runs till about three, don't cancel it." The sentence pins itself to the printer.</p>
+<p>He crosses to the mocap rig and re-runs the calibration for his capture volume. From anywhere in the room the rig looks exactly as it did yesterday. He says: "Recalibrated the rig for the A volume this morning." Pinned to the rig. On his way out he takes a shared tracker off the shelf and starts it logging a battery test. Its screen is dark; it looks idle. "This tracker's mid-log, screen's off but it's running, leave it." Pinned to the shelf. He nudges a couple of other people's spools off the print bench to make room and heads out; he will be offsite until Thursday.</p>
+<p>Three sentences, three places. None named a recipient, and none could, since Sam has no idea who prints, captures, or reaches for a tracker next. On a channel each would have cost more to send than it was worth to him, and would have gone unsaid. Here they cost a breath.</p>
+
+<h3>Tuesday. Three strangers, three near-misses.</h3>
+<p><b>Renata</b>, on a different project, comes to print a fine calibration plate. As she lines up the job, Sam's note surfaces at the machine: 0.6 and CF are still loaded. She stops. On the default profile, a fine plate through an abrasive 0.6 would have been two hours of ruined print. She swaps the 0.4 and PLA back, prints, and says: "0.4 and PLA back in, profile matches again." Her sentence replaces Sam's on the printer; the machine shows what is true now, not a stack of history.</p>
+<p><b>Priya</b> reaches for a tracker on the shelf. Sam's note surfaces: the one on the end is mid-log. A logging tracker and a sleeping one are identical: a camera could watch the shelf all day and never tell them apart, and the difference lived only in Sam's head. She takes a different one. <b>Dae-ho</b> goes to grab his parts bin and finds it gone from its spot; a note at the empty spot points him to the shelf, where Sam set it aside to clear the print bench.</p>
+
+<h3>Wednesday. Iris joins, walks Sam's trail, and grounding slips.</h3>
+<p><b>Iris</b> is new to Project A this week, brought in to run the capture while Sam is away. She has never touched his setup. She asks the room for Sam's trail, and it walks her through his week in order: the printer where the mount was made, the rig he recalibrated, the shelf and its logging tracker. Ten minutes, and she has what would otherwise have been a scramble of messages, or would have gone unasked.</p>
+<p>At the rig she reads Sam's note: "Recalibrated the rig for the A volume this morning." She is on Project A, so she takes it to mean the rig is calibrated and ready for her. But "the A volume" was Sam's own capture volume and marker set, not a blessing for anyone on Project A, and Iris, new, has no way to know that. She loads her markers and records. The rig throws no warning; the calibration reads valid. Her data comes out subtly, silently off, the kind you only catch days later in processing.</p>
+<p>The note reached her; that half worked. But "the A volume" meant a specific setup to Sam and "ready for me" to Iris, and across the gap there was no one to catch the difference in the moment. The space delivered the words; it could not make them land the same way in a head that did not share Sam's context.</p>
+
+<h3>Thursday. Sam comes back, and so does the repair, late.</h3>
+<p>Sam returns to the printer and the rig and, standing there, gets the week replayed in order: his own three notes, Renata's swap-back, Priya's tracker, Dae-ho's moved bin, and Iris's capture. He resets the nozzle and filament and restores the rig to the standard volume; his Monday notes collapse, superseded, the places clean again. He sees Iris's recording is off, finds her at the rig, and they trace it to the calibration. He leaves a sharper note this time: "Rig is set to my A volume, marker set B. If that is not your setup, recalibrate before you record." Iris re-runs her calibration and re-captures; it comes out clean. The repair happened, just two days late, and at the cost of a wasted session.</p>
+
+<h3>Friday. Different people, different mail.</h3>
+<p>Dozens of notes were left across the lab this week. On Friday each person asks the room the same question, "anything for me?", and each gets a different, short answer. Iris gets Sam's clarification and nothing else. Renata gets a single note that her plate is ready. Sam gets two: Iris's question about the re-capture, and Renata's note that his config had been in the way. Dae-ho's bin, Priya's tracker, the other projects' churn: none of it surfaces for anyone it does not belong to. The week's whole record sits in the room, and each person is handed only their slice.</p>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 <script>
