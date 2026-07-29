@@ -63,6 +63,49 @@
 <h3>Supporting</h3>
 <p><b>Technical evaluation</b> (no participants): structuring accuracy and anchoring reliability on Quest Pro. <b>Scenario</b> (filmed): a demonstration that the loop is coherent end to end, not empirical data.</p>
 
+<h2 id="p4"><span class="no">4</span>The study, concretely</h2>
+<p class="sub" style="margin-top:-.4em">Draft protocol. The <b>direction is fixed</b>; specific task steps can change. What is locked is the two-role chain and, for each study, <b>what we record</b> and <b>what we measure</b>. Both studies are in-lab on <b>Quest&nbsp;3</b> (passthrough), run with makerspace-experienced people from outside the lab (labmates pilot only).</p>
+
+<div class="hook"><b>The chain (why two studies are one pipeline):</b><br>
+Study&nbsp;1 real utterances (recorded + located) &#8594; real LLM segmentation, offline <i>(this is where RQ3 is measured)</i> &#8594; a curated <b>frozen seed set</b> (one representative real note per trap + researcher fillers) &#8594; <b>identical pre-seeded rooms</b> &#8594; Study&nbsp;2. <b>No live relay</b> &#8212; every Study&nbsp;2 participant walks into the same room, or the conditions do not compare. Every number in the paper traces back to words real participants spoke while working.</div>
+
+<h3>Study 1 &middot; the Leaver (capture cost &mdash; Thing 1)</h3>
+<p><b>Who:</b> N&#8776;10&#8211;12, within-subject, ~40&nbsp;min/session, in-lab. <b>Cover story:</b> "You are the morning shift; someone you do not know takes over this station this afternoon. Do the job; handle anything you notice however you normally would." Recording is <b>never mentioned</b> &#8212; leaving a note is optional and costly, exactly like real life.</p>
+<p><b>Conditions</b> (two matched task variants A/B, counterbalanced): <b>SM</b> = speak in place, wizarded (audio + location genuinely recorded, no live pipeline behind it) &nbsp;vs&nbsp; <b>Slack</b> = phone in pocket, lab channels available. <b>Both conditions wear the headset (passthrough)</b>, so device burden is held constant and the only variable is the capture channel: given the glasses, speak or pull the phone?</p>
+<p><b>Task (no soldering), ~30&nbsp;min, mild time pressure:</b> collect a draft print from the printer &#8594; assemble a bracket at the workbench &#8594; wire and clip a connector by hand &#8594; stage a logging phone for a 48-hour test. Six planted encounters &#8212; three <i>caused</i> by the participant, three <i>discovered</i>; three of them feed the Study&nbsp;2 traps:</p>
+<table>
+  <tr><th>#</th><th>Encounter</th><th>Type</th><th>Feeds</th></tr>
+  <tr><td class="k">E1</td><td>Job card says draft quality; the faster 0.6&nbsp;nozzle is available &#8212; participant swaps it in</td><td>caused</td><td>Trap&nbsp;T1</td></tr>
+  <tr><td class="k">E2</td><td>One bracket in the parts batch has a hairline crack</td><td>discovered</td><td>Trap&nbsp;T2</td></tr>
+  <tr><td class="k">E3</td><td>Participant starts a 48-h logging run on a shelf phone, screen off</td><td>caused</td><td>Trap&nbsp;T3</td></tr>
+  <tr><td class="k">E4</td><td>Filament roll feels tacky (moisture)</td><td>discovered</td><td>filler</td></tr>
+  <tr><td class="k">E5</td><td>Connector kit in the bin is the wrong size / mislabeled</td><td>discovered</td><td>filler</td></tr>
+  <tr><td class="k">E6</td><td>Hex bit stripped</td><td>discovered</td><td>filler</td></tr>
+</table>
+<p><b>What we record:</b> the spoken notes (audio) and each note's anchor location + timestamp (SM condition); the phone/Slack messages (baseline); per-record time-off-task; a screen/passthrough capture of the session for behavior coding.</p>
+<p><b>What we measure:</b> <b>externalization rate</b> per <i>noticed</i> encounter &#8212; a post-task manipulation-check interview ("walk me through what you noticed") separates <i>did not notice</i> from <i>noticed but did not record</i>, and only the latter is the phenomenon; <b>flow cost</b> = time-off-task per record + NASA-TLX; <b>usefulness</b> of what got recorded (blinded third-party rating). Exit novelty check: "in your own lab, would you still have said these?"</p>
+<p><b>Questionnaire instrument (Qualtrics):</b> consent &#8594; background &#8594; NASA-TLX after each variant &#8594; exit questions.</p>
+
+<h3>Study 2 &middot; the Arriver (reader cost + grounding reached &mdash; Things 2 &amp; 3)</h3>
+<p><b>Who:</b> N=12&#8211;16, within-subject, ~50&nbsp;min/session, in-lab. <b>Cover story:</b> "You are the afternoon shift, new to this project. Get up to speed, then complete three jobs."</p>
+<p><b>Conditions</b> (two matched pre-seeded rooms Week&nbsp;A/Week&nbsp;B, counterbalanced): <b>SM-full</b> = graph on (triage, supersession, audience filter, trail) &nbsp;vs&nbsp; <b>anchored-only</b> = the ablation: the same notes hanging raw in place, no supersession (the stale nozzle note hangs beside the new one), no filter, no expiry, no triage. Each room holds ~35&#8211;40 notes including superseded pairs and notes addressed to other people, so structure has real work to do. <b>Slack is not a Study&nbsp;2 condition</b> &#8212; it was the capture-side baseline; Study&nbsp;2 isolates the one variable that matters here, <b>structure</b>. This ablation is the most important condition in the paper: the two rooms differ in exactly one thing, so any difference is attributable to the Memory Graph, and it is the data that kills "sticky notes in AR."</p>
+<table>
+  <tr><th>#</th><th>Task</th><th>Trap</th></tr>
+  <tr><td class="k">T0</td><td>"Anything you need to know before you start?"</td><td>&#8212; (measures triage time, relevant items found)</td></tr>
+  <tr><td class="k">T1</td><td>Print a fine calibration plate</td><td>nozzle still 0.6 &#8212; does the arriver check/swap before printing?</td></tr>
+  <tr><td class="k">T2</td><td>Finish the second mount from the staged parts</td><td>the cracked bracket</td></tr>
+  <tr><td class="k">T3</td><td>Run the sensor test app on a shelf phone</td><td>the logging phone (do not stop the run)</td></tr>
+</table>
+<p><b>What we record:</b> task actions and outcomes (each trap hit vs avoided); time-to-first-relevant-note; T0 triage time; retrieval errors; a screen capture of the session; the exit-interview audio.</p>
+<p><b>What we measure:</b> <b>traps avoided</b> (/3); <b>time-to-relevant</b> and T0 triage time; retrieval errors; <b>perceived overload</b> (NASA-TLX); <b>preference</b>. Then the Thing-3 layer: an interview on the same arrivers &#8212; did they reconstruct the author's meaning, did standing at the place help, where were they unsure, did they act as intended &#8212; coded <b>grounded</b> (acted correctly for the intended reason) vs <b>broke</b> (misread, right for the wrong reason, unsure, mismatched criteria), two coders, focused thematic analysis.</p>
+<p><b>Questionnaire instrument (Qualtrics):</b> consent &#8594; background &#8594; NASA-TLX/overload after each room &#8594; preference + exit.</p>
+
+<h3>Technical evaluation (RQ3, no participants)</h3>
+<p><b>Segmentation</b> on the full Study&nbsp;1 corpus (+ pilot recordings) against gold labels: % correct object/project filing, audience %, supersession detection %, capture-to-card latency. <b>Anchoring</b>: repeated approach trials across sessions and relocalizations on Quest&nbsp;3 &#8212; surfacing reliability % and latency.</p>
+
+<h3>Still open (task-level, not direction)</h3>
+<p>Task variant&nbsp;B contents (a parallel mirror of A); final N per study; per-study compensation; recruitment channel. Doc sweep: the Plan/Full&nbsp;Doc still say "Quest Pro" in places &#8212; the locked platform decision is <b>Quest&nbsp;3</b>; reconcile.</p>
+
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 </div>
 </body>
