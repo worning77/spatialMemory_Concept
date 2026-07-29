@@ -8,10 +8,12 @@ Each tab is a **standalone HTML page** sharing `style.css`. One person owns each
 
 | Tab | File | Owner | What |
 |-----|------|-------|------|
-| Full Doc | [`design_doc.html`](./design_doc.html) | both | Complete design document (concept, why-not-Slack, full scenario, system, study plan) — the thing to read in full |
+| Full Doc | [`design_doc.html`](./design_doc.html) | both | Complete design document, now leading with the grounding spine (proposition + three substitutions organize §1/§3/§8) — the thing to read in full |
+| Framing | [`grounding.html`](./grounding.html) | both | The grounding theory, polished |
 | Concept | [`concept.html`](./concept.html) | Chenfeng | One-screen condensed concept |
 | Plan | [`plan.html`](./plan.html) | Chenfeng | Timeline + condensed study plan |
 | Storyboard | [`storyboard.html`](./storyboard.html) | YY | Scenario drawn as panels |
+| Archive | [`archive_fulldoc.html`](./archive_fulldoc.html) | both | Verbatim snapshot of the pre-grounding-spine Full Doc, kept for reference |
 
 `scenario_7day.html` — legacy pre-pivot 7-day scenario (superseded).
 

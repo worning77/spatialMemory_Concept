@@ -3,23 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Spatial Memory: Design Document</title>
+<title>Spatial Memory: Design Document (Archived)</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav class="tabs"><div class="tabs-inner">
   <span class="brand">Spatial Memory</span>
-  <a href="design_doc.html" class="active">Full Doc</a>
+  <a href="design_doc.html">Full Doc</a>
   <a href="grounding.html">Framing</a>
   <a href="concept.html">Concept</a>
   <a href="plan.html">Plan</a>
   <a href="storyboard.html">Storyboard</a>
-  <a href="archive_fulldoc.html">Archive</a>
+  <a href="archive_fulldoc.html" class="active">Archive</a>
 </div></nav>
 <div class="wrap">
 
-<h1>Spatial Memory: Design Document</h1>
-<p class="sub">Structured as the paper skeleton: each section states what the paper section must accomplish, then the design content that feeds it · v3 · 2026-06-30 · CHI 2027</p>
+<div class="hook"><b>Archived · superseded 2026-07-29.</b> This is the pre-grounding-spine version of the design document, kept for reference only. It treats grounding as a single related-work subsection rather than the organizing spine. The current, authoritative version is the <a href="design_doc.html">Full Doc</a>, which leads with the grounding proposition and its three substitutions.</div>
+
+<h1>Spatial Memory: Design Document (Archived · pre-grounding-spine)</h1>
+<p class="sub">Structured as the paper skeleton: each section states what the paper section must accomplish, then the design content that feeds it · v3 · 2026-06-30 · CHI 2027 · <b>archived snapshot</b></p>
 
 <div class="hook"><b>One sentence:</b> Spatial Memory lets a shared physical workspace carry what its people chose to say to whoever needs it next, where it happened: deliberate voice notes captured at the effort of a single spoken sentence, anchored in place, structured in a Memory Graph, and surfaced at the moment of encounter.</div>
 
@@ -42,9 +44,7 @@
 <p><i>Shared physical workspaces are asynchronous by default. Collaborators share machines and benches but rarely share the clock, and the judgments that matter, such as a swapped nozzle, a stale calibration, or a fragile joint, die unspoken. They die because sending a message costs the person in flow more effort than the observation seems to justify. We present <b>Spatial Memory</b>, a paradigm in which deliberate voice notes are captured at the effort of a single spoken sentence, anchored where they were spoken, and organized in a <b>Memory Graph</b> that keeps each place showing its current state rather than a pile of history. We evaluate the concept in two chained studies. Leavers (N≈10) work hands-busy tasks, and their real utterances seed the rooms that arrivers (N=12–16) later walk into. In-place voice capture raised in-flow externalization over phone-and-channel practice at lower effort, and graph structure beat raw anchoring on two things a flat anchored list cannot do: act on a place's current state, and deliver a warning that had to travel from where it was left to where it was needed.</i></p>
 
 <!-- ============================================================ -->
-<h2 id="s1"><span class="no">1</span>Introduction <span class="job">lead with the proposition and genre; then motivate with a concrete instance, ground the problem as handoff failure (deferred to §2.1), kill camera and channel, name the reframe, earn the graph (Moves 1-7)</span></h2>
-
-<p><b>Thesis and genre.</b> This paper proposes a theory and builds a system to show it holds. The theory is that grounding, in Clark and Brennan a synchronous, two-party achievement, can be relocated into a space-anchored, accumulated structure through three substitutions: choosing a recipient becomes anchoring to a place; describing the referent becomes spatial co-location, so deixis is restored across time and the reader stands where it was said; and accepting with a live reply becomes a later person's action on the world, a deferred and world-mediated acceptance. <b>Spatial Memory</b> is the system that instantiates these substitutions, and the evaluation confirms each one and reports the boundary where it breaks, namely that asynchrony removes repair and cannot complete mutual belief. The system is simple by design; the <b>theory is the load-bearing contribution</b>. This is a concept proposal confirmed by evaluation, not an open study of a system's role, and the motivation that follows earns the proposition from the failure it repairs. The synchronous version of this relocation is From Speech-to-Spatial (Kim et al., ISMAR 2026), a live shared view; ours is the asynchronous case. In one line, they are a spatial Zoom and we are a spatial Slack (§2.5).</p>
+<h2 id="s1"><span class="no">1</span>Introduction <span class="job">motivate with a concrete instance, ground the problem as handoff failure (deferred to §2.1), kill camera and channel, name the reframe, earn the graph (Moves 1-7)</span></h2>
 
 <p><b>Setting.</b> Shared physical workspaces are asynchronous by default. In labs, machine shops, clinics, and kitchens, collaborators share equipment and benches but rarely share the clock: the morning person leaves before the afternoon person arrives. The room is the only collaborator present across every shift, and it remembers nothing.</p>
 
@@ -70,7 +70,7 @@
 
 <p><b>Reframe.</b> Keep the irreducible part, which is that the human authors the content. Remove the part that can be removed, which is the addressing effort: naming a recipient, describing the referent, and switching out of the task. This is now buildable, because persistent shared anchoring, head-worn capture, and on-device language models that transcribe and segment speech have converged, and the instrumentation is first-person, worn by the collaborator rather than fixed to the room. The worker speaks one sentence in place. The worn device captures what they chose to say. The room carries it forward, anchored where it was spoken. We call this paradigm <b>Spatial Memory</b>, and the structure that organizes it the <b>Memory Graph</b>.</p>
 
-<p><b>The proposition, now earned.</b> The reframe is precisely the thesis stated at the outset: the addressing effort the worker declines to pay is the cost of grounding, and removing it relocates grounding into space. Choosing a recipient becomes anchoring to a place; describing the referent becomes spatial co-location, where the reader stands where it was said and deixis is restored across time; and accepting with a live reply becomes a later person acting on the note, a deferred and world-mediated acceptance. The figure below traces one such relocation across a shift gap, and the three substitutions organize the concept in §3 and the evaluation in §8.</p>
+<p><b>The proposition.</b> Read through grounding theory, Spatial Memory relocates grounding from a synchronous two-party achievement into a space-anchored, accumulated structure, through three substitutions: choosing a recipient becomes anchoring to a place; describing the referent becomes spatial co-location, where the reader stands where it was said and deixis is restored across time; and accepting with a live reply becomes a later person acting on the note, a deferred and world-mediated acceptance. The synchronous version of this is From Speech-to-Spatial (Kim et al., ISMAR 2026), a live shared view; ours is the asynchronous case. In one line, they are a spatial Zoom and we are a spatial Slack (§2.5).</p>
 
 <figure>
 <svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -153,7 +153,7 @@
   <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes. <b>This is Spatial Memory's own failure mode.</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence, ordering</td></tr>
 </table>
 
-<p><b>Contributions.</b> This paper contributes (1) the <b>theory</b> that grounding, a synchronous two-party achievement in Clark and Brennan, can be relocated into a space-anchored, accumulated structure through three substitutions, the paper's load-bearing contribution; (2) <b>Spatial Memory</b>, the paradigm that instantiates that theory for place-based asynchronous collaboration; (3) the <b>Memory Graph</b>, the minimal structure that turns anchored notes into current state and routes them along the relationships of place, person, and project; (4) a week-long <b>scenario</b> that dramatizes the four sub-problems; (5) a working <b>system</b> on a head-worn device as a proxy for future lightweight AR glasses; and (6) an <b>evaluation</b> that confirms the theory's three substitutions and reports the boundary where grounding is only one-way, rather than testing the prototype's usability.</p>
+<p><b>Contributions.</b> This paper contributes (1) <b>Spatial Memory</b>, a paradigm for place-based asynchronous collaboration; (2) the <b>Memory Graph</b>, the minimal structure that turns anchored notes into current state and routes them along the relationships of place, person, and project; (3) a week-long <b>scenario</b> that dramatizes the four sub-problems; (4) a working <b>system</b> on a head-worn device as a proxy for future lightweight AR glasses; and (5) an <b>evaluation</b> that tests the concept's claims rather than the prototype's usability.</p>
 
 <!-- ============================================================ -->
 <h2 id="s2"><span class="no">2</span>Related Work <span class="job">outline only. five subsections, each closing on "we build on / extend," never "they fail to"</span></h2>
@@ -185,20 +185,10 @@
 <b>We build on / extend:</b> From Speech-to-Spatial grounds a reference on a live shared view in real time; we relocate grounding across time, into a shared physical space that different people visit at different moments, where acceptance is deferred to a later person's action. In one line, they are a spatial Zoom; we are a spatial Slack.</p>
 
 <!-- ============================================================ -->
-<h2 id="s3"><span class="no">3</span>Concept <span class="job">paper's job: define Spatial Memory as the three grounding substitutions made concrete — capture, anchor, structure, surface — and the information class it serves</span></h2>
-
-<h3>Three substitutions: the through-line</h3>
-<p>Spatial Memory is the theory's three substitutions made concrete, and the rest of this section hangs off them. Each substitution converts a cost that a synchronous conversation pays live into a property of a space-anchored, accumulated record.</p>
-<table>
-  <tr><th>Grounding move</th><th>Substitution</th><th>Where it lives in the concept</th></tr>
-  <tr><td class="k">choose a recipient</td><td><b>anchoring to a place</b>: the note attaches to the place, not a named addressee</td><td>the <i>anchor</i> step of the loop; the <b>Anchored</b> property; object memory's place anchor</td></tr>
-  <tr><td class="k">describe the referent</td><td><b>spatial co-location</b>: the reader stands where it was said, so deixis is restored across time</td><td>the <i>surface</i> step; encounter-class information; the invisible referent that words alone would lose</td></tr>
-  <tr><td class="k">accept with a live reply</td><td><b>deferred acceptance</b>: a later person acts on the note, a world-mediated acceptance</td><td>the <i>structure</i> and <i>surface</i> steps under accumulation; supersession as the trace of that later action</td></tr>
-</table>
-<p>The loop below is how the system runs these substitutions; the four properties, the two memory types, and the low-effort stance that follow each realize one or more of them. The boundary the theory carries, that deferred acceptance is not the mutual belief a live reply secures, is what §8 confirms and bounds.</p>
+<h2 id="s3"><span class="no">3</span>Concept <span class="job">paper's job: define Spatial Memory as the loop it runs and the information class it serves: capture, anchor, structure, surface</span></h2>
 
 <h3>The idea: one loop</h3>
-<p>Spatial Memory is a loop with four steps. A worker <b>captures</b> a judgment by speaking one sentence in place, at low addressing effort. The system <b>anchors</b> it to the place where it was spoken. The <b>Memory Graph structures</b> it, assigning type, audience, persistence, and supersession. When the next person approaches, the place <b>surfaces</b> its current, relevant state. In grounding terms, <b>anchor</b> performs the recipient substitution, <b>surface</b> performs the co-location substitution, and a later person's action on what surfaces performs the acceptance substitution. No single step is new: notes have been anchored in space before, and messages have been typed and filtered before. The contribution is closing the loop for encounter-class information in shared physical work, so that a judgment spoken in flow reaches whoever needs it next, where it happened.</p>
+<p>Spatial Memory is a loop with four steps. A worker <b>captures</b> a judgment by speaking one sentence in place, at low addressing effort. The system <b>anchors</b> it to the place where it was spoken. The <b>Memory Graph structures</b> it, assigning type, audience, persistence, and supersession. When the next person approaches, the place <b>surfaces</b> its current, relevant state. No single step is new: notes have been anchored in space before, and messages have been typed and filtered before. The contribution is closing the loop for encounter-class information in shared physical work, so that a judgment spoken in flow reaches whoever needs it next, where it happened.</p>
 
 <h3>The four properties</h3>
 <table>
@@ -263,7 +253,7 @@
 </figure>
 
 <h3>Low effort, not no effort</h3>
-<p>The low-effort stance is the author's side of the recipient substitution: anchoring to a place removes the addressing effort, but the human still authors every memory. Judgment is irreducible, and <b>every memory is a deliberate utterance</b>: no ambient inference, no gaze or dwell logging, no telemetry (validated by a 60-scenario scoring exercise in which every inferred-event design was rejected). What the system removes is only the addressing effort: recipient selection, referent description, and app switching. The cost of forming and speaking the sentence remains. This is also the privacy stance: not surveillance, but capture of chosen speech.</p>
+<p>The human still authors every memory. Judgment is irreducible, and <b>every memory is a deliberate utterance</b>: no ambient inference, no gaze or dwell logging, no telemetry (validated by a 60-scenario scoring exercise in which every inferred-event design was rejected). What the system removes is only the addressing effort: recipient selection, referent description, and app switching. The cost of forming and speaking the sentence remains. This is also the privacy stance: not surveillance, but capture of chosen speech.</p>
 
 <!-- ============================================================ -->
 <h2 id="s4"><span class="no">4</span>Memory Graph <span class="job">paper's job: the structuring component between capture and surfacing; the build spec for the room's memory</span></h2>
@@ -634,15 +624,7 @@
 <p>Spatial Memory contributes a concept, not a system optimization, and we evaluate it accordingly. Following arguments that paradigm-level contributions are mis-served by usability benchmarks \cite{olsen2007evaluating, greenberg2008usability, wobbrock2016research}, we do not ask whether our prototype is fast or learnable; we ask whether the claims the concept makes hold. Because the value we claim, that a shared space can carry encounter-class information and surface it as current state at the point of use, has no established yardstick, our evaluation must do three things that a technique evaluation receives for free from its task: it operationalizes that value into measurable outcomes, it attributes any benefit to the mechanism rather than to confounds, and where possible it shows the alternative to be not merely worse but structurally limited.</p>
 <p>We distribute this across complementary evidence. The filmed scenario carries integration and longitudinal scope, a full week of accumulated use that no single controlled study can hold, and each study in turn isolates one claim. A technical evaluation establishes that the pipeline structures real in-flow speech. Study 1 tests whether removing the addressing effort of capture changes behavior. Study 2 holds the notes constant and varies only the Memory Graph, to measure what the structuring component is worth under a week of accumulation. The scenario integrates; the studies isolate.</p>
 
-<h3>The study in grounding terms</h3>
-<p>The evaluation reads the study through Clark and Brennan's grounding, exactly as the theory frames it. First it places the medium: on the eight properties of a medium (copresence, cotemporality, reviewability, and the rest), a shared physical space is a new profile, asynchronous but with copresence of place, which the <a href="grounding.html">Framing</a> tab lays out and which predicts our costs. The proposition is then three things; the study confirms each and reports where it breaks, with two kinds of evidence: <b>numbers</b> on the system pieces, read as grounding costs, and <b>interviews</b> on whether grounding was reached.</p>
-<table>
-  <tr><th>Thing</th><th>Grounding cost it addresses</th><th>Test and evidence</th></tr>
-  <tr><td class="k">1 · the author's cost drops (leaver)</td><td><b>start-up and formulation cost</b>: finding an addressee and putting the note into words (the recipient substitution: addressing becomes anchoring)</td><td>Study 1 — in-place voice versus phone-and-channel, both wearing the headset; externalization rate, time-off-task, NASA-TLX (behavioral leg)</td></tr>
-  <tr><td class="k">2 · the reader's cost is kept low (arriver, the graph)</td><td><b>understanding cost</b>: least collaborative effort forbids simply dumping the author's saved cost on the reader (the co-location substitution, plus routing under accumulation)</td><td>Study 2 — SM-full versus anchored-only over a week's accumulation; state-resolution and cross-place-routing traps, time-to-relevant, overload</td></tr>
-  <tr><td class="k">3 · grounding is reached, or not (deferred acceptance)</td><td><b>acceptance</b>: async has no live reply, so a later person's action on the world stands in for it (the load-bearing, Slack-only substitution)</td><td>Study 2 interviews on the same arrivers, coded <b>grounded</b> versus <b>broke</b> (qualitative leg that bounds the theory)</td></tr>
-</table>
-<p>Two grounding measures sit over the three Things. <b>Total collaborative cost</b> (author plus reader) should drop and redistribute versus the baseline, least collaborative effort made visible. And <b>grounding reached</b>, the grounded-versus-broke rate, is the outcome: an arriver is <b>grounded</b> when they acted correctly for the intended reason, and grounding <b>broke</b> when they misread, were right for the wrong reason, were unsure, or matched a mismatched criterion, coded by two coders in a focused thematic analysis. The honest <b>boundary</b>: asynchrony removes repair and cannot complete mutual belief, so we report where grounding is only one-way. That boundary is what makes this a grounding paper rather than a system test, and it supplies the discussion. In short, the technical leg confirms the mechanism is realizable and the qualitative leg confirms and bounds the theory.</p>
+<p><b>What the studies confirm: the proposition's three substitutions.</b> Read through grounding (§2.5), the evaluation confirms three substitutions and reports where they break. That <i>addressing becomes anchoring</i> lowers the leaver's cost (Study 1). That <i>describing becomes spatial co-location</i>, and routing delivers the note to the right place under accumulation (Study 2, the two traps). And that <i>live acceptance becomes a later person's action</i>, the load-bearing, Slack-only substitution, which a qualitative layer on the arrivers characterizes: did they reconstruct the author's meaning, did standing at the place help, and where did it break. The technical evaluation confirms the mechanism; the qualitative layer confirms and bounds the theory.</p>
 
 <p><b>Goal.</b> Study 1 tests whether people externalize a judgment once the addressing effort is removed (claim C2). Study 2 tests whether the structuring component, not anchoring alone, makes the accumulated record usable (claim C3). The two are chained: the voice notes real participants produce in Study 1 are structured by the real pipeline and become the rooms that Study 2 participants walk into, and the same corpus serves as the technical-evaluation benchmark.</p>
 
@@ -722,7 +704,6 @@
   <tr><td class="k">T3 · control</td><td>a single-place job with a note left at that place (the logging phone)</td><td>surfacing substrate, present in both conditions</td></tr>
 </table>
 <p><b>The two headline traps are T1 and T2</b>, because each isolates something the filtering alone does not cover: resolving a place to its current state, and routing a note to where it is needed. T1 tests both error directions, acting on a stale issue and redoing a resolved one. T2 is the cleanest contrast, since anchored-only structurally cannot bring a note to a place it was never left. The ablation measures how much the structuring component is worth once capture, anchoring, and surfacing are already in place.</p>
-<p><b>The grounding layer (Thing 3, deferred acceptance).</b> On the same arrivers, an interview asks whether they reconstructed the author's meaning, whether standing at the place helped, where they were unsure, and whether they did what the author intended. Two coders code each encounter <b>grounded</b> (acted correctly for the intended reason) versus <b>broke</b> (misread, right for the wrong reason, unsure, or mismatched criteria) in a focused thematic analysis. This is where the deferred-acceptance substitution is confirmed and bounded: a later person's action stands in for the live reply async cannot provide, and because async removes repair, we report honestly where grounding lands only one-way rather than completing mutual belief.</p>
 
 <h3>Technical evaluation: mechanism (tests M, no participants)</h3>
 <table>

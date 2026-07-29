@@ -12,10 +12,12 @@ one person owns each file, so two collaborators edit concurrently without git co
 
 | Tab | File | Owner | Purpose |
 |-----|------|-------|---------|
-| Full Doc | `design_doc.html` | both | Complete design document (full text) |
+| Full Doc | `design_doc.html` | both | Complete design document; **leads with the grounding spine** (proposition + three substitutions organize §1/§3/§8) |
+| Framing | `grounding.html` | both | The grounding theory, polished (grounding cost table) |
 | Concept | `concept.html` | Chenfeng | Condensed concept (one screen) |
 | Plan | `plan.html` | Chenfeng | Timeline + condensed study plan |
 | Storyboard | `storyboard.html` | YY | Scenario as panels |
+| Archive | `archive_fulldoc.html` | both | Verbatim snapshot of the pre-grounding-spine Full Doc, kept for reference |
 
 - `style.css` — shared stylesheet for ALL tabs (extracted from the original inline CSS
   in `design_doc.html`, plus `.tabs` nav styles). Edit sparingly; it affects every tab.
