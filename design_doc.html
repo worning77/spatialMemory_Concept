@@ -111,11 +111,11 @@
   <line x1="407" y1="114" x2="407" y2="126" stroke="#8a4baf" stroke-width="1.5" marker-end="url(#ah)"/>
   <text x="452" y="122" font-size="8.5" fill="#8a4baf">supersedes</text>
 
-  <text x="548" y="86" text-anchor="middle" font-size="9" fill="#8a4baf" font-weight="700">Drone build &#8212; project memory</text>
+  <text x="548" y="86" text-anchor="middle" font-size="9" fill="#8a4baf" font-weight="700">A capture &#8212; project memory</text>
   <rect x="466" y="96" width="70" height="18" rx="5" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="501" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">joint fragile</text>
+  <text x="501" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">shoot 120fps</text>
   <rect x="560" y="96" width="70" height="18" rx="5" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="595" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">joint fragile</text>
+  <text x="595" y="109" text-anchor="middle" font-size="9.5" fill="#8a4baf">shoot 120fps</text>
   <line x1="536" y1="105" x2="560" y2="105" stroke="#8a4baf" stroke-dasharray="3 3"/>
   <line x1="407" y1="146" x2="407" y2="164" stroke="#c9cfd8" stroke-dasharray="3 3"/>
   <line x1="501" y1="114" x2="501" y2="164" stroke="#c9cfd8" stroke-dasharray="3 3"/>
@@ -132,7 +132,7 @@
   <path d="M765 133 V178 M765 148 L797 162 M765 148 L740 168 M765 178 L745 208 M765 178 L792 204" stroke="#1a1d24" stroke-width="4" fill="none" stroke-linecap="round"/>
   <rect x="718" y="42" width="244" height="50" rx="8" fill="#ffffff" stroke="#1f5fbf" stroke-width="1.5"/>
   <text x="840" y="62" text-anchor="middle" font-size="10.5" fill="#1a1d24">&#9888; &#8220;0.6 nozzle in &#8212; swap back before anything</text>
-  <text x="840" y="78" text-anchor="middle" font-size="10.5" fill="#1a1d24">fine.&#8221; &#8212; Jesse &#183; Mon &#183; current state</text>
+  <text x="840" y="78" text-anchor="middle" font-size="10.5" fill="#1a1d24">fine.&#8221; &#8212; Sam &#183; Mon &#183; current state</text>
   <path d="M919 146 C 919 120, 900 105, 882 96" stroke="#1f5fbf" stroke-dasharray="4 3" fill="none" marker-end="url(#ahb)"/>
   <text x="845" y="262" text-anchor="middle" font-size="10.5" fill="#5b6472">right place &#183; right moment &#183; superseded notes collapsed</text>
 
@@ -153,7 +153,7 @@
   <tr><td class="k"><span class="badge bD">D · Overload</span></td><td>Once the room remembers everything, anyone walking in drowns in accumulated notes. <b>This is Spatial Memory's own failure mode.</b></td><td>every arriver</td><td>the Memory Graph: audience filter, supersession, persistence, ordering</td></tr>
 </table>
 
-<p><b>Contributions.</b> This paper contributes (1) the <b>theory</b> that grounding, a synchronous two-party achievement in Clark and Brennan, can be relocated into a space-anchored, accumulated structure through three substitutions, the paper's load-bearing contribution; (2) <b>Spatial Memory</b>, the paradigm that instantiates that theory for place-based asynchronous collaboration; (3) the <b>Memory Graph</b>, the minimal structure that turns anchored notes into current state and routes them along the relationships of place, person, and project; (4) a week-long <b>scenario</b> that dramatizes the four sub-problems; (5) a working <b>system</b> on a head-worn device as a proxy for future lightweight AR glasses; and (6) an <b>evaluation</b> that confirms the theory's three substitutions and reports the boundary where grounding is only one-way, rather than testing the prototype's usability.</p>
+<p><b>Contributions.</b> This paper contributes (1) the <b>theory</b> that grounding, a synchronous two-party achievement in Clark and Brennan, can be relocated into a space-anchored, accumulated structure through three substitutions, the paper's load-bearing contribution; (2) <b>Spatial Memory</b>, the paradigm that instantiates that theory for place-based asynchronous collaboration, together with the <b>Memory Graph</b>, the minimal structure that turns anchored notes into current state and routes them along the relationships of place, person, and project; (3) a working <b>system</b> on a head-worn device as a proxy for future lightweight AR glasses, and a week-long <b>scenario</b> that dramatizes how the substitutions play out across shifts; and (4) an <b>evaluation</b> that confirms the theory's three substitutions and reports the boundary where grounding lands only one-way, rather than testing the prototype's usability.</p>
 
 <!-- ============================================================ -->
 <h2 id="s2"><span class="no">2</span>Related Work <span class="job">outline only. five subsections, each closing on "we build on / extend," never "they fail to"</span></h2>
@@ -216,15 +216,15 @@
 <p>A memory type is defined by two questions: <b>what is the note anchored to</b>, and <b>what does it outlive</b>.</p>
 <table>
   <tr><th>Type</th><th>Anchored to</th><th>Outlives</th><th>Example</th></tr>
-  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a place: a fixture or a movable's home spot</td><td>any project (institutional)</td><td>"0.6 nozzle is in" on the printer; "calibration is stale" on the rig</td></tr>
-  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many places</td><td>nothing; lives and dies with the project</td><td>"wing joint fragile" travels from the workbench to the motor-test bench</td></tr>
+  <tr><td class="k"><span class="chip obj">Object memory</span></td><td>a place: a fixture or a movable's home spot</td><td>any project (institutional)</td><td>"0.6 nozzle is in" on the printer; "recalibrated for the A volume" on the rig</td></tr>
+  <tr><td class="k"><span class="chip proj">Project memory</span></td><td>a Project spanning many places</td><td>nothing; lives and dies with the project</td><td>"shoot the A capture at 120fps" travels from the printer to the mocap rig</td></tr>
 </table>
 <p><b>Person is not a third type.</b> Nothing is anchored <i>to</i> a person, and "person memory" outlives nothing in particular. Person, like time, is a <b>query over the graph</b>, not a storage type: <i>whose trail</i>, <i>addressed to whom</i>, <i>since when</i>. This definition is also the pre-emptive answer to "why is there no person/time/task memory?"</p>
 
 <figure>
 <svg viewBox="0 0 1000 240" xmlns="http://www.w3.org/2000/svg" role="img">
   <rect x="165" y="56" width="270" height="26" rx="13" fill="#8a4baf" fill-opacity="0.10" stroke="#8a4baf" stroke-dasharray="5 4"/>
-  <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: Drone build, one warning, every station</text>
+  <text x="300" y="73" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Project memory: A capture, one note, every station</text>
   <line x1="230" y1="82" x2="230" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
   <line x1="370" y1="82" x2="370" y2="148" stroke="#8a4baf" stroke-dasharray="3 3"/>
 
@@ -232,7 +232,7 @@
   <text x="90" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">nozzle 0.6 &#8594; 0.4</text>
   <line x1="90" y1="132" x2="90" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
   <rect x="455" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="510" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">Pixel mid-log</text>
+  <text x="510" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">tracker mid-log</text>
   <line x1="510" y1="132" x2="510" y2="148" stroke="#c9cfd8" stroke-dasharray="3 3"/>
   <rect x="595" y="112" width="110" height="20" rx="6" fill="#eef4fd" stroke="#1f5fbf"/>
   <text x="650" y="126" text-anchor="middle" font-size="9.5" fill="#1f5fbf">calibration stale</text>
@@ -253,7 +253,7 @@
   <rect x="750" y="56" width="230" height="150" rx="10" fill="#ffffff" stroke="#e2e6ec"/>
   <text x="865" y="80" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Person &amp; time = queries, not types</text>
   <rect x="766" y="94" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) : &#8220;what did Jesse do?&#8221;</text>
+  <text x="865" y="110" text-anchor="middle" font-size="10" fill="#2f7d4f">trail(P) : &#8220;what did Sam do?&#8221;</text>
   <rect x="766" y="126" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
   <text x="865" y="142" text-anchor="middle" font-size="10" fill="#2f7d4f">for_me(P) : &#8220;anything for me?&#8221;</text>
   <rect x="766" y="158" width="198" height="24" rx="12" fill="#e8f4ec" stroke="#2f7d4f"/>
@@ -289,7 +289,7 @@
   <tr><td class="k">Expire</td><td>ephemera die on schedule; project notes die with the project</td></tr>
 </table>
 
-<p><b>SLAM-only constraint.</b> The camera is a locator, never a recorder: no visual content, no small-object recognition. Movables get a home-spot Place, are <i>named in the utterance</i> ("the plugged-in Pixel"), and ride project memory across stations. This constraint is precisely why both memory types are necessary: the zone anchor covers the encounter, and project memory covers everywhere else the warning must travel. Only the pair covers both.</p>
+<p><b>SLAM-only constraint.</b> The camera is a locator, never a recorder: no visual content, no small-object recognition. Movables get a home-spot Place, are <i>named in the utterance</i> ("the tracker on the end"), and ride project memory across stations. This constraint is precisely why both memory types are necessary: the zone anchor covers the encounter, and project memory covers everywhere else the warning must travel. Only the pair covers both.</p>
 
 <p><b>The hard part is building it from speech.</b> The data model is trivial; turning a messy in-flow utterance into it is not. The system structures each utterance against the current graph: it infers the note's type, its audience from project membership, and whether it supersedes an existing note. That stateful structuring, not the data model, is the engineering, and we isolate this component's contribution in the evaluation (§8).</p>
 
@@ -299,12 +299,12 @@
     <marker id="ah4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#8a4baf"/></marker>
   </defs>
   <!-- people -->
-  <circle cx="150" cy="40" r="12" fill="#1f5fbf"/><text x="150" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#1f5fbf">Jesse</text>
-  <circle cx="470" cy="40" r="12" fill="#2f7d4f"/><text x="470" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#2f7d4f">Vasco</text>
-  <circle cx="720" cy="40" r="12" fill="#8a4baf"/><text x="720" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Mia</text>
+  <circle cx="150" cy="40" r="12" fill="#1f5fbf"/><text x="150" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#1f5fbf">Sam</text>
+  <circle cx="470" cy="40" r="12" fill="#2f7d4f"/><text x="470" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#2f7d4f">Renata</text>
+  <circle cx="720" cy="40" r="12" fill="#8a4baf"/><text x="720" y="68" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">Iris</text>
   <!-- project node -->
   <rect x="240" y="26" width="170" height="28" rx="14" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="325" y="45" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a4baf">Project: Drone build</text>
+  <text x="325" y="45" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8a4baf">Project: A capture</text>
 
   <!-- notes -->
   <!-- A1 superseded at printer -->
@@ -319,18 +319,18 @@
   <text x="158" y="160" font-size="9" font-weight="700" fill="#8a4baf">supersedes</text>
   <!-- A2 -->
   <rect x="255" y="140" width="140" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="325" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A2 &#8220;joint fragile, brace&#8221;</text>
-  <text x="325" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">one utterance, two edges</text>
+  <text x="325" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A4 &#8220;120fps for A&#8221;</text>
+  <text x="325" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">project memory, travels</text>
   <line x1="325" y1="140" x2="325" y2="56" stroke="#8a4baf" stroke-dasharray="4 3" stroke-width="1.5"/>
   <text x="334" y="100" font-size="8.5" fill="#8a4baf">for_project</text>
-  <!-- B2 pixel -->
+  <!-- A3 tracker -->
   <rect x="470" y="140" width="150" height="34" rx="7" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="545" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">B2 &#8220;plugged-in Pixel mid-log&#8221;</text>
+  <text x="545" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A3 &#8220;tracker mid-log&#8221;</text>
   <text x="545" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">device named in the utterance</text>
   <!-- B3 -->
   <rect x="680" y="140" width="150" height="34" rx="7" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="755" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">B3 &#8220;calibration stale&#8221;</text>
-  <text x="755" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">waits for a stranger (sub-problem B)</text>
+  <text x="755" y="156" text-anchor="middle" font-size="9.5" fill="#1a1d24">A2 &#8220;recal for A volume&#8221;</text>
+  <text x="755" y="169" text-anchor="middle" font-size="8.5" fill="#5b6472">the note a newcomer misreads (grounding breaks)</text>
 
   <!-- left_by edges -->
   <line x1="143" y1="51" x2="113" y2="108" stroke="#c9cfd8" stroke-width="1.2"/>
@@ -378,134 +378,131 @@
 <p class="sub">This table is the interaction spec and the alignment contract: every moment maps to a scenario beat and a system feature, and a feature with no beat does not get built. The moment-to-study mapping lives in §8. (`Sections/5-interaction.tex` currently has six phases; align it to these six moments during the rewrite.)</p>
 
 <!-- ============================================================ -->
-<h2 id="s6"><span class="no">6</span>Scenario <span class="job">paper's job: one week, four sub-problems dramatized as near-misses with victims — never a feature tour</span></h2>
-<p class="sub">Cast: <b>Jesse</b> (senior; drone build; also records mocap ground-truth data for a separate wearable-sensing project), <b>Vasco</b> (study prototype; printer-heavy), <b>Mia</b> (a different team entirely; mocap user study), <b>Taeyoung</b> (joins the drone build mid-week).</p>
+<h2 id="s6"><span class="no">6</span>Scenario <span class="job">paper's job: one week, the three substitutions dramatized across shifts as near-misses with victims — never a feature tour</span></h2>
+<p class="sub">Cast: <b>Sam</b> (Project A motion-capture; seeds Monday's notes, returns Thursday), <b>Iris</b> (joins Project A midweek to run the capture while Sam is away), <b>Renata</b> (Project B; the printer), <b>Dae-ho</b> (Project C; the parts bin), <b>Priya</b> (Project D; the tracker shelf).</p>
 
 <div class="script">
-<p class="scene">The lab</p>
-<p>Picture a shared research lab: a 3D printer, a motion-capture rig, a soldering bench, and a shelf of shared test devices — phones, watches, headsets, laptops. Several project teams share the room, but they almost never share the clock. The morning person leaves before the afternoon person arrives. The room is the only "member" present across every shift — and it remembers nothing.</p>
-</div>
-
-<div class="cold-band">
-<p class="scene">The week before — without Spatial Memory</p>
-<p>Tuesday, 4 pm. Jesse is rushing a coarse draft print, so he swaps the printer's 0.4&nbsp;mm nozzle for a 0.6. A thought crosses his mind: <i>"I should tell whoever prints next."</i> He doesn't. He would have to put down the work, find his phone, pick a channel, explain which printer and which nozzle — and he doesn't even know who prints next. The cost is small. It is not zero. He moves on.</p>
-<p>Five minutes later, at the workbench, the drone's left wing joint flexes under his thumb. Fragile. <i>"Whoever runs the motor test should brace it first."</i> He doesn't know who that will be. He doesn't want to spam the channel. He moves on.</p>
-<p>Wednesday: Vasco prints a fine part through the wrong nozzle, using the default profile. Two hours, ruined. Thursday: Taeyoung runs the motor test. The joint snaps.</p>
-<p>Notice that Jesse did not forget. He ran a rational calculation: the cost of composing each message exceeded its value <i>to him</i>. Everyone made the locally correct decision, and the information died anyway. The room saw everything — it watched Jesse swap the nozzle, watched him flex the joint. The room cannot speak.</p>
+<p class="scene">Setting</p>
+<p>A shared maker lab: one Bambu 3D printer, a motion-capture rig in the corner, a shelf of shared test devices, a soldering station, a pegboard tool wall, and five workstations. Several projects share the printer, the rig, and the shelf, but the people rarely overlap in time, so the room is the one constant that sees every shift. Five collaborators pass through across the week, each on a different project: <b>Sam</b> runs a Project A motion-capture; <b>Iris</b> joins Project A midweek to run the capture while Sam is away and has never touched his setup; <b>Renata</b> (Project B), <b>Dae-ho</b> (Project C), and <b>Priya</b> (Project D) each pass through the shared fixtures on unrelated work. No one is addressing anyone in particular, which is exactly the condition under which a placeless channel makes situated knowledge cost more to send than it is worth.</p>
 </div>
 
 <div class="script">
-<p class="scene">Monday — the same week, with Spatial Memory</p>
-<p>Jesse swaps the nozzle again. This time, without stopping, he says one sentence into the room: <span class="say">"Put the 0.6 in to rush a draft — swap back to 0.4 before anything fine, the slicer profile won't warn you."</span> That's all. No app, no recipient. The sentence is pinned to the printer.</p>
-<p>At the workbench he says another: <span class="say">"Left wing joint is fragile — brace it before the motor test."</span> The system splits this one utterance into two cards: one pinned to the fuselage's spot on the workbench — the system doesn't <i>recognize</i> the fuselage; it remembers where the words were spoken — and one filed to the Drone Build project, so the warning can follow the project wherever it goes. Jesse classifies nothing.</p>
-<p class="aside">That same day, Jesse also uses Slack — to confirm Thursday's motor-test slot with Taeyoung. Known recipient, bounded message, nothing anchored to a place: Slack is the right tool, and Spatial Memory never sees it.</p>
+<p class="scene">Monday: Sam seeds three invisible notes</p>
+<p>Sam is setting up a Project A motion-capture later in the week. It needs a stiff custom marker-mount, so at the Bambu he pulls the 0.4 nozzle, threads in abrasive carbon-fiber filament, and drops in a hardened 0.6. He starts the print and says into the room without breaking stride: <span class="say">"0.6 hardened nozzle and CF in for the A mount. Swap back to 0.4 and PLA before you print anything fine. This one runs till about three, don't cancel it."</span> The sentence pins itself to the printer. He crosses to the mocap rig, re-runs the calibration for his capture volume, and, because from across the room the rig looks exactly as it did yesterday, says: <span class="say">"Recalibrated the rig for the A volume this morning."</span> Pinned to the rig. On his way out he takes a shared tracker off the shelf and starts it logging a battery test; its screen is dark and it looks idle, so he says: <span class="say">"This tracker is mid-log, screen is off but it is running, leave it."</span> Pinned to the shelf.</p>
+<p>Before he leaves Sam adds one more sentence, but files it to the project rather than to a place: <span class="say">"For whoever runs the A capture, shoot at 120fps, not the default 60, or the fast motion blurs."</span> It is not pinned to a fixture; it is a project memory that travels with Project A, while the first three are object memories bound to the printer, the rig, and the shelf. Four sentences, three naming a place and the fourth a project, and none naming a recipient, because Sam has no idea who prints, captures, or reaches for a tracker next. This is the <b>recipient substitution</b>: choosing an addressee is replaced by anchoring to the place, so each note costs Sam a breath rather than the price of a message that, on a channel, would have gone unsaid.</p>
 
-<p class="scene">Tuesday — object memory works; a stranger plants a warning</p>
-<p>Vasco walks up to print a fine part. Before he hits print, Jesse's note surfaces — at the machine, at the moment it matters. He swaps the 0.4 back in and says: <span class="say">"0.4 is back in, profile matches again."</span> His sentence <b>supersedes</b> Jesse's. This is not a pile of sticky notes growing forever; it is a record with versions, and the place shows its current state.</p>
-<p>Loading filament, he adds: <span class="say">"This PLA roll has been absorbing moisture — drying it overnight, use the grey roll."</span> And at the device shelf he starts a test: <span class="say">"The plugged-in Pixel is mid-way through a 48-hour battery log — screen's off but it's running, don't touch."</span></p>
-<p>Meanwhile Mia — a different team entirely — packs up the mocap rig after her study. She had to move two cameras to clear her setup. She says: <span class="say">"Moved two cameras packing up — calibration is stale, recalibrate before you trust your data."</span> She has no idea who needs the rig next, or when. She doesn't need to. The sentence waits on the rig.</p>
+<p class="scene">Tuesday: three strangers, three near-misses</p>
+<p>Renata, on Project B, comes to print a fine calibration plate. As she lines up the job, Sam's note surfaces at the machine that the 0.6 and CF are still loaded; on the default profile a fine plate through an abrasive nozzle would have been two hours of ruined print. She swaps the 0.4 and PLA back, prints, and says <span class="say">"0.4 and PLA back in, profile matches again."</span> Her sentence replaces Sam's on the printer, so the machine shows what is true now rather than a stack of history. This is the <b>co-location substitution</b> doing the reader's half of the work: Renata reads the note where and when it is actionable, at the machine at the moment of use, so the referent she would otherwise reconstruct from words is simply present in front of her.</p>
+<p>The same afternoon, Priya reaches for a tracker on the shelf and Sam's note surfaces that the one on the end is mid-log. A logging tracker and a sleeping one are identical, so a camera watching the shelf all day could never tell them apart; the difference lived only in Sam's head until he spoke it, and she takes a different one. Dae-ho goes for his parts bin, finds it gone from its spot, and a note at the empty spot points him to the shelf where Sam had set it aside to clear the print bench. Each near-miss is avoided at the place the mistake would have been made.</p>
+<p class="aside">Why not just a channel? The lab does have a printer channel, and Sam could have posted there, but by the time Renata is standing at the machine that message is days deep in scrollback and no one re-reads a channel before pressing print. A channel is a log, not a state: it cannot answer whether the 0.4 is back in right now. On the printer that is a state, superseded the moment the nozzle is swapped, so the next person always sees the current answer.</p>
 
-<p class="scene">Wednesday — the warning crosses project lines</p>
-<p>Jesse sets up a two-hour motion-capture session — ground-truth recording for his wearable-sensing project, nothing to do with the drone. As he approaches the rig, Mia's warning surfaces. He recalibrates. Consider what would have happened without it: a stale calibration throws no error — the software still shows the last calibration as valid — so the data would have been silently corrupted, discovered days later during processing. Two hours, gone. A single sentence from someone he has never worked with saved the session.</p>
-<p class="aside">You might object: doesn't the lab have a #mocap channel? It does, and Mia could have posted there. But by Wednesday the message is deep in scrollback, and Jesse — standing at the rig, about to press record — is not going to re-read a channel. The message would exist; it just wouldn't be where it matters, when it matters. And a channel has a deeper problem: it is a timeline. It cannot answer "is the calibration good <i>right now</i>?" — has anyone recalibrated since Mia posted? On Slack, that's archaeology. On the rig, it's a state: whoever recalibrates says so, and the old warning is superseded. The next person always sees the current answer, not the history.</p>
-<p>One more small moment: Jesse reaches for a test phone. The shelf shows Vasco's note from yesterday — <i>the plugged-in Pixel is mid-log, don't touch</i> — and he takes the other phone. A sleeping phone and a logging phone look exactly the same; a camera could stare at the shelf forever and see nothing. The state existed only in Vasco's head, and the system's entire job was to keep the one sentence he chose to say, at the place where it's needed.</p>
+<p class="scene">Wednesday: Iris joins, and grounding slips</p>
+<p>Iris is new to Project A this week, brought in to run the capture while Sam is away, and she has never touched his setup. She asks the room for Sam's trail, and it walks her through his week in order: the printer where the mount was made, the rig he recalibrated, the shelf and its logging tracker. Ten minutes replace what would otherwise have been a scramble of messages or would have gone unasked. Person is not a stored type here but a query over the accumulated record, and the trail is that query rendered as a path through the room. One of the notes waiting at the rig was never spoken at the rig: Sam said it at the printer, but because it belongs to Project A and Iris is running the A capture, the project memory followed the work to her here, and she sets the frame rate to 120fps. Carrying a note to where the work continues rather than to where the words were said is the one thing a place alone cannot do.</p>
+<p>Then grounding slips. At the rig Iris reads Sam's note, <span class="say">"Recalibrated the rig for the A volume this morning,"</span> and, being on Project A, takes it to mean the rig is calibrated and ready for her. But "the A volume" was Sam's own capture volume and marker set, not a blessing for anyone on the project, and Iris, new, has no way to know that. She loads her markers and records; the rig throws no warning and the calibration reads valid, so her data comes out subtly, silently off, the kind caught only days later in processing. The note reached her, which is the delivery half working, but "the A volume" meant one specific setup to Sam and "ready for me" to Iris, and across the gap there was no one to catch the difference in the moment. This is exactly the boundary the concept names: <b>deferred acceptance</b> stands in for a live reply, but it is not the mutual belief a live reply secures, and because the medium is asynchronous there is no repair turn to catch the mismatch as it happens. Delivery worked; grounding did not.</p>
 
-<p class="scene">Thursday — the newcomer</p>
-<p>Taeyoung joins the drone build mid-stream. He walks in and asks: <span class="say">"Anything for me?"</span> He gets three cards, in dependency order — not forty. Then he follows Jesse's trail through the build — workbench, printer, soldering bench — each station replaying what was left there, in order. At the workbench he lifts the fuselage, and Monday's warning fires at the moment of pickup: <i>joint is fragile, brace it</i>. He braces it. Last week, Thursday was the day the joint snapped. This Thursday, nothing happens at all.</p>
+<p class="scene">Thursday: Sam returns, and the repair comes late</p>
+<p>Sam returns and walks his stations, and each place shows him its current state rather than a history to scroll. At the printer, Renata has already swapped the nozzle back, so her card stands current and his own is collapsed behind it. At the rig he resets the volume and his Monday notes fold away, superseded, the places clean again. Seeing that Iris's recording is off, he finds her at the rig, they trace it to the calibration, and he leaves a sharper note this time: <span class="say">"Rig is set to my A volume, marker set B. If that is not your setup, recalibrate before you record."</span> Iris re-runs her calibration and re-captures, and it comes out clean. The acceptance the concept promises does arrive, since a later person acts correctly on the corrected note, but it arrives two days late and at the cost of a wasted session. Relocating grounding into space recovers most of what a live partner would have carried, and it does not recover the immediacy of repair.</p>
 
-<p class="scene">Friday — the failure Spatial Memory creates, and must solve</p>
-<p>One week, three projects, dozens of notes. If the room replayed all of them raw, Jesse would drown the moment he walked in — anchoring alone would have reproduced the spam problem, in space. What actually surfaces: expired ephemera are gone, superseded notes are collapsed, everything not addressed to him is filtered out. He hears two things, in the right order.</p>
-<p>This is the heart of the argument. Pinning messages in space is the easy half — anyone can do it. Letting a room accumulate hundreds of records while each arriver hears only what they need — that requires structure: who said it, what it's anchored to, which project it belongs to, what supersedes what, who it's for. That structure is the Memory Graph.</p>
+<p class="scene">Friday: different people, different mail</p>
+<p>By Friday the room holds dozens of notes from five people across five fixtures, and if it surfaced all of them, anyone walking in would drown, the same overload problem now in space. Pinning notes in place is the easy half; letting a room accumulate a week and still hand each person only their slice is the half that needs structure, and that structure is the <b>Memory Graph</b>. Each person asks the room the same question, <span class="say">"anything for me?"</span>, and each gets a different short answer, with superseded notes collapsed, expired ones gone, and everything not for them filtered away. Iris gets Sam's clarification and nothing else. Renata gets a single note that her plate is ready. Sam gets two, Iris's question about the re-capture and Renata's note that his configuration had been in the way. Dae-ho's bin, Priya's tracker, and the other projects' churn surface for no one they do not belong to.</p>
 
-<p class="scene">Closing — why none of this is Slack</p>
-<p>Three sentences. First: these messages have no nameable recipient at the moment of writing. Second: they point at physical things whose critical property is invisible — describing it in words loses it, and the reader can't re-ground it. Third: they are useful only at the object, at the moment of encounter — on a phone they arrive in the wrong place at the wrong time. And the camera can't save you either, because what matters is not what happened but what a person <i>judged</i> — a swapped nozzle looks identical on video. The judgment must be spoken by the person who holds it. Our system's entire job is to make speaking it cost nothing, and to let the room carry it to whoever needs it next, where it happened.</p>
+<p class="scene">What the week shows</p>
+<p>The week runs the three substitutions in order and shows the boundary of the third. Monday is the recipient substitution: four judgments externalized at the cost of a breath because each anchors to a place rather than an addressee. Tuesday is the co-location substitution: three strangers read the right note at the moment and place of use, with supersession keeping the record a current state rather than a log. Wednesday and Thursday are deferred acceptance and its limit: a later person's action stands in for a live reply, which recovers grounding for Renata cleanly but only one-way for Iris, whose misreading no repair turn could catch until Sam returned. Friday is what makes the accumulated record usable at all, the Memory Graph triaging a full room into per-person slices. Each person occupies the same space and yet meets a different room.</p>
 </div>
 
 <h3>Beat structure — the construction view</h3>
-<p class="sub">Every beat is a <b>problem-and-near-miss with a victim</b>. Badges A–D = the four sub-problems (§1); <span class="chip gate">G1/G2/G3</span> = the Slack gates the information fails (§1); <span class="chip cam">CAM</span> = camera gate; <span class="chip obj">Object</span>/<span class="chip proj">Project</span> = memory type (§3). Dashed lines trace seed → payoff threads across days.</p>
+<p class="sub">The week dramatizes how the <b>three substitutions</b> play out across shifts (recipient&#8594;anchor, referent&#8594;co-location, live-reply&#8594;deferred acceptance), and every beat is a <b>problem-and-near-miss with a victim</b>. Badges A–D carry the four sub-problems (§1) as an analytical overlay; <span class="chip gate">G1/G2/G3</span> = the Slack gates the information fails (§1); <span class="chip cam">CAM</span> = camera gate; <span class="chip obj">Object</span>/<span class="chip proj">Project</span> = memory type (§3). Dashed lines trace seed → payoff threads across days.</p>
 
 <!-- DAY 1 -->
 <div class="day">
-  <div class="rail"><div class="d">Mon</div><div class="t">seeding</div></div>
+  <div class="rail"><div class="d">Mon</div><div class="t">Sam seeds</div></div>
   <div class="beats">
     <div class="beat fA">
       <div class="top"><span class="id">A1</span><span class="badge bA">A · Capture</span><span class="chip obj">Object</span><span class="chip">3D printer</span></div>
-      <div class="act"><span class="who">Jesse</span>, mid-task, swapping nozzles: <i>"0.6 in for a draft — swap back to 0.4 before anything fine."</i></div>
+      <div class="act"><span class="who">Sam</span>, mid-task, swapping nozzles: <i>"0.6 hardened nozzle and CF in for the A mount, swap back to 0.4 and PLA before anything fine."</i></div>
       <div class="meta"><span class="chip gate">G1 next user unknown</span><span class="chip gate">G2 nozzle size unreadable</span><span class="chip gate">G3 only at the machine</span><span class="chip cam">CAM</span></div>
-      <div class="thread">seeds <span class="arrow">→ B1</span> (Tue) · superseded in <span class="arrow">→ E1</span> (Fri)</div>
+      <div class="thread">recipient substitution · seeds <span class="arrow">→ B1</span> (Tue) · superseded in <span class="arrow">→ D1</span> (Thu)</div>
     </div>
     <div class="beat fA">
-      <div class="top"><span class="id">A2</span><span class="badge bA">A · Capture</span><span class="chip obj">Object</span><span class="chip proj">Project</span><span class="chip">workbench</span></div>
-      <div class="act"><span class="who">Jesse</span>: <i>"Left wing joint fragile — brace before motor test."</i> One utterance → two cards: fuselage's home spot (zone anchor) + Drone Build (project).</div>
-      <div class="meta"><span class="chip gate">G1 unknown tester</span><span class="chip gate">G2 fragility invisible</span><span class="chip gate">G3 at pickup &amp; test bench</span><span class="chip cam">CAM</span></div>
-      <div class="thread">zone anchor covers pickup; <b>project memory covers the test bench</b> — only the pair covers both · pays off <span class="arrow">→ D2</span> (Thu)</div>
+      <div class="top"><span class="id">A2</span><span class="badge bA">A · Capture</span><span class="chip obj">Object</span><span class="chip">mocap rig</span></div>
+      <div class="act"><span class="who">Sam</span>: <i>"Recalibrated the rig for the A volume this morning."</i> Terse, true for him, and readable two ways by a newcomer.</div>
+      <div class="meta"><span class="chip gate">G1 unknown reader</span><span class="chip gate">G2 rig looks unchanged</span><span class="chip gate">G3 at the rig</span><span class="chip cam">CAM</span></div>
+      <div class="thread">the note that breaks grounding <span class="arrow">→ C2</span> (Wed)</div>
     </div>
-    <div class="beat fS">
-      <div class="top"><span class="id">A3</span><span class="badge bS">Slack concession</span></div>
-      <div class="act"><span class="who">Jesse</span> Slacks <span class="who">Taeyoung</span> to confirm Thursday's motor-test slot. Known recipient, no spatial referent → <b>Slack is correct; SM never sees it.</b></div>
-      <div class="thread">the carve, shown not claimed: Slack owns episode-class; the room owns encounter-class</div>
+    <div class="beat fA">
+      <div class="top"><span class="id">A3</span><span class="badge bA">A · Capture</span><span class="chip obj">Object</span><span class="chip">device shelf</span></div>
+      <div class="act"><span class="who">Sam</span>, starting a battery test: <i>"This tracker is mid-log, screen off but running, leave it."</i></div>
+      <div class="meta"><span class="chip gate">G1</span><span class="chip gate">G2 logging state invisible</span><span class="chip gate">G3 at the shelf</span><span class="chip cam">CAM at its purest: sleeping &#8801; logging</span></div>
+      <div class="thread">pays off <span class="arrow">→ B2</span> (Tue)</div>
+    </div>
+    <div class="beat fA">
+      <div class="top"><span class="id">A4</span><span class="badge bA">A · Capture</span><span class="chip proj">Project</span><span class="chip">filed to Project A</span></div>
+      <div class="act"><span class="who">Sam</span>: <i>"For whoever runs the A capture, shoot at 120fps, not the default 60."</i> Not pinned to a fixture, a project memory that travels with Project A.</div>
+      <div class="meta"><span class="chip">project memory, no place anchor</span></div>
+      <div class="thread">travels to the rig <span class="arrow">→ C1</span> (Wed), the one thing a place alone cannot do</div>
     </div>
   </div>
 </div>
 
 <!-- DAY 2 -->
 <div class="day">
-  <div class="rail"><div class="d">Tue</div><div class="t">object memory works</div></div>
+  <div class="rail"><div class="d">Tue</div><div class="t">three near-misses</div></div>
   <div class="beats">
-    <div class="beat fA">
-      <div class="top"><span class="id">B1</span><span class="badge bA">A · payoff</span><span class="chip obj">Object</span><span class="chip">3D printer</span></div>
-      <div class="act"><span class="who">Vasco</span> about to print a fine part; <b>A1 surfaces before he hits print</b>. Swaps 0.4 back, says so — his note <b>supersedes</b> Jesse's. Versioning, not stickies.</div>
-      <div class="meta"><span class="chip">victim averted: Vasco (cold-open print failure)</span></div>
-      <div class="thread">← seeded by <b>A1</b> · supersession consumed in <span class="arrow">→ E1</span></div>
-    </div>
-    <div class="beat fA">
-      <div class="top"><span class="id">B2</span><span class="badge bA">A · Capture</span><span class="chip obj">Object</span><span class="chip">consumables + device shelf</span></div>
-      <div class="act"><span class="who">Vasco</span>: wet PLA roll note; and at the shelf: <i>"plugged-in Pixel is mid 48-hour battery log — don't touch."</i></div>
-      <div class="meta"><span class="chip gate">G1</span><span class="chip gate">G2 moisture / logging state invisible</span><span class="chip gate">G3 at the shelf</span><span class="chip cam">CAM at its purest: sleeping ≡ logging</span></div>
-      <div class="thread">Pixel note pays off <span class="arrow">→ C2</span> (Wed)</div>
+    <div class="beat fB">
+      <div class="top"><span class="id">B1</span><span class="badge bB">B · payoff</span><span class="chip obj">Object</span><span class="chip">3D printer</span></div>
+      <div class="act"><span class="who">Renata</span> (Project B) about to print a fine plate; <b>A1 surfaces before she prints</b>. Swaps 0.4 and PLA back, says so, her note <b>supersedes</b> Sam's. Versioning, not stickies.</div>
+      <div class="meta"><span class="chip">co-location substitution</span><span class="chip">victim averted: Renata (2 hrs of ruined print)</span></div>
+      <div class="thread">← seeded by <b>A1</b> · supersession consumed in <span class="arrow">→ D1</span></div>
     </div>
     <div class="beat fB">
-      <div class="top"><span class="id">B3</span><span class="badge bB">B · seed</span><span class="chip obj">Object</span><span class="chip">mocap rig</span></div>
-      <div class="act"><span class="who">Mia</span> (different team) packing up: <i>"Moved two cameras — calibration is stale, recalibrate before you trust your data."</i> <b>She has no idea who needs the rig next.</b></div>
-      <div class="meta"><span class="chip gate">G1 recipient unknowable</span><span class="chip gate">G2 software shows valid-looking calibration</span><span class="chip gate">G3 at the rig</span><span class="chip cam">only she knows she moved them</span></div>
-      <div class="thread">pays off <span class="arrow">→ C1</span> (Wed)</div>
+      <div class="top"><span class="id">B2</span><span class="badge bB">B · payoff</span><span class="chip obj">Object</span><span class="chip">device shelf</span></div>
+      <div class="act"><span class="who">Priya</span> (Project D) reaches for a tracker; <b>A3 surfaces</b>: the end one is mid-log. She takes another.</div>
+      <div class="meta"><span class="chip gate">G2 logging state invisible</span><span class="chip cam">CAM at its purest: sleeping &#8801; logging</span></div>
+      <div class="thread">← seeded by <b>A3</b> · the state lived only in Sam's head until he spoke it</div>
+    </div>
+    <div class="beat fB">
+      <div class="top"><span class="id">B3</span><span class="badge bB">B · cross-project</span><span class="chip obj">Object</span><span class="chip">bench spot</span></div>
+      <div class="act"><span class="who">Dae-ho</span> (Project C) finds his parts bin gone from its spot; a note at the empty spot points him to the shelf, where Sam set it aside to clear the print bench.</div>
+      <div class="meta"><span class="chip gate">G1 recipient unknowable</span><span class="chip">victim averted: Dae-ho (a lost search)</span></div>
+      <div class="thread">one project's tidy-up strands another's user; the object memory bridges them</div>
     </div>
   </div>
 </div>
 
 <!-- DAY 3 -->
 <div class="day">
-  <div class="rail"><div class="d">Wed</div><div class="t">collision pays off</div></div>
+  <div class="rail"><div class="d">Wed</div><div class="t">Iris joins · grounding slips</div></div>
   <div class="beats">
-    <div class="beat fB">
-      <div class="top"><span class="id">C1</span><span class="badge bB">B · payoff</span><span class="chip">mocap rig</span></div>
-      <div class="act"><span class="who">Jesse</span> preps a 2-hour ground-truth session (separate sensing project — nothing to do with the drone). <b>Mia's warning surfaces on approach.</b> He recalibrates. Without it: no error, valid-looking calibration, silently corrupted data found days later.</div>
-      <div class="meta"><span class="chip">victim averted: Jesse (2 hrs of ground truth)</span><span class="chip">two activities sharing nothing but the fixture</span></div>
-      <div class="thread">← seeded by <b>B3</b> · the Slack counterfactual, channel version: scrollback at the moment of use + <b>a channel is a log; the room needs state</b></div>
+    <div class="beat fC">
+      <div class="top"><span class="id">C1</span><span class="badge bC">C · Context gap</span><span class="chip proj">Project</span><span class="chip">trail → rig</span></div>
+      <div class="act"><span class="who">Iris</span> (new to Project A) walks <span class="who">Sam</span>'s trail to catch up, and <b>A4 (120fps) routes from the printer to the rig</b> because she is running the A capture. She sets the frame rate.</div>
+      <div class="meta"><span class="chip">person trail</span><span class="chip">project routing: the note travels to where the work continues</span></div>
+      <div class="thread">← carried by <b>A4</b> · a place alone could not have brought it here</div>
     </div>
-    <div class="beat fA">
-      <div class="top"><span class="id">C2</span><span class="badge bA">A · shared devices</span><span class="chip obj">Object</span><span class="chip">device shelf</span></div>
-      <div class="act"><span class="who">Jesse</span> reaches for a test phone; the shelf-zone anchor replays <span class="who">Vasco</span>'s Pixel note. He takes the other phone. The human names the device; the zone anchors the note.</div>
-      <div class="meta"><span class="chip">victim averted: Vasco (2 days of data)</span><span class="chip cam">camera could stare forever and see nothing</span></div>
-      <div class="thread">← seeded by <b>B2</b> · discipline made visible: the system never infers device state</div>
+    <div class="beat fD">
+      <div class="top"><span class="id">C2</span><span class="badge bD">boundary · grounding breaks</span><span class="chip obj">Object</span><span class="chip">mocap rig</span></div>
+      <div class="act"><span class="who">Iris</span> reads <b>A2</b>, <i>"recalibrated for the A volume,"</i> as ready-for-her. It was set to Sam's own volume and marker set. She records; the rig throws no warning; the data comes out silently off.</div>
+      <div class="meta"><span class="chip">deferred acceptance lands one-way</span><span class="chip">delivery worked; grounding did not</span><span class="chip">no repair turn in async</span></div>
+      <div class="thread">← seeded by <b>A2</b> · <b>the boundary the paper reports, not papers over</b> · repaired late <span class="arrow">→ D2</span> (Thu)</div>
     </div>
   </div>
 </div>
 
 <!-- DAY 4 -->
 <div class="day">
-  <div class="rail"><div class="d">Thu</div><div class="t">the newcomer</div></div>
+  <div class="rail"><div class="d">Thu</div><div class="t">Sam returns · repair, late</div></div>
   <div class="beats">
-    <div class="beat fC">
-      <div class="top"><span class="id">D1</span><span class="badge bC">C · Context gap</span><span class="chip proj">Project</span><span class="chip">whole room</span></div>
-      <div class="act"><span class="who">Taeyoung</span> joins mid-project. <i>"Anything for me?"</i> → three cards in dependency order, not forty. Then he follows <span class="who">Jesse</span>'s trail station by station.</div>
-      <div class="meta"><span class="chip">relevance triage (for_me)</span><span class="chip">person trail</span></div>
-      <div class="thread">C's gate is different: no single message is the problem — <b>accumulated structure</b> is the answer</div>
+    <div class="beat fA">
+      <div class="top"><span class="id">D1</span><span class="badge bA">A · state</span><span class="chip obj">Object</span><span class="chip">whole room</span></div>
+      <div class="act"><span class="who">Sam</span> returns; each place shows its current state, not a history. The printer stands on <b>Renata's B1</b>, his A1 collapsed; he resets the rig and his Monday notes fold away.</div>
+      <div class="meta"><span class="chip">supersession = state, not log</span></div>
+      <div class="thread">← consumes <b>B1</b> · state, not history</div>
     </div>
-    <div class="beat fC">
-      <div class="top"><span class="id">D2</span><span class="badge bC">C · mirror</span><span class="chip obj">Object</span><span class="chip">workbench</span></div>
-      <div class="act"><span class="who">Taeyoung</span> lifts the fuselage; <b>A2 fires at pickup</b>. He braces the joint. <b>Last week's Thursday disaster, replayed as a non-event.</b></div>
-      <div class="thread">← seeded by <b>A2</b> · the emotional payoff; three sentences, no more</div>
+    <div class="beat fD">
+      <div class="top"><span class="id">D2</span><span class="badge bD">grounding · repaired late</span><span class="chip obj">Object</span><span class="chip">mocap rig</span></div>
+      <div class="act"><span class="who">Sam</span> sees <span class="who">Iris</span>'s recording is off, finds her, and leaves a sharper note: <i>"Rig is set to my A volume, marker set B; if that's not your setup, recalibrate before you record."</i> Iris re-captures clean.</div>
+      <div class="meta"><span class="chip">acceptance arrives, but two days late</span><span class="chip">space recovers grounding, not the immediacy of repair</span></div>
+      <div class="thread">← seeded by <b>C2</b> · the honest cost of async</div>
     </div>
   </div>
 </div>
@@ -516,7 +513,7 @@
   <div class="beats">
     <div class="beat fD">
       <div class="top"><span class="id">E1</span><span class="badge bD">D · Overload</span><span class="chip">whole room</span></div>
-      <div class="act">One week, three projects, dozens of notes. Raw replay would bury <span class="who">Jesse</span> at the door — <b>anchoring alone reproduces spam, in space</b>. What surfaces: audience-filtered, superseded collapsed (B1 ate A1), ephemera expired — <b>two items, in dependency order</b>.</div>
+      <div class="act">One week, four projects, dozens of notes. Raw replay would bury <span class="who">Sam</span> at the door, <b>anchoring alone reproduces spam, in space</b>. What surfaces for him: audience-filtered, superseded collapsed (B1 ate A1), ephemera expired, <b>two items (Iris, Renata), in dependency order</b>.</div>
       <div class="meta"><span class="chip">audience filter</span><span class="chip">supersession</span><span class="chip">persistence levels</span><span class="chip">dependency order</span></div>
       <div class="thread"><b>this beat earns the Memory Graph</b> — the paper's one claim: the record must be structured and navigable, not merely anchored</div>
     </div>
@@ -527,31 +524,31 @@
 <table>
   <tr><th>Fixture / spine</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri (what survives triage)</th></tr>
   <tr><td class="k">3D printer</td>
-      <td><span class="note nA">A1 nozzle 0.6 in</span></td>
+      <td><span class="note nA">A1 0.6 + CF in</span></td>
       <td><span class="note nA">B1 0.4 back ⊃ A1</span></td>
-      <td></td><td><span class="note nC">D1 trail stop</span></td>
+      <td></td><td><span class="note nA">D1 shows current state</span></td>
       <td><span class="note dead">A1 superseded</span> <span class="note nA">B1</span></td></tr>
-  <tr><td class="k">Fuselage spot (workbench)</td>
-      <td><span class="note nA">A2 joint fragile</span></td>
-      <td></td><td></td>
-      <td><span class="note nC">D2 fires at pickup</span></td>
-      <td><span class="note dead">A2 resolved</span></td></tr>
-  <tr><td class="k">Consumables shelf</td>
-      <td></td><td><span class="note nA">B2 wet PLA</span></td><td></td><td></td>
-      <td><span class="note dead">B2 expires (ephemeral)</span></td></tr>
   <tr><td class="k">Mocap rig</td>
-      <td></td><td><span class="note nB">B3 calibration stale</span></td>
-      <td><span class="note nB">C1 fires on approach</span></td><td></td>
-      <td><span class="note nB">B3 superseded by recalibration — state, not log</span></td></tr>
-  <tr><td class="k">Device shelf</td>
-      <td></td><td><span class="note nA">B2 Pixel mid-log</span></td>
-      <td><span class="note nA">C2 fires at reach</span></td><td></td>
+      <td><span class="note nA">A2 recal "A volume"</span></td>
+      <td></td>
+      <td><span class="note nB">C2 misread → data off</span></td>
+      <td><span class="note nA">D2 sharper note supersedes; re-capture clean</span></td>
+      <td><span class="note nA">state, not log</span></td></tr>
+  <tr><td class="k">Device shelf (tracker)</td>
+      <td><span class="note nA">A3 tracker mid-log</span></td>
+      <td><span class="note nA">B2 fires at reach</span></td><td></td><td></td>
       <td><span class="note dead">expires when log ends</span></td></tr>
-  <tr><td class="k">Slack (off-room)</td>
-      <td><span class="note">A3 slot confirm</span></td><td></td><td></td><td></td>
-      <td><span class="note">episode-class stays on Slack</span></td></tr>
+  <tr><td class="k">Bench spot (parts bin)</td>
+      <td><span class="note nA">Sam clears bench, bin moved</span></td>
+      <td><span class="note nB">B3 points Dae-ho to the shelf</span></td><td></td><td></td>
+      <td><span class="note dead">expires (ephemeral)</span></td></tr>
+  <tr><td class="k">Project A (travels)</td>
+      <td><span class="note nA">A4 120fps (project memory)</span></td>
+      <td></td>
+      <td><span class="note nC">C1 routed printer → rig for Iris</span></td><td></td>
+      <td><span class="note dead">dies with the capture</span></td></tr>
 </table>
-<p class="sub">Reading the last column top-down is sub-problem D in miniature: supersession, resolution, expiry, persistence — structure deciding what a Friday arrival actually sees.</p>
+<p class="sub">Reading the last column top-down is the overload sub-problem in miniature: supersession, resolution, expiry, persistence, structure deciding what a Friday arrival actually sees, per person.</p>
 
 <!-- ============================================================ -->
 <h2 id="s7"><span class="no">7</span>System <span class="job">paper's job: a simple, honest implementation — the vehicle for the demo video and the studies, no more</span></h2>
@@ -639,7 +636,7 @@
 <table>
   <tr><th>Thing</th><th>Grounding cost it addresses</th><th>Test and evidence</th></tr>
   <tr><td class="k">1 · the author's cost drops (leaver)</td><td><b>start-up and formulation cost</b>: finding an addressee and putting the note into words (the recipient substitution: addressing becomes anchoring)</td><td>Study 1 — in-place voice versus phone-and-channel, both wearing the headset; externalization rate, time-off-task, NASA-TLX (behavioral leg)</td></tr>
-  <tr><td class="k">2 · the reader's cost is kept low (arriver, the graph)</td><td><b>understanding cost</b>: least collaborative effort forbids simply dumping the author's saved cost on the reader (the co-location substitution, plus routing under accumulation)</td><td>Study 2 — SM-full versus anchored-only over a week's accumulation; state-resolution and cross-place-routing traps, time-to-relevant, overload</td></tr>
+  <tr><td class="k">2 · the reader's cost is kept low (arriver, the graph)</td><td><b>understanding cost</b>: least collaborative effort forbids simply dumping the author's saved cost on the reader (the co-location substitution, plus routing under accumulation)</td><td>Study 2 — SM-full versus anchored-only over a week's accumulation; state-resolution and cracked-bracket traps, time-to-relevant, overload</td></tr>
   <tr><td class="k">3 · grounding is reached, or not (deferred acceptance)</td><td><b>acceptance</b>: async has no live reply, so a later person's action on the world stands in for it (the load-bearing, Slack-only substitution)</td><td>Study 2 interviews on the same arrivers, coded <b>grounded</b> versus <b>broke</b> (qualitative leg that bounds the theory)</td></tr>
 </table>
 <p>Two grounding measures sit over the three Things. <b>Total collaborative cost</b> (author plus reader) should drop and redistribute versus the baseline, least collaborative effort made visible. And <b>grounding reached</b>, the grounded-versus-broke rate, is the outcome: an arriver is <b>grounded</b> when they acted correctly for the intended reason, and grounding <b>broke</b> when they misread, were right for the wrong reason, were unsure, or matched a mismatched criterion, coded by two coders in a focused thematic analysis. The honest <b>boundary</b>: asynchrony removes repair and cannot complete mutual belief, so we report where grounding is only one-way. That boundary is what makes this a grounding paper rather than a system test, and it supplies the discussion. In short, the technical leg confirms the mechanism is realizable and the qualitative leg confirms and bounds the theory.</p>
@@ -651,9 +648,10 @@
 <h3>Research questions</h3>
 <table>
   <tr><th>RQ</th><th>Question</th><th>Measures</th></tr>
-  <tr><td class="k">RQ1 · capture (C2)</td><td>Does low-effort in-place voice increase in-flow externalization of encounter-class observations, relative to current practice (phone and channel)?</td><td>externalization rate · capture effort (time-off-task, NASA-TLX) · usefulness of recorded notes (blinded rating)</td></tr>
-  <tr><td class="k">RQ2 · structure (C3)</td><td>Under a week's accumulation, does the Memory Graph improve the arriver's outcomes over raw anchoring?</td><td>state-resolution errors · cross-place trap avoided · triage time · overload</td></tr>
-  <tr><td class="k">RQ3 · mechanism (M)</td><td>Does the pipeline correctly structure real in-flow utterances?</td><td>object/project filing % · audience % · supersession detection % · latency · anchor surfacing reliability</td></tr>
+  <tr><td class="k">RQ1 · author cost</td><td>Does low-effort in-place voice increase in-flow externalization of encounter-class observations, relative to current practice (phone and channel)?</td><td>externalization rate · capture effort (time-off-task, NASA-TLX) · usefulness of recorded notes (blinded rating)</td></tr>
+  <tr><td class="k">RQ2 · reader cost</td><td>Under a week's accumulation, does the Memory Graph keep the arriver's understanding cost low, relative to raw anchoring?</td><td>traps avoided (state resolution, cracked bracket) · time-to-relevant · triage time · overload</td></tr>
+  <tr><td class="k">RQ3 · realizability</td><td>Does the pipeline segment, file, and anchor real in-flow utterances reliably enough to run the loop on Quest 3?</td><td>object/project filing % · audience % · supersession detection % · latency · anchor surfacing reliability</td></tr>
+  <tr><td class="k">RQ4 · grounding reached</td><td>Does a later person's action complete grounding, and where does it not (the deferred-acceptance boundary)?</td><td>grounded-vs-broke rate across arrivers · role of standing at the place · where grounding lands one-way</td></tr>
 </table>
 
 <h3>The chain</h3>
@@ -702,27 +700,27 @@
 
 <h3>Study 1 (Leaver): capture (tests C2) · N ≈ 10</h3>
 <p><b>Cover story:</b> "You are the morning shift; someone you do not know takes over this station this afternoon. Do the job, and handle anything you notice however you normally would." Recording is <b>never mentioned</b>, so it stays optional and costly, exactly like life. <b>Both conditions wear the headset</b> (passthrough), so device burden is constant and the only variable is the capture channel: <b>in-place voice</b> (speak in place; wizarded, with audio and location genuinely recorded and no live pipeline) versus <b>phone and channel</b> (phone in pocket, lab channels available). Within-subject, two matched task variants, counterbalanced.</p>
-<p><b>Task (draft, may change):</b> a hands-busy assembly with mild time pressure, for example collect a draft print, assemble a bracket, solder a connector, and stage a logging phone for a 48-hour test. Several planted encounters per variant, some caused by the participant and some discovered, including at least one that must travel to a different station (a part assembled here that will be tested elsewhere):</p>
+<p><b>Task (draft, may change):</b> a hands-busy assembly with mild time pressure, for example collect a draft print, assemble a bracket, solder a connector, and stage a logging phone for a 48-hour test. Several planted encounters per variant, some caused by the participant and some discovered, including at least one hidden defect a later worker must be warned about (a hairline-cracked bracket among the staged parts):</p>
 <table>
   <tr><th>#</th><th>Encounter (draft)</th><th>Type</th><th>Feeds Study 2</th></tr>
   <tr><td class="k">E1</td><td>Job card says draft quality; the faster 0.6 nozzle is available, and the participant swaps it in</td><td>caused</td><td><b>T1 state</b></td></tr>
-  <tr><td class="k">E2</td><td>A part assembled at this bench is fragile and will be tested at another station</td><td>caused / discovered</td><td><b>T2 cross-place</b></td></tr>
+  <tr><td class="k">E2</td><td>One bracket in the batch has a hairline crack</td><td>discovered</td><td><b>T2 cracked bracket</b></td></tr>
   <tr><td class="k">E3</td><td>The participant starts a 48-hour logging run on a shelf phone, screen off</td><td>caused</td><td>T3 control</td></tr>
   <tr><td class="k">E4–E6</td><td>discovered conditions (tacky filament, near-empty flux, stripped hex bit)</td><td>discovered</td><td>filler notes</td></tr>
 </table>
 <p><b>Post-task</b> manipulation-check interview ("walk me through what you noticed") separates <i>did not notice</i> from <i>noticed but did not record</i>, since only the latter is the phenomenon. An exit question guards novelty inflation: "in your own lab, would you still have said these?"</p>
 
 <h3>Study 2 (Arriver): structure (tests C3) · N = 12–16 · Quest 3</h3>
-<p><b>Cover story:</b> "You are the afternoon shift, new to this project. Get up to speed, then complete a few jobs." Conditions are within-subject on two matched rooms (Week A and Week B, counterbalanced): <b>SM-full</b> (the graph on: supersession, audience filter, project routing, triage) versus <b>anchored-only</b> (the same notes pinned in place but the graph off: a superseded note hangs beside the one that replaced it, nothing is filtered, expired, or routed, and there is no ordering). This is the ablation. It holds capture, anchoring, and surfacing constant and varies only the structuring component, so any difference measures that component's marginal share in the loop. Anchored-only is what world-anchored annotation does today (we cite that work), so it is a real baseline, not a strawman. About 35 to 40 notes per room, including superseded pairs, a cross-place project note, and notes addressed to others, so structure has real work to do.</p>
+<p><b>Cover story:</b> "You are the afternoon shift, new to this project. Get up to speed, then complete a few jobs." Conditions are within-subject on two matched rooms (Week A and Week B, counterbalanced): <b>SM-full</b> (the graph on: supersession, audience filter, project routing, triage) versus <b>anchored-only</b> (the same notes pinned in place but the graph off: a superseded note hangs beside the one that replaced it, nothing is filtered, expired, or routed, and there is no ordering). This is the ablation. It holds capture, anchoring, and surfacing constant and varies only the structuring component, so any difference measures that component's marginal share in the loop. Anchored-only is what world-anchored annotation does today (we cite that work), so it is a real baseline, not a strawman. About 35 to 40 notes per room, including superseded pairs, a project note that routes across places, and notes addressed to others, so structure has real work to do.</p>
 <table>
   <tr><th>#</th><th>Task (draft, may change)</th><th>What it tests</th></tr>
   <tr><td class="k">T0</td><td>"Anything you need to know before starting?"</td><td>triage time, relevant items found (filter benefit, secondary)</td></tr>
   <tr><td class="k">T1 · state</td><td>a job at a place whose earlier warning may be still live or already resolved</td><td><b>state resolution</b>: does the participant act on the current state, both when the issue is still live and when it has been resolved?</td></tr>
-  <tr><td class="k">T2 · cross-place</td><td>a job at the test station for a part assembled elsewhere</td><td><b>cross-place routing</b>: does the warning left at the other station surface here? Anchored-only cannot route it; SM-full can.</td></tr>
+  <tr><td class="k">T2 · cracked bracket</td><td>finish the second mount from staged parts, one of which is the cracked bracket</td><td><b>staged-part surfacing</b>: does the leaver's crack warning surface on the right part at assembly, so the participant sets it aside? Anchored-only leaves it buried; SM-full surfaces it in place.</td></tr>
   <tr><td class="k">T3 · control</td><td>a single-place job with a note left at that place (the logging phone)</td><td>surfacing substrate, present in both conditions</td></tr>
 </table>
-<p><b>The two headline traps are T1 and T2</b>, because each isolates something the filtering alone does not cover: resolving a place to its current state, and routing a note to where it is needed. T1 tests both error directions, acting on a stale issue and redoing a resolved one. T2 is the cleanest contrast, since anchored-only structurally cannot bring a note to a place it was never left. The ablation measures how much the structuring component is worth once capture, anchoring, and surfacing are already in place.</p>
-<p><b>The grounding layer (Thing 3, deferred acceptance).</b> On the same arrivers, an interview asks whether they reconstructed the author's meaning, whether standing at the place helped, where they were unsure, and whether they did what the author intended. Two coders code each encounter <b>grounded</b> (acted correctly for the intended reason) versus <b>broke</b> (misread, right for the wrong reason, unsure, or mismatched criteria) in a focused thematic analysis. This is where the deferred-acceptance substitution is confirmed and bounded: a later person's action stands in for the live reply async cannot provide, and because async removes repair, we report honestly where grounding lands only one-way rather than completing mutual belief.</p>
+<p><b>The two headline traps are T1 and T2</b>, because each isolates something the filtering alone does not cover: resolving a place to its current state, and surfacing a warning on the right part at the moment of use. T1 tests both error directions, acting on a stale issue and redoing a resolved one. T2 is the cleanest contrast, since anchored-only leaves the crack warning buried among the raw notes while SM-full surfaces it on the very bracket being picked up. The ablation measures how much the structuring component is worth once capture, anchoring, and surfacing are already in place.</p>
+<p><b>The grounding layer (RQ4, deferred acceptance).</b> On the same arrivers, an interview asks whether they reconstructed the author's meaning, whether standing at the place helped, where they were unsure, and whether they did what the author intended. Two coders code each encounter <b>grounded</b> (acted correctly for the intended reason) versus <b>broke</b> (misread, right for the wrong reason, unsure, or mismatched criteria) in a focused thematic analysis. This is where the deferred-acceptance substitution is confirmed and bounded: a later person's action stands in for the live reply async cannot provide, and because async removes repair, we report honestly where grounding lands only one-way rather than completing mutual belief.</p>
 
 <h3>Technical evaluation: mechanism (tests M, no participants)</h3>
 <table>
@@ -736,7 +734,7 @@
 <table>
   <tr><th>Moment (§5)</th><th>Where it is evaluated</th></tr>
   <tr><td class="k">1 · Speak in place</td><td>Study 1: externalization rate and capture effort</td></tr>
-  <tr><td class="k">2 · Surface on approach</td><td>Study 2 · T2 cross-place routing</td></tr>
+  <tr><td class="k">2 · Surface on approach</td><td>Study 2 · T2 (the cracked bracket)</td></tr>
   <tr><td class="k">3 · Triage on arrival</td><td>Study 2 · T0 (secondary)</td></tr>
   <tr><td class="k">4 · Follow a trail</td><td>Study 2 · qualitative</td></tr>
   <tr><td class="k">5 · Supersede</td><td>Study 2 · T1 state resolution</td></tr>
@@ -767,7 +765,7 @@
 <h2 id="s10"><span class="no">10</span>Open decisions</h2>
 <table>
   <tr><th></th><th>Decision</th><th>Leaning</th></tr>
-  <tr><td class="k">1</td><td>Graph name: <b>Memory Graph</b> vs Continuity Graph</td><td>Memory Graph — concept is Spatial Memory, mechanism is the Memory Graph, one vocabulary family; "Continuity" doesn't self-describe and rhymes derivatively with AsyncReality's Causality Graph</td></tr>
+  <tr><td class="k">1</td><td><b>Settled:</b> the graph is the <b>Memory Graph</b> (was: Memory Graph vs Continuity Graph)</td><td>Decided. Concept is Spatial Memory, mechanism is the Memory Graph, one vocabulary family; the name is used throughout the paper and figures</td></tr>
   <tr><td class="k">2</td><td>Honest Friday note-count</td><td>Set by the Study-2 seed-set build (~35–40); scenario prose uses the same number</td></tr>
   <tr><td class="k">3</td><td>Cold open framing</td><td>Same people, explicitly the <i>previous</i> week</td></tr>
   <tr><td class="k">4</td><td>"Why both memory types" placement</td><td>Closing scenario subsection vs. folded into the Friday beat</td></tr>

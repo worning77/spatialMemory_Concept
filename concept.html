@@ -51,14 +51,24 @@
 </svg>
 <figcaption>Capture and anchor by the person leaving; structure and surface for the person arriving.</figcaption>
 </figure>
+<p>Each loop step performs one <b>grounding substitution</b>. In a live conversation the speaker chooses a recipient, describes a referent, and reads a reply that confirms understanding; Spatial Memory substitutes a spatial, accumulated equivalent for each.</p>
+<table>
+  <tr><th>Grounding move</th><th>Substitution</th><th>Loop step</th></tr>
+  <tr><td class="k">choose a recipient</td><td><b>anchor to a place</b>, no addressee</td><td>anchor</td></tr>
+  <tr><td class="k">describe the referent</td><td><b>spatial co-location</b>: the reader stands where it was said, so deixis is restored across time</td><td>surface</td></tr>
+  <tr><td class="k">accept with a live reply</td><td><b>deferred acceptance</b>: a later person acts on the note</td><td>structure + surface</td></tr>
+</table>
+<p>The third substitution is load-bearing and fragile: a deferred action is not the mutual belief a live reply secures, so grounding can complete only one-way. That boundary is what the evaluation tests, not something the design hides.</p>
 <p>It carries <b>encounter-class</b> information: low value alone, tied to a physical thing, with no known reader when spoken. Today's channels price this out, so it is lost. Known-recipient, bounded messages, which are <b>episode-class</b>, stay on Slack.</p>
 <p>Every note is one of <b>two memory types</b>:</p>
 <table>
   <tr><th>Type</th><th>Anchored to</th><th>Outlives</th><th>Example</th></tr>
   <tr><td class="k">Object memory</td><td>a place</td><td>any project</td><td>"0.6 nozzle is in" on the printer</td></tr>
-  <tr><td class="k">Project memory</td><td>a project, spanning places</td><td>nothing; dies with the project</td><td>"joint fragile" follows the build to the test bench</td></tr>
+  <tr><td class="k">Project memory</td><td>a project, spanning places</td><td>nothing; dies with the project</td><td>"shoot the A capture at 120fps" follows the project from the printer to the rig</td></tr>
 </table>
 <p>Person and time are not types but queries over the graph: whose trail, addressed to whom, since when.</p>
+<p>Four properties follow, each realizing a substitution: <b>Anchored</b> (notes attach to the place spoken), <b>Accumulated</b> (the room builds up over time, from many people and projects), <b>Layered</b> (persistence, audience, urgency), and <b>Navigable</b> (versioned, filterable, traversable, not a pile of pins).</p>
+<p><b>Low effort, not no effort.</b> Every note is a deliberate utterance: no ambient inference, no gaze or dwell logging, no telemetry. The system removes only the addressing effort, recipient, referent, and app switch, never authorship. That is also the privacy stance: capture of chosen speech, not surveillance.</p>
 
 <h2 id="c2"><span class="no">2</span>Memory Graph</h2>
 <p>The structuring step is a small typed store, in effect an advanced filter over what a room accumulates. It does three jobs:</p>
