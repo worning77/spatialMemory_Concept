@@ -155,6 +155,51 @@
 <h3>Friday. Different people, different mail.</h3>
 <p>By Friday the room holds dozens of notes, from five people across five fixtures. If it replayed all of them, anyone walking in would drown, the same spam problem, now in space. Pinning notes in space is the easy half; letting a room accumulate a week and still hand each person only their slice is the half that needs structure, and that structure is the Memory Graph. So each person asks the room the same question, "anything for me?", and each gets a different, short answer: superseded notes collapsed, expired ones gone, everything not for them filtered out. Iris gets Sam's clarification and nothing else. Renata gets a single note that her plate is ready. Sam gets two: Iris's question about the re-capture, and Renata's note that his config had been in the way. Dae-ho's bin, Priya's tracker, the other projects' churn: none of it surfaces for anyone it does not belong to.</p>
 
+<h2 id="dayguide">逐日解析 · 中文工作版</h2>
+<p class="sub">先解释新增 beat 用到的术语和英文缩写，再逐天给故事与每个 beat 的功能。琥珀色高亮对应上方 prose 里的新增文字。理解定稿后再更新英文版和论文。</p>
+
+<h3>术语表</h3>
+<table>
+  <tr><th>术语</th><th>解释</th></tr>
+  <tr><td class="k">con</td><td>全名就是 "pros and cons" 里的 con（拉丁语 contra，反对），中文即不利因素 / 反对理由。出处是 Convertino 疏散实验的材料设计：每个角色私有 9 条关于各 shelter 的 "cons"（这个 shelter 洪水风险高、那个路窄……），最优解只有把三方的 cons 拼起来才看得见。在我们的语境里它泛化为"判定相关信息"：做对一件事所需的信息被拆成两半，note 持一半，房间持另一半。"埋 con" = 把互补的那一半物理地布置进房间。</td></tr>
+  <tr><td class="k">criterion</td><td>全名 grounding criterion（接地判据 / 理解的充分性判据），Clark &amp; Brennan 1991 p.129：双方相互相信，听者已把说话人的意思理解到"足以满足当前目的"的程度（"sufficient for current purposes"）。要点有二：理解从不需要完美，只需要够用；而"够用"相对于目的和受众（p.136）—— 读者变了，同一句话的判据就变了。</td></tr>
+  <tr><td class="k">hidden profile</td><td>隐藏剖面，Stasser &amp; Titus 1985 提出的信息分布结构：每方的信息都真实但不完整，客观最优解只有把分布的信息池化（pooling）才能到达。Convertino 把它装进疏散 scenario 造出角色间依赖。我们的两方版本：Sam 持私有语境，房间持互补事实，arriver 池化则成、不池化则败。</td></tr>
+  <tr><td class="k">positive evidence / acknowledgment</td><td>积极理解证据 / 确认。C&amp;B pp.131–133 列了三种积极证据：acknowledgment（确认 —— "嗯"、点头、点 Confirm，最弱的一种）、relevant next turn（发起相关的下一步）、continued attention（持续注意）。按正确方式行动属于更强的证据（demonstration，出自 Clark &amp; Schaefer 1989）。关键性质：弱证据可以在没有理解的情况下照常发生。</td></tr>
+  <tr><td class="k">states 0&#8211;3</td><td>理解的四个状态（C&amp;B p.130）：0 = 没注意到有人说话；1 = 注意到但没听清；2 = 听清但没理解；3 = 理解了。p.146：在非同时媒介里，作者看不见对方处于哪个 state（email 不回复的经典歧义），这是异步 grounding 断裂的理论原文。</td></tr>
+  <tr><td class="k">fact 层 vs inference 层</td><td>事实层与推断层，出自 Dillenbourg &amp; Traum 2006 的白板实验：事实贴上持久介质后，口头确认率从 37% 掉到 6%（持久性能替代事实层的 grounding），但推断层的共识仍有 38% 要回到对话里谈。预测：事实型 note（喷嘴在不在）连 ablation 组都该成功，是 control；推断型 note（"校准好了"意味着什么）才是 trap 的弹药。</td></tr>
+  <tr><td class="k">silent commitment</td><td>沉默执行，Yamashita 2009 的实证行为：修复通道被堵时，人不举手报告困惑，而是按自己的理解直接执行。所以误读要靠行为检测，不能等被试自己说。</td></tr>
+  <tr><td class="k">cross-redundancy</td><td>跨人冗余，Dillenbourg 的失败指标：后来者重做前人已经确立的事。信息本该由记录运过去，没运到，就表现为重复劳动。Study 2 的核心过程测量。</td></tr>
+  <tr><td class="k">supersession</td><td>顶替 / 版本更迭：新 note 顶替旧 note，地点显示当前状态而非历史堆栈。理论身份是 C&amp;B revisability（可修订性，p.141）扩展到发送之后：记录本身可以被修订。</td></tr>
+  <tr><td class="k">delivery vs grounding</td><td>送达与接地的分离，全文张力所在：delivery = 信息到达了读者；grounding = 意义被正确理解、且理解有证据闭环。周三的全部设计都在把这两者拉开。</td></tr>
+</table>
+
+<h3>周一 —— 上膛</h3>
+<p><b>故事：</b>Sam 为周后的 A 组动捕做准备，边干活边留四条 note：打印机上"0.6 硬化喷嘴和 CF 在机上，打精细件先换回 0.4/PLA"；rig 上"今早为 A volume 重新校准了 rig"；架子上"这个 tracker 在录，屏黑着，别动"；最后一条归入项目："跑 A capture 用 120fps"。三句锚地点、一句锚项目，没有一句有收件人 —— 在 channel 上这些话的成本超过它对 Sam 的价值，根本不会被说；在这里只花一口气。</p>
+<p><span class="nw">【埋 con】</span>的功能：在加这句之前，"完整真相"只存在于 Sam 脑子里 —— 那样周三 Iris 的失败就只是"note 写得含糊、运气不好"，是写作事故。加了这句（marker set B 夹在支架上、校准面板显示他刚跑的 volume），决策所需的信息就完整地存在于房间里，只是分布在两处：note 持一半，rig 的物理状态持另一半。于是周三的失败升级为 hidden profile 式的池化失败：不是信息缺失，是信息分布着而没被拼起来。这一句同时定义了 Study 2 的 trap 构造（真而不完整的 note + 房间里的互补事实），scenario 和实验从这里开始共享同一个结构。</p>
+<p><span class="nw">【criterion】</span>的功能：洗清 Sam。他的 note 不是写得差 —— 对三天后的自己、对任何 A 组老手，这句话的理解判据完全达标。问题是判据随读者而变，而这个媒介的定义（encounter-class：下一个读者未知）让作者结构性地无法为正确的读者设判据。于是责任从"用户失误"移交给"媒介结构"，这正是论文需要的：周三的失败必须是理论必然，不能是角色犯蠢。对观众，这句话是戏剧反讽的上膛 —— 你已经知道这条 note 对 Sam 清晰、对陌生人是哑弹。</p>
+
+<h3>周二 —— 立对照</h3>
+<p><b>故事：</b>三个陌生人撞上 Sam 的三条 note，三次险情化解：Renata 要打精细板，note 拦下 0.6+CF，她换回 0.4/PLA 并留言，她的 note 顶替 Sam 的，打印机显示当前状态；Priya 伸手拿 tracker，note 提醒最边上那个在录（录着的和睡着的长得一样，区别只活在 Sam 脑子里），她拿了另一个；Dae-ho 的零件箱被挪走，空位上的 note 指向架子。</p>
+<p><span class="nw">【事实层标定】</span>的功能：把这三条钉成事实型信息 —— 喷嘴在不在、录没录、在不在架子上，房间当场可验证。周二由此成为故事内部的 control 组：Dillenbourg 的数据（贴上白板后确认率 37%&#8594;6%）预测持久介质运得动事实，所以这三次成功是理论预测的成功，不是运气。"Facts are the easy cargo" 一句预告周三是另一类货物，让周三读作层级差异，而不是"系统时灵时不灵"。</p>
+
+<h3>周三 —— 触发</h3>
+<p><b>故事：</b>Iris 本周新加入 A 组，替出差的 Sam 跑 capture。她走 Sam 的 trail 十分钟补完他的一周；120fps 那条项目 note 跟着工作路由到 rig，她把帧率设好。然后她读到 rig 上那条"今早为 A volume 重新校准了 rig"，读成"rig 校准好了，能用了"，点了确认，装上自己的 marker 开始录。rig 没有警告、校准读数有效，数据无声地偏掉 —— 要几天后在后处理里才会被发现。</p>
+<p><span class="nw">【Confirm beat】</span>的功能：acknowledgment 是三种积极证据里最弱的一种，可以在没有理解时照常发生。Iris 的确认是真诚的、系统的记录是如实的 —— 但它证明的只是"看到了"，不是"理解对了"。这个 beat 还预先堵死 reviewer 必问的"加个已读回执不就行了"：回执点了，回执撒谎。</p>
+<p><span class="nw">【沉默执行】</span>的功能：Yamashita 的实证 —— 修复通道被堵时，人不举手，直接按自己的理解干。所以 Iris 的不迟疑不是粗心，是规律：note 是真的、rig 看着就绪、没有人可问。这一句把"角色智商下线"的嫌疑彻底排除。</p>
+<p><span class="nw">【看得见的缺失 con】</span>的功能：周一埋的雷在此起爆 —— marker set B 就夹在一臂之外，唯一能拆穿误读的那半信息在场而未被池化。观众看得见她缺的东西摆在哪里，戏剧反讽从"我们知道她会错"升级为"我们看得见她缺的那条信息"。这也是 hidden profile 失败的可视化：不是信息不存在，是分布着的信息没有被拼起来。</p>
+<p><span class="nw">【绿灯谎言】</span>的功能：收口周三。已送达、已读、已确认 —— 这个媒介能运载的每个信号都亮了绿灯，而唯一要紧的信号（意义有没有幸存）恰恰是异步媒介运载不了的（p.146：作者看不见对方在 states 0&#8211;3 的哪一层）。Tension 从 "delivery worked, grounding didn't" 升级为"连证据都说 worked，grounding 还是 didn't"。</p>
+
+<h3>周四 —— 结账</h3>
+<p><b>故事：</b>Sam 回来，每处显示当前状态而非历史：打印机上 Renata 的卡片是现行版，rig 重置后周一的 note 折叠掉。他发现 Iris 的录制不对，找到她，追到校准问题，重建状态，留下更锋利的 note："rig 设的是我的 A volume、marker set B，不是你的设置就先重新校准。"Iris 重校重录，干净了 —— 修复到了，晚两天，赔一个 session。</p>
+<p><span class="nw">【对勾之刺】</span>的功能：Sam 看见自己 note 上挂着 Iris 的对勾 —— 确认是真的，理解不是。弱证据不仅骗了读者一方，也骗了作者一方：他有理由以为消息传达到位了。这是 p.146 状态不可见问题的作者侧视角。</p>
+<p><span class="nw">【cross-redundancy】</span>的功能：Sam 把 note 本该运过去的状态亲手重建一遍（走 volume、核 marker set）—— Dillenbourg 的失败指标"重做对方已确立的事"在故事里上演，也是 Study 2 过程测量的原型。修复发生了但晚了两天：repair 成本那一行的舞台版 —— 搬迁能把修复搬进媒介（supersession），搬不回它的即时性。</p>
+
+<h3>周五 —— 反面收束</h3>
+<p><b>故事：</b>一周积了几十条 note，全部重放就是空间版的 spam。每人问同一句"有我的吗"，得到各自的短答案：Iris 只有 Sam 的澄清，Renata 只有"板子好了"，Sam 有两条，别人的箱子、tracker、别的项目的动静不属于谁就不出现给谁。</p>
+<p>本日无新 beat。功能：立起"structure 层的价值" —— 钉 note 是容易的一半，让房间积累一周还能只递给每人自己那片才是需要结构的一半（Memory Graph）。这正是 Study 2 ablation 拿掉的那一半：anchored-only 组保留钉，失去结构。</p>
+
+<p><b>一句话总览：</b>周一分布信息（hidden profile 成立），周二运走事实（control），周三推断池化失败且全绿灯（trap），周四代价与冗余（指标），周五结构的价值（ablation 的靶）。每天同时是叙事的一拍和实验的一个组件。</p>
+
 <h2 id="archive">Archive: earlier drafts</h2>
 <p class="sub">Earlier storyboard drafts, kept for reference. The 3D printer and drone boards use the old Jesse/Vasco scenario; the five-thread board is the earlier wet-lab version, both superseded by the maker-lab week above.</p>
 <h2 id="sb1"><span class="no">1</span>3D printer (nozzle + filament)</h2>
