@@ -18,34 +18,13 @@
 </div></nav>
 <div class="wrap">
 
-<h1>Spatial Memory · Plan</h1>
-<p class="sub">How the paper argues, and how we test it. Draft; study tasks may change. Full protocol in the Full Doc, §8.</p>
+<h1>Spatial Memory &middot; Plan</h1>
+<p class="sub">Why we run two studies, what happens in each, and what we measure. Task details may still move; the logic is locked. Academic spec in the Full Doc &sect;6.</p>
 
-<div class="hook"><b>The shape of the paper, at a glance:</b><br>
-<b>Theory</b> (Clark &amp; Brennan grounding: common ground, deixis, grounding cost) &#8594; <b>[optional: a small formative typology]</b> &#8594; <b>System</b> (a relational Memory Graph + spatial anchoring, on Quest 3) &#8594; <b>Evaluation, two legs</b>: technical pipeline success and reliability (quantify the pieces) + a qualitative user study (N &#8776; 12&#8211;16, confirmatory condition contrast + baseline + NASA-TLX) &#8594; <b>Discussion</b> (name the portable concept and the boundaries).</div>
+<div class="hook"><b>The whole plan in one breath:</b> the paper claims grounding can move into a shared room across time. Study&nbsp;1 shows people will actually put knowledge <i>into</i> the room when saying it costs one breath. Study&nbsp;2 shows a later stranger can take that knowledge <i>out</i> again, and that the credit belongs to the structure, not the pinning. A technical check in between shows the pipeline connecting the two is real.</div>
 
-<h2 id="p1"><span class="no">1</span>How the paper argues</h2>
-<p>We do not study a system to see what it does. We <b>propose a theory</b> and build a system to show it holds. The spine:</p>
-<table>
-  <tr><th>Step</th><th></th></tr>
-  <tr><td class="k">Prior theory</td><td>Clark and Brennan's grounding: collaboration runs on common ground, built by joint work whose cost shifts with the medium.</td></tr>
-  <tr><td class="k">Our proposition</td><td>grounding can be relocated into shared space, across time (§2)</td></tr>
-  <tr><td class="k">System</td><td>Spatial Memory on Quest 3 instantiates it</td></tr>
-  <tr><td class="k">Evaluation</td><td>two legs: quantify the pieces (technical) + a qualitative layer that confirms and bounds the theory</td></tr>
-  <tr><td class="k">Discussion</td><td>name the portable concept and the boundaries, where it holds and where it is only one-way</td></tr>
-</table>
-<p>This is a <b>concept proposal confirmed by evaluation</b>, not an open "understanding the role of X." The system is simple by design; the theory is the load-bearing contribution.</p>
-
-<h2 id="p2"><span class="no">2</span>The proposition</h2>
-<p>Grounding, in Clark and Brennan a synchronous two-party achievement, can be relocated into a space-anchored, accumulated structure through three substitutions:</p>
-<table>
-  <tr><th>In conversation</th><th>In Spatial Memory</th></tr>
-  <tr><td class="k">choose a recipient</td><td>anchor to a place</td></tr>
-  <tr><td class="k">describe the referent</td><td>spatial co-location: the reader stands where it was said, so deixis is restored across time</td></tr>
-  <tr><td class="k">accept with a live reply</td><td>a later person acts on it, a deferred, world-mediated acceptance</td></tr>
-</table>
-<p>This is the <b>asynchronous</b> case. From Speech-to-Spatial (Kim et al., ISMAR 2026) does the synchronous one: a live shared view, real-time grounding. In one line, <b>they are a spatial Zoom; we are a spatial Slack.</b></p>
-
+<h2 id="p1"><span class="no">1</span>The goal, and why it takes two studies</h2>
+<p>The claim has two sides that can never be in the room at the same time, because the medium is about different times. So the test is cut in two. The <b>speaking side</b>: when leaving word costs one breath instead of a composed message, the small situated knowledge that today goes unsaid gets said. The <b>reading side</b>: a newcomer who was never addressed finds that knowledge where and when it matters, and reads it right, and the thing doing that work is the Memory Graph, not the mere pinning. And underneath both, the honest question: did understanding actually happen, and where exactly does it stop happening. The boundary is reported, not hidden.</p>
 <figure>
 <svg viewBox="0 0 1000 448" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="From the proposed flow to what each study leg proves and measures">
   <defs><marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker></defs>
@@ -136,35 +115,15 @@
 </svg>
 <figcaption><b>From the proposed flow to what the study proves.</b> The flow is deduced from grounding theory and the contrast with Slack (what a placeless channel prices out), not from a formative. Each substitution names a grounding cost, a claim, and the study leg that measures it; RQ3 checks the pipeline is realizable; the boundary is reported, not hidden.</figcaption>
 </figure>
+<p>One discipline governs everything below: <b>the studies are the storyboard week with the surfaces swapped</b>. Same structures, different props, so the scenario, the studies, and the demo are one paradigm.</p>
 
-<h2 id="p3"><span class="no">3</span>How we test it, in grounding terms</h2>
-<p>We read the study through Clark and Brennan's grounding. First we place the medium: on their eight properties of a medium (copresence, cotemporality, reviewability, and the rest), a shared physical space is a new profile, asynchronous but with copresence of place, which the <a href="grounding.html">Framing</a> tab lays out and which predicts our costs. The proposition is then three things; the study confirms each and reports where it breaks, with two kinds of evidence: <b>numbers</b> on the system pieces, read as grounding costs, and <b>interviews</b> on whether grounding was reached.</p>
+<h2 id="p2"><span class="no">2</span>Setup, shared by both studies</h2>
+<p>The room is our own lab dressed as the scenario's maker lab: the Bambu P2S, the four-camera capture frame over its bench, the shared device shelf, a soldering station, workbenches. Everyone wears a Quest&nbsp;3 in passthrough. Participants are makerspace-experienced people from outside the lab; labmates only pilot. In Study&nbsp;1 the capture is <b>wizarded</b>: speaking genuinely records audio and location, but no live pipeline runs behind it. Every session is passthrough-recorded for behavior coding.</p>
 
-<h3>Thing 1 · the author's cost drops (leaver)</h3>
-<p>This is the <b>start-up and formulation cost</b> in Clark and Brennan, the cost of finding an addressee and putting a note into words. <b>Test:</b> a hands-busy task; leave a note by in-place voice (our system) versus phone-and-channel (baseline), both wearing the headset. <b>Measure:</b> externalization rate and effort (NASA-TLX, time-off-task). <b>Depth:</b> small, N &#8776; 10&#8211;12, within-subject.</p>
-
-<h3>Thing 2 · the reader's cost is kept low (arriver, the graph)</h3>
-<p>By least collaborative effort, lowering the author's cost is not enough if it dumps cost on the reader; the Memory Graph exists to keep the reader's <b>understanding cost</b> low. <b>Test:</b> pre-seeded week-long rooms, SM-full versus anchored-only. Two traps: <b>state resolution</b> (is an old warning still live or resolved?) and <b>cross-place routing</b> (a warning left elsewhere must surface here). <b>Measure:</b> trap avoidance, time-to-relevant, overload (NASA-TLX). <b>Depth:</b> N &#8776; 12&#8211;16, two matched rooms.</p>
-
-<h3>Thing 3 · grounding is reached, or not (deferred acceptance)</h3>
-<p>Grounding completes only with positive evidence that the reader understood to a sufficient criterion; async has no live evidence, so the later person's action stands in for it. <b>Test:</b> interviews on the same arrivers; did they reconstruct the author's meaning, did standing at the place help, where were they unsure, did they do what the author intended. <b>Judge:</b> "grounded" = acted correctly for the intended reason; "broke" = misread, right for the wrong reason, unsure, or mismatched criteria. <b>Depth:</b> deepest here, two coders, focused thematic analysis.</p>
-
-<h3>The yardstick, in one line</h3>
-<p>Two grounding measures sit over these three. <b>Total collaborative cost</b> (author plus reader) should drop and redistribute versus the baseline: least collaborative effort made visible. And <b>grounding reached</b>, the grounded-versus-broke rate, is the outcome. The honest <b>boundary</b>: async removes repair and cannot complete mutual belief, so we report where grounding is only one-way. That boundary is what makes this a grounding paper, not a system test, and it supplies the discussion.</p>
-
-<h3>Supporting</h3>
-<p><b>Technical evaluation</b> (no participants): structuring accuracy and anchoring reliability on Quest 3. <b>Scenario</b> (filmed): a demonstration that the loop is coherent end to end, not empirical data.</p>
-
-<h2 id="p4"><span class="no">4</span>The study, concretely</h2>
-<p class="sub" style="margin-top:-.4em">Draft protocol. The <b>direction is fixed</b>; specific task steps can change. What is locked is the two-role chain and, for each study, <b>what we record</b> and <b>what we measure</b>. Both studies are in-lab on <b>Quest&nbsp;3</b> (passthrough), run with makerspace-experienced people from outside the lab (labmates pilot only).</p>
-
-<div class="hook"><b>The chain (why two studies are one pipeline):</b><br>
-Study&nbsp;1 real utterances (recorded + located) &#8594; real LLM segmentation, offline <i>(this is where RQ3 is measured)</i> &#8594; a curated <b>frozen seed set</b> (one representative real note per trap + researcher fillers) &#8594; <b>identical pre-seeded rooms</b> &#8594; Study&nbsp;2. <b>No live relay</b> &#8212; every Study&nbsp;2 participant walks into the same room, or the conditions do not compare. Every number in the paper traces back to words real participants spoke while working.</div>
-
-<h3>Study 1 &middot; the Leaver (capture cost &mdash; Thing 1)</h3>
-<p><b>Who:</b> N=8&#8211;10, <b>within-subject, two visits at least a day apart</b>: visit one runs one channel, visit two the other; half start with SM, half with Slack. ~40&nbsp;min/visit. <b>Cover story</b> (both visits): "You are the morning shift; someone you do not know takes over this station this afternoon. Do the job; handle anything you notice however you normally would." Recording is never mentioned; leaving word is optional and costly, exactly like real life.</p>
-<p><b>Conditions:</b> <b>SM</b> = speak in place, wizarded (audio + location genuinely recorded, no live pipeline behind it) vs <b>Slack</b> = phone in pocket, lab channels available. Both visits wear the headset (passthrough), so device burden is constant and the only variable is the capture channel. The two visits use <b>isomorphic task sets A/B</b>: same encounter structure, different surfaces, assignment counterbalanced.</p>
-<p><b>Task spine</b> (~30&nbsp;min, mild time pressure): collect a draft print &#8594; assemble a bracket &#8594; wire a connector &#8594; stage a logging phone &#8594; clear and calibrate for the next job. Nine planted encounters, each an enumerated proposition pre-classed fact/inference. Scoring per proposition: <b>full / partial / none</b> externalized (post-task walkthrough separates <i>did not notice</i> from <i>noticed but did not say</i>; only the latter counts), plus time-off-task per record, word count, NASA-TLX. E8 doubles as an <b>addressing-behavior probe</b>: in the SM visit, does the speaker give it to the place or direct it to the owner? E9 is the <b>carve control</b>: episode-class, expected to go to the channel in both visits.</p>
+<h2 id="p3"><span class="no">3</span>Study 1 &middot; will people say it? (8&ndash;10 people, each comes twice)</h2>
+<p><b>Goal:</b> prove the speaking side. When a note costs one breath, encounter-class knowledge gets externalized; when it costs pulling out a phone and composing a message, most of it dies.</p>
+<p><b>What happens:</b> each person comes twice, at least a day apart. On one visit they can speak in place; on the other they only have their phone and the lab Slack. Half start with each. Both visits wear the headset, so the only difference is the channel. Each visit is about 40 minutes of real lab work under mild time pressure (collect a print, assemble a bracket, wire a connector, stage a logging phone, clear and calibrate for the next job), and the two visits use different but structurally identical task sets, so nobody meets the same situation twice. The cover story: you are the morning shift, someone you do not know takes over this afternoon; handle anything you notice however you normally would. We never mention recording; saying something stays optional and slightly costly, like life.</p>
+<p><b>The nine planted situations</b> worth telling the next person (set&nbsp;A &#9656; set&nbsp;B surfaces):</p>
 <table>
   <tr><th>#</th><th>Encounter (set A &#9656; set B)</th><th>Type</th><th>Class</th><th>Feeds Study 2</th></tr>
   <tr><td class="k">E1</td><td>Swaps the 0.6 nozzle in for the draft job &#9656; swaps the fine soldering tip</td><td>caused</td><td>fact</td><td><b>F1</b> fact control</td></tr>
@@ -177,12 +136,16 @@ Study&nbsp;1 real utterances (recorded + located) &#8594; real LLM segmentation,
   <tr><td class="k">E8</td><td>Carrying parts, he nudges a staged light stand off its tape marks &#9656; a staged tripod</td><td>caused</td><td>fact</td><td><b>ST1</b> stale-state trap; addressing probe</td></tr>
   <tr><td class="k">E9</td><td>Asked to tell a named teammate the meeting moved &#9656; another named hand-off</td><td>given</td><td>episode</td><td>carve control; not seeded</td></tr>
 </table>
-<p><b>Outputs:</b> the real utterances (audio + anchor + timestamp) become the segmentation corpus (RQ3) and, curated and lightly isomorphed, the <b>frozen seed set</b> for Study&nbsp;2; the Feeds column above is the handoff plan.</p>
+<p><b>What we measure:</b> for each of the nine, did they say it: fully, partly, or not at all. An exit walkthrough ("show me what you noticed") separates <i>did not notice</i> from <i>noticed and stayed silent</i>; only the second counts. Plus the time each record took away from the work, word counts, and workload (NASA-TLX). Two bonus readings: E8 quietly measures whether people give a bump report to the <b>place</b> or to the <b>person</b> (the scenario's Dae-ho moment, measured in the wild), and E9 checks that messages with a known recipient still go to Slack in both visits, so the system is not stealing the channel's job.</p>
+<p><b>What it hands over:</b> everything they said, with location and timestamp, becomes the test corpus for the pipeline check and the raw material of Study&nbsp;2's room. The "Feeds Study&nbsp;2" column above is that handoff, planned in advance.</p>
 
-<h3>Study 2 &middot; the Arriver (reader cost + grounding reached &mdash; Things 2 &amp; 3)</h3>
-<p><b>Who:</b> N=16, <b>between-subjects, 8 per arm</b>, one visit ~50&nbsp;min. Between, not within (changed from the earlier draft), because traps teach their lesson on first contact: a participant who has met the stale-state trap once is inoculated for a second room, isomorph or not. Between also means <b>one frozen room serves both arms</b>; only the system layer differs, so any difference is the Memory Graph. If pilot effects run small, escalate to 12 per arm before concluding.</p>
-<p><b>Cover story:</b> "You are the afternoon shift, new to this project. Get up to speed, then complete the jobs." <b>Conditions:</b> <b>SM-full</b> = graph on (triage, supersession, audience filter, routing, trail) vs <b>anchored-only</b> = the same notes hanging raw in place: no supersession (the stale note hangs beside its correction), no filter, no routing, no triage.</p>
-<p><b>Dosage:</b> the room holds <b>~32 notes</b>, a week's accumulation: the 8 scored items below, plus superseded pairs, notes directed to other people, and other-project fillers. SM-full's triage returns about 6 relevant items; anchored-only hangs all 32 raw, so filtering has real work to do.</p>
+<h2 id="p4"><span class="no">4</span>The pipeline check (no participants)</h2>
+<p>All Study&nbsp;1 recordings are run through the real pipeline offline: does it split a multi-topic breath into the right cards, put each card in the right place, propose the right audience and urgency, and spot the links (this replaces that, read this first, this answers that)? Scored against two human coders' gold labels, and reported with one honest number: <b>how many fixes per card</b> the author would have had to make at the confirmation step. This is the technical evaluation of the Memory Graph's writer. Anchoring reliability on Quest&nbsp;3 (does a card resurface in the right spot across sessions) is measured alongside.</p>
+
+<h2 id="p5"><span class="no">5</span>Study 2 &middot; can a stranger pick it up? (16 people, each comes once, two groups of 8)</h2>
+<p><b>Goal:</b> prove the reading side, and locate the boundary. Knowledge left in the room reaches a newcomer correctly, and the difference is made by the structure layer, not by pinning alone.</p>
+<p><b>What happens:</b> 16 new people, one visit each, cast as a newcomer taking over a project mid-week. The room is pre-filled with notes built from Study&nbsp;1's real words, curated once and frozen: every participant walks into the same room. Half use the <b>full system</b>: notes update in place, filter to the right people, route with projects, and "anything for me?" works. The other half use the <b>stripped version</b>: the very same notes as dumb pins, old versions hanging beside new ones, everything visible to everyone, nothing routed, no triage. Why two separate groups rather than each person trying both: a trap teaches its lesson the first time you meet it, and a second room cannot un-teach it.</p>
+<p><b>Dosage:</b> the room holds about <b>32 notes</b>, a week's worth. Eight matter to the tasks and are scored; the rest is realistic noise, other projects' chatter, notes meant for other people, superseded old versions. The noise is on purpose: filtering can only prove itself against a pile.</p>
 <table>
   <tr><th>Item</th><th>What the arriver faces</th><th>Prediction</th></tr>
   <tr><td class="k">F1&#8211;F3</td><td>fact controls (nozzle state, running log, moved box)</td><td>pass in <b>both</b> arms (Dillenbourg: persistence carries facts); proves the tasks are fair</td></tr>
@@ -192,14 +155,16 @@ Study&nbsp;1 real utterances (recorded + located) &#8594; real LLM segmentation,
   <tr><td class="k">W1</td><td>hazard notice before touching the station</td><td>ordering only in SM-full; in ablation it hangs unranked among 32</td></tr>
   <tr><td class="k">T0</td><td>arrival triage: "anything you need to know?"; one for_me query returns <b>empty</b> late in the session</td><td>time-to-first-relevant-action, opened vs relevant; empty-slice trust probe: do they trust the nothing or go hunting</td></tr>
 </table>
-<p><b>Measures, three layers:</b> (1) <b>outcome</b>: each scored item against a gold-standard action script on the ladder <i>skipped / referent unresolved / referent found but intent misread / grounded</i>, two blind coders; (2) <b>conduct</b> (people compensate, outcomes alone are insensitive): cross-redundancy count (re-doing what the leaver established), re-checks, walking path, questions to the experimenter; (3) <b>post</b>: per-seed paraphrase probe with confidence (never "did you understand"), NASA-TLX, exit interview coded grounded vs broke. <b>Pilot</b> 3&#8211;4 participants to calibrate trap severity to the 36&#8211;46% success band in the ablation arm. <b>Pre-registered dissociation:</b> removing structure should kill ST1, R1, W1-ordering, and T0 time, spare F1&#8211;F3, and produce the compensation behaviors in the ablation arm.</p>
-<h3>Technical evaluation (RQ3, no participants)</h3>
-<p><b>Segmentation</b> on the full Study&nbsp;1 corpus (+ pilot recordings) against gold labels: % correct object/project filing, audience %, supersession detection %, capture-to-card latency; <b>per-card correction rate</b> (how many proposals the human signer would have had to fix). <b>Anchoring</b>: repeated approach trials across sessions and relocalizations on Quest&nbsp;3 &#8212; surfacing reliability % and latency.</p>
+<p><b>What we measure, three layers.</b> First, <b>outcomes</b>: for each scored item, did they do the right thing, judged against a correct-action script written before the study, on a four-step scale (skipped it &middot; never found what it referred to &middot; found it but read the intent wrong &middot; got it), two blind coders. Second, <b>wasted work</b>, because people compensate and outcomes alone are insensitive: re-checking or re-doing things the leaver had already settled, extra walking, questions to the experimenter. Third, <b>afterwards</b>: retell each note in your own words, and how sure are you; never "did you understand". Plus workload, and an exit interview coded <i>understood for the right reason</i> versus <i>broke</i>, two coders.</p>
+<p><b>Before the real run:</b> 3&ndash;4 pilot people to tune trap difficulty until the stripped group succeeds roughly four times in ten, hard enough to show differences, not impossible. <b>Predictions on record before any data:</b> the simple fact items pass in both groups (that is what makes the test fair); the structure-dependent items, the stale one, the routed one, the warning's ordering, and triage speed, break mostly in the stripped group; and where outcomes tie, the stripped group pays in legwork. If pilot differences run small, grow to 12 per group before concluding anything.</p>
 
-<h3>Still open (task-level, not direction)</h3>
-<p>Per-study compensation and recruitment channel; IRB check &#8212; whether the submitted protocol (STU00226786) covers the planted-encounter cover stories or needs an amendment; scope of the ecological leg (2&#8211;3 real dyads, a few days, breakdown-and-repair episode analysis); Study&nbsp;2 escalation rule if pilot effects run small. Platform locked: Quest&nbsp;3 throughout.</p>
+<h2 id="p6"><span class="no">6</span>The real-teams leg (with YY)</h2>
+<p>Two or three real pairs use the system in their own work for a few days. No planted tasks, no scripts; we watch where communication breaks and how it gets repaired, coded as breakdown-and-repair episodes plus thematic analysis. The lab studies prove the mechanism; this leg shows it happens outside a script. Scheduled after the demo scenes prove the system runs live.</p>
 
-<p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
+<h2 id="p7"><span class="no">7</span>Still open</h2>
+<p>Compensation and recruitment channel; an IRB check on whether the submitted protocol (STU00226786) covers the planted-situation cover stories or needs an amendment; the size of the real-teams leg; and the grow-to-12 rule for Study&nbsp;2.</p>
+
+<p class="foot">Spatial Memory &middot; CHI 2027 &middot; see the header.</p>
 </div>
 </body>
 </html>
