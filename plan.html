@@ -164,6 +164,30 @@
 <h2 id="p7"><span class="no">7</span>Still open</h2>
 <p>Compensation and recruitment channel; an IRB check on whether the submitted protocol (STU00226786) covers the planted-situation cover stories or needs an amendment; the size of the real-teams leg; and the grow-to-12 rule for Study&nbsp;2.</p>
 
+<h2 id="p8"><span class="no">8</span>Build package: what dev must deliver, and for whom</h2>
+<p>Four consumers, in build order: the <b>demo film</b> (the storyboard week enacted on device, also the video figure), <b>Study&nbsp;1</b> (wizard: genuine recording, no intelligence), <b>Study&nbsp;2</b> (frozen room, two modes), and <b>RQ3</b> (offline, no headset). The scope-defining fact: <b>the headset app never runs a live LLM</b>. Study&nbsp;1 records raw audio and location; Study&nbsp;2's room is pre-baked, so supersession, routing, filtering, and triage are driven by hand-authored graph data, not live inference; the real pipeline runs offline in RQ3 only.</p>
+<table>
+  <tr><th>Feature</th><th>Demo film</th><th>Study 1</th><th>Study 2 full</th><th>Study 2 stripped</th><th>RQ3</th></tr>
+  <tr><td class="k">Spatial anchors + zones (SLAM-only)</td><td>&#10003;</td><td>&#10003; (location log)</td><td>&#10003;</td><td>&#10003;</td><td>&#10003; reliability harness</td></tr>
+  <tr><td class="k">Voice capture: audio + location + timestamp log</td><td>&#10003;</td><td>&#10003; (the wizard IS this)</td><td>optional</td><td>optional</td><td>corpus source</td></tr>
+  <tr><td class="k">Card rendering (type colors, author chips, badges)</td><td>&#10003; polished</td><td>&#8212;</td><td>&#10003;</td><td>&#10003;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Proximity surfacing (notes_at)</td><td>&#10003;</td><td>&#8212;</td><td>&#10003;</td><td>&#10003; (raw, everything)</td><td>&#8212;</td></tr>
+  <tr><td class="k">Supersession display (stack, history expand)</td><td>&#10003;</td><td>&#8212;</td><td>&#10003;</td><td>&#215; (both cards hang raw)</td><td>&#8212;</td></tr>
+  <tr><td class="k">Audience filter (broadcast / directed / project)</td><td>&#10003;</td><td>&#8212;</td><td>&#10003;</td><td>&#215; (all visible)</td><td>&#8212;</td></tr>
+  <tr><td class="k">Routing (project card fires on member + place)</td><td>&#10003; Wed scene</td><td>&#8212;</td><td>&#10003; (item R1)</td><td>&#215;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Urgency ordering (info / warning, warning first)</td><td>&#10003; Fri scene</td><td>&#8212;</td><td>&#10003; (item W1)</td><td>&#215; (unranked)</td><td>&#8212;</td></tr>
+  <tr><td class="k">Triage "anything for me?" + empty answer</td><td>&#10003; Thu/Fri</td><td>&#8212;</td><td>&#10003; (T0)</td><td>&#215;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Trail (person query as walkable path)</td><td>&#10003; Wed scene</td><td>&#8212;</td><td>nice-to-have</td><td>&#215;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Confirm / reply / archive actions</td><td>&#10003; (all three appear)</td><td>&#8212;</td><td>confirm at least</td><td>&#215;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Read-first ordering (Depends_On)</td><td>&#10003; Thu scene</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Look-back placement confirm</td><td>&#10003; Fri scene</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Room seeding tool (place ~32 cards from a JSON spec, incl. stacks)</td><td>&#10003; scene setup</td><td>&#8212;</td><td>&#10003; critical</td><td>&#10003; same file</td><td>&#8212;</td></tr>
+  <tr><td class="k">Mode switch (full vs stripped) on the same room file</td><td>&#8212;</td><td>&#8212;</td><td colspan="2" style="text-align:center">&#10003; one flag</td><td>&#8212;</td></tr>
+  <tr><td class="k">Interaction + approach logging, passthrough recording</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#10003;</td><td>&#8212;</td></tr>
+  <tr><td class="k">Offline pipeline (STT &#8594; segmentation &#8594; metadata &#8594; links) + scoring scripts</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#8212;</td><td>&#10003; Python, no headset</td></tr>
+</table>
+<p><b>Build order</b> (updates the old capture-first plan): 1) anchors + card rendering + seeding tool, which unlocks demo stills and the frozen room; 2) surfacing + supersession + audience + urgency + triage on baked data, which completes Study&nbsp;2 full mode, and the stripped mode is the same build with the flag off; 3) wizard logger, which unlocks Study&nbsp;1; 4) demo-only polish (trail walk, read-first, look-back confirm) for the film; 5) offline pipeline and harnesses for RQ3, parallel to all of it. The graph store itself can be a JSON file; the value is the behaviors it drives, and nothing in the paper requires it to be live.</p>
+
 <p class="foot">Spatial Memory &middot; CHI 2027 &middot; see the header.</p>
 </div>
 </body>
