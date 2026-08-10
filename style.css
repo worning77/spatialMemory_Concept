@@ -167,3 +167,6 @@
   .storyline .sl.t5{border-left-color:#b4632a}
   .storyline .sl h4{margin:0 0 8px; font-size:14px}
   #slprompt{color:var(--muted); font-size:13px; font-style:italic; padding:8px 0}
+
+  /* meeting highlighter */
+  .hl{background:linear-gradient(104deg, #ffe97a00 0.5%, #ffe97a 3%, #ffec8f 96%, #ffe97a00 99%); padding:0 3px; border-radius:3px; box-decoration-break:clone; -webkit-box-decoration-break:clone}
