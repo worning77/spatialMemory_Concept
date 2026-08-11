@@ -3,13 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grounding · Spatial Memory</title>
+<title>Framing · Spatial Memory</title>
 <link rel="stylesheet" href="style.css">
-<style>
-  .cmat td:not(:first-child){text-align:center}
-  .cmat tr.ours{background:var(--ours-bg)}
-  .cmat tr.ours td{font-weight:650}
-</style>
 </head>
 <body>
 <nav class="tabs"><div class="tabs-inner">
@@ -23,19 +18,64 @@
 </div></nav>
 <div class="wrap">
 
-<h1>Project Framing w/ Theory of Grounding </h1>
-<p class="sub">The theoretical frame: grounding relocated into space.</p>
+<h1>Project Framing w/ Workspace Awareness</h1>
+<p class="sub">The theoretical frame: workspace awareness carried across the temporal gap. (Supersedes the grounding spine; see Archive for the previous version.)</p>
 
-<p>People who share physical workspaces at different times of the day &mdash; fabrication labs, design studios, research labs &mdash; rely on those spaces as rich, structured environments for making and thinking. Yet their communication with one another happens through placeless tools: chat channels, shared docs, message threads. This disconnect means that the spatial context which organizes the process of thinking and making is lost.</p>
+<p>People who share physical workspaces in shifts, in fabrication labs, design studios, and research labs, rely on those spaces as rich, structured environments for making and thinking. The workspace is shared and the equipment is shared, but the people are rarely there at the same time. <span class="hl">Every person who walks in faces state changes and dependencies created by people they cannot see: a swapped nozzle, a re-zeroed scale, a rig that must not be touched until tomorrow.</span> Nothing about the current appearance of the room announces any of this.</p>
 
-<p>Drawing on the theory of Grounding (Clark &amp; Brennan, 1991), collaboration depends on common ground, the shared knowledge, beliefs, and assumptions that collaborators mutually hold and continually update as they work. In a shared physical space, an important part of grounding is communicating who needs to know what, where, and when &mdash; matching a piece of situated knowledge to the person who needs it, the place it belongs, and the moment it becomes relevant. Much of what supports this is anchored in the environment itself: where things are, what state they are in, and what was done to them. When collaborators are separated in time and communicate through placeless tools, the who, what, where, and when come unbound from one another. A placeless message then has to carry the completeness of all the parts in its language. If any piece of context is left out, the common ground breaks down, introducing uncertainty and inviting misunderstanding.</p>
+<p>This is not a conversation problem. There are no long exchanges to support, no misunderstanding to negotiate. It is what the awareness literature calls situation awareness (Endsley, 1995), in its workspace-specific form, workspace awareness (Gutwin &amp; Greenberg, 2002): knowing what has happened in the space, who did it, when, and what state things are in now. The arriver's problem is that this knowledge exists, in the head of the person who just left, and the room does not carry it.</p>
 
-<p>Existing approaches to bridging this gap, from AR annotation systems to media spaces, either demand heavy instrumentation or treat space as a simple pin-board for isolated comments, offering anchoring without structured context and process. The core design challenge is to support the construction of common ground across people who work at different times, in different sequences, and through different processes.</p>
+<p>Today the carrying is done by placeless channels: chat threads, shared docs, whiteboards by the door. These strip the knowledge from the place and moment it belongs to, and, as the cost ledger below shows, they price small observations out entirely, so most of this awareness is never externalized at all. AR annotation systems anchor content to place but treat space as a pin-board for isolated comments: they deliver words, but keep no state.</p>
 
-<p>We introduce Spatial Memory, an interaction paradigm in which physical space becomes the medium for the collaborative construction of common ground: voice notes left by multiple collaborators over time are anchored to the locations and objects they concern, structured by place, project, and the relationships the Memory Graph maintains (supersession, audience, and routing), and delivered to each collaborator where and when they need them. The space becomes a layered grounding record that can be reviewed, revised, and navigated by place, by person, or by project.</p>
+<p>We introduce Spatial Memory, an interaction paradigm in which the workspace itself carries its past: voice notes spoken in one breath at the thing they concern, anchored where they were said, structured by the Memory Graph (supersession, audience, routing), and surfaced to each later arriver where and when they become relevant. The space becomes a maintained record of its own history that can be navigated by place, by person, or by project.</p>
 
-<h2>The Empty Cell: Sequential Copresence</h2>
-<p>Clark and Brennan characterize a medium by eight constraints it may hold for its participants: copresence, visibility, audibility, cotemporality, simultaneity, sequentiality, reviewability, and revisability (p. 141). Their Table 1 (p. 142) tabulates seven media against these constraints, and the table has a hole. Copresence appears exactly once, for face-to-face, where it is bundled with cotemporality; every asynchronous medium they analyze (letters, answering machines, email) is placeless. <span class="hl">Same place, different time is a profile the theory can express but never instantiates.</span></p>
+<h2>Why It Goes Unsaid: The Cost Structure</h2>
+
+<p>Clark and Brennan (1991) supply the motivation engine: communication effort is paid against a medium-specific cost structure, and people, following the principle of least collaborative effort, communicate only what the costs make rational. We borrow their cost ledger, not their grounding machinery; the ledger explains why encounter-class awareness never gets externalized today, and it specifies what a Spatial Memory system has to absorb to change that.</p>
+
+<p>In a co-present, real-time exchange, the effort is shared between two parties and paid as the conversation unfolds. In a space that is shared but occupied in sequence, there is no live partner to share the effort: the whole cost falls on the author, at capture time, for a payoff that goes to someone else, later. When the cost of contributing a small observation exceeds what it appears to be worth to the person paying it, silence is the rational choice. The knowledge is not lost to forgetting or indifference; it is lost to a cost structure that makes communicating it locally irrational.</p>
+
+<p>Channels make this worse in a specific, cited way: in media where changing speaker is "a little like starting up a communication from scratch," people "try to do more within a turn" (pp. 144&ndash;145). That composed, effortful channel message is exactly what prices encounter-class information out; a one-breath note spoken in place is the counter-design. Under sequential copresence the eleven costs sort into a division of labor: some are the <b>design brief</b> (drive them toward zero or the note is never spoken), some are <b>erased or destroyed by the profile itself</b>, and some become the <b>evaluation's instrument</b>:</p>
+
+<table>
+  <tr><th>Cost</th><th>Description</th><th>Paid by</th><th>In Spatial Memory</th></tr>
+  <tr><td class="k">Formulation</td><td>Time and effort increase as utterances are created and revised and as utterances become more complicated.</td><td>Speaker</td><td><b>Design:</b> one sentence spoken in flow; nothing to compose</td></tr>
+  <tr><td class="k">Production</td><td>Effort invested in producing a message varies depending on the medium of communication.</td><td>Speaker</td><td><b>Design:</b> speech, the cheapest production C&amp;B list</td></tr>
+  <tr><td class="k">Reception</td><td>Listening is generally easier than reading.</td><td>Addressee</td><td><b>Design:</b> voice and short cards at the place; listening over reading</td></tr>
+  <tr><td class="k">Understanding</td><td>Costs are higher the more often the addressee has to formulate the appropriate context of the conversation.</td><td>Addressee</td><td><b>Eval (Study 2):</b> co-location claims to supply the context; the traps test whether the arriver's picture of the workspace stays correct with no one there to ask</td></tr>
+  <tr><td class="k">Start-up</td><td>The cost of starting up a new discourse. Attention needs to be commanded, the message formulated, and the message needs to be received.</td><td>Both</td><td><b>Design + Eval (Study 1):</b> no app, no addressee, no channel; the externalization rate measures whether the cost actually dropped</td></tr>
+  <tr><td class="k">Delay</td><td>The cost of delaying an utterance in order to more carefully plan, revise and execute the communication.</td><td>Both</td><td><b>Erased by the profile:</b> without a live partner, delay costs are nil (p. 144)</td></tr>
+  <tr><td class="k">Asynchrony</td><td>The cost incurred when the medium prevents speaking and hearing at the same moment, so contributions cannot overlap and must be serialized.</td><td>Both</td><td><b>Destroyed by the profile:</b> timing-based coordination is impossible without overlap (p. 144); the record, not a reply, has to carry the state</td></tr>
+  <tr><td class="k">Speaker change</td><td>The cost associated with the work required to cue one participant to stop and another to start.</td><td>Both</td><td><b>Design:</b> the next contribution is just speaking at the place; threading and supersession replace turn-taking</td></tr>
+  <tr><td class="k">Display</td><td>The cost associated with displaying non-verbal cues.</td><td>Both</td><td><b>Restored by the profile:</b> the place itself is the exhibit (p. 145); eval checks the referent is actually recovered</td></tr>
+  <tr><td class="k">Fault</td><td>The cost associated with producing a mistaken message.</td><td>Both</td><td><b>Eval (Study 2):</b> trap outcomes count the misreadings no one is there to catch in the moment</td></tr>
+  <tr><td class="k">Repair</td><td>The cost to repair the message and send the correct one.</td><td>Both</td><td><b>Design + Eval:</b> supersession moves correction into the record (p. 145); the evaluation measures how late a correction lands</td></tr>
+</table>
+<p>Read as a ledger: the speaker-side and start-up rows are the design brief, and whether they dropped is what Study 1's externalization rate measures against a channel baseline. The addressee-side rows, understanding, fault, and repair, are the instrument of Study 2: structure claims to keep the arriver's picture correct without a live partner, and the seeded traps measure where that claim holds. Delay and asynchrony belong to neither list: the profile erases the first and destroys the second, and the destroyed one is precisely why the record itself, not any exchange, has to carry the state of the room.</p>
+
+<h2>The Phenomenon: Awareness, Not Grounding</h2>
+
+<p>Gergle, Kraut and Fussell (2013) showed that shared visual information serves two separable coordination mechanisms, and that most systems and most prior studies confound them. <b>Situation awareness</b> is knowledge of task state: has the piece been placed, has an error occurred, is the partner ready. <b>Conversational grounding</b> is evidence of mutual understanding: seeing the partner move the right piece is a nonverbal acknowledgment. Their experiments dissociate the two by ablating one feature of the medium at a time and reading, from where compensation appears in the process measures, which mechanism that feature was serving.</p>
+
+<p><span class="hl">Spatial Memory sits on the awareness side: an arriver needs a correct picture of the workspace, not a conversation.</span> Nothing in the phenomenon requires acceptance, acknowledgment, or mutual belief; the leaver is gone, and what they left behind either keeps the arriver's picture current and correct or it does not. Gutwin and Greenberg (2002) give this picture its vocabulary: workspace awareness, "the up-to-the-moment understanding of another person's interaction with the shared workspace" (p. 417), a specialization of situation awareness tied to the setting we care about.</p>
+
+<h2>The Gap: Awareness Frameworks Assume Real Time</h2>
+
+<p>Gutwin and Greenberg's framework is the reference account of workspace awareness, and it is scoped, explicitly and by definition, to people working "at the same time, but from different places" (p. 413): real-time distributed groupware. The temporal bound is inside the definition itself ("up-to-the-moment"). But the framework's own element tables reach further than its scope. Alongside the present-tense elements (who is here, what are they doing, where), their Table II enumerates the elements of workspace awareness <i>relating to the past</i>:</p>
+
+<table>
+  <tr><th>Category</th><th>Element</th><th>Question it answers (verbatim, Table II, p. 422)</th></tr>
+  <tr><td class="k">How</td><td>Action history</td><td>How did that operation happen?</td></tr>
+  <tr><td class="k">How</td><td>Artifact history</td><td>How did this artifact come to be in this state?</td></tr>
+  <tr><td class="k">When</td><td>Event history</td><td>When did that event happen?</td></tr>
+  <tr><td class="k">Who (past)</td><td>Presence history</td><td>Who was here, and when?</td></tr>
+  <tr><td class="k">Where (past)</td><td>Location history</td><td>Where has a person been?</td></tr>
+  <tr><td class="k">What (past)</td><td>Action history</td><td>What has a person been doing?</td></tr>
+</table>
+
+<p>These are exactly the questions an arriver in a shift-shared lab is asking. And they are the half of the framework that was never built: when the paper turns to interface techniques, it states "We concentrate here on real-time aspects of workspace awareness &ndash; elements that answer the who, what, and where questions" (p. 434), and its technique catalogue covers only the present-tense elements. <span class="hl">The past half of their own framework is named but never operationalized; that unserved half is the slot Spatial Memory fills.</span></p>
+
+<p>The framework also predicts <i>why</i> the sequential case is hard. G&amp;G identify three channels through which awareness information is gathered: watching people work (consequential communication), artifacts giving off state (feedthrough), and talk and gesture (intentional communication). Under "a spatial or temporal separation between the artifact and the actor," they note, feedthrough is left as "the only vehicle for information" (pp. 423&ndash;424). Sequential copresence is the extreme of that observation: <span class="hl">the actor is always absent, so of the three channels only feedthrough survives, and raw physical feedthrough shows the present without the past.</span> An artifact's appearance carries no history, no authorship, and no currency: a nudged camera rig looks exactly like a calibrated one, a dryer mid-run looks idle, a re-zeroed scale looks normal.</p>
 
 <figure>
 <svg viewBox="0 0 1000 610" xmlns="http://www.w3.org/2000/svg" role="img">
@@ -43,110 +83,69 @@
     <marker id="ec-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#1f5fbf"/></marker>
   </defs>
   <text x="310" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#5b6472" letter-spacing="1">SAME TIME</text>
-  <text x="310" y="50" text-anchor="middle" font-size="10" fill="#5b6472">cotemporality</text>
+  <text x="310" y="50" text-anchor="middle" font-size="10" fill="#5b6472">working at once</text>
   <text x="765" y="34" text-anchor="middle" font-size="12" font-weight="700" fill="#5b6472" letter-spacing="1">DIFFERENT TIME</text>
-  <text x="765" y="50" text-anchor="middle" font-size="10" fill="#5b6472">no cotemporality</text>
+  <text x="765" y="50" text-anchor="middle" font-size="10" fill="#5b6472">working in shifts</text>
   <text x="38" y="185" text-anchor="middle" font-size="12" font-weight="700" fill="#5b6472" letter-spacing="1" transform="rotate(-90 38 185)">SAME PLACE</text>
-  <text x="56" y="185" text-anchor="middle" font-size="10" fill="#5b6472" transform="rotate(-90 56 185)">copresence</text>
+  <text x="56" y="185" text-anchor="middle" font-size="10" fill="#5b6472" transform="rotate(-90 56 185)">shared workspace</text>
   <text x="38" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#5b6472" letter-spacing="1" transform="rotate(-90 38 450)">DIFFERENT PLACE</text>
-  <text x="56" y="450" text-anchor="middle" font-size="10" fill="#5b6472" transform="rotate(-90 56 450)">no copresence</text>
+  <text x="56" y="450" text-anchor="middle" font-size="10" fill="#5b6472" transform="rotate(-90 56 450)">distributed</text>
 
   <rect x="90" y="65" width="440" height="235" rx="10" fill="#ffffff" stroke="#e2e6ec" stroke-width="1.5"/>
-  <text x="110" y="97" font-size="14" font-weight="700" fill="#1a1d24">Face-to-face</text>
-  <text x="110" y="119" font-size="10.5" fill="#5b6472">the only Table 1 medium with copresence</text>
-  <text x="110" y="149" font-size="11" fill="#1a1d24">keeps: copresence &#183; visibility &#183; audibility &#183;</text>
-  <text x="110" y="165" font-size="11" fill="#1a1d24">cotemporality &#183; simultaneity &#183; sequentiality</text>
-  <text x="110" y="195" font-size="11" fill="#5b6472">grounding runs live: precise timing, gesture</text>
-  <text x="110" y="211" font-size="11" fill="#5b6472">at the thing, repair on the spot</text>
-
-  <rect x="545" y="65" width="440" height="235" rx="10" fill="#eef4fd" stroke="#1f5fbf" stroke-width="2.5"/>
-  <text x="565" y="92" font-size="9.5" font-weight="800" fill="#1f5fbf" letter-spacing="1.2">EMPTY IN TABLE 1 &#183; p. 142</text>
-  <text x="565" y="116" font-size="14" font-weight="700" fill="#1f5fbf">Spatial Memory: sequential copresence</text>
-  <text x="565" y="138" font-size="10.5" fill="#5b6472">the same environment, occupied in sequence</text>
-  <text x="565" y="168" font-size="11" fill="#1a1d24">keeps: copresence of place &#183; audibility &#183;</text>
-  <text x="565" y="184" font-size="11" fill="#1a1d24">reviewability &#183; revisability; no live constraint</text>
-  <text x="565" y="214" font-size="11" fill="#5b6472">three substitutions relocate grounding into the</text>
-  <text x="565" y="230" font-size="11" fill="#5b6472">place's accumulated record; acceptance is</text>
-  <text x="565" y="246" font-size="11" fill="#5b6472">deferred, and completes only one-way</text>
-  <text x="565" y="272" font-size="10" font-style="italic" fill="#8a93a3">also standing here: replay systems, pin-board</text>
-  <text x="565" y="286" font-size="10" font-style="italic" fill="#8a93a3">annotation, the sticky note; they deliver, but do not ground</text>
+  <text x="110" y="97" font-size="14" font-weight="700" fill="#1a1d24">Face-to-face shared workspace</text>
+  <text x="110" y="119" font-size="10.5" fill="#5b6472">all three awareness channels live (G&amp;G &sect;6)</text>
+  <text x="110" y="149" font-size="11" fill="#1a1d24">watching people work &#183; artifacts giving off state &#183;</text>
+  <text x="110" y="165" font-size="11" fill="#1a1d24">talk and gesture</text>
+  <text x="110" y="195" font-size="11" fill="#5b6472">awareness is maintained for free in the perception-</text>
+  <text x="110" y="211" font-size="11" fill="#5b6472">action cycle; nothing needs to be written down</text>
 
   <rect x="90" y="335" width="440" height="235" rx="10" fill="#ffffff" stroke="#e2e6ec" stroke-width="1.5"/>
-  <text x="110" y="367" font-size="14" font-weight="700" fill="#1a1d24">Telephone &#183; video &#183; terminal chat</text>
-  <text x="110" y="389" font-size="10.5" fill="#5b6472">and the spatial Zoom: Speech-to-Spatial (Kim et al. 2026)</text>
-  <text x="110" y="419" font-size="11" fill="#1a1d24">keeps: cotemporality, with or without</text>
-  <text x="110" y="435" font-size="11" fill="#1a1d24">visibility and audibility</text>
-  <text x="110" y="465" font-size="11" fill="#5b6472">a live partner but no shared place: words or a</text>
-  <text x="110" y="481" font-size="11" fill="#5b6472">shared view must carry the referent; repair is</text>
-  <text x="110" y="497" font-size="11" fill="#5b6472">immediate</text>
+  <text x="110" y="367" font-size="14" font-weight="700" fill="#1a1d24">Real-time distributed groupware</text>
+  <text x="110" y="389" font-size="10.5" fill="#5b6472">"at the same time, but from different places" (G&amp;G, p. 413)</text>
+  <text x="110" y="419" font-size="11" fill="#1a1d24">the awareness literature's home cell: G&amp;G's framework</text>
+  <text x="110" y="435" font-size="11" fill="#1a1d24">and technique catalogue (telepointers, radar views)</text>
+  <text x="110" y="465" font-size="11" fill="#5b6472">GKF's shared visual workspace lives here too, and the</text>
+  <text x="110" y="481" font-size="11" fill="#5b6472">spatial Zoom: Speech-to-Spatial (Kim et al. 2026)</text>
 
   <rect x="545" y="335" width="440" height="235" rx="10" fill="#eef0f3" stroke="#e2e6ec" stroke-width="1.5"/>
-  <text x="565" y="367" font-size="14" font-weight="700" fill="#1a1d24">Letters &#183; answering machine &#183; email &#183; Slack</text>
-  <text x="565" y="397" font-size="11" fill="#1a1d24">keeps: reviewability &#183; revisability only</text>
-  <text x="565" y="427" font-size="11" fill="#5b6472">no partner and no place: the message must</text>
-  <text x="565" y="443" font-size="11" fill="#5b6472">carry all context itself (p. 143), and the sender</text>
-  <text x="565" y="459" font-size="11" fill="#5b6472">cannot see whether it was noticed, read, or</text>
-  <text x="565" y="475" font-size="11" fill="#5b6472">understood: states 0&#8211;3 are invisible (p. 146)</text>
+  <text x="565" y="367" font-size="14" font-weight="700" fill="#1a1d24">Letters &#183; email &#183; Slack</text>
+  <text x="565" y="397" font-size="11" fill="#1a1d24">keeps a reviewable record, but a placeless one</text>
+  <text x="565" y="427" font-size="11" fill="#5b6472">no partner and no place: the message must carry all</text>
+  <text x="565" y="443" font-size="11" fill="#5b6472">context in language, composed at channel-message</text>
+  <text x="565" y="459" font-size="11" fill="#5b6472">cost; bench-scale state changes never make it in</text>
 
-  <path d="M765 333 L765 304" stroke="#1f5fbf" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#ec-a)"/>
-  <text x="778" y="322" font-size="10.5" font-weight="600" fill="#1f5fbf">the relocation</text>
+  <rect x="545" y="65" width="440" height="235" rx="10" fill="#eef4fd" stroke="#1f5fbf" stroke-width="2.5"/>
+  <text x="565" y="92" font-size="9.5" font-weight="800" fill="#1f5fbf" letter-spacing="1.2">UNSERVED &#183; TABLE II ELEMENTS &#183; G&amp;G 2002</text>
+  <text x="565" y="116" font-size="14" font-weight="700" fill="#1f5fbf">Spatial Memory: sequential copresence</text>
+  <text x="565" y="138" font-size="10.5" fill="#5b6472">the same environment, occupied in sequence</text>
+  <text x="565" y="168" font-size="11" fill="#1a1d24">the place remains but the actor is gone: only feedthrough</text>
+  <text x="565" y="184" font-size="11" fill="#1a1d24">survives, and it shows current state without history,</text>
+  <text x="565" y="200" font-size="11" fill="#1a1d24">authorship, or currency</text>
+  <text x="565" y="230" font-size="11" fill="#5b6472">a nudged camera rig looks exactly like a calibrated one</text>
+  <text x="565" y="272" font-size="10" font-style="italic" fill="#8a93a3">also standing here: replay systems, pinned notes, the</text>
+  <text x="565" y="286" font-size="10" font-style="italic" fill="#8a93a3">sticky note; they deliver content, but keep no state</text>
+
+  <path d="M520 350 L572 288" stroke="#1f5fbf" stroke-width="1.8" stroke-dasharray="5 4" fill="none" marker-end="url(#ec-a)"/>
+  <text x="588" y="322" font-size="10.5" font-weight="600" fill="#1f5fbf">the carry: awareness across the temporal gap</text>
 </svg>
-<figcaption>Clark &amp; Brennan's media table populates three quadrants; no medium in it has copresence without cotemporality. Spatial Memory instantiates the empty fourth quadrant.</figcaption>
+<figcaption>The awareness literature populates the same-time column: its frameworks and techniques were built for real-time distributed groupware (same time, different places). Spatial Memory carries workspace awareness along the diagonal, to the same place at a different time, where only feedthrough survives the actor's absence.</figcaption>
 </figure>
 
-<p><span class="hl">Spatial Memory is that missing row.</span> We call the profile <b>sequential copresence</b>: collaborators share the same physical environment, which is exactly how Clark and Brennan define copresence ("A and B share the same physical environment," p. 141), but they occupy it in sequence rather than at once. As a row in their table, it reads:</p>
+<p>The cell is unserved in the literature, not empty of occupants. Replay systems stand in it: Asynchronous Reality captures physical events and replays them to a later user, and a long line of AR annotation systems pins notes to places. So does the oldest medium of all: the sticky note on the broken machine is this quadrant's folk medium, and it has worked for decades. But all of these deliver content without maintaining a picture. A replayed event stream answers "what happened" only by making the arriver watch all of it; a pinned note has no currency, so E7's "out of PLA" sign outlives its own truth; none of them knows who a note is for, whether it has been superseded, or what state the artifact is in <i>now</i>. <span class="hl">Spatial Memory is the sticky note given a memory: state, not log.</span></p>
 
-<table class="cmat">
-  <tr><th>Medium</th><th>Copres.</th><th>Visib.</th><th>Audib.</th><th>Cotemp.</th><th>Simult.</th><th>Sequent.</th><th>Review.</th><th>Revis.</th></tr>
-  <tr><td class="k">Face-to-face</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td></td><td></td></tr>
-  <tr><td class="k">Telephone</td><td></td><td></td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td></td><td></td></tr>
-  <tr><td class="k">Video teleconference</td><td></td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td>&#9679;</td><td></td><td></td></tr>
-  <tr><td class="k">Terminal teleconference</td><td></td><td></td><td></td><td>&#9679;</td><td></td><td>&#9679;</td><td>&#9679;</td><td></td></tr>
-  <tr><td class="k">Answering machines</td><td></td><td></td><td>&#9679;</td><td></td><td></td><td></td><td>&#9679;</td><td></td></tr>
-  <tr><td class="k">Electronic mail</td><td></td><td></td><td></td><td></td><td></td><td></td><td>&#9679;</td><td>&#9679;</td></tr>
-  <tr><td class="k">Letters</td><td></td><td></td><td></td><td></td><td></td><td></td><td>&#9679;</td><td>&#9679;</td></tr>
-  <tr class="ours"><td class="k">Spatial Memory</td><td>&#9684;&#185;</td><td></td><td>&#9679;</td><td></td><td></td><td>&#9684;&#178;</td><td>&#9679;</td><td>&#9679;&#179;</td></tr>
-</table>
-<p class="sub">&#9679; constraint present &#183; &#9684; partial or extended sense. &#185; copresence of place, occupied in sequence, not at once. &#178; not in the raw medium; re-imposed by the Memory Graph's ordering. &#179; and extended past sending: supersession revises the record itself (see the Concept tab).</p>
+<h2>The Move: Authored Feedthrough, Maintained State</h2>
 
-<p>The extension is honest about what transfers and what does not. What transfers is copresence's <i>referential</i> payoff: the later reader stands where the note was spoken, so an indicative "this one" keeps its referent (display costs, p. 145) and the context does not have to be imagined from words, which is the burden Clark and Brennan assign to email readers (understanding costs, p. 143). What does not transfer is every affordance that presupposes a simultaneous partner: precise timing, live gesture, monitoring, immediate repair (p. 144). The three substitutions below are this asymmetry turned into design: the first two exploit what transfers, and the third stands in for what does not. Clark and Brennan name the residue precisely: "In a medium such as email, B's lack of response can be highly ambiguous. Did she not get the message, did she get it and not read it, did she read it and choose not to respond, did she not understand it, or what?" (p. 146). <span class="hl">That state ambiguity is the boundary the scenario dramatizes and the evaluation tests.</span></p>
+<p>The design follows from the mechanism argument. If raw feedthrough is the only channel that survives the temporal gap, then the system's job is to author into the artifact the information its appearance does not give off. A note spoken in one breath at the thing becomes exactly the Table II elements the appearance lacks: artifact history ("swapped the 0.6 nozzle in for the draft job"), event timing ("started the logging run at 4pm"), authorship, and, through the Memory Graph, currency. What transfers from copresence is the referential payoff: the later reader stands where the note was spoken, so an indicative "this one" keeps its referent and the context does not have to be rebuilt from language, the burden Clark and Brennan assign to email readers (p. 143).</p>
 
-<p>The cell is empty in the theory, not empty of occupants. Replay systems stand in this quadrant: Asynchronous Reality captures physical events and replays them to a later user, and a long line of AR annotation systems pins notes to places. So does the oldest medium of all: the sticky note on the broken machine is this quadrant's folk medium, and it has worked for decades. But all of these carry <i>delivery</i>, not grounding. A replay delivers events with no acceptance phase; a pinned note delivers words with no evidence of understanding, no supersession when it goes stale, no audience, and no repair. In grounding terms, they occupy the place and leave the machinery empty. <span class="hl">Spatial Memory is the sticky note given the grounding machinery it never had, and delivery without grounding is precisely the failure the scenario stages.</span></p>
+<p>Maintenance is the second half of the move. Gutwin and Greenberg's own characterization of awareness (p. 416) is that "environments change over time, so awareness is knowledge that must be maintained and kept up to date." A log cannot do that; a pinned note cannot do that. The Memory Graph's supersession is awareness maintenance made mechanical: when a later note contradicts an earlier one, the record revises itself, and the arriver's picture tracks the room rather than the room's history of announcements. This is the state-not-log principle on the Concept tab, now with its theoretical job description.</p>
 
-<h2>Relocating grounding: three substitutions</h2>
-<p>Grounding, in Clark and Brennan a synchronous, two-party achievement, is relocated into a space-anchored, accumulated structure through three substitutions. Each converts a move a live partner would otherwise carry into a property of the record.</p>
-<table>
-  <tr><th>Grounding move</th><th>Substitution</th></tr>
-  <tr><td class="k">choose a recipient</td><td><b>anchor to a place</b>: the note attaches to the place, not a named addressee</td></tr>
-  <tr><td class="k">describe the referent</td><td><b>spatial co-location</b>: the reader later stands where it was said, so deixis is restored across time</td></tr>
-  <tr><td class="k">accept with a live reply</td><td><b>deferred acceptance</b>: a later person's action on the world stands in for the reply</td></tr>
-</table>
-<p>The third is load-bearing and fragile: asynchrony removes repair and cannot complete the mutual belief a live reply secures, so we report where grounding lands only one-way. The synchronous version of this relocation is From Speech-to-Spatial (Kim et al., ISMAR 2026), which grounds spoken referents on a live shared view; ours is the asynchronous case. In one line, they are a spatial Zoom and we are a spatial Slack.</p>
+<p>One further element goes beyond what any feedthrough could carry. G&amp;G exclude future-directed elements from their framework because, unlike past and present information, belief about the future "involves inference, extrapolation, and prediction" and cannot be determined from raw perception (p. 421). An authored note is not bound by perception: "epoxy cures 24 hours, do not sand before Thursday morning" hands the arriver a dependency that no amount of looking at the part reveals. Directed and routed notes are the system reaching past the perceptual bound that raw artifacts cannot cross.</p>
 
-<h2>Grounding Cost and the Design of Spatial Memory</h2>
+<h2>What the Studies Test</h2>
 
-<p>In the principle of least collaborative effort, Clark and Brennan describe the cost of grounding as the combined effort of the participants, who ground with as little effort as possible for the sake of efficiency. What any grounding technique costs depends on the medium. This variation in grounding cost across media is the mechanism that explains why sharing situated knowledge can be costly in a shared workspace &mdash; and why it often goes unsaid &mdash; and it specifies what a Spatial Memory system would have to absorb to change that.</p>
+<p>The two studies keep their architecture (leaver &rarr; frozen seeds &rarr; arriver) and gain a cleaner reading. <b>Study 1</b> tests the cost half: when externalizing costs one breath at the thing, do the awareness records that today go unsaid actually get made? The externalization rate against a channel baseline, per encounter type, is the measure. <b>Study 2</b> tests the structure half, and it now sits squarely in GKF's constraint-ablation tradition: remove one capability (SM-full vs anchored-only, which strips supersession, routing, and triage but keeps anchoring), predict which failures appear, and read the mechanism from where the arriver's picture breaks. The seeded traps are those predicted failures by name: a stale note (the world changed after writing), a superseded pair, a routed dependency, a warning that must surface first. Anchoring alone should preserve reference and still fail on currency; that dissociation is the study's argument.</p>
 
-<p>In a co-present, real-time exchange, the effort of grounding is shared between two parties and paid as the conversation unfolds. In a space that is shared but asynchronous, there is no live partner to share the effort and no exchange to spread it across: the whole cost falls on the author of the message, for a payoff that goes to someone else, later. When the cost of contributing a small observation exceeds what it appears to be worth to the person paying it, silence is the rational choice. The knowledge is not lost to forgetting or indifference; it is lost to a cost structure that makes communicating it locally irrational.</p>
-
-<p>Which costs apply depends on the medium's profile. Under sequential copresence the whole cost of a contribution falls on the author at capture time, so the design has to drive the author-side costs (formulation, production, start-up) toward zero. Clark and Brennan supply the mechanism for why channels fail here: in media where changing speaker is "a little like starting up a communication from scratch," people "try to do more within a turn" (pp. 144&#8211;145). That composed, effortful channel message is exactly what prices encounter-class information out; a one-breath note spoken in place is the counter-design.</p>
-
-<p>Under sequential copresence the eleven costs sort into a division of labor: some are the <b>design brief</b> (drive them toward zero or the note is never spoken), some are <b>erased or destroyed by the profile itself</b> (no design needed, or no design possible), and some become the <b>evaluation's instrument</b> (the substitutions claim to hold them down; the studies measure whether they do):</p>
-<table>
-  <tr><th>Cost</th><th>Description</th><th>Paid by</th><th>In Spatial Memory</th></tr>
-  <tr><td class="k">Formulation</td><td>Time and effort increase as utterances are created and revised and as utterances become more complicated.</td><td>Speaker</td><td><b>Design:</b> one sentence spoken in flow; nothing to compose</td></tr>
-  <tr><td class="k">Production</td><td>Effort invested in producing a message varies depending on the medium of communication.</td><td>Speaker</td><td><b>Design:</b> speech, the cheapest production C&amp;B list</td></tr>
-  <tr><td class="k">Reception</td><td>Listening is generally easier than reading.</td><td>Addressee</td><td><b>Design:</b> voice and short cards at the place; listening over reading</td></tr>
-  <tr><td class="k">Understanding</td><td>Costs are higher the more often the addressee has to formulate the appropriate context of the conversation.</td><td>Addressee</td><td><b>Eval (Study 2):</b> co-location claims to supply the context; the traps test whether an arriver's reading survives with no live partner</td></tr>
-  <tr><td class="k">Start-up</td><td>The cost of starting up a new discourse. Attention needs to be commanded, the message formulated, and the message needs to be received.</td><td>Both</td><td><b>Design + Eval (Study 1):</b> no app, no addressee, no channel; the externalization rate measures whether the cost actually dropped</td></tr>
-  <tr><td class="k">Delay</td><td>The cost of delaying an utterance in order to more carefully plan, revise and execute the communication.</td><td>Both</td><td><b>Erased by the profile:</b> without cotemporality, delay costs are nil (p. 144)</td></tr>
-  <tr><td class="k">Asynchrony</td><td>The cost incurred when the medium prevents speaking and hearing at the same moment, so contributions cannot overlap and must be serialized.</td><td>Both</td><td><b>Destroyed by the profile:</b> timing-based grounding is impossible without cotemporality (p. 144); deferred acceptance is the stand-in, and its residue is the boundary</td></tr>
-  <tr><td class="k">Speaker change</td><td>The cost associated with the work required to cue one participant to stop and another to start.</td><td>Both</td><td><b>Design:</b> the next contribution is just speaking at the place; threading and supersession replace turn-taking</td></tr>
-  <tr><td class="k">Display</td><td>The cost associated with displaying non-verbal cues.</td><td>Both</td><td><b>Restored by the profile:</b> the place itself is the exhibit (p. 145); eval checks the referent is actually recovered</td></tr>
-  <tr><td class="k">Fault</td><td>The cost associated with producing a mistaken message.</td><td>Both</td><td><b>Eval (Study 2):</b> trap outcomes count the misreadings the medium cannot catch in the moment</td></tr>
-  <tr><td class="k">Repair</td><td>The cost to repair the message and send the correct one.</td><td>Both</td><td><b>Design + Eval:</b> supersession moves repair into the record (p. 145); the evaluation measures how late repair lands, the cost the relocation cannot erase</td></tr>
-</table>
-<p>Read as a ledger: the speaker-side and start-up rows are the design brief, and whether they dropped is what Study 1's externalization rate measures against a channel baseline. The addressee-side rows, understanding, fault, and repair, are the instrument of Study 2: the substitutions claim to hold them down without a live partner, and the seeded traps measure where that claim holds and where the missing repair turn lets a misreading through. Delay and asynchrony belong to neither list, since the profile erases the first and destroys the second; the destroyed one is the boundary the whole paper is honest about.</p>
+<p>The encounter pool and traps are being re-derived as cells of a dimension table that crosses G&amp;G's awareness elements with readers, spatial scope, currency, coupling, and urgency; the table and the task derivation live on the Plan tab.</p>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
 </div>

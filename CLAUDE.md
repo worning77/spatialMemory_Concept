@@ -13,7 +13,7 @@ one person owns each file, so two collaborators edit concurrently without git co
 | Tab | File | Owner | Purpose |
 |-----|------|-------|---------|
 | Full Doc | `design_doc.html` | both | Complete design document; **leads with the grounding spine** (proposition + three substitutions organize §1/§3/§8) |
-| Framing | `grounding.html` | both | The grounding theory, polished (grounding cost table) |
+| Framing | `grounding.html` | both | Awareness framing (2026-08 pivot): C&B cost ledger as motivation, GKF awareness-vs-grounding, G&G Table II gap, quadrant figure. Filename kept for link stability |
 | Concept | `concept.html` | Chenfeng | Condensed concept (one screen) |
 | Plan | `plan.html` | Chenfeng | Timeline + condensed study plan |
 | Storyboard | `storyboard.html` | YY | Scenario as panels |
