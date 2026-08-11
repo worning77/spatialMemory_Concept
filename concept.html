@@ -20,7 +20,7 @@
 
 <h1>Spatial Memory</h1>
 <p class="sub">Concept, mechanism, and interaction in condensed form. Full text and figures are in the Full Doc.</p>
-<div class="hook"><b>Why it matters:</b> this is grounding, how people reach shared understanding, relocated from a live conversation into a shared physical space that different people visit at different times. The <a href="grounding.html">Framing</a> tab has the theory; this tab has the design, and every design choice below carries an <b>old link</b>: the element of Clark &amp; Brennan (1991, page numbers) it substitutes for, restores, or is priced by.</div>
+<div class="hook"><b>Why it matters:</b> this is workspace awareness carried across the temporal gap: the room itself keeps each arriver's picture of what happened current and correct. The <a href="grounding.html">Framing</a> tab has the theory (the arriver's questions, the severed channels, the cost ledger); this tab has the design, and every mechanism below carries a <b>theory link</b>: which link of the chain it serves, which arriver's question it answers, or which cost it drives down.</div>
 
 <h2 id="c1"><span class="no">1</span>Concept</h2>
 <p>Spatial Memory closes a four-step loop: a worker <b>captures</b> a judgment by speaking in place at low effort, the system <b>anchors</b> it, <b>structures</b> it in a Memory Graph, and <b>surfaces</b> its current state to the next person.</p>
@@ -51,14 +51,14 @@
 </svg>
 <figcaption>Capture and anchor by the person leaving; structure and surface for the person arriving.</figcaption>
 </figure>
-<p>Each loop step performs one <b>grounding substitution</b>. In a live conversation the speaker chooses a recipient, describes a referent, and reads a reply that confirms understanding; Spatial Memory substitutes a spatial, accumulated equivalent for each.</p>
+<p>The loop's theoretical job is a <b>graft</b>. A note's <b>content</b> is intentional communication: deliberate, authored, able to carry intent and dependencies that no artifact's appearance reveals. Its <b>delivery</b> is feedthrough: anchored in the place, it persists after the actor leaves and reaches whoever walks up next, on the only channel that survives the temporal gap (the Framing tab's figure). Each loop step serves one piece of that graft:</p>
 <table>
-  <tr><th>Grounding move</th><th>Substitution</th><th>Loop step</th><th>Old link (C&amp;B)</th></tr>
-  <tr><td class="k">choose a recipient</td><td><b>anchor to a place</b>, no addressee</td><td>anchor</td><td>start-up and speaker-change costs are what price out addressing (pp. 143&#8211;145)</td></tr>
-  <tr><td class="k">describe the referent</td><td><b>spatial co-location</b>: the reader stands where it was said, so deixis is restored across time</td><td>surface</td><td>context is present, not imagined from words (p. 143); indicative reference regains its referent (pp. 137, 145)</td></tr>
-  <tr><td class="k">accept with a live reply</td><td><b>deferred acceptance</b>: a later person acts on the note</td><td>structure + surface</td><td>the acceptance phase (p. 130); async states 0&#8211;3 are invisible to the author (p. 146)</td></tr>
+  <tr><th>Loop step</th><th>Theory job</th><th>Theory link</th></tr>
+  <tr><td class="k">Capture</td><td>drive the author-side costs to zero at the moment of encounter</td><td>the cost ledger's design brief: formulation, production, start-up</td></tr>
+  <tr><td class="k">Anchor</td><td>graft the utterance onto the channel that survives the actor's absence</td><td>feedthrough: the note persists in the place, like a state the artifact gives off</td></tr>
+  <tr><td class="k">Structure</td><td>keep the record true as the room changes</td><td>awareness maintenance (G&amp;G, p. 416); the Memory Graph, &sect;2</td></tr>
+  <tr><td class="k">Surface</td><td>answer the arriver's questions at the thing, at the moment they matter</td><td>how did this come to be in this state, when, who (the past elements)</td></tr>
 </table>
-<p><span class="hl">The third substitution is load-bearing and fragile: a deferred action is not the mutual belief a live reply secures, so grounding can complete only one-way.</span> That boundary is what the evaluation tests, not something the design hides.</p>
 <p><span class="hl">It carries <b>encounter-class</b> information: low value alone, tied to a physical thing, with no known reader when spoken. Today's channels price this out, so it is lost.</span> Known-recipient, bounded messages, which are <b>episode-class</b>, stay on Slack.</p>
 <p>Every note is one of <b>two memory types</b>:</p>
 <table>
@@ -66,35 +66,35 @@
   <tr><td class="k">Object memory</td><td>a place</td><td>any project</td><td>"0.6 nozzle is in" on the printer</td></tr>
   <tr><td class="k">Project memory</td><td>a project, spanning places</td><td>nothing; dies with the project</td><td>"set the A-capture cameras to 40" follows the project from the printer to the rig</td></tr>
 </table>
-<p>Person and time are not types but queries over the graph: whose trail, addressed to whom, since when.</p>
-<p>Four properties follow, each realizing a substitution: <b>Anchored</b> (notes attach to the place spoken), <b>Accumulated</b> (the room builds up over time, from many people and projects), <b>Layered</b> (persistence, audience, urgency), and <b>Navigable</b> (versioned, filterable, traversable, not a pile of pins).</p>
-<p><b>Low effort, not no effort.</b> Every note is a deliberate utterance: no ambient inference, no gaze or dwell logging, no telemetry. The system removes only the addressing effort, recipient, referent, and app switch, never authorship. That is also the privacy stance: capture of chosen speech, not surveillance.</p>
+<p>Person and time are not types but queries over the graph: whose trail, addressed to whom, since when. The anchor must be a place or a project because the place is what the arriver walks up to, the feedthrough carrier; the author is metadata on the note, which is exactly what makes trail and presence-history queries possible.</p>
+<p>Four properties follow, each serving one link of the chain: <b>Anchored</b> (notes attach to the place spoken), <b>Accumulated</b> (the room builds up over time, from many people and projects), <b>Layered</b> (persistence, audience, urgency), and <b>Navigable</b> (versioned, filterable, traversable, not a pile of pins).</p>
+<p><b>Low effort, not no effort.</b> Every note is a deliberate utterance: no ambient inference, no gaze or dwell logging, no telemetry. This is also the line between authoring and capture-and-replay: an authored record can carry intent and dependencies no sensor recovers, and it contains only what someone chose to say. The system removes only the addressing effort, recipient, referent, and app switch, never authorship. That is the privacy stance: capture of chosen speech, not surveillance.</p>
 
 <h2 id="c2"><span class="no">2</span>Memory Graph</h2>
-<p>The structuring step is a small typed store, in effect an advanced filter over what a room accumulates. Read against the Framing tab, <span class="hl">it is not a data model at all: it is the constraints the medium lacks, re-imposed as structure</span>. Each mechanism has an old link:</p>
+<p>The structuring step is a small typed store, in effect an advanced filter over what a room accumulates. Read against the Framing tab, <span class="hl">the graph is awareness maintenance made mechanical: its job is to keep each arriver's picture of the room current, correct, and scoped to them</span>. Each mechanism has a theory link:</p>
 <table>
-  <tr><th>Mechanism</th><th>Job</th><th>Old link (C&amp;B 1991)</th></tr>
-  <tr><td class="k">Supersedes</td><td>state, not log: a place shows what is true now</td><td>revisability (p. 141) extended past sending: the record itself is revised; repair moves into the medium instead of waiting for a costly other-repair (p. 145)</td></tr>
-  <tr><td class="k">Depends_On</td><td>prerequisites surface first, "read this first"</td><td>sequentiality: turns cannot get out of sequence (p. 141), which every async medium loses</td></tr>
-  <tr><td class="k">Replies_To</td><td>threads that span days and people</td><td>initiation of the relevant next turn, the second form of positive evidence (p. 132)</td></tr>
-  <tr><td class="k">Confirmed_by</td><td>one-tap "seen, will comply"</td><td>acknowledgments, the first form of positive evidence (p. 131); makes states 0&#8211;3 visible to the author (p. 146)</td></tr>
-  <tr><td class="k">Audience</td><td>broadcast, directed, or project; each arriver hears only what is for them</td><td>utterances designed for their addressees (p. 134; Clark &amp; Murphy 1982)</td></tr>
-  <tr><td class="k">Routing</td><td>a <b>project memory</b> follows the work to its next place</td><td>the recipient substitution generalized: when no place can stand for "whoever continues the work," the project does</td></tr>
-  <tr><td class="k">Triage + salience</td><td>"anything for me?" returns a few ordered items; the rest stays quiet</td><td>the grounding criterion: understanding "sufficient for current purposes" (p. 129), and the criterion is purpose-relative (p. 136), so notes expire when purposes end</td></tr>
-  <tr><td class="k">Accumulation + history</td><td>the reviewable record behind every current state</td><td>reviewability (p. 141); groups ground onto a persistent medium (Dillenbourg &amp; Traum 2006)</td></tr>
+  <tr><th>Mechanism</th><th>Job</th><th>Theory link</th></tr>
+  <tr><td class="k">Supersedes</td><td>state, not log: a place shows what is true now</td><td>currency: awareness "must be maintained and kept up to date" (G&amp;G, p. 416); the record tracks the room, not the room's history of announcements</td></tr>
+  <tr><td class="k">Depends_On</td><td>prerequisites surface first, "read this first"</td><td>read-before-act coupling; a dependency is future-directed information no perception recovers (G&amp;G, p. 421)</td></tr>
+  <tr><td class="k">Replies_To</td><td>threads that span days and people</td><td>event and action history: how the current state came to be stays answerable behind it</td></tr>
+  <tr><td class="k">Confirmed_by</td><td>one-tap "seen, will comply"</td><td>reverse awareness, for the leaver: the author's picture of whether the note landed; the one move where the arriver speaks back into the record</td></tr>
+  <tr><td class="k">Audience</td><td>broadcast, directed, or project; each arriver hears only what is for them</td><td>the readers dimension: one known reader, whoever comes next, or everyone</td></tr>
+  <tr><td class="k">Routing</td><td>a <b>project memory</b> follows the work to its next place</td><td>spatial scope: awareness that must arrive somewhere other than where it was spoken</td></tr>
+  <tr><td class="k">Triage + salience</td><td>"anything for me?" returns a few ordered items; the rest stays quiet</td><td>a picture small enough to act on: warnings first, relevance next, silence otherwise</td></tr>
+  <tr><td class="k">Accumulation + history</td><td>the reviewable record behind every current state</td><td>the history elements: how, when, and who remain answerable after supersession</td></tr>
 </table>
-<p>Sequentiality returns as ordering, revisability as supersession, reviewability as accumulation, positive evidence as confirm and reply. The value is the graph's position in the loop, not the data model, which a plain table could hold. The hard part is building it from messy in-flow speech.</p>
+<p>Read as maintenance jobs: currency (supersedes), ordering (depends_on), history (replies_to, accumulation), scope (audience, routing, triage), and one return channel (confirmed_by). The value is the graph's position in the loop, not the data model, which a plain table could hold. The hard part is building it from messy in-flow speech.</p>
 
 <h2 id="c3"><span class="no">3</span>Interaction</h2>
 <p>Six moments of use, one per turn of the loop:</p>
 <table>
-  <tr><th>Moment</th><th>What the user does or sees</th><th>Old link</th></tr>
-  <tr><td class="k">Speak in place</td><td>one sentence mid-task, no app, no recipient</td><td>start-up cost near zero; no "doing more within a turn" (pp. 143&#8211;145)</td></tr>
-  <tr><td class="k">Surface on approach</td><td>the place replays its current notes, including any routed here by your project</td><td>context present, not imagined (p. 143); deixis restored (p. 145)</td></tr>
-  <tr><td class="k">Triage on arrival</td><td>"anything for me?" returns a few ordered items</td><td>grounding criterion, sufficient for current purposes (p. 129)</td></tr>
-  <tr><td class="k">Follow a trail</td><td>replay one person's stations in order to catch up</td><td>from the concept: person is a query over the record, not a C&amp;B move</td></tr>
-  <tr><td class="k">Supersede</td><td>say the update; the old note collapses to current state</td><td>revisability extended past sending (p. 141)</td></tr>
-  <tr><td class="k">Let go</td><td>ephemera expire; project notes die with the project</td><td>the criterion is purpose-relative, and purposes end (p. 136)</td></tr>
+  <tr><th>Moment</th><th>What the user does or sees</th><th>Theory link</th></tr>
+  <tr><td class="k">Speak in place</td><td>one sentence mid-task, no app, no recipient</td><td>the design brief: formulation, production, and start-up driven toward zero</td></tr>
+  <tr><td class="k">Surface on approach</td><td>the place replays its current notes, including any routed here by your project</td><td>standing there supplies the context; the arriver's questions answered at the thing</td></tr>
+  <tr><td class="k">Triage on arrival</td><td>"anything for me?" returns a few ordered items</td><td>the picture scoped to this arriver: warnings and relevant items first</td></tr>
+  <tr><td class="k">Follow a trail</td><td>replay one person's stations in order to catch up</td><td>presence and action history as a query: who was here, what have they been doing</td></tr>
+  <tr><td class="k">Supersede</td><td>say the update; the old note collapses to current state</td><td>currency: the record tracks the room</td></tr>
+  <tr><td class="k">Let go</td><td>ephemera expire; project notes die with the project</td><td>awareness is bounded in time and space (G&amp;G, p. 416): notes end when the state or project they describe ends</td></tr>
 </table>
 
 <p class="foot">Spatial Memory · CHI 2027 · see the header.</p>
