@@ -24,99 +24,45 @@
 <h1>Spatial Memory &middot; Plan</h1>
 <p class="sub">Why we run two studies, what happens in each, and what we measure. Task details may still move; the logic is locked. Academic spec in the Full Doc &sect;6.</p>
 
-<div class="hook"><b>The whole plan in one breath:</b> the paper claims grounding can move into a shared room across time. Study&nbsp;1 shows people will actually put knowledge <i>into</i> the room when saying it costs one breath. Study&nbsp;2 shows a later stranger can take that knowledge <i>out</i> again, and that the credit belongs to the structure, not the pinning. A technical check in between shows the pipeline connecting the two is real.</div>
+<div class="hook"><b>The whole plan in one breath:</b> the paper claims a shift-shared workspace can carry its own past. <b>Study&nbsp;1</b> shows people will actually put that awareness <i>into</i> the room when saying it costs one breath (RQ1). <b>Study&nbsp;2</b> shows a newcomer gets a correct picture back <i>out</i>, that the credit belongs to the Memory Graph rather than the pinning (RQ2), and maps where the picture fails (RQ3). The two are chained by a frozen seed set: what Study&nbsp;1&rsquo;s leavers actually said becomes the room Study&nbsp;2&rsquo;s newcomers walk into.</div>
 
-<h2 id="p1"><span class="no">1</span>The goal, and why it takes two studies</h2>
-<p><span class="hl">The claim has two sides that can never be in the room at the same time, because the medium is about different times. So the test is cut in two.</span> The <b>speaking side</b>: when leaving word costs one breath instead of a composed message, the small situated knowledge that today goes unsaid gets said. The <b>reading side</b>: a newcomer who was never addressed finds that knowledge where and when it matters, and reads it right, and the thing doing that work is the Memory Graph, not the mere pinning. And underneath both, the honest question: did understanding actually happen, and where exactly does it stop happening. The boundary is reported, not hidden.</p>
+<h2 id="p1"><span class="no">1</span>Research questions, and why it takes two studies</h2>
+<p>Three questions, two studies:</p>
+<table>
+  <tr><th></th><th>Question</th><th>Answered by</th></tr>
+  <tr><td class="k">RQ1</td><td>When externalizing costs one breath at the thing, do the awareness records that today go unsaid actually get made?</td><td><b>Study 1</b> (leaver): externalization rate per situation type, against a Slack baseline</td></tr>
+  <tr><td class="k">RQ2</td><td>Does the Memory Graph keep a newcomer&rsquo;s picture of the room current and correct, beyond what pinning alone provides?</td><td><b>Study 2</b> (arriver): full vs stripped, the dissociation table in &sect;5</td></tr>
+  <tr><td class="k">RQ3</td><td>Where does the picture fail: which situations break, in which version, with what kinds of error?</td><td><b>Study 2</b>: error types and compensation signatures, per starred crossing</td></tr>
+</table>
+<p><span class="hl">The claim has two sides that can never be in the room at the same time: the person who leaves the knowledge and the person who arrives to need it. So the test cuts in two,</span> chained by the seed set: what Study&nbsp;1&rsquo;s leavers actually said, curated once and frozen, becomes the room Study&nbsp;2&rsquo;s newcomers walk into.</p>
 <figure>
-<svg viewBox="0 0 1000 448" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="From the proposed flow to what each study leg proves and measures">
+<svg viewBox="0 0 1000 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The loop, split between the two studies">
   <defs><marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#5b6472"/></marker></defs>
-
-  <!-- proposed flow: the loop -->
-  <text x="20" y="18" font-size="11.5" font-weight="700" fill="#1a1d24">The proposed flow: one loop</text>
-  <rect x="20" y="28" width="225" height="42" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="132" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5fbf">Capture</text>
-  <text x="132" y="61" text-anchor="middle" font-size="9" fill="#5b6472">speak in place</text>
-  <rect x="262" y="28" width="225" height="42" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="374" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5fbf">Anchor</text>
-  <text x="374" y="61" text-anchor="middle" font-size="9" fill="#5b6472">to the place</text>
-  <rect x="504" y="28" width="210" height="42" rx="9" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="609" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#8a4baf">Structure</text>
-  <text x="609" y="61" text-anchor="middle" font-size="9" fill="#5b6472">Memory Graph</text>
-  <rect x="731" y="28" width="249" height="42" rx="9" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="855" y="46" text-anchor="middle" font-size="11" font-weight="700" fill="#2f7d4f">Surface</text>
-  <text x="855" y="61" text-anchor="middle" font-size="9" fill="#5b6472">to the next person</text>
-  <line x1="247" y1="49" x2="260" y2="49" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
-  <line x1="489" y1="49" x2="502" y2="49" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
-  <line x1="716" y1="49" x2="729" y2="49" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
-  <text x="500" y="88" text-anchor="middle" font-size="9.5" fill="#5b6472">anchor, surface, and a later person's action run the three substitutions below</text>
-
-  <!-- column headers -->
-  <text x="136" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Substitution &#8212; the flow</text>
-  <text x="347" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Grounding cost</text>
-  <text x="567" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">What the study proves</text>
-  <text x="841" y="112" text-anchor="middle" font-size="11" font-weight="700" fill="#1a1d24">Measured by</text>
-
-  <!-- row 1: recipient -->
-  <rect x="20" y="122" width="232" height="64" rx="8" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="136" y="147" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">recipient &#8594; a place</text>
-  <text x="136" y="165" text-anchor="middle" font-size="9" fill="#5b6472">pins to the place, no addressee</text>
-  <rect x="262" y="122" width="170" height="64" rx="8" fill="#f2f4f7" stroke="#5b6472"/>
-  <text x="347" y="150" text-anchor="middle" font-size="10" fill="#1a1d24">start-up +</text>
-  <text x="347" y="165" text-anchor="middle" font-size="10" fill="#1a1d24">formulation</text>
-  <rect x="442" y="122" width="250" height="64" rx="8" fill="#fbf3e6" stroke="#b8791f"/>
-  <text x="567" y="147" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b8791f">RQ1 &#183; author cost drops</text>
-  <text x="567" y="165" text-anchor="middle" font-size="9" fill="#5b6472">more gets said vs a placeless channel</text>
-  <rect x="702" y="122" width="278" height="64" rx="8" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="841" y="147" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 1 &#183; Leaver (wizarded)</text>
-  <text x="841" y="165" text-anchor="middle" font-size="9" fill="#5b6472">externalization rate &#183; TLX &#183; time-off-task</text>
-  <line x1="252" y1="154" x2="261" y2="154" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="432" y1="154" x2="441" y2="154" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="692" y1="154" x2="701" y2="154" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-
-  <!-- row 2: referent -->
-  <rect x="20" y="196" width="232" height="64" rx="8" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="136" y="221" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">referent &#8594; co-location</text>
-  <text x="136" y="239" text-anchor="middle" font-size="9" fill="#5b6472">reader stands where it was said</text>
-  <rect x="262" y="196" width="170" height="64" rx="8" fill="#f2f4f7" stroke="#5b6472"/>
-  <text x="347" y="232" text-anchor="middle" font-size="10" fill="#1a1d24">understanding</text>
-  <rect x="442" y="196" width="250" height="64" rx="8" fill="#fbf3e6" stroke="#b8791f"/>
-  <text x="567" y="221" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b8791f">RQ2 &#183; reader cost stays low</text>
-  <text x="567" y="239" text-anchor="middle" font-size="9" fill="#5b6472">SM-full vs anchored-only</text>
-  <rect x="702" y="196" width="278" height="64" rx="8" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="841" y="221" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 2 &#183; Arriver</text>
-  <text x="841" y="239" text-anchor="middle" font-size="9" fill="#5b6472">traps &#183; time-to-relevant &#183; overload</text>
-  <line x1="252" y1="228" x2="261" y2="228" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="432" y1="228" x2="441" y2="228" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="692" y1="228" x2="701" y2="228" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-
-  <!-- row 3: acceptance -->
-  <rect x="20" y="270" width="232" height="64" rx="8" fill="#eef4fd" stroke="#1f5fbf"/>
-  <text x="136" y="295" text-anchor="middle" font-size="10.5" font-weight="700" fill="#1f5fbf">reply &#8594; deferred acceptance</text>
-  <text x="136" y="313" text-anchor="middle" font-size="9" fill="#5b6472">a later person acts on the note</text>
-  <rect x="262" y="270" width="170" height="64" rx="8" fill="#f2f4f7" stroke="#5b6472"/>
-  <text x="347" y="306" text-anchor="middle" font-size="10" fill="#1a1d24">acceptance</text>
-  <rect x="442" y="270" width="250" height="64" rx="8" fill="#fbf3e6" stroke="#b8791f"/>
-  <text x="567" y="295" text-anchor="middle" font-size="10.5" font-weight="700" fill="#b8791f">RQ4 &#183; grounding reached / broke</text>
-  <text x="567" y="313" text-anchor="middle" font-size="9" fill="#5b6472">right action, for the right reason?</text>
-  <rect x="702" y="270" width="278" height="64" rx="8" fill="#e8f4ec" stroke="#2f7d4f"/>
-  <text x="841" y="295" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2f7d4f">Study 2 &#183; interviews</text>
-  <text x="841" y="313" text-anchor="middle" font-size="9" fill="#5b6472">grounded vs broke &#183; 2 coders</text>
-  <line x1="252" y1="302" x2="261" y2="302" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="432" y1="302" x2="441" y2="302" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-  <line x1="692" y1="302" x2="701" y2="302" stroke="#5b6472" stroke-width="1.4" marker-end="url(#pa)"/>
-
-  <!-- realizability bar -->
-  <rect x="20" y="350" width="960" height="40" rx="8" fill="#f5edfa" stroke="#8a4baf"/>
-  <text x="500" y="368" text-anchor="middle" font-size="10" font-weight="700" fill="#8a4baf">RQ3 &#183; Can speech become the record? (technical, no participants)</text>
-  <text x="500" y="383" text-anchor="middle" font-size="9" fill="#5b6472">segmentation &amp; filing accuracy &#183; capture-to-card latency &#183; anchoring reliability on Quest&#160;3 &#8212; the pipeline that makes the loop run</text>
-
-  <!-- boundary -->
-  <rect x="20" y="400" width="960" height="38" rx="8" fill="#fbecec" stroke="#b23b3b"/>
-  <text x="500" y="417" text-anchor="middle" font-size="9.5" font-weight="700" fill="#b23b3b">Boundary &#8212; reported, not hidden</text>
-  <text x="500" y="431" text-anchor="middle" font-size="9" fill="#a24a4a">async removes repair, so deferred acceptance is not full mutual belief; grounding can land one-way</text>
+  <rect x="20" y="18" width="225" height="42" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="132" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5fbf">Capture</text>
+  <text x="132" y="51" text-anchor="middle" font-size="9" fill="#5b6472">speak in place</text>
+  <rect x="262" y="18" width="225" height="42" rx="9" fill="#eef4fd" stroke="#1f5fbf"/>
+  <text x="374" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#1f5fbf">Anchor</text>
+  <text x="374" y="51" text-anchor="middle" font-size="9" fill="#5b6472">to the place</text>
+  <rect x="504" y="18" width="210" height="42" rx="9" fill="#f5edfa" stroke="#8a4baf"/>
+  <text x="609" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#8a4baf">Structure</text>
+  <text x="609" y="51" text-anchor="middle" font-size="9" fill="#5b6472">Memory Graph</text>
+  <rect x="731" y="18" width="249" height="42" rx="9" fill="#e8f4ec" stroke="#2f7d4f"/>
+  <text x="855" y="36" text-anchor="middle" font-size="11" font-weight="700" fill="#2f7d4f">Surface</text>
+  <text x="855" y="51" text-anchor="middle" font-size="9" fill="#5b6472">to the next person</text>
+  <line x1="247" y1="39" x2="260" y2="39" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
+  <line x1="489" y1="39" x2="502" y2="39" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
+  <line x1="716" y1="39" x2="729" y2="39" stroke="#5b6472" stroke-width="1.6" marker-end="url(#pa)"/>
+  <path d="M20 74 L20 84 L487 84 L487 74" stroke="#b8791f" stroke-width="1.6" fill="none"/>
+  <text x="253" y="106" text-anchor="middle" font-size="11.5" font-weight="700" fill="#b8791f">Study 1 &#183; Leaver (wizarded)</text>
+  <text x="253" y="123" text-anchor="middle" font-size="10" fill="#5b6472">RQ1 &#183; when saying costs one breath, does it get said? (rate vs Slack)</text>
+  <path d="M504 74 L504 84 L980 84 L980 74" stroke="#2f7d4f" stroke-width="1.6" fill="none"/>
+  <text x="742" y="106" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2f7d4f">Study 2 &#183; Arriver (frozen room)</text>
+  <text x="742" y="123" text-anchor="middle" font-size="10" fill="#5b6472">RQ2 &#183; does structure keep the picture right? &#183; RQ3 &#183; where does it fail?</text>
+  <text x="500" y="158" text-anchor="middle" font-size="10" font-style="italic" fill="#8a93a3">the frozen seed set: Study 1&rsquo;s real words, curated once, become Study 2&rsquo;s room</text>
+  <path d="M300 170 L700 170" stroke="#b3bac4" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#pa)"/>
 </svg>
-<figcaption><b>From the proposed flow to what the study proves.</b> The flow is deduced from grounding theory and the contrast with Slack (what a placeless channel prices out), not from a formative. Each substitution names a grounding cost, a claim, and the study leg that measures it; RQ3 asks whether messy in-flow speech can become the typed, placed, linked record the concept assumes, at a correction cost small enough to preserve one-breath capture; the boundary is reported, not hidden.</figcaption>
+<figcaption>The loop splits cleanly between the studies: Study 1 owns the speaking half (capture, anchor), Study 2 owns the reading half (structure, surface), and the frozen seed set hands one to the other.</figcaption>
 </figure>
 <p>One discipline governs everything below: <span class="hl"><b>the studies are the storyboard week with the surfaces swapped</b></span>. Same structures, different props, so the scenario, the studies, and the demo are one paradigm.</p>
 
@@ -124,7 +70,7 @@
 <p>The room is our own lab dressed as the scenario's maker lab: the Bambu P2S, the four-camera capture frame over its bench, the shared device shelf, a soldering station, workbenches. Everyone wears a Quest&nbsp;3 in passthrough. Participants are makerspace-experienced people from outside the lab; labmates only pilot. In Study&nbsp;1 the capture is <b>wizarded</b>: speaking genuinely records audio and location, but no live pipeline runs behind it. Every session is passthrough-recorded for behavior coding.</p>
 
 <h2 id="p3"><span class="no">3</span>Study 1 &middot; will people say it? (8&ndash;10 people, each comes twice)</h2>
-<p><b>Goal:</b> prove the speaking side. <span class="hl">When a note costs one breath, encounter-class knowledge gets externalized; when it costs pulling out a phone and composing a message, most of it dies.</span></p>
+<p><b>Goal (RQ1):</b> prove the speaking side. <span class="hl">When a note costs one breath, encounter-class knowledge gets externalized; when it costs pulling out a phone and composing a message, most of it dies.</span></p>
 <p><b>What happens:</b> each person comes twice, at least a day apart. On one visit they can speak in place; on the other they only have their phone and the lab Slack. Half start with each. Both visits wear the headset, so the only difference is the channel. Each visit is about 40 minutes of real lab work under mild time pressure (collect a print, assemble a bracket, wire a connector, stage a logging phone, clear and calibrate for the next job), and the two visits use different but structurally identical task sets, so nobody meets the same situation twice. The cover story: you are the morning shift, someone you do not know takes over this afternoon; handle anything you notice however you normally would. We never mention recording; saying something stays optional and slightly costly, like life.</p>
 <p><b>The nine planted situations</b> worth telling the next person (set&nbsp;A &#9656; set&nbsp;B surfaces):</p>
 <table>
@@ -142,14 +88,14 @@
 <p><b>What we measure:</b> for each of the nine, did they say it: fully, partly, or not at all. An exit walkthrough ("show me what you noticed") separates <i>did not notice</i> from <i>noticed and stayed silent</i>; only the second counts. Plus the time each record took away from the work, word counts, and workload (NASA-TLX). Two bonus readings: E8 quietly measures whether people give a bump report to the <b>place</b> or to the <b>person</b> (the scenario's Dae-ho moment, measured in the wild), and E9 checks that messages with a known recipient still go to Slack in both visits, so the system is not stealing the channel's job.</p>
 <p><b>What it hands over:</b> everything they said, with location and timestamp, becomes the test corpus for the pipeline check and the raw material of Study&nbsp;2's room. The "Feeds Study&nbsp;2" column above is that handoff, planned in advance.</p>
 
-<h2 id="p4"><span class="no">4</span>The pipeline check (no participants)</h2>
-<p><b>The question (RQ3):</b> can messy in-flow speech be turned into the typed, placed, linked record the concept assumes, at a correction cost small enough to preserve one-breath capture? Both studies deliberately bypass the live pipeline (Study&nbsp;1 is wizarded, Study&nbsp;2 is frozen), so this is the one place the real system is tested. All Study&nbsp;1 recordings are run through the real pipeline offline: does it split a multi-topic breath into the right cards, put each card in the right place, propose the right audience and urgency, and spot the links (this replaces that, read this first, this answers that)? Scored against two human coders' gold labels, and reported with one honest number: <b>how many fixes per card</b> the author would have had to make at the confirmation step. This is the technical evaluation of the Memory Graph's writer. Anchoring reliability on Quest&nbsp;3 (does a card resurface in the right spot across sessions) is measured alongside.</p>
+<h2 id="p4"><span class="no">4</span>The pipeline check (TODO &middot; deferred)</h2>
+<p>This is a concept paper, and both studies bypass the live pipeline by design (Study&nbsp;1 is wizarded, Study&nbsp;2 is frozen), so a separate technical evaluation is not load-bearing. The benchmark stays specced as a TODO: run all Study&nbsp;1 recordings through the writer offline (split one breath into cards, place them, propose audience and urgency, spot the links), score against two coders&rsquo; gold labels, report fixes-per-card. Study&nbsp;1&rsquo;s recordings are retained as the test corpus, so this can run whenever reviewers or the system section need the number. Anchoring reliability on Quest&nbsp;3 (does a card resurface in the right spot across sessions) moves into piloting.</p>
 
 <h2 id="p5"><span class="no">5</span>Study 2 &middot; can a stranger pick it up? (16 people, each comes once, two groups of 8)</h2>
-<p><b>Goal:</b> Study 1 shows people will put knowledge <i>into</i> the room. Study 2 asks whether a newcomer gets a correct picture back <i>out</i>, and who deserves the credit. Pinning notes where they were spoken already does real work: standing at the thing, a pinned note reads fine. What is on trial is everything beyond pinning: collapsing old versions into the current one, carrying word to the bench where it is needed, filtering by who it is for, putting warnings first. <span class="hl">The registered prediction: wherever the task is "stand at the thing and read it," the two versions tie; wherever the room is realistically messy (records piled on one spot, things changed after writing, word needed at another bench, a warning buried in chatter), the full version keeps the newcomer right and the stripped one does not.</span> The tie is registered in advance on purpose: it is what proves the differences come from the graph rather than from pinning.</p>
+<p><b>Goal (RQ2 &amp; RQ3):</b> Study 1 shows people will put knowledge <i>into</i> the room. Study 2 asks whether a newcomer gets a correct picture back <i>out</i>, and who deserves the credit. Pinning notes where they were spoken already does real work: standing at the thing, a pinned note reads fine. What is on trial is everything beyond pinning: collapsing old versions into the current one, carrying word to the bench where it is needed, filtering by who it is for, putting warnings first. <span class="hl">The registered prediction: wherever the task is "stand at the thing and read it," the two versions tie; wherever the room is realistically messy (records piled on one spot, things changed after writing, word needed at another bench, a warning buried in chatter), the full version keeps the newcomer right and the stripped one does not.</span> The tie is registered in advance on purpose: it is what proves the differences come from the graph rather than from pinning.</p>
 <p><b>Design:</b> 16 fresh people, one visit each, cast as a newcomer taking over a project mid-week. They split into two groups of eight, <b>between subjects</b>: nobody sees both versions, because a planted situation teaches its lesson the first time you meet it, and a second room cannot un-teach it. One group uses the <b>full version</b>, the Memory Graph running (old versions collapse, notes travel with projects, each person hears what is for them, warnings order first, "who did this" is answerable). The other group uses the <b>stripped version</b>: the very same notes as dumb pins at the places they were spoken, old versions hanging beside new ones, everything visible to everyone, nothing routed, no ordering, no "anything for me?". Same room, same notes, same paper work order; the software is the only difference.</p>
 
-<p><b>How notes appear (both versions).</b> Voice exists only at capture: the leaver speaks one breath, and the pipeline turns it into a text card (the same pipeline the technical check in &sect;4 scores). Display has exactly two states: from afar, an anchor shows a <b>dot</b>; walk up, and it <b>expands into a readable text card</b> at its thing. Nothing pops up by guessed intent: the system never infers what you are about to use. Standing in a corner you therefore see every card in that corner at once, each at its own thing, and which one you read is settled by which thing you are working with, exactly as with paper sticky notes; when several cards share one anchor they fan out, each holding its own visual position. Both versions share this passive layer, and in both, every card carries its own words and its raw timestamp. On top of it, the full version does exactly three active things: it <b>folds</b> superseded cards behind the current one, it <b>carries</b> project notes to where their project's work continues, and it <b>speaks</b> (arrival triage, warnings first, directed items), plus author labels and the person query. The stripped version is the passive layer alone: every card at equal volume, nothing folded, nothing travels, nothing speaks, no names.</p>
+<p><b>How notes appear (both versions).</b> Voice exists only at capture: the leaver speaks one breath, and the pipeline turns it into a text card (the same pipeline &sect;4 keeps specced as a TODO benchmark). Display has exactly two states: from afar, an anchor shows a <b>dot</b>; walk up, and it <b>expands into a readable text card</b> at its thing. Nothing pops up by guessed intent: the system never infers what you are about to use. Standing in a corner you therefore see every card in that corner at once, each at its own thing, and which one you read is settled by which thing you are working with, exactly as with paper sticky notes; when several cards share one anchor they fan out, each holding its own visual position. Both versions share this passive layer, and in both, every card carries its own words and its raw timestamp. On top of it, the full version does exactly three active things: it <b>folds</b> superseded cards behind the current one, it <b>carries</b> project notes to where their project's work continues, and it <b>speaks</b> (arrival triage, warnings first, directed items), plus author labels and the person query. The stripped version is the passive layer alone: every card at equal volume, nothing folded, nothing travels, nothing speaks, no names.</p>
 
 <p><b>What the logs give for free.</b> Every expansion is a logged event (which card, when, where the participant stood), and head pose gives a read proxy (a card held in the central field of view for a few seconds). Consultation evidence therefore comes in layers: expansion events (they were there), head-dwell (they likely read it), the wizard's live sheet and the session video (what they physically did), and the debrief (why). One distinction to keep straight: the deployed system's privacy stance, no gaze or dwell inference, is about what the <i>system</i> acts on; the <i>study</i> records head pose with consent as measurement, and the system never consumes it.</p>
 
@@ -197,7 +143,7 @@
 <b>Task:</b> DRIFT-1: "weigh 20 g of pigment and write the number down." DRIFT-2: "run the quick capture test."<br>
 <b>The point:</b> the note was true when spoken; after freezing the room we changed the world, so the note's status is <i>drifted</i>. No version can make the newcomer automatically right here; the test is whether a visible timestamp and the trail of later activity turn blind trust into a quick check.<br>
 <b>Prediction:</b> the full group verifies before acting more often; the stripped group errs, and errs <i>confidently</i>, because nothing on a pinned note says it aged. (The confidence part is registered: it is the calibration read in the measures.)<br>
-<b>Full vs stripped here:</b> deliberately the thinnest difference in the study. Both versions show the same card with the same timestamp, and nothing marks it wrong, because nobody recorded the change. The full version adds only age salience and the visible trail of later activity nearby; which of those two cues we claim credit for is the open decision in &sect;7.<br>
+<b>Full vs stripped here:</b> deliberately the thinnest difference in the study. Both versions show the same card with the same timestamp, and nothing marks it wrong, because nobody recorded the change. The full version adds only age salience and the visible trail of later activity nearby; which of those two cues we claim credit for must be settled before piloting: the fairness of identical walls in both versions depends on naming it in advance.<br>
 <b>On the scale (DRIFT-1):</b> "re-zeroed the scale for the resin batch, good to go" (broadcast &middot; object &middot; drifted; Study 1, day 1). Staging after the freeze: we offset the tare; a reference weight sits beside the scale as the checking affordance.<br>
 <b>On the light stand (DRIFT-2):</b> "the stand is aligned to the tape marks for the A-captures" (Rig &middot; object &middot; drifted; Study 1, day 1). Staging after the freeze: we nudge the stand off its marks.<br>
 <b>Scored:</b> checks the zero or the reference before trusting the reading (blind acceptance is the error); glances at the tape marks before shooting.</p>
@@ -257,13 +203,7 @@
   <tr><td class="k">5</td><td>Two system configs over one note DB</td><td>full / anchored-only; the ablation is a config flag, not a second room</td></tr>
   <tr><td class="k">6</td><td>Pilots</td><td>3&ndash;4 people, tune item difficulty until the stripped group succeeds roughly four times in ten; the pile-up items&rsquo; tuning lever is how self-contained the newest card is (if stripped saturates, split the current state across the last two cards); if differences run small, grow to 12 per arm before concluding anything</td></tr>
 </table>
-<p><b>Deliberately not run</b>, one line each, stated in the paper: the parametric ladders (one pressurized level per &#9733; cell; curves are future work); a full author ladder (capped at the TRACE contrast); a third arm; deployment (the real-teams leg below is its honest substitute); Replies_To and Confirmed_by as claims (Confirmed_by usage is logged, exploratory, its value belongs to the leaver's side).</p>
-
-<h2 id="p6"><span class="no">6</span>The real-teams leg (with YY)</h2>
-<p>Two or three real pairs use the system in their own work for a few days. No planted tasks, no scripts; we watch where communication breaks and how it gets repaired, coded as breakdown-and-repair episodes plus thematic analysis. The lab studies prove the mechanism; this leg shows it happens outside a script. Scheduled after the demo scenes prove the system runs live.</p>
-
-<h2 id="p7"><span class="no">7</span>Still open</h2>
-<p>Compensation and recruitment channel; an IRB check on whether the submitted protocol (STU00226786) covers the planted-situation cover stories or needs an amendment; the size of the real-teams leg; the grow-to-12 rule for Study&nbsp;2; and one design decision to settle before piloting: on the DRIFT items, which mechanism the full system is claimed to help with (timestamp salience vs. visible later activity near the anchor), since the fairness of identical walls in both arms depends on naming it in advance.</p>
+<p><b>Deliberately not run</b>, one line each, stated in the paper: the parametric ladders (one pressurized level per &#9733; cell; curves are future work); a full author ladder (capped at the TRACE contrast); a third arm; deployment; Replies_To and Confirmed_by as claims (Confirmed_by usage is logged, exploratory, its value belongs to the leaver's side).</p>
 
 <p class="foot">Spatial Memory &middot; CHI 2027 &middot; see the header.</p>
 </div>
