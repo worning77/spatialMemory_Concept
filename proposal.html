@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal · Spatial Memory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav class="tabs"><div class="tabs-inner">
+  <span class="brand">Spatial Memory</span>
+  <a href="design_doc.html">Full Doc</a>
+  <a href="grounding.html">Framing</a>
+  <a href="concept.html">Concept</a>
+  <a href="plan.html">Plan</a>
+  <a href="proposal.html" class="active">Proposal</a>
+  <a href="storyboard.html">Storyboard</a>
+  <a href="archive_fulldoc.html">Archive</a>
+</div></nav>
+<div class="wrap">
+
+<h1>Proposal and Paper Outline (September 2026 replan)</h1>
+<p class="sub">The paper in plain language, then the section-by-section outline and the decisions behind it. Written on the assumption that the system runs on RayNeo glasses; the Quest alternative is noted where it changes something. Companion to Framing (theory), Concept (mechanisms) and Plan (study). Dated 2026-09-18.</p>
+
+<div class="hook"><b>In one breath:</b> workspaces used in shifts lose the small facts that only matter at the thing, because leaving word costs the leaver everything and pays them nothing. Spatial Memory lets the room carry its own past on two channels, <b>what people said in place</b> and <b>where their bodies went</b>, kept current by a Memory Graph, on glasses that open their camera only when the wearer stops. A week-long scenario shot on the running system shows the mechanisms work. A controlled study puts real arrivers into the room, against the same information delivered over Slack, on the situations that make a shared room hard.</div>
+
+<h2 id="s1"><span class="no">1</span>Background</h2>
+<p>Many people share one physical space without being there at the same time. Maker labs, research labs and studios run in shifts, one group in the morning and another in the afternoon. What hurts in such places is not the big decisions, which have meetings and documents. It is the small facts: someone swapped the printer nozzle, re-zeroed the scale, nudged the camera rig. Each of these matters only at the moment a later person reaches the thing it concerns, and by then the person who knows has gone.</p>
+
+<h2 id="s2"><span class="no">2</span>The problem</h2>
+<p>Face to face, you learn what others did in three ways. You watch them work, you hear them talk, and you read the state of the things they touched. Once the actor has left, the first two are gone and only the third remains, and the state of a thing tells you the present without the past. A nudged camera rig looks exactly like a calibrated one.</p>
+<p>Why does the person who knows not leave word? Because leaving word is expensive. They must stop the task, pick up a phone, open a channel, choose a recipient and translate "this one" into words, and the payoff goes to someone else, later. Under that cost structure silence is the rational choice, so this kind of knowledge keeps dying. The theory behind this, workspace awareness (Gutwin and Greenberg) and the cost ledger of grounding (Clark and Brennan), is on the Framing tab.</p>
+
+<h2 id="s3"><span class="no">3</span>What we propose</h2>
+<p><span class="hl">Let the room carry its own past, on two channels.</span></p>
+<p><b>The spoken channel.</b> Standing at the thing, you say one sentence. No recipient, no description of where, because the place supplies both. The room pins the sentence there, and the next person who walks up sees it. This is <i>authored feedthrough</i>: the content is what you meant to say, the delivery is the place. It answers the artifact-side questions of the past: how did this come to be in this state, and when.</p>
+<p><b>The body channel.</b> The glasses you wear record where you went and where you stopped, without cameras, from inertial sensing between stops and one short camera look when you stop. At the end of the session you decide whether to release the trace. If you do, a later person can ask who was here, where a person has been, and who passed this spot. This is <i>released trace</i>: the consequential channel, watching bodies work, restored after the fact. It answers the person-side questions of the past, including the one nobody thought to say.</p>
+<p><b>The Memory Graph.</b> A layer of structure keeps both channels true as the room changes. A newer note folds the older one behind it. A project's note follows the work to the next bench. A note reaches only the people it concerns. Every note carries its author. On arrival, the room hands you the few items that matter today. The graph does mechanically what a person would otherwise have to do by re-reading everything, which is what Gutwin and Greenberg call awareness maintenance.</p>
+<p><b>The hardware stance.</b> Everything runs on glasses that keep the camera off. Between stops, position comes from inertial odometry. When the wearer stops, the camera takes a one-to-two-second look to relocalize against a one-time scan of the room, then turns off. Nobody is filmed, and the trace is a path with stations, not a video.</p>
+
+<h2 id="s4"><span class="no">4</span>How we test it</h2>
+<p>The paper has to show two things: the mechanisms work, and real people get the picture. The first is the scenario's job. We stage a week in the maker lab on the running system and film it, one beat per mechanism, including the beat where nobody said anything and only the trace can answer. The second is the study's job.</p>
+<p>The study freezes one room with about thirty-four notes and casts makerspace-experienced outsiders as the newcomer. The tasks are not chosen ad hoc. Each pushes one of the four things that make a room hard to its extreme: ten layers of notes on one spot, one job's needs scattered over ten spots, four projects on one bench, five people's notes interleaved in one zone, plus a zero-load control task and a five-minute arrival scene. Half the participants use Spatial Memory. The other half receive the same notes as messages in a Slack channel on a phone, which is what people do today, and then do the same tasks in the same room.</p>
+
+<h2 id="s5"><span class="no">5</span>How a session runs</h2>
+<p>One hour per person. Five minutes on arrival to find out what matters today. Six task blocks, each observed for four things: was the action right, how long did it take, did they verify before acting, and how do they explain their decision afterwards. Participants in the Spatial Memory arm are also probed on three trusts: that the top note is the current one, that dimmed notes are not theirs, and that a signature is worth believing. In the last five minutes everyone leaves word for the next person and makes a real decision about releasing their own trace.</p>
+<p>Two small technical results accompany the study. A benchmark of the structuring pipeline reports how often the speech-to-card step segments, anchors, files and links notes correctly, and how often a card needs correction. A validity paragraph reports how reliably the trace assigns stops to stations in our room. Neither is ablated or compared to prior systems. The odometry and relocalization components are cited, not evaluated.</p>
+
+<h2 id="s6"><span class="no">6</span>What we expect to be able to say</h2>
+<table>
+  <tr><th></th><th>Claim</th><th>Evidence</th></tr>
+  <tr><td class="k">1</td><td>A shift-shared room can carry its own past. On the situations designed to be hard, arrivers with Spatial Memory act correctly more often, faster and with less re-verification than arrivers with Slack.</td><td>Study, per task</td></tr>
+  <tr><td class="k">2</td><td>A map, not a score: where the room's answer is reliable, where people re-read anyway, whether they trust the fold, the filter and the signature, and whether the trace catches the case no note can.</td><td>Study, acceptance probes and the silent-cause beat</td></tr>
+  <tr><td class="k">3</td><td>How people relate to a room that speaks in colleagues' voices: what they leave for strangers, whether they sign, whether they release their trace.</td><td>Coda and debrief</td></tr>
+  <tr><td class="k">4</td><td>Glasses without a continuous camera can do this. The price is that the room knows who passed, not what happened.</td><td>System, scenario, trace validity</td></tr>
+</table>
+
+<h2 id="s7"><span class="no">7</span>Paper outline</h2>
+<p>Ten sections. The job column says what the section has to accomplish; the change column says what moves relative to the August draft.</p>
+<table>
+  <tr><th>Section</th><th>Job</th><th>Content</th><th>Change from the August draft</th></tr>
+  <tr><td class="k">1 Introduction</td><td>State the claim and the two channels</td><td>Severed channels and feedthrough without the past; the cost ledger; the arriver's six questions split artifact-side and person-side; the nozzle scene; the two channels on glasses; a one-sentence positioning against AR annotation and AsyncReality; a "what we did" sentence with scale numbers; four contributions (concept, system on glasses, scenario, study against Slack plus pipeline benchmark)</td><td>Second channel added; contribution 3 becomes real; contribution 4 becomes a controlled study</td></tr>
+  <tr><td class="k">2 Related Work</td><td>Make the empty cell visible</td><td>Four short subsections: awareness across time; situated notes and AR annotation (pins without structure); recording the past of a physical space (AsyncReality, MemoryPods, PEARL, Map as a By-product); camera-light body sensing. Closes on a positioning table: time by source (captured world, recorded body, authored) by structure (none, links, graph) by anchoring</td><td>Five subsections become four; positioning table added; sensing subsection new</td></tr>
+  <tr><td class="k">3 Concept</td><td>Turn the theory into design</td><td>Sequential copresence and the six questions; the two channels, each as a four-step loop, and the privacy stance (deliberate speech, body trace released by its owner, no images); the Memory Graph as awareness maintenance, with two trace-derived edges (present at, passed near) and a place-side query; the moments of use, with "speak anywhere" replacing "speak in place"; anchoring precision in Ellenberg's terms and display relations in Luo's</td><td>One new subsection; privacy paragraph rewritten; the rest condensed</td></tr>
+  <tr><td class="k">4 Scenario</td><td>Show the mechanisms running</td><td>The week, shot on the system: Sam seeds on Monday; Renata supersedes, the box moves, the watch logs on Tuesday; Iris fails on the nudged camera on Wednesday, the boundary of the spoken channel; the trace catches Dae-ho's transit on Thursday, with the cure-time card routed and read-first honoured; letting go on Friday. One walk-and-talk beat (the blocked aisle). A beat-to-mechanism table at the end</td><td>Thursday becomes the trace catch; one beat added; illustrations replaced by captures</td></tr>
+  <tr><td class="k">5 System</td><td>Make it credible, and honest about live versus offline</td><td>Platform (glasses, watch, pocket phone, one-time room scan). Capture: wake word, the anywhere-anchoring rule (named referent first, else utterance position, else nearest station with a low-confidence flag), offline STT and LLM structuring as a proposer. Trace: inertial odometry between stops, stop-triggered relocalization against the scan, filter correction, offline smoothing, station segmentation, release at session end. Graph store and surfacing: two-state cards, fan-out, fold, dimming, arrival panel, floor ribbons and on-object counts, on-demand replay, who-passed-here. A table of what runs live, offline or wizarded</td><td>Trace subsection new; anchoring rule new; live/offline table new</td></tr>
+  <tr><td class="k">6 Technical characterization</td><td>Show the means are good enough</td><td>Pipeline benchmark table (segmentation, anchor proposal, object versus project filing, audience and urgency proposal, link inference, per-card correction rate, latency) on a corpus from pilots, the scenario shoot and the coda. Trace validity paragraph (station attribution, dwell error, walk-and-talk anchor hits, camera-on fraction counted from stops). Sensing limitations stated</td><td>The deferred Pipeline Check returns as a short section; no ablations, no comparison tables</td></tr>
+  <tr><td class="k">7 User study</td><td>Show real people get the picture, and against what</td><td>Between-subjects, Spatial Memory versus Slack, eight per arm growing to twelve; the corner tasks; arrival, six blocks, coda, cued debrief; results per task (outcome, time, verify-before-act, TLX, preference); acceptance probes; the silent-cause contrast; Slack's characteristic failures; themes on trust, authorship, privacy and release</td><td>The two-study chain becomes one controlled study; the August single-arm design gains a baseline</td></tr>
+  <tr><td class="k">8 Discussion</td><td>Say where it ends</td><td>Where each channel fails and the new boundary (nobody nearby, trace withheld, stale record); authorship, audience and trust; privacy of body traces and release control; recorded body versus captured world, what a camera-light design gives up; environment dynamics; towards all-day glasses</td><td>Three new paragraphs</td></tr>
+  <tr><td class="k">9 Limitations</td><td>Own the gaps</td><td>Leaver side tested only through the coda; one lab, one frozen room; camera duty cycle counted, not measured; no long-term deployment</td><td>Updated</td></tr>
+  <tr><td class="k">10 Conclusion</td><td>One paragraph</td><td></td><td></td></tr>
+</table>
+<p class="note">Length. The August draft runs close to 12,000 words of body text. The target is 9,000 to 10,000. The cuts come from Related Work, the old evaluation chain and the concept section.</p>
+
+<h2 id="s8"><span class="no">8</span>Decisions behind this version</h2>
+<table>
+  <tr><th>Decision</th><th>What it means</th><th>Status</th></tr>
+  <tr><td class="k">Platform</td><td>Glasses (RayNeo) with the inertial kit. Odometry and relocalization are reused components. On Quest the trace would be trivial, the body channel would shrink to a feature, and the paper would be a concept-and-study paper instead</td><td>Pending the conversation with Karan; first check whether the RayNeo SDK can keep its own SLAM off and deliver frames on demand</td></tr>
+  <tr><td class="k">Study shape</td><td>Two arms, Spatial Memory versus Slack, on YY's corner tasks. Nine of eleven UIST precedents with this paper's shape carry an in-study everyday baseline</td><td>Reverses the August "one arm, no control" alignment; to be re-aligned with YY and Darren; IRB office to be asked whether the design change needs a modification</td></tr>
+  <tr><td class="k">Technical content</td><td>Pipeline benchmark plus trace validity. No ablations, no SOTA tables. The concept carries the paper, the technique enables it</td><td>Settled</td></tr>
+  <tr><td class="k">What the study does not test</td><td>Whether leavers will speak (only the coda), Slack for the leaver, long-term use, real teams</td><td>To be stated in the paper</td></tr>
+  <tr><td class="k">Venue</td><td>UIST 2027 first (early April 2027); ISMAR 2027 as the nine-page fallback (about mid-March 2027); CHI 2028 if the study slips</td><td>Settled</td></tr>
+</table>
+
+<h2 id="s9"><span class="no">9</span>Open items</h2>
+<p>The platform decision. The re-alignment with YY and Darren on the baseline arm. The IRB question. Whether the stale-top-card probe goes into the pile task. Whether the resume and trail prompts split across participants. The task-sheet update for the trace (a trace mechanism column, a trace beat in the attribution task, the divergence task folded into project prep).</p>
+
+<p class="foot">Spatial Memory &middot; September 2026 replan &middot; see the Plan tab for the study and the Framing tab for the theory.</p>
+</div>
+</body>
+</html>

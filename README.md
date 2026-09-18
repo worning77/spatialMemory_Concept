@@ -12,6 +12,7 @@ Each tab is a **standalone HTML page** sharing `style.css`. One person owns each
 | Framing | [`grounding.html`](./grounding.html) | both | The grounding theory, polished |
 | Concept | [`concept.html`](./concept.html) | Chenfeng | One-screen condensed concept |
 | Plan | [`plan.html`](./plan.html) | Chenfeng | Timeline + condensed study plan |
+| Proposal | [`proposal.html`](./proposal.html) | Chenfeng | September 2026 replan: plain-language proposal, paper outline, decisions |
 | Storyboard | [`storyboard.html`](./storyboard.html) | YY | Scenario drawn as panels |
 | Archive | [`archive_fulldoc.html`](./archive_fulldoc.html) | both | Verbatim snapshot of the pre-grounding-spine Full Doc, kept for reference |
 

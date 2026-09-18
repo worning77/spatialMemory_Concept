@@ -16,6 +16,7 @@ one person owns each file, so two collaborators edit concurrently without git co
 | Framing | `grounding.html` | both | Awareness framing (2026-08 pivot): C&B cost ledger as motivation, GKF awareness-vs-grounding, G&G Table II gap, quadrant figure. Filename kept for link stability |
 | Concept | `concept.html` | Chenfeng | Condensed concept (one screen); theory links = awareness chain (2026-08 pivot), old-link C&B column retired |
 | Plan | `plan.html` | Chenfeng | Timeline + condensed study plan |
+| Proposal | `proposal.html` | Chenfeng | September 2026 replan: plain-language proposal, ten-section paper outline, decisions and open items (RayNeo assumption) |
 | Storyboard | `storyboard.html` | YY | Scenario as panels |
 | Archive | `archive_fulldoc.html` | both | Verbatim snapshot of the pre-grounding-spine Full Doc, kept for reference |
 
