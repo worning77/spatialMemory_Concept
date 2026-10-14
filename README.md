@@ -32,5 +32,5 @@ No build step — pages open directly (double-click works) and render on GitHub 
 
 `https://worning77.github.io/spatialMemory_Concept/`
 
-To enable: **Settings → Pages → Source: `main` / root**. The root resolves to `design_doc.html` via `index.html`.
+To enable: **Settings → Pages → Source: `main` / root**. The root resolves to `proposal.html` (the home page, first tab) via `index.html`.
 **To let a collaborator push:** repo **Settings → Collaborators → Add people**.

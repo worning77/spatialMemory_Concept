@@ -22,7 +22,7 @@ one person owns each file, so two collaborators edit concurrently without git co
 
 - `style.css` — shared stylesheet for ALL tabs (extracted from the original inline CSS
   in `design_doc.html`, plus `.tabs` nav styles). Edit sparingly; it affects every tab.
-- `index.html` — redirect to `design_doc.html`.
+- `index.html` — redirect to `proposal.html` (the home page since 2026-10-14; Proposal is also the first tab).
 - `scenario_7day.html` — legacy, superseded.
 
 ## Rules when working here
@@ -38,5 +38,5 @@ one person owns each file, so two collaborators edit concurrently without git co
 
 ## Pages / collaborators
 
-- GitHub Pages: Settings → Pages → `main` / root → resolves to `design_doc.html` via redirect.
+- GitHub Pages: Settings → Pages → `main` / root → resolves to `proposal.html` via redirect.
 - Collaborator push access: Settings → Collaborators → Add people.
